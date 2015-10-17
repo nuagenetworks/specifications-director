@@ -102,7 +102,7 @@
         "resourceName": "abstracts",
         "entityName": "Abstract",
         "description": "Represents the abstract of an object.",
-        "extends": [],
+        "extends": ["@parsable"],
         "package": "specifications",
 
         "attributes": {

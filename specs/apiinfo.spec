@@ -45,7 +45,7 @@
         "resourceName": "apiinfos",
         "entityName": "APIInfo",
         "description": "Represents information about the entire specifications.",
-        "extends": [],
+        "extends": ["@parsable"],
         "package": "specifications",
 
         "attributes": {

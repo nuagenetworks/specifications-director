@@ -4,7 +4,8 @@
 
 @implementation SDSpecificationDataView : NUAbstractDataView
 {
-    @outlet CPTextField   fieldName;
+    @outlet CPTextField fieldName;
+    @outlet CPImageView imageViewWarning;
 }
 
 
@@ -16,6 +17,11 @@
     [super bindDataView];
 
     [fieldName bind:CPValueBinding toObject:_objectValue withKeyPath:@"name" options:nil];
+
+    [imageViewWarning setHidden:!!![_objectValue issues]];
+
+    if ([_objectValue issues])
+        [imageViewWarning setToolTip:@"Some errors has been found during the parsing of the remote specification. Please review"];
 }
 
 
@@ -26,7 +32,8 @@
 {
     if (self = [super initWithCoder:aCoder])
     {
-        fieldName = [aCoder decodeObjectForKey:@"fieldName"];
+        fieldName        = [aCoder decodeObjectForKey:@"fieldName"];
+        imageViewWarning = [aCoder decodeObjectForKey:@"imageViewWarning"];
     }
 
     return self;
@@ -37,6 +44,7 @@
     [super encodeWithCoder:aCoder];
 
     [aCoder encodeObject:fieldName forKey:@"fieldName"];
+    [aCoder encodeObject:imageViewWarning forKey:@"imageViewWarning"];
 }
 
 @end

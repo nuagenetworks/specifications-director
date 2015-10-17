@@ -151,6 +151,8 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
         """
         """
         ret = []
+        specification.issues = []
+
         for mono_attribute in mono_specification.attributes:
             attr = sdk.SDAttribute()
             attr.name = mono_attribute.remote_name
@@ -176,10 +178,18 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
             attr.type = mono_attribute.type
             attr.unique = mono_attribute.unique
             attr.unique_scope = "no"
+            attr.issues = []
 
-            validation = self.core_controller.storage_controller.create(attr, specification)
-            if validation:
-                pass#print "%s: %s: %s" % (attr.name, validation[0].title, validation[0].description)
+            if not attr.validate():
+
+                specification.issues.append('Some attributes were not declared correctly. Please review attributes')
+                self.core_controller.storage_controller.update(specification)
+
+                for property_name, error in attr.errors.iteritems():
+                    attr.issues.append('Some error has been found in attribute %s declaration: Type has been reverted to "string". please review' % attr.name)
+                    attr.type = 'string'
+
+            self.core_controller.storage_controller.create(attr, specification)
 
             ret.append(attr)
 

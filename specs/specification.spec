@@ -102,7 +102,7 @@
         "resourceName": "specifications",
         "entityName": "Specification",
         "description": "Represents the specification of an object.",
-        "extends": [],
+        "extends": ["@parsable"],
         "package": "specifications",
 
         "attributes": {

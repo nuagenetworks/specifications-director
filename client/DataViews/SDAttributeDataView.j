@@ -5,9 +5,10 @@
 
 @implementation SDAttributeDataView : NUAbstractDataView
 {
-    @outlet CPTextField   fieldDescription;
-    @outlet CPTextField   fieldName;
-    @outlet CPTextField   fieldType;
+    @outlet CPImageView imageViewWarning;
+    @outlet CPTextField fieldDescription;
+    @outlet CPTextField fieldName;
+    @outlet CPTextField fieldType;
 }
 
 
@@ -24,6 +25,11 @@
     [fieldName bind:CPValueBinding toObject:_objectValue withKeyPath:@"name" options:nil];
     [fieldType bind:CPValueBinding toObject:_objectValue withKeyPath:@"type" options:nil];
     [fieldType bind:@"backgroundColor" toObject:_objectValue withKeyPath:@"type" options:typeToColorTransformer];
+
+    [imageViewWarning setHidden:![[_objectValue issues] count]];
+
+    if ([[_objectValue issues] count])
+        [imageViewWarning setToolTip:[[_objectValue issues] description]];
 }
 
 
@@ -37,6 +43,7 @@
         fieldDescription = [aCoder decodeObjectForKey:@"fieldDescription"];
         fieldName        = [aCoder decodeObjectForKey:@"fieldName"];
         fieldType        = [aCoder decodeObjectForKey:@"fieldType"];
+        imageViewWarning = [aCoder decodeObjectForKey:@"imageViewWarning"];
 
         [fieldType setTextColor:NUSkinColorWhite];
         [fieldType setBorderRadius:100];
@@ -52,6 +59,7 @@
     [aCoder encodeObject:fieldDescription forKey:@"fieldDescription"];
     [aCoder encodeObject:fieldName forKey:@"fieldName"];
     [aCoder encodeObject:fieldType forKey:@"fieldType"];
+    [aCoder encodeObject:imageViewWarning forKey:@"imageViewWarning"];
 }
 
 @end

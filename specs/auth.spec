@@ -25,7 +25,7 @@
         "resourceName": "auth",
         "entityName": "Auth",
         "description": "Authentication API",
-        "extends": [],
+        "extends": ["@parsable"],
         "package": "github",
 
         "attributes": {}

@@ -60,7 +60,7 @@
         "resourceName": "attributes",
         "entityName": "Attribute",
         "package": "specifications",
-        "extends": [],
+        "extends": ["@parsable"],
         "description": "Represents an attribute of an object.",
         "attributes": {
             "name": {

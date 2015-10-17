@@ -20,4 +20,18 @@
 @import <NUKit/NUUtilities.j>
 
 @implementation SDRESTObject : NUKitObject
+{
+    Object _issues   @accessors(property=issues)
+}
+
+- (id)init
+{
+    if (self = [super init])
+    {
+        [self exposeLocalKeyPathToREST:@"issues"];
+    }
+
+    return self;
+}
+
 @end

@@ -61,7 +61,7 @@
         "resourceName": "models",
         "entityName": "Model",
         "description": "Represents the model",
-        "extends": [],
+        "extends": ["@parsable"],
         "package": "specifications",
         "attributes": {
             "description": {

@@ -9,7 +9,7 @@
         "resourceName": "childapis",
         "description": "Represents an child api.",
         "entityName": "ChildAPI",
-        "extends": ["@api"],
+        "extends": ["@api", "@parsable"],
         "attributes": {}
     }
 }

@@ -58,7 +58,6 @@
     "model": {
 
         "package": "specifications",
-
         "attributes": {
             "path": {
                 "allowedChars": null,
