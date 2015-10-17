@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15B38b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SDAPIInfoViewController">
+            <connections>
+                <outlet property="buttonHelp" destination="WYe-gH-56P" id="fem-a9-9xT"/>
+                <outlet property="buttonSave" destination="j9h-om-vAO" id="JsS-U6-IlH"/>
+                <outlet property="editionViewGeneral" destination="ePO-8D-WzU" id="HEW-86-osM"/>
+                <outlet property="scrollViewMain" destination="nFv-3U-Y02" id="teH-WK-bxD"/>
+                <outlet property="view" destination="1" id="g9j-fa-jAg"/>
+                <outlet property="viewBottom" destination="5DG-0e-hCH" id="kjg-bW-rfk"/>
+                <outlet property="viewContainer" destination="9om-Ss-oe2" id="8Ua-2i-CPf"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="1">
+            <rect key="frame" x="0.0" y="0.0" width="554" height="589"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView id="9om-Ss-oe2">
+                    <rect key="frame" x="27" y="20" width="500" height="549"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                    <subviews>
+                        <customView id="nFv-3U-Y02" customClass="NSScrollView">
+                            <rect key="frame" x="0.0" y="42" width="500" height="459"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                            <animations/>
+                        </customView>
+                        <customView id="5DG-0e-hCH">
+                            <rect key="frame" x="0.0" y="0.0" width="500" height="41"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <customView id="WYe-gH-56P" customClass="NSButton">
+                                    <rect key="frame" x="393" y="12" width="16" height="16"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                    <animations/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="button-help"/>
+                                    </userDefinedRuntimeAttributes>
+                                </customView>
+                                <button toolTip="Save changes" verticalHuggingPriority="750" id="j9h-om-vAO">
+                                    <rect key="frame" x="411" y="3" width="85" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                    <animations/>
+                                    <buttonCell key="cell" type="push" title="Update" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pGU-wN-c5W">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="saveCurrentParent:" target="-2" id="E9n-7D-wAg"/>
+                                    </connections>
+                                </button>
+                                <textField verticalHuggingPriority="750" id="cJS-3V-OWd">
+                                    <rect key="frame" x="18" y="14" width="369" height="13"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                    <animations/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="Sqc-4Q-xbK">
+                                        <font key="font" metaFont="miniSystem"/>
+                                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_serverError"/>
+                                    </userDefinedRuntimeAttributes>
+                                </textField>
+                            </subviews>
+                            <animations/>
+                        </customView>
+                        <textField verticalHuggingPriority="750" id="Olp-fB-8dE">
+                            <rect key="frame" x="18" y="514" width="464" height="20"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <animations/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="API Information" id="cXp-oP-vEW">
+                                <font key="font" metaFont="system" size="15"/>
+                                <color key="textColor" red="0.41960787770000002" green="0.58039218189999997" blue="0.92549026010000002" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <animations/>
+                </customView>
+            </subviews>
+            <animations/>
+            <point key="canvasLocation" x="365" y="410.5"/>
+        </customView>
+        <customView id="ePO-8D-WzU">
+            <rect key="frame" x="0.0" y="0.0" width="399" height="337"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField verticalHuggingPriority="750" id="Iqj-0b-dml">
+                    <rect key="frame" x="18" y="310" width="363" height="17"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="General Information" id="G3q-lk-iDv">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="34">
+                    <rect key="frame" x="18" y="285" width="73" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="API Version" id="35">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="227">
+                    <rect key="frame" x="95" y="280" width="286" height="13"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="228">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_server"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField toolTip="The bare LDAP server FQDN or IP." verticalHuggingPriority="750" id="5">
+                    <rect key="frame" x="20" y="255" width="359" height="22"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="1.0" drawsBackground="YES" id="6">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="version"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField verticalHuggingPriority="750" id="U13-sM-HdF">
+                    <rect key="frame" x="18" y="196" width="63" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="API Prefix" id="K8r-QR-n9h">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="p5X-7R-2W7">
+                    <rect key="frame" x="95" y="191" width="286" height="13"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="5jD-j4-UyZ">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_server"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField toolTip="The bare LDAP server FQDN or IP." verticalHuggingPriority="750" id="4Us-j2-HI0">
+                    <rect key="frame" x="20" y="166" width="359" height="22"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="api" drawsBackground="YES" id="US4-Uo-H21">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="prefix"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField verticalHuggingPriority="750" id="e7F-Bv-PAU">
+                    <rect key="frame" x="18" y="91" width="56" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="API Root" id="QaL-bH-oO0">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="ztL-Rg-ael">
+                    <rect key="frame" x="95" y="86" width="286" height="13"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="szS-X6-1dA">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_server"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField toolTip="The bare LDAP server FQDN or IP." verticalHuggingPriority="750" id="e5k-hS-Q2t">
+                    <rect key="frame" x="20" y="61" width="359" height="22"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="auth" drawsBackground="YES" id="hSs-Gk-Vbp">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="root"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="Zup-Sz-PwZ">
+                    <rect key="frame" x="18" y="226" width="363" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Version of your api. This will be when using a sdk to call the corect endpoint version" id="tJ0-mw-t83">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="ztu-zV-E0I">
+                    <rect key="frame" x="18" y="121" width="363" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" id="uRZ-Iz-tZf">
+                        <font key="font" metaFont="smallSystem"/>
+                        <string key="title">The prefix will be added to all api calls. For instance, you will need to call '/api/1.0/objects' to access the 'object' api if you set the prefix to 'api' and the version to '1.0'</string>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="ydg-ZQ-LK2">
+                    <rect key="frame" x="18" y="20" width="363" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="This is the special api that will need to be called to obtain an API key." id="Exg-LH-5LL">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <animations/>
+            <point key="canvasLocation" x="350.5" y="190.5"/>
+        </customView>
+    </objects>
+</document>

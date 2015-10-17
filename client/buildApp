@@ -1,0 +1,276 @@
+#!/usr/bin/python
+
+import os, commands
+from optparse import OptionParser
+import sys
+
+VERBOSE = False;
+
+ROOT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
+
+### Utilities
+
+def command(command, title=None, expected=0):
+    if title:
+        print "# %s" % title
+    else:
+        print "\033[35m# Running: %s in %s \033[0m" % (command, os.getcwd())
+
+    if not VERBOSE:
+        command = "%s > /tmp/buildDashboard.log 2>&1" % command
+    ret = os.system(command)
+
+    if not ret == expected:
+        print "\033[31mERROR: Command expected to return %d (was %d)\033[0m" % (expected, ret)
+        sys.exit(-1)
+    else:
+        print "\033[32mSUCCESS\033[0m"
+    return ret
+
+def init(installDir, buildDir):
+    try:
+        os.makedirs(buildDir)
+    except:
+        pass
+    os.environ["JAVA_OPTS"] = "-Xmx1024M"
+    os.environ["CAPP_BUILD"] = buildDir
+    os.environ["CAPP_NOSUDO"] = "1"
+    os.environ["PATH"] = "%s:%s" % (os.environ["PATH"], "%s/bin" % installDir)
+
+    if not "NARWHAL_ENGINE" in os.environ:
+        if not 'darwin' in sys.platform:
+            os.environ["NARWHAL_ENGINE"] = "rhino"
+        else:
+            os.environ["NARWHAL_ENGINE"] = "jsc"
+
+
+### Libraries Management
+
+def build_library(name, customCommand=None):
+    os.environ["OBJJ_INCLUDE_PATHS"] = "%s/Frameworks" % ROOT_DIRECTORY
+    current_path = os.getcwd()
+    os.chdir("Libraries/%s" % name)
+    if customCommand is None: command("jake release; jake debug")
+    else: command(customCommand)
+    os.chdir(current_path)
+    command("capp gen -fl --force -F %s ." % name)
+
+def clean_library(name, build_prefix=""):
+    current_path = os.getcwd()
+    os.chdir("Libraries/%s" % name)
+    command("jake clean")
+    os.chdir(current_path)
+
+
+### Theme Management
+
+def build_theme(name):
+    os.environ["OBJJ_INCLUDE_PATHS"] = "%s/Frameworks" % ROOT_DIRECTORY
+    current_path = os.getcwd()
+    os.chdir("Libraries/%s" % name)
+    command("jake build")
+    os.chdir(current_path)
+    command("capp gen -fl --force -T %s ." % name)
+
+def clean_theme(name, build_prefix=""):
+    current_path = os.getcwd()
+    os.chdir("Libraries/%s" % name)
+    command("rm -rf %sBuild" % build_prefix)
+    os.chdir(current_path)
+
+
+### Cappuccino Management
+
+def install_cappuccino(installDir, buildDir, localDistrib):
+    current_path = os.getcwd()
+    os.chdir("Libraries/Cappuccino")
+    command("rm -rf %s" % installDir)
+    command("./bootstrap.sh --noprompt --directory %s --copy-local %s" % (installDir, localDistrib))
+    command("jake install")
+
+    os.chdir(current_path)
+
+def clean_cappuccino(installDir, buildDir):
+    command("jake clobber-theme; jake clobber")
+    command("rm -rf '%s'" % installDir)
+    command("rm -rf '%s'" % buildDir)
+
+
+### WAR Management
+
+def build_war():
+    name = "ui.war"
+    target = "Deployment"
+
+    if "ARCHITECT_BUILD_DEBUG" in os.environ:
+        name = "ui-debug.war"
+        target = "Debug"
+
+    current_path = os.getcwd()
+    os.chdir("./webapp")
+    command("jar -cf %s ." % name)
+    command("mv %s ../Build/%s/" % (name, target))
+    os.chdir(current_path)
+
+def clean_war():
+    current_path = os.getcwd()
+    os.chdir("./webapp")
+    command("rm -rf Application.js *.environment Frameworks Info.plist Resources index.html")
+    os.chdir(current_path)
+
+def deploy_war():
+    if "JBOSS_HOME" in os.environ and os.path.exists(os.environ["JBOSS_HOME"]):
+        target = "%s/%s" % (os.environ["JBOSS_HOME"], "standalone/deployments")
+        command("cp -a Build/Deployment/ui.war %s" % target)
+
+
+### Dashboard Management
+
+def build_app(build_version="dev"):
+    current_path = os.getcwd()
+    git_rev = commands.getoutput("git log --pretty=format:'%h' -n 1")
+    git_branch = commands.getoutput("git symbolic-ref HEAD").split("/")[-1]
+
+    if "ARCHITECT_BUILD_DEBUG" in os.environ:
+        build_version = "%s-debug" % build_version
+
+    f = open("Resources/app-version.js", "w")
+    f.write("APP_GITVERSION = '%s-%s'\nAPP_BUILDVERSION='%s'\n" % (git_branch, git_rev, build_version))
+    f.close()
+    command("capp gen -fl . --force")
+
+    if "ARCHITECT_BUILD_DEBUG" in os.environ:
+        command("jake devdeploy")
+    else:
+        command("jake deploy")
+
+def clean_dashboard():
+    command("rm -rf Build")
+
+
+### Main Function
+
+if __name__ == "__main__":
+    parser = OptionParser()
+    parser.add_option("-c", "--cappuccino",
+                        dest="cappuccino",
+                        action="store_true",
+                        help="Build and install Cappuccino")
+    parser.add_option("-t", "--tnkit",
+                        dest="tnkit",
+                        action="store_true",
+                        help="Build and install TNKit")
+    parser.add_option("-n", "--nuaristo",
+                        dest="nuaristo",
+                        action="store_true",
+                        help="Build and install NUAristo")
+    parser.add_option("-r", "--restcappuccino",
+                        dest="restcappuccino",
+                        action="store_true",
+                        help="Build and install RESTCappuccino")
+    parser.add_option("-k", "--nukit",
+                        dest="nukit",
+                        action="store_true",
+                        help="Build and deploy NUKit")
+    parser.add_option("-d", "--mainapp",
+                        dest="mainapp",
+                        action="store_true",
+                        help="Build and deploy mainapp")
+    parser.add_option("-a", "--all",
+                        dest="all",
+                        action="store_true",
+                        help="Build and deploy everything without Cappuccino")
+    parser.add_option("-E", "--everything",
+                        dest="everything",
+                        action="store_true",
+                        help="Build and deploy everything + Cappuccino")
+    parser.add_option("-L", "--libraries",
+                        dest="libraries",
+                        action="store_true",
+                        help="Build all libraries")
+    parser.add_option("-w", "--war",
+                        dest="generatewar",
+                        action="store_true",
+                        help="Generate the WAR file for JBOSS deployment")
+    parser.add_option("-v", "--verbose",
+                        dest="verbose",
+                        action="store_true",
+                        help="Print commands output")
+    parser.add_option("--setversion",
+                        dest="buildversion",
+                        help="Set the build version")
+    parser.add_option("-C", "--clean",
+                        dest="clean",
+                        action="store_true",
+                        help="Clean all libraries and Dashboard")
+    parser.add_option("--clobber",
+                        dest="clobber",
+                        action="store_true",
+                        help="Clean all libraries, dashboard and cappuccino")
+    parser.add_option("--cappinstalldir",
+                        default="/usr/local/narwhal",
+                        dest="cappuccinoInstallDir",
+                        help="Cappuccino install directory")
+    parser.add_option("--cappbuilddir",
+                        dest="cappuccinoBuildDir",
+                        help="Cappuccino build directory")
+    parser.add_option("--nomanifest",
+                        dest="nomanifest",
+                        action="store_true",
+                        help="disable the HTML5 app.manifest generation")
+    parser.add_option("--debug",
+                        dest="debug",
+                        action="store_true",
+                        help="Generate a debug deployment build")
+
+    options, args = parser.parse_args()
+
+    if options.verbose:
+        VERBOSE = True
+
+    if not options.cappuccinoBuildDir and "CAPP_BUILD" in os.environ:
+        options.cappuccinoBuildDir = os.environ["CAPP_BUILD"]
+    if not options.cappuccinoBuildDir:
+        options.cappuccinoBuildDir = "/usr/local/cappuccino"
+
+    options.cappuccinoInstallDir = os.path.expanduser(options.cappuccinoInstallDir)
+    options.cappuccinoBuildDir = os.path.expanduser(options.cappuccinoBuildDir)
+
+    init(options.cappuccinoInstallDir, options.cappuccinoBuildDir)
+
+    if options.clean or options.clobber:
+        clean_library("NUKit")
+        clean_library("TNKit")
+        clean_library("GraphCappuccino")
+        clean_library("RESTCappuccino")
+        clean_library("OpenStreetMapKit")
+        clean_theme("NUAristo")
+        clean_dashboard()
+        clean_war()
+        if options.clobber:
+            clean_cappuccino(options.cappuccinoInstallDir, options.cappuccinoBuildDir)
+        sys.exit(0)
+
+    if options.nomanifest:
+        os.environ["CAPP_NOMANIFEST"] = "1"
+
+    if options.debug:
+        os.environ["ARCHITECT_BUILD_DEBUG"] = "1"
+
+    if options.everything or options.cappuccino:
+        install_cappuccino(options.cappuccinoInstallDir, options.cappuccinoBuildDir, "/usr/local/cappuccino-base/current")
+    if options.everything or options.all or options.tnkit or options.libraries:
+        build_library("TNKit")
+    if options.everything or options.all or options.restcappuccino or options.libraries:
+        build_library("RESTCappuccino")
+    if options.everything or options.all or options.nukit or options.libraries:
+        build_library("NUKit")
+    if options.everything or options.all or options.nuaristo or options.libraries:
+        build_theme("NUAristo")
+
+    if options.everything or options.all or options.mainapp:
+        build_app(options.buildversion)
+    if options.everything or options.all or options.generatewar:
+        build_war()
+    if options.everything or options.all or (options.generatewar and options.jbossdeploy):
+        deploy_war()

@@ -1,0 +1,2 @@
+APP_GITVERSION = 'master-3d4dfd6'
+APP_BUILDVERSION='None'

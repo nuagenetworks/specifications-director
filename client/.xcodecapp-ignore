@@ -1,0 +1,4 @@
+Libraries/*
+!Libraries/NUKit/*
+Tests/*
+webapp/*

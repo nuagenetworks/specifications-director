@@ -1,0 +1,8 @@
+@import "SDAbstractsFetcher.j"
+@import "SDAPIInfosFetcher.j"
+@import "SDAttributesFetcher.j"
+@import "SDChildAPIsFetcher.j"
+@import "SDModelsFetcher.j"
+@import "SDParentAPIsFetcher.j"
+@import "SDRepositoriesFetcher.j"
+@import "SDSpecificationsFetcher.j"
