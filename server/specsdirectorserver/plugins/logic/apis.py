@@ -30,24 +30,43 @@ class SDAPILogicPlugin(GALogicPlugin):
                                     "parentapi": [GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE]
                                 })
 
+        self._allows_create = None
+        self._allows_delete = None
+        self._allows_get = None
+        self._allows_update = None
+        self._associated_specification_id = None
+        self._deprecated = None
+        self._issues = None
+        self._path = None
+        self._relationship = None
+
     def preprocess_write(self, context):
         """
         """
         sdk = SDKLibrary().get_sdk('default')
         api = context.object
 
-        parent_specification_id = api.associated_specification_id
-        parent_model = self.core_controller.storage_controller.get(resource_name=sdk.SDModel.rest_name, identifier=None, filter='parentID == %s' % parent_specification_id)
+        specification_id = api.associated_specification_id
+        specification = self.core_controller.storage_controller.get(resource_name=sdk.SDSpecification.rest_name, identifier=specification_id)
 
         associated_specification_id = context.request.resources[0].value if context.request.action == GARequest.ACTION_CREATE else api.parent_id
-        associated_model = self.core_controller.storage_controller.get(resource_name=sdk.SDModel.rest_name, identifier=None, filter='parentID == %s' % associated_specification_id)
+        associated_specification = self.core_controller.storage_controller.get(resource_name=sdk.SDSpecification.rest_name, identifier=associated_specification_id)
 
-        remote_resource = associated_model.object_resource_name if associated_model and associated_model.object_resource_name else '<abstract>'
+        remote_resource = associated_specification.object_resource_name if associated_specification and associated_specification.object_resource_name else '<abstract>'
 
         if api.rest_name == sdk.SDParentAPI.rest_name:
-            api.path = '/%s/id/%s' % (parent_model.object_resource_name, remote_resource)
+            api.path = '/%s/id/%s' % (associated_specification.object_resource_name, remote_resource)
+            childAPI = sdk.SDChildAPI(data=api.to_dict())
+            childAPI.associated_specification_id = specification_id
+            childAPI.path = '/%s/id/%s' % (remote_resource, associated_specification.object_resource_name)
+            self.core_controller.storage_controller.create(childAPI, associated_specification)
 
         elif api.rest_name == sdk.SDChildAPI.rest_name:
-            api.path = '/%s/id/%s' % (remote_resource, parent_model.object_resource_name)
+            api.path = '/%s/id/%s' % (remote_resource, associated_specification.object_resource_name)
+            parentAPI = sdk.SDChildAPI(data=api.to_dict())
+            parentAPI.associated_specification_id = specification_id
+            parentAPI.path = '/%s/id/%s' % (associated_specification.object_resource_name, remote_resource)
+            self.core_controller.storage_controller.create(parentAPI, associated_specification)
+
 
         return context

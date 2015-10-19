@@ -50,6 +50,13 @@
 #pragma mark -
 #pragma mark NUModule API
 
+- (void)moduleDidSetCurrentParent:(id)aParent
+{
+    [super moduleDidSetCurrentParent:aParent];
+
+    [abstractsController setCurrentParent:aParent];
+}
+
 - (void)moduleDidShow
 {
     [super moduleDidShow];
@@ -65,11 +72,11 @@
 
 - (void)configureContexts
 {
-    var context = [[NUModuleContext alloc] initWithName:@"Model" identifier:[SDModel RESTName]];
+    var context = [[NUModuleContext alloc] initWithName:@"Model" identifier:[SDSpecification RESTName]];
     [context setButtonSave:buttonSave];
     [context setEditionView:[self view]];
     [context setAdditionalEditionViews:[editionViewGeneral]];
-    [self registerContext:context forClass:SDModel];
+    [self registerContext:context forClass:SDSpecification];
 }
 
 - (CPArray)moduleCurrentVisibleEditionViews
@@ -90,30 +97,6 @@
 - (@action)updateVisibleEditionsView:(id)aSender
 {
     [self reloadStackView];
-}
-
-
-#pragma mark -
-#pragma mark Overrides
-
-- (void)willShow
-{
-    // pass here, see below.
-}
-
-- (void)setCurrentParent:(NUVSDObject)aParent
-{
-    if (!aParent)
-    {
-        [super setCurrentParent:nil];
-        return;
-    }
-
-    [[aParent models] fetchAndCallBlock:function(fetcher, entity, content) {
-        [super setCurrentParent:[content firstObject]];
-        [abstractsController setCurrentParent:[content firstObject]];
-        [super willShow];
-    }];
 }
 
 @end

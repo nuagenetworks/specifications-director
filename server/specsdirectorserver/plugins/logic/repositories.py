@@ -105,32 +105,7 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
 
                 self.core_controller.storage_controller.create(api, specification)
 
-    def _populate_model(self, mono_specification, specification, sdk):
-        """
-        """
-        model = sdk.SDModel()
-        model.description = mono_specification.description
-        model.package = mono_specification.package
-        model.object_rest_name = mono_specification.remote_name
-        model.object_resource_name = mono_specification.resource_name
-        model.entity_name = mono_specification.instance_name
-
-        if len(mono_specification.self_apis) and len(mono_specification.self_apis[0].operations):
-            for operation in mono_specification.self_apis[0].operations:
-                if operation.method == 'POST':
-                    model.allows_create = True
-                elif operation.method == 'GET':
-                    model.allows_get = True
-                elif operation.method == 'PUT':
-                    model.allows_update = True
-                elif operation.method == 'DELETE':
-                    model.allows_delete = True
-
-        self.core_controller.storage_controller.create(model, specification)
-
-        return model
-
-    def _populate_extends(self, repository, mono_specification, model, sdk):
+    def _populate_extends(self, repository, mono_specification, specification, sdk):
         """
         """
         extensions = []
@@ -143,7 +118,7 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
                 extensions = extensions + objects
 
         if len(extensions):
-            self.core_controller.storage_controller.assign(sdk.SDAbstract.rest_name, extensions, model)
+            self.core_controller.storage_controller.assign(sdk.SDAbstract.rest_name, extensions, specification)
 
         return extensions
 
@@ -206,11 +181,26 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
 
             specification = sdk.SDSpecification() if mode == MODE_RAW_SPECS else sdk.SDAbstract()
             specification.name = mono_specification.filename
+            specification.description = mono_specification.description
+            specification.package = mono_specification.package
+            specification.object_rest_name = mono_specification.remote_name
+            specification.object_resource_name = mono_specification.resource_name
+            specification.entity_name = mono_specification.instance_name
+
+            if len(mono_specification.self_apis) and len(mono_specification.self_apis[0].operations):
+                for operation in mono_specification.self_apis[0].operations:
+                    if operation.method == 'POST':
+                        specification.allows_create = True
+                    elif operation.method == 'GET':
+                        specification.allows_get = True
+                    elif operation.method == 'PUT':
+                        specification.allows_update = True
+                    elif operation.method == 'DELETE':
+                        specification.allows_delete = True
 
             self.core_controller.storage_controller.create(specification, repository)
 
-            model      = self._populate_model(mono_specification=mono_specification, specification=specification, sdk=sdk)
-            extensions = self._populate_extends(mono_specification=mono_specification, repository=repository, model=model, sdk=sdk)
+            extensions = self._populate_extends(mono_specification=mono_specification, repository=repository, specification=specification,  sdk=sdk)
             attributes = self._populate_attributes(mono_specification=mono_specification, specification=specification, sdk=sdk)
 
             ret[mono_specification.remote_name] = {'mono_specification': mono_specification , 'specification': specification}
