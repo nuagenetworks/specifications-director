@@ -4,17 +4,16 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="SDSpecificationsViewController">
+        <customObject id="-2" userLabel="File's Owner" customClass="SDAbstractsViewController">
             <connections>
+                <outlet property="APIsController" destination="QF2-gq-aVg" id="AGO-wV-ffP"/>
                 <outlet property="attributesController" destination="SXe-gr-6DS" id="ci1-wZ-66d"/>
                 <outlet property="buttonBarMain" destination="59" id="1096"/>
-                <outlet property="childAPIsController" destination="QF2-gq-aVg" id="07w-Rr-Cy5"/>
                 <outlet property="fieldModuleTitle" destination="62" id="zyQ-qp-ser"/>
                 <outlet property="fieldTotalEntities" destination="HNA-mf-Lwd" id="lX6-E4-kYs"/>
                 <outlet property="filterField" destination="63" id="1100"/>
                 <outlet property="maskingView" destination="260" id="291"/>
                 <outlet property="modelController" destination="0xe-57-96x" id="qrB-UE-Xfz"/>
-                <outlet property="parentAPIsController" destination="mdX-6R-3Ir" id="K9l-Xr-dRU"/>
                 <outlet property="popover" destination="3" id="1102"/>
                 <outlet property="splitViewMain" destination="56" id="1107"/>
                 <outlet property="tabViewContent" destination="1330" id="1336"/>
@@ -370,7 +369,6 @@ It is possible for a Specification Files to extend multiple Abstract one. If so,
         </customView>
         <viewController nibName="Model" id="0xe-57-96x" customClass="SDModelViewController"/>
         <viewController nibName="Attributes" id="SXe-gr-6DS" customClass="SDAttributesViewController"/>
-        <viewController nibName="ChildAPIs" id="QF2-gq-aVg" customClass="SDChildAPIsViewController"/>
-        <viewController nibName="ParentAPIs" id="mdX-6R-3Ir" customClass="SDParentAPIsViewController"/>
+        <viewController nibName="APIs" id="QF2-gq-aVg" customClass="SDAPIsViewController"/>
     </objects>
 </document>

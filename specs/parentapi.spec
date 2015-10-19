@@ -9,7 +9,6 @@
         "resourceName": "parentapis",
         "description": "Represents an parent api.",
         "entityName": "ParentAPI",
-        "extends": ["@api", "@parsable"],
-        "attributes": {}
+        "extends": ["@api", "@parsable"]
     }
 }

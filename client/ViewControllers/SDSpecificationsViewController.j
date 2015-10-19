@@ -21,15 +21,13 @@
 
 @class SDModelViewController
 @class SDAttributesViewController
-@class SDChildAPIsViewController
-@class SDParentAPIsViewController
+@class SDAPIsViewController
 
 @implementation SDSpecificationsViewController : NUModule
 {
     @outlet SDModelViewController       modelController;
     @outlet SDAttributesViewController  attributesController;
-    @outlet SDChildAPIsViewController   childAPIsController;
-    @outlet SDParentAPIsViewController  parentAPIsController;
+    @outlet SDAPIsViewController        APIsController;
 }
 
 
@@ -53,7 +51,7 @@
     [self registerDataViewWithName:@"specificationDataView" forClass:SDSpecification];
     [self setModuleTitle:@"Specifications"];
 
-    [self setSubModules:[modelController, attributesController, parentAPIsController, childAPIsController]]
+    [self setSubModules:[modelController, attributesController, APIsController]]
 }
 
 - (void)configureContexts

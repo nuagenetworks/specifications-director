@@ -23,7 +23,7 @@
 
 - (void)configureContexts
 {
-    var context = [[NUModuleContext alloc] initWithName:@"Specification" identifier:[SDAbstract RESTName]];
+    var context = [[NUModuleContext alloc] initWithName:@"Abstract" identifier:[SDAbstract RESTName]];
     [context setFetcherKeyPath:@"abstracts"];
     [context setPopover:popover];
     [self registerContext:context forClass:SDAbstract];

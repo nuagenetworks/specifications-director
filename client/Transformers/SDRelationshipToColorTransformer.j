@@ -25,6 +25,9 @@
 
         case SDAPIRelationshipMember:
             return [CPColor colorWithHexString:@"659aff"];
+
+        case SDAPIRelationshipRoot:
+            return [CPColor colorWithHexString:@"659aff"];
     }
 
     [CPException raise:CPInvalidArgumentException reason:[self class] + @" unexpected value to transform :" + value];

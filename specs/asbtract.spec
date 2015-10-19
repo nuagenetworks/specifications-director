@@ -18,8 +18,7 @@
                 ]
             }
         }
-
-    }
+    },
     "model": {
         "RESTName": "abstract",
         "resourceName": "abstracts",

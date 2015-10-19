@@ -8,7 +8,7 @@ from garuda.plugins.authentication import GASimpleAuthenticationPlugin
 
 from plugins.logic.repositories import SDRepositoryLogicPlugin
 from plugins.logic.apis import SDAPILogicPlugin
-
+from plugins.logic.specifications import SDSpecificationLogicPlugin
 
 def db_init(db, root_rest_name):
     """
@@ -38,8 +38,9 @@ def start():
     sdk_infos = [{'identifier': 'default', 'module': 'specdk.v1_0'}]
     repo_logic_plugin = SDRepositoryLogicPlugin()
     apis_logic_plugin = SDAPILogicPlugin()
+    spec_logic_plugin = SDSpecificationLogicPlugin()
 
-    garuda = Garuda(sdks_info=sdk_infos, channels=[channel], plugins=[storage_plugin, authentication_plugin, repo_logic_plugin, apis_logic_plugin], log_level=logging.DEBUG)
+    garuda = Garuda(sdks_info=sdk_infos, channels=[channel], plugins=[storage_plugin, authentication_plugin, repo_logic_plugin, apis_logic_plugin, spec_logic_plugin], log_level=logging.DEBUG)
     garuda.start()
 
 

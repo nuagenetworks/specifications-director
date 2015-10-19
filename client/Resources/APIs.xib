@@ -4,9 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="SDParentAPIsViewController">
+        <customObject id="-2" userLabel="File's Owner" customClass="SDAPIsViewController">
             <connections>
                 <outlet property="buttonBarMain" destination="7" id="49"/>
+                <outlet property="buttonRelationship" destination="jBI-Zd-e51" id="cCf-jE-vsP"/>
                 <outlet property="checkBoxAllowsCreate" destination="j2U-UI-hfS" id="Rc8-3F-v2Z"/>
                 <outlet property="checkBoxAllowsUpdate" destination="fr4-pR-yCH" id="euJ-vb-TVF"/>
                 <outlet property="fieldModuleTitle" destination="15" id="qsy-6A-lnQ"/>
@@ -14,7 +15,7 @@
                 <outlet property="filterField" destination="14" id="51"/>
                 <outlet property="popover" destination="2" id="52"/>
                 <outlet property="specificationAssociator" destination="2XV-vL-Cl3" id="3Je-k4-XNj"/>
-                <outlet property="tableView" destination="98" id="112"/>
+                <outlet property="tableView" destination="Kha-O7-qC2" id="v7v-VZ-4Kc"/>
                 <outlet property="view" destination="5" id="54"/>
                 <outlet property="viewGettingStarted" destination="XVp-ZT-WYX" id="yJb-0X-zvt"/>
                 <outlet property="viewMainTableViewContainer" destination="5" id="55"/>
@@ -45,7 +46,7 @@
                             <rect key="frame" x="7" y="7" width="339" height="19"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <animations/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Parent APIs" id="16">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="APIs" id="16">
                                 <font key="font" metaFont="system" size="15"/>
                                 <color key="textColor" red="0.34552848339999997" green="0.34552848339999997" blue="0.34552848339999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -54,52 +55,6 @@
                     </subviews>
                     <animations/>
                 </customView>
-                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="97">
-                    <rect key="frame" x="0.0" y="25" width="608" height="343"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" id="xUc-YJ-gTC">
-                        <rect key="frame" x="0.0" y="0.0" width="608" height="343"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" autosaveColumns="NO" id="98">
-                                <rect key="frame" x="0.0" y="0.0" width="607.5" height="19"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <animations/>
-                                <size key="intercellSpacing" width="3" height="2"/>
-                                <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                                <tableColumns>
-                                    <tableColumn identifier="self" editable="NO" width="604.5" minWidth="40" maxWidth="1000" id="102">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="105">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                    </tableColumn>
-                                </tableColumns>
-                            </tableView>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </clipView>
-                    <animations/>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="99">
-                        <rect key="frame" x="0.0" y="327" width="433" height="16"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="101">
-                        <rect key="frame" x="224" y="17" width="15" height="102"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </scroller>
-                </scrollView>
                 <customView id="106">
                     <rect key="frame" x="0.0" y="368" width="608" height="19"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -122,9 +77,55 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
                 </customView>
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="58" horizontalPageScroll="10" verticalLineScroll="58" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="stE-b3-Ji7">
+                    <rect key="frame" x="0.0" y="26" width="608" height="342"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <clipView key="contentView" id="xWO-Hp-xJR">
+                        <rect key="frame" x="0.0" y="0.0" width="608" height="342"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" autosaveColumns="NO" rowHeight="58" indentationPerLevel="14" outlineTableColumn="m4g-23-xJm" id="Kha-O7-qC2">
+                                <rect key="frame" x="0.0" y="0.0" width="608" height="342"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <animations/>
+                                <size key="intercellSpacing" width="3" height="0.0"/>
+                                <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <tableColumns>
+                                    <tableColumn identifier="self" editable="NO" width="604.828125" minWidth="16" maxWidth="1000" id="m4g-23-xJm">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="vt2-gE-u3l">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                    </tableColumn>
+                                </tableColumns>
+                            </outlineView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </clipView>
+                    <animations/>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="CBB-hL-3lv">
+                        <rect key="frame" x="1" y="119" width="238" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="wGv-IC-ObJ">
+                        <rect key="frame" x="224" y="17" width="15" height="102"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </scroller>
+                </scrollView>
             </subviews>
             <animations/>
-            <point key="canvasLocation" x="320" y="533.5"/>
+            <point key="canvasLocation" x="194" y="140.5"/>
         </customView>
         <popover behavior="t" id="2">
             <connections>
@@ -184,7 +185,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="akH-bY-rIJ">
-                    <rect key="frame" x="17" y="46" width="286" height="13"/>
+                    <rect key="frame" x="18" y="46" width="285" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="right" title="Server ERROR" id="G7q-gs-tJX">
@@ -294,6 +295,16 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="allowsUpdate"/>
                     </userDefinedRuntimeAttributes>
                 </button>
+                <textField verticalHuggingPriority="750" id="I6c-Jk-oPR">
+                    <rect key="frame" x="18" y="146" width="107" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Root relationship" id="EPz-Fm-bmB">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <animations/>
             <point key="canvasLocation" x="327.5" y="125.5"/>
@@ -315,7 +326,7 @@
                             <rect key="frame" x="18" y="268" width="404" height="23"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <animations/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Parent APIs" id="h5x-dT-hcM">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="APIs" id="h5x-dT-hcM">
                                 <font key="font" metaFont="system" size="19"/>
                                 <color key="textColor" red="0.34509804840000002" green="0.63529413940000001" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -330,13 +341,13 @@
                             <animations/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="D36-MU-cnb">
                                 <font key="font" metaFont="system"/>
-                                <string key="title">A Parent API defines how to access the object represented by a particulare Specification File in the overall model hierarchy.
+                                <string key="title">An API defines how to access the object represented by a particular Specification File from the overall model hierarchy.
 
 It also defines what kind of actions can be done on the objects.
 
-For instance, if you define a Parent API pointing to the Specification File 'parent.spec', then you can define that it is possible to create new objects, and retrieve them from 'parent'.
+For instance, if you create an API pointing to the Specification File 'parent.spec', then you can define that it is possible to create new objects, and retrieve them from 'parent'.
 
-Adding a Parent API to an object will automatically add the reverse Children API in the Parent Object (at some point ;)</string>
+You can only define parent APIs. Related Children APIs in the parent will be managed automatically.</string>
                                 <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -374,7 +385,7 @@ Adding a Parent API to an object will automatically add the reverse Children API
                 </customView>
             </subviews>
             <animations/>
-            <point key="canvasLocation" x="391" y="540.5"/>
+            <point key="canvasLocation" x="194" y="540.5"/>
         </customView>
     </objects>
 </document>

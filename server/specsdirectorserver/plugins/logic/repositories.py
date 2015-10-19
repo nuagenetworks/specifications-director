@@ -23,9 +23,9 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
         """
 
         """
-        return GAPluginManifest(name='repository logic',
+        return GAPluginManifest(name='repositories logic',
                                 version=1.0,
-                                identifier="specsdirector.plugins.logic.repository",
+                                identifier="specsdirector.plugins.logic.repositories",
                                 subscriptions={
                                     "repository": [GARequest.ACTION_CREATE]
                                 })
@@ -48,19 +48,17 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
         self.core_controller.storage_controller.create(apiinfo, repository)
 
         # astract specs
-        abstracts_info = self._populate_specs(manager=manager, repository=repository, mode=MODE_RAW_ABSTRACTS, sdk=sdk) # abstracts first!
-        self._populate_api(repository=repository, specification_info=abstracts_info, api_type='children_apis', api_class=sdk.SDChildAPI, sdk=sdk)
-        self._populate_api(repository=repository, specification_info=abstracts_info, api_type='parent_apis', api_class=sdk.SDParentAPI, sdk=sdk)
+        abstracts_info = self._populate_specs(manager=manager, repository=repository, mode=MODE_RAW_ABSTRACTS, root_rest_name=apiinfo.root, sdk=sdk) # abstracts first!
+        self._populate_api(repository=repository, specification_info=abstracts_info, root_rest_name=apiinfo.root, sdk=sdk)
 
         # solid specs
-        specs_info = self._populate_specs(manager=manager, repository=repository, mode=MODE_RAW_SPECS, sdk=sdk)
-        self._populate_api(repository=repository, specification_info=specs_info, api_type='children_apis', api_class=sdk.SDChildAPI, sdk=sdk)
-        self._populate_api(repository=repository, specification_info=specs_info, api_type='parent_apis', api_class=sdk.SDParentAPI, sdk=sdk)
+        specs_info = self._populate_specs(manager=manager, repository=repository, mode=MODE_RAW_SPECS, root_rest_name=apiinfo.root, sdk=sdk)
+        self._populate_api(repository=repository, specification_info=specs_info, root_rest_name=apiinfo.root, sdk=sdk)
 
         return context
 
 
-    def _populate_api(self, repository, specification_info, api_type, api_class, sdk):
+    def _populate_api(self, repository, specification_info, root_rest_name, sdk):
         """
         """
         for rest_name, spec_info in specification_info.iteritems():
@@ -68,42 +66,48 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
             mono_specification = spec_info['mono_specification']
             specification = spec_info['specification']
 
-            for mono_api in getattr(mono_specification, api_type):
+            for mono_api in mono_specification.parent_apis:
 
                 if not mono_api.remote_name in specification_info:
                     continue
 
-                remote_specification = specification_info[mono_api.remote_name]['specification']
-                remote_mono_specification = specification_info[mono_api.remote_name]['mono_specification']
+                parent_api = sdk.SDParentAPI()
+                parent_api.deprecated = mono_api.deprecated
+                parent_api.relationship = mono_api.relationship
+                parent_api.allows_create = False
+                parent_api.allows_get = False
+                parent_api.allows_update = False
+                parent_api.allows_delete = False
 
-                api = api_class()
-                api.deprecated = mono_api.deprecated
-                api.relationship = mono_api.relationship
-                api.allows_create = False
-                api.allows_get = False
-                api.allows_update = False
-                api.allows_delete = False
-
-                if api_type == 'children_apis':
-                    api.path = '/%s/id/%s' % (mono_specification.resource_name, remote_mono_specification.resource_name)
-                elif api_type == 'parent_apis':
-                    api.path = '/%s/id/%s' % (remote_mono_specification.resource_name, mono_specification.resource_name)
+                if parent_api.relationship == 'root':
+                    remote_specification = specification_info[root_rest_name]['specification']
                 else:
-                    api.path = '/%s/id' % mono_specification.resource_name
+                    remote_specification = specification_info[mono_api.remote_name]['specification']
 
-                api.associated_specification_id = remote_specification.id
+                if parent_api.relationship == 'root':
+                    parent_api.path = '/%s' % mono_specification.resource_name
+                else:
+                    remote_mono_specification = specification_info[mono_api.remote_name]['mono_specification']
+                    parent_api.path = '/%s/id/%s' % (remote_mono_specification.resource_name, mono_specification.resource_name)
+                    parent_api.associated_specification_id = remote_specification.id
 
                 for operation in mono_api.operations:
                     if operation.method == 'POST':
-                        api.allows_create = True
+                        parent_api.allows_create = True
                     elif operation.method == 'GET':
-                        api.allows_get = True
+                        parent_api.allows_get = True
                     elif operation.method == 'PUT':
-                        api.allows_update = True
+                        parent_api.allows_update = True
                     elif operation.method == 'DELETE':
-                        api.allows_delete = True
+                        parent_api.allows_delete = True
 
-                self.core_controller.storage_controller.create(api, specification)
+                out = self.core_controller.storage_controller.create(parent_api, specification)
+
+                child_api = sdk.SDChildAPI(data=parent_api.to_dict())
+                child_api.associated_parent_apiid = parent_api.id
+                child_api.associated_specification_id = remote_specification.id
+                self.core_controller.storage_controller.create(child_api, remote_specification)
+
 
     def _populate_extends(self, repository, mono_specification, specification, sdk):
         """
@@ -170,7 +174,7 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
 
         return ret
 
-    def _populate_specs(self, manager, repository, mode, sdk):
+    def _populate_specs(self, manager, repository, mode, root_rest_name, sdk):
         """
         """
         mono_specifications = manager.get_all_specifications(branch=repository.branch, mode=mode)
@@ -186,6 +190,7 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
             specification.object_rest_name = mono_specification.remote_name
             specification.object_resource_name = mono_specification.resource_name
             specification.entity_name = mono_specification.instance_name
+            specification.root_rest_name = root_rest_name
 
             if len(mono_specification.self_apis) and len(mono_specification.self_apis[0].operations):
                 for operation in mono_specification.self_apis[0].operations:

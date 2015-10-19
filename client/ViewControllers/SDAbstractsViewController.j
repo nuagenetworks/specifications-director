@@ -4,15 +4,13 @@
 
 @class SDModelViewController
 @class SDAttributesViewController
-@class SDChildAPIsViewController
-@class SDParentAPIsViewController
+@class SDAPIsViewController
 
 @implementation SDAbstractsViewController : NUModule
 {
     @outlet SDModelViewController       modelController;
     @outlet SDAttributesViewController  attributesController;
-    @outlet SDChildAPIsViewController   childAPIsController;
-    @outlet SDParentAPIsViewController  parentAPIsController;
+    @outlet SDAPIsViewController        APIsController;
 }
 
 #pragma mark -
@@ -35,7 +33,7 @@
     [self registerDataViewWithName:@"specificationDataView" forClass:SDAbstract];
     [self setModuleTitle:@"Abstracts"];
 
-    [self setSubModules:[modelController, attributesController, parentAPIsController, childAPIsController]]
+    [self setSubModules:[modelController, attributesController, APIsController]]
 }
 
 - (void)configureContexts

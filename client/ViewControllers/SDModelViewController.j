@@ -54,29 +54,41 @@
 {
     [super moduleDidSetCurrentParent:aParent];
 
-    [abstractsController setCurrentParent:aParent];
+    if ([_currentParent RESTName] == [SDSpecification RESTName])
+        [abstractsController setCurrentParent:_currentParent];
+
+    [self setCurrentContextWithIdentifier:[_currentParent RESTName]];
 }
 
 - (void)moduleDidShow
 {
     [super moduleDidShow];
-    [abstractsController willShow];
 
+    if ([_currentParent RESTName] == [SDSpecification RESTName])
+        [abstractsController willShow];
 }
 
 - (void)moduleWillHide
 {
-    [abstractsController willHide];
+    if ([_currentParent RESTName] == [SDSpecification RESTName])
+        [abstractsController willHide];
+
     [super moduleWillHide];
 }
 
 - (void)configureContexts
 {
-    var context = [[NUModuleContext alloc] initWithName:@"Model" identifier:[SDSpecification RESTName]];
-    [context setButtonSave:buttonSave];
-    [context setEditionView:[self view]];
-    [context setAdditionalEditionViews:[editionViewGeneral]];
-    [self registerContext:context forClass:SDSpecification];
+    var contextSpecification = [[NUModuleContext alloc] initWithName:@"Model" identifier:[SDSpecification RESTName]];
+    [contextSpecification setButtonSave:buttonSave];
+    [contextSpecification setEditionView:[self view]];
+    [contextSpecification setAdditionalEditionViews:[editionViewGeneral]];
+    [self registerContext:contextSpecification forClass:SDSpecification];
+
+    var contextAbstract = [[NUModuleContext alloc] initWithName:@"Model" identifier:[SDAbstract RESTName]];
+    [contextAbstract setButtonSave:buttonSave];
+    [contextAbstract setEditionView:[self view]];
+    [contextAbstract setAdditionalEditionViews:[editionViewGeneral]];
+    [self registerContext:contextAbstract forClass:SDAbstract];
 }
 
 - (CPArray)moduleCurrentVisibleEditionViews

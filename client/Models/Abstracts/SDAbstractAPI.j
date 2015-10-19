@@ -6,6 +6,7 @@
 
 SDAPIRelationshipChild = @"child"
 SDAPIRelationshipMember = @"member"
+SDAPIRelationshipRoot = @"root"
 
 
 @implementation SDAbstractAPI : SDRESTObject
