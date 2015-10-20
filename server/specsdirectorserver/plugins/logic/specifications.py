@@ -36,7 +36,7 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
 
         objects, count = self.core_controller.storage_controller.get_all(parent=repository, resource_name=sdk.SDSpecification.rest_name, filter='name == %s' % specification.name)
 
-        if count:
+        if count and objects[0].id != specification.id:
             context.report_error(GAError(   type=GAError.TYPE_CONFLICT,
                                             title='Duplicate Name',
                                             description='Another specification exists with the name %s' % specification.name,

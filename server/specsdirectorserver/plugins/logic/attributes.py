@@ -36,7 +36,7 @@ class SDAttributeLogicPlugin(GALogicPlugin):
 
         objects, count = self.core_controller.storage_controller.get_all(parent=specification, resource_name=sdk.SDAttribute.rest_name, filter='name == %s' % attribute.name)
 
-        if count:
+        if count and objects[0].id != attribute.id:
             context.report_error(GAError(   type=GAError.TYPE_CONFLICT,
                                             title='Duplicate Name',
                                             description='Another attribute exists with the name %s' % attribute.name,
