@@ -10,6 +10,7 @@
     @outlet CPCheckBox                  checkBoxAllowsCreate;
     @outlet CPCheckBox                  checkBoxAllowsUpdate;
     @outlet CPPopUpButton               buttonRelationship;
+    @outlet CPTextField                 labelAssociatedSpecification;
     @outlet SDSpecificationAssociator   specificationAssociator;
 
     NUCategory  _categoryParentAPIs;
@@ -103,24 +104,33 @@
     switch ([editedObject relationship])
     {
         case SDAPIRelationshipChild:
+            [popover setContentSize:CGSizeMake(320, 315)];
+            [[specificationAssociator view] setHidden:NO];
+            [labelAssociatedSpecification setHidden:NO];
             [checkBoxAllowsUpdate setHidden:YES];
             [checkBoxAllowsCreate setHidden:NO];
-            [editedObject setAllowsCreate:NO];
-            [buttonRelationship setHidden:NO];
+            [editedObject setAllowsCreate:YES];
+            [editedObject setAllowsUpdate:NO];
             break;
 
         case SDAPIRelationshipMember:
+            [popover setContentSize:CGSizeMake(320, 315)];
+            [[specificationAssociator view] setHidden:NO];
+            [labelAssociatedSpecification setHidden:NO];
             [checkBoxAllowsUpdate setHidden:NO];
             [checkBoxAllowsCreate setHidden:YES];
-            [editedObject setAllowsUpdate:NO];
-            [buttonRelationship setHidden:NO];
+            [editedObject setAllowsCreate:NO];
+            [editedObject setAllowsUpdate:YES];
             break;
 
         case SDAPIRelationshipRoot:
+            [popover setContentSize:CGSizeMake(320, 250)];
+            [[specificationAssociator view] setHidden:YES];
+            [labelAssociatedSpecification setHidden:YES];
             [checkBoxAllowsUpdate setHidden:YES];
             [checkBoxAllowsCreate setHidden:NO];
+            [editedObject setAllowsCreate:YES];
             [editedObject setAllowsUpdate:NO];
-            [buttonRelationship setHidden:YES];
             break;
     }
 }
@@ -133,20 +143,6 @@
 {
     [self relationshipChanged:self];
     [specificationAssociator setCurrentParent:anObject];
-}
-
-
-#pragma mark -
-#pragma mark Associator Delegates
-
-- (void)didAssociatorFetchAssociatedObject:(id)anAssociator
-{
-    if ([[anAssociator currentAssociatedObject] objectRESTName] == [_currentParent rootRESTName])
-        [[_currentContext editedObject] setRelationship:SDAPIRelationshipRoot];
-    else
-        [[_currentContext editedObject] setRelationship:SDAPIRelationshipChild];
-
-    [self relationshipChanged:self];
 }
 
 @end

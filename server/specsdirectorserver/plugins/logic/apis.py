@@ -29,12 +29,24 @@ class SDAPILogicPlugin(GALogicPlugin):
                                     "parentapi": [GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE, GARequest.ACTION_DELETE]
                                 })
 
+    def preprocess_write(self, context):
+        """
+        """
+        sdk = SDKLibrary().get_sdk('default')
+        specification = context.parent_object
+        parent_api = context.object
+
+        if not parent_api.associated_specification_id and parent_api.relationship == 'root':
+            apiinfo = self.core_controller.storage_controller.get(resource_name=sdk.SDAPIInfo.rest_name, filter='parentID == %s' % specification.parent_id)
+            root_specification = self.core_controller.storage_controller.get(resource_name=sdk.SDSpecification.rest_name, filter='name == %s.spec' % apiinfo.root)
+            parent_api.associated_specification_id = root_specification.id
+
+        return context
 
     def did_perform_write(self, context):
         """
         """
         sdk = SDKLibrary().get_sdk('default')
-
         parent_api = context.object
 
         if context.request.action == GARequest.ACTION_CREATE:
