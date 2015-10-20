@@ -17,6 +17,7 @@ SDAPIRelationshipRoot = @"root"
     BOOL        _allowsUpdate               @accessors(property=allowsUpdate);
     BOOL        _deprecated                 @accessors(property=deprecated);
     CPString    _associatedSpecificationID  @accessors(property=associatedSpecificationID);
+    CPString    _associatedReverseAPIID     @accessors(property=associatedReverseAPIID);
     CPString    _path                       @accessors(property=path);
     CPString    _relationship               @accessors(property=relationship);
 }
@@ -31,8 +32,8 @@ SDAPIRelationshipRoot = @"root"
         [self exposeLocalKeyPathToREST:@"allowsUpdate"];
         [self exposeLocalKeyPathToREST:@"associatedSpecificationID"];
         [self exposeLocalKeyPathToREST:@"deprecated"];
-        [self exposeLocalKeyPathToREST:@"path"];
         [self exposeLocalKeyPathToREST:@"relationship"];
+        [self exposeLocalKeyPathToREST:@"associatedReverseAPIID"];
 
 
         _relationship = SDAPIRelationshipChild
@@ -98,17 +99,46 @@ SDAPIRelationshipRoot = @"root"
     var ret = @"";
 
     if (_allowsGet)
-        ret += @"Retrieval, ";
+        ret += @"Retrieval ";
 
     if (_allowsCreate)
-        ret += @"Creation, ";
+        ret += @"Creation ";
 
     if (_allowsUpdate)
-        ret += @"Modification, ";
+        ret += @"Modification ";
 
     if (_allowsDelete)
-        ret += @"Deletion, ";
+        ret += @"Deletion ";
 
     return ret;
 }
+
+
+#pragma mark -
+#pragma mark Utilities
+
+- (void)fetchPath
+{
+    [self setPath:@""]
+
+    if (_relationship == SDAPIRelationshipRoot && ![[self parentObject] isRoot])
+    {
+        [self setPath:@"/" + [[self parentObject] objectResourceName]];
+    }
+    else
+    {
+        var associatedSpecification = [SDSpecification RESTObjectWithID:_associatedSpecificationID];
+
+        [associatedSpecification fetchAndCallBlock:function(object, connection) {
+
+            if (_relationship == SDAPIRelationshipRoot)
+                [self setPath:@"/" + [object objectResourceName]];
+            else if ([self RESTName] == [SDParentAPI RESTName])
+                [self setPath:@"/" + [object objectResourceName] + @"/id/" + [[self parentObject] objectResourceName]];
+            else
+                [self setPath:@"/" + [[self parentObject] objectResourceName] + @"/id/" + [object objectResourceName]];
+        }];
+    }
+}
+
 @end

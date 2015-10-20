@@ -84,12 +84,7 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
                 else:
                     remote_specification = specification_info[mono_api.remote_name]['specification']
 
-                if parent_api.relationship == 'root':
-                    parent_api.path = '/%s' % mono_specification.resource_name
-                else:
-                    remote_mono_specification = specification_info[mono_api.remote_name]['mono_specification']
-                    parent_api.path = '/%s/id/%s' % (remote_mono_specification.resource_name, mono_specification.resource_name)
-                    parent_api.associated_specification_id = remote_specification.id
+                parent_api.associated_specification_id = remote_specification.id
 
                 for operation in mono_api.operations:
                     if operation.method == 'POST':
@@ -105,7 +100,7 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
 
                 child_api = sdk.SDChildAPI(data=parent_api.to_dict())
                 child_api.associated_parent_apiid = parent_api.id
-                child_api.associated_specification_id = remote_specification.id
+                child_api.associated_specification_id = specification.id
                 self.core_controller.storage_controller.create(child_api, remote_specification)
 
 

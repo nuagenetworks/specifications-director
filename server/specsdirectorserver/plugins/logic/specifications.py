@@ -11,7 +11,7 @@ from garuda.core.plugins import GALogicPlugin
 from garuda.core.lib import SDKLibrary
 
 
-logger = logging.getLogger('specsdirector.plugins.logic.apis')
+logger = logging.getLogger('specsdirector.plugins.logic.specifications')
 
 class SDSpecificationLogicPlugin(GALogicPlugin):
     """
@@ -24,8 +24,25 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         """
         return GAPluginManifest(name='specifications logic', version=1.0, identifier="specsdirector.plugins.logic.specifications",
                                 subscriptions={
-                                    "specification": [GARequest.ACTION_CREATE]
+                                    "specification": [GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE]
                                 })
+
+    def check_perform_write(self, context):
+        """
+        """
+        sdk = SDKLibrary().get_sdk('default')
+        repository = context.parent_object
+        specification = context.object
+
+        objects, count = self.core_controller.storage_controller.get_all(parent=repository, resource_name=sdk.SDSpecification.rest_name, filter='name == %s' % specification.name)
+
+        if count:
+            context.report_error(GAError(   type=GAError.TYPE_CONFLICT,
+                                            title='Duplicate Name',
+                                            description='Another specification exists with the name %s' % specification.name,
+                                            property_name='name'))
+
+        return context
 
     def preprocess_write(self, context):
         """
@@ -37,7 +54,7 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         objects, count = self.core_controller.storage_controller.get_all(parent=repository, resource_name=sdk.SDAPIInfo.rest_name, filter='parentID == %s' % repository.id)
 
         if not count:
-            raise Exception('cannot find API info. that should not happen')
+            raise Exception('Cannot find API info. that should not happen')
 
         apiinfo = objects[0]
         specification.root_rest_name = apiinfo.root

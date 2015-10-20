@@ -50,4 +50,29 @@
     return self;
 }
 
+- (void)setName:(CPString)aName
+{
+    if (_name == aName)
+        return;
+
+    [self willChangeValueForKey:@"name"];
+    [self willChangeValueForKey:@"displayName"];
+    if (aName.indexOf('.spec') == -1)
+        aName += @".spec";
+
+    _name = aName;
+    [self didChangeValueForKey:@"name"];
+    [self didChangeValueForKey:@"displayName"];
+}
+
+- (CPString)displayName
+{
+    return _name.replace(/\.spec$/, "");
+}
+
+- (BOOL)isRoot
+{
+    return (_objectRESTName == _rootRESTName);
+}
+
 @end

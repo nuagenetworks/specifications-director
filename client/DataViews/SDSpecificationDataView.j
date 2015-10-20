@@ -16,7 +16,7 @@
 {
     [super bindDataView];
 
-    [fieldName bind:CPValueBinding toObject:_objectValue withKeyPath:@"name" options:nil];
+    [fieldName bind:CPValueBinding toObject:_objectValue withKeyPath:@"displayName" options:nil];
 
     [imageViewWarning setHidden:!!![_objectValue issues]];
 

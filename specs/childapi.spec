@@ -15,7 +15,7 @@
                 "creationOnly": false,
                 "defaultOrder": true,
                 "defaultValue": null,
-                "description": "the related child API",
+                "description": "the related reverse API",
                 "exposed": true,
                 "filterable": false,
                 "format": null,
