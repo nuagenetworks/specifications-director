@@ -1,15 +1,15 @@
 [submodule "client/Libraries/Cappuccino"]
 	path = client/Libraries/Cappuccino
-	url = git@github.com:Cappuccino/Cappuccino.git
+	url = https://primalmotion@github.com/Cappuccino/Cappuccino.git
 [submodule "client/Libraries/NUAristo"]
 	path = client/Libraries/NUAristo
-	url = git@gitlab.com:garuda/NUAristo.git
+	url = https://primalmotion@gitlab.com/garuda/NUAristo.git
 [submodule "client/Libraries/NUKit"]
 	path = client/Libraries/NUKit
-	url = git@gitlab.com:garuda/NUKit.git
+	url = https://primalmotion@gitlab.com/garuda/NUKit.git
 [submodule "client/Libraries/TNKit"]
 	path = client/Libraries/TNKit
-	url = git@gitlab.com:garuda/TNKit.git
+	url = https://primalmotion@gitlab.com/garuda/TNKit.git
 [submodule "client/Libraries/RESTCappuccino"]
 	path = client/Libraries/RESTCappuccino
-	url = git@gitlab.com:garuda/RESTCappuccino.git
+	url = https://primalmotion@gitlab.com/garuda/RESTCappuccino.git
