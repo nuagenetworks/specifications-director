@@ -26,56 +26,39 @@ class SDAPILogicPlugin(GALogicPlugin):
                                 version=1.0,
                                 identifier="specsdirector.plugins.logic.apis",
                                 subscriptions={
-                                    "parentapi": [GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE, GARequest.ACTION_DELETE]
+                                    "childapi": [GARequest.ACTION_READALL, GARequest.ACTION_READ]
                                 })
 
-    def preprocess_write(self, context):
+    def preprocess_readall(self, context):
         """
         """
-        sdk = SDKLibrary().get_sdk('default')
-        specification = context.parent_object
-        parent_api = context.object
-
-        if not parent_api.associated_specification_id and parent_api.relationship == 'root':
-            apiinfo = self.core_controller.storage_controller.get(resource_name=sdk.SDAPIInfo.rest_name, filter='parentID == %s' % specification.parent_id)
-            root_specification = self.core_controller.storage_controller.get(resource_name=sdk.SDSpecification.rest_name, filter='name == %s.spec' % apiinfo.root)
-            parent_api.associated_specification_id = root_specification.id
+        for api in context.objects:
+            self._update_path(specification=context.parent_object, api=api)
 
         return context
 
-    def did_perform_write(self, context):
+    def preprocess_read(self, context):
         """
         """
-        sdk = SDKLibrary().get_sdk('default')
-        parent_api = context.object
-
-        if context.request.action == GARequest.ACTION_CREATE:
-            self._create_associated_child_api(parent_api, sdk)
-
-        elif context.request.action == GARequest.ACTION_UPDATE:
-            self._delete_associated_child_api(parent_api, sdk)
-            self._create_associated_child_api(parent_api, sdk)
-
-        elif context.request.action == GARequest.ACTION_DELETE:
-            self._delete_associated_child_api(parent_api, sdk)
+        self._update_path(specification=context.parent_object, api=context.object)
 
         return context
 
-    ## Utilities
+    def _update_path(self, specification, api):
+        """
+        """
+        sdk = SDKLibrary().get_sdk('default')
 
-    def _create_associated_child_api(self, parent_api, sdk):
-        """
-        """
-        child_api = sdk.SDChildAPI(data=parent_api.to_dict())
-        child_api.associated_specification_id = parent_api.parent_id
-        child_api.associated_parent_apiid = parent_api.id
+        associated_specification = self.core_controller.storage_controller.get(resource_name=sdk.SDSpecification.rest_name, identifier=api.associated_specification_id)
 
-        associated_specification = sdk.SDSpecification(id=parent_api.associated_specification_id)
-        self.core_controller.storage_controller.create(child_api, associated_specification)
+        local_resource_name = specification.object_resource_name
+        associated_resource_name = associated_specification.object_resource_name
 
-    def _delete_associated_child_api(self, parent_api, sdk):
-        """
-        """
-        associated_child_api = self.core_controller.storage_controller.get(resource_name=sdk.SDChildAPI.rest_name, filter='associatedParentAPIID == %s' % parent_api.id)
-        self.core_controller.storage_controller.delete(resource=associated_child_api, cascade=True)
+        if api.parent_type == sdk.SDAbstract.rest_name and not local_resource_name:
+            local_resource_name = '[[resource_name]]'
+
+        if api.relationship == 'root':
+            api.path = '/%s' % associated_resource_name
+        else:
+            api.path = '/%s/id/%s' % (local_resource_name, associated_resource_name)
 

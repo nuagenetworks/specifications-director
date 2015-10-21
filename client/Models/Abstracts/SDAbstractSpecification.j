@@ -3,7 +3,6 @@
 
 @class SDAttributesFetcher
 @class SDChildAPIsFetcher
-@class SDParentAPIsFetcher
 
 @implementation SDAbstractSpecification : SDRESTObject
 {
@@ -11,18 +10,17 @@
     BOOL                _allowsDelete           @accessors(property=allowsDelete);
     BOOL                _allowsGet              @accessors(property=allowsGet);
     BOOL                _allowsUpdate           @accessors(property=allowsUpdate);
-    CPArray             _extends                @accessors(property=extends);
+    BOOL                _root                   @accessors(property=root);
     CPString            _description            @accessors(property=description);
     CPString            _entityName             @accessors(property=entityName);
     CPString            _name                   @accessors(property=name);
     CPString            _objectResourceName     @accessors(property=objectResourceName);
     CPString            _objectRESTName         @accessors(property=objectRESTName)
     CPString            _package                @accessors(property=package);
-    CPString            _rootRESTName           @accessors(property=rootRESTName);
+
 
     SDAttributesFetcher _attributes             @accessors(property=attributes);
     SDChildAPIsFetcher  _childAPIs              @accessors(property=childAPIs);
-    SDParentAPIsFetcher _parentAPIs             @accessors(property=parentAPIs);
 }
 
 - (id)init
@@ -35,16 +33,14 @@
         [self exposeLocalKeyPathToREST:@"allowsUpdate"];
         [self exposeLocalKeyPathToREST:@"description"];
         [self exposeLocalKeyPathToREST:@"entityName"];
-        [self exposeLocalKeyPathToREST:@"extends"];
         [self exposeLocalKeyPathToREST:@"name"];
         [self exposeLocalKeyPathToREST:@"objectResourceName"];
         [self exposeLocalKeyPathToREST:@"objectRESTName"];
         [self exposeLocalKeyPathToREST:@"package"];
-        [self exposeLocalKeyPathToREST:@"rootRESTName"];
+        [self exposeLocalKeyPathToREST:@"root"];
 
         _attributes = [SDAttributesFetcher fetcherWithParentObject:self];
         _childAPIs  = [SDChildAPIsFetcher fetcherWithParentObject:self];
-        _parentAPIs = [SDParentAPIsFetcher fetcherWithParentObject:self];
     }
 
     return self;
@@ -68,11 +64,6 @@
 - (CPString)displayName
 {
     return _name.replace(/\.spec$/, "");
-}
-
-- (BOOL)isRoot
-{
-    return (_objectRESTName == _rootRESTName);
 }
 
 @end

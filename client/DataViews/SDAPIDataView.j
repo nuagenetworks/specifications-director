@@ -24,8 +24,6 @@
     [fieldPath bind:CPValueBinding toObject:_objectValue withKeyPath:@"path" options:nil];
     [fieldRelationship bind:@"backgroundColor" toObject:_objectValue withKeyPath:@"relationship" options:relationshipToColorTransformer];
     [fieldRelationship bind:CPValueBinding toObject:_objectValue withKeyPath:@"relationship" options:nil];
-
-    [_objectValue fetchPath];
 }
 
 

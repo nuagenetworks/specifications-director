@@ -10,11 +10,8 @@
     @outlet CPCheckBox                  checkBoxAllowsCreate;
     @outlet CPCheckBox                  checkBoxAllowsUpdate;
     @outlet CPPopUpButton               buttonRelationship;
-    @outlet CPTextField                 labelAssociatedSpecification;
+    @outlet CPTextField                 labelRelationship;
     @outlet SDSpecificationAssociator   specificationAssociator;
-
-    NUCategory  _categoryParentAPIs;
-    NUCategory  _categoryChildAPIs;
 }
 
 #pragma mark -
@@ -28,13 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self registerDataViewWithName:@"APIDataView" forClass:SDParentAPI];
+
     [self registerDataViewWithName:@"APIDataView" forClass:SDChildAPI];
-
-    _categoryParentAPIs = [NUCategory categoryWithName:@"Parent APIs"];
-    _categoryChildAPIs  = [NUCategory categoryWithName:@"Child APIs"];
-
-    [self setCategories:[_categoryParentAPIs, _categoryChildAPIs]];
 
     [specificationAssociator setDelegate:self];
     [specificationAssociator setDisassociationButtonHidden:YES];
@@ -42,14 +34,10 @@
 
 - (void)configureContexts
 {
-    var childContext = [[NUModuleContext alloc] initWithName:@"Children API" identifier:[SDChildAPI RESTName]];
-    [childContext setFetcherKeyPath:@"childAPIs"];
-    [self registerContext:childContext forClass:SDChildAPI];
-
-    var parentContext = [[NUModuleContext alloc] initWithName:@"Parent API" identifier:[SDParentAPI RESTName]];
-    [parentContext setPopover:popover];
-    [parentContext setFetcherKeyPath:@"parentAPIs"];
-    [self registerContext:parentContext forClass:SDParentAPI];
+    var context = [[NUModuleContext alloc] initWithName:@"Children API" identifier:[SDChildAPI RESTName]];
+    [context setFetcherKeyPath:@"childAPIs"];
+    [context setPopover:popover];
+    [self registerContext:context forClass:SDChildAPI];
 }
 
 
@@ -59,40 +47,9 @@
 - (void)moduleWillHide
 {
     [super moduleWillHide];
-
     [specificationAssociator setCurrentParent:nil];
 }
 
-- (CPArray)moduleCurrentActiveContexts
-{
-    return [_contextRegistry allValues];
-}
-
-- (NUCategory)categoryForObject:(NUVSDObject)anObject
-{
-    return [anObject RESTName] == [SDParentAPI RESTName] ? _categoryParentAPIs : _categoryChildAPIs;
-}
-
-- (CPSet)permittedActionsForObject:(id)anObject
-{
-    var conditionParentAPI  = [anObject RESTName] == [SDParentAPI RESTName],
-        conditionRootAPI    = [_currentParent objectRESTName] == [_currentParent rootRESTName],
-        conditionCanEdit    = anObject && conditionParentAPI,
-        permittedActionsSet = [CPSet new];
-
-    if (conditionRootAPI)
-        return permittedActionsSet;
-
-    [permittedActionsSet addObject:NUModuleActionAdd];
-
-    if (conditionCanEdit)
-    {
-        [permittedActionsSet addObject:NUModuleActionEdit];
-        [permittedActionsSet addObject:NUModuleActionDelete];
-    }
-
-    return permittedActionsSet;
-}
 
 #pragma mark -
 #pragma mark Actions
@@ -101,12 +58,25 @@
 {
     var editedObject = [_currentContext editedObject];
 
+    if ([_currentParent root])
+    {
+        [popover setContentSize:CGSizeMake(320, 260)];
+        [buttonRelationship setHidden:YES];
+        [labelRelationship setHidden:YES];
+        [checkBoxAllowsUpdate setHidden:YES];
+        [checkBoxAllowsCreate setHidden:NO];
+        [editedObject setAllowsCreate:YES];
+        [editedObject setAllowsUpdate:NO];
+        [editedObject setRelationship:SDAPIRelationshipRoot];
+        return;
+    }
+
     switch ([editedObject relationship])
     {
         case SDAPIRelationshipChild:
             [popover setContentSize:CGSizeMake(320, 315)];
-            [[specificationAssociator view] setHidden:NO];
-            [labelAssociatedSpecification setHidden:NO];
+            [buttonRelationship setHidden:NO];
+            [labelRelationship setHidden:NO];
             [checkBoxAllowsUpdate setHidden:YES];
             [checkBoxAllowsCreate setHidden:NO];
             [editedObject setAllowsCreate:YES];
@@ -115,22 +85,12 @@
 
         case SDAPIRelationshipMember:
             [popover setContentSize:CGSizeMake(320, 315)];
-            [[specificationAssociator view] setHidden:NO];
-            [labelAssociatedSpecification setHidden:NO];
+            [buttonRelationship setHidden:NO];
+            [labelRelationship setHidden:NO];
             [checkBoxAllowsUpdate setHidden:NO];
             [checkBoxAllowsCreate setHidden:YES];
             [editedObject setAllowsCreate:NO];
             [editedObject setAllowsUpdate:YES];
-            break;
-
-        case SDAPIRelationshipRoot:
-            [popover setContentSize:CGSizeMake(320, 250)];
-            [[specificationAssociator view] setHidden:YES];
-            [labelAssociatedSpecification setHidden:YES];
-            [checkBoxAllowsUpdate setHidden:YES];
-            [checkBoxAllowsCreate setHidden:NO];
-            [editedObject setAllowsCreate:YES];
-            [editedObject setAllowsUpdate:NO];
             break;
     }
 }

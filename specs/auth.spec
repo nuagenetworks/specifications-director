@@ -1,33 +1,17 @@
 {
-    "apis": {
-        "children": {
-            "/repositories": {
-                "RESTName": "repository",
-                "resourceName": "repositories",
-                "entityName": "Repository",
-                "operations": [
-                    {
-                        "availability": null,
-                        "method": "GET"
-                    },
-                    {
-                        "availability": null,
-                        "method": "POST"
-                    }
-                ]
-            }
-        },
-        "parents": {},
-        "self": {}
-    },
-    "model": {
-        "RESTName": "auth",
-        "resourceName": "auth",
-        "entityName": "Auth",
-        "description": "Authentication API",
-        "extends": ["@parsable"],
-        "package": "github",
+    "rest_name": "auth",
+    "resource_name": "auth",
+    "entity_name": "Auth",
+    "description": "Authentication API",
+    "extends": ["@parsable"],
+    "package": "github",
+    "root": true,
 
-        "attributes": {}
-    }
+    "children": [
+        {
+            "specification": "repository",
+            "get": true,
+            "create": true
+        }
+    ]
 }

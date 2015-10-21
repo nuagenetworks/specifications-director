@@ -13,8 +13,8 @@
                 <outlet property="fieldModuleTitle" destination="15" id="qsy-6A-lnQ"/>
                 <outlet property="fieldTotalEntities" destination="108" id="111"/>
                 <outlet property="filterField" destination="14" id="51"/>
-                <outlet property="labelAssociatedSpecification" destination="iRt-7L-1kf" id="9Hy-JT-zYD"/>
-                <outlet property="popover" destination="2" id="52"/>
+                <outlet property="labelRelationship" destination="jiu-AU-6AU" id="zjc-QU-l9f"/>
+                <outlet property="popover" destination="2" id="JL6-aN-qRB"/>
                 <outlet property="specificationAssociator" destination="2XV-vL-Cl3" id="3Je-k4-XNj"/>
                 <outlet property="tableView" destination="Kha-O7-qC2" id="v7v-VZ-4Kc"/>
                 <outlet property="view" destination="5" id="54"/>
@@ -86,7 +86,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" autosaveColumns="NO" rowHeight="58" indentationPerLevel="14" outlineTableColumn="m4g-23-xJm" id="Kha-O7-qC2">
-                                <rect key="frame" x="0.0" y="0.0" width="608" height="342"/>
+                                <rect key="frame" x="0.0" y="0.0" width="608" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <animations/>
                                 <size key="intercellSpacing" width="3" height="0.0"/>
@@ -239,11 +239,6 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="member"/>
                                     </userDefinedRuntimeAttributes>
                                 </menuItem>
-                                <menuItem title="Root API" id="6tc-LF-2Sd">
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="root"/>
-                                    </userDefinedRuntimeAttributes>
-                                </menuItem>
                             </items>
                         </menu>
                     </popUpButtonCell>
@@ -288,7 +283,7 @@
                 </button>
                 <textField verticalHuggingPriority="750" id="iRt-7L-1kf">
                     <rect key="frame" x="18" y="181" width="83" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Specification" id="gUr-dQ-Iqy">
                         <font key="font" metaFont="system"/>
@@ -298,7 +293,7 @@
                 </textField>
                 <customView id="28A-GV-O2v">
                     <rect key="frame" x="20" y="142" width="281" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
                 </customView>
             </subviews>

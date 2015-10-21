@@ -64,7 +64,7 @@ NURepositoryCurrent = nil;
         _password = @"2b5da4574ed82d64435db1cbb269e775f1f4a7f8"
         _organization = "nuagenetworks"
         _repository = "monolithe"
-        _branch = "master"
+        _branch = "specv2"
         _path = "/examples/specifications"
     }
 
