@@ -80,6 +80,7 @@ class SDRepositoryExporterLogicPlugin(GALogicPlugin):
             mono_spec.package       = specification.package
             mono_spec.remote_name   = specification.object_rest_name
             mono_spec.resource_name = specification.object_resource_name
+            mono_spec.is_root       = specification.root
             mono_spec.allows_get    = specification.allows_get
             mono_spec.allows_update = specification.allows_update
             mono_spec.allows_create = specification.allows_create
