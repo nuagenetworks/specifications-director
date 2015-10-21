@@ -13,5 +13,12 @@
             "get": true,
             "create": true
         }
-    ]
+    ],
+
+    "attributes": {
+        "userName": {
+            "type": "string",
+            "description": "the username of the current user"
+        }
+    }
 }

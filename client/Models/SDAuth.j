@@ -6,8 +6,6 @@
 
 @implementation SDAuth : NURESTAbstractUser
 {
-    CPString                _username       @accessors(property=username);
-
     SDRepositoriesFetcher   _repositories   @accessors(property=repositories);
 
 }
@@ -25,9 +23,6 @@
 {
     if (self = [super init])
     {
-        [self exposeLocalKeyPathToREST:@"username"];
-        [self exposeLocalKeyPathToREST:@"password"];
-
         _role = @"NURESTUserRoleCSPRoot";
         _repositories = [SDRepositoriesFetcher fetcherWithParentObject:self];
     }
@@ -43,6 +38,11 @@
 - (CPString)role
 {
     return @"NURESTUserRoleCSPRoot";
+}
+
+- (void)displayDescription
+{
+    return _userName;
 }
 
 @end

@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import logging
+import ldap
+from specdk.v1_0 import SDAuth
 from garuda import Garuda
 from garuda.channels.rest import GAFalconChannel, GAFlaskChannel
 from garuda.plugins.storage import GAMongoStoragePlugin
@@ -12,21 +14,21 @@ from plugins.logic.apis import SDAPILogicPlugin
 from plugins.logic.specifications import SDSpecificationLogicPlugin
 from plugins.logic.attributes import SDAttributeLogicPlugin
 
-def db_init(db, root_rest_name):
-    """
-    """
-    from bson import ObjectId
-    if not db[root_rest_name].count():
-        db[root_rest_name].insert({'_id': ObjectId('111111111111111111111111') , 'userName': 'root', 'password': 'password'})
-
 def auth_function(request, session, root_api, storage_controller):
     """
     """
-    auth = storage_controller.get(root_api, '111111111111111111111111')
+    auth = SDAuth()
 
-    # if request.username == auth.user_name and request.token == auth.password:
+    try:
+        base_dn = 'uid=%s,cn=users,cn=accounts,dc=us,dc=alcatel-lucent,dc=com' % request.username
+        ldap_connection = ldap.open('nuageldap1.us.alcatel-lucent.com')
+        ldap_connection.bind_s(base_dn, request.token)
+    except Exception as ex:
+        return None
+
     auth.api_key = session.uuid
     auth.password = None
+    auth.user_name = request.username
     return auth
 
 
@@ -34,8 +36,8 @@ def auth_function(request, session, root_api, storage_controller):
 def start():
     """
     """
-    channel = GAFalconChannel()
-    storage_plugin = GAMongoStoragePlugin(db_name='specsdirector', db_initialization_function=db_init)
+    channel = GAFalconChannel(ssl_certificate='ssl/server.crt', ssl_key='ssl/server.key')
+    storage_plugin = GAMongoStoragePlugin(db_name='specsdirector')
     authentication_plugin = GASimpleAuthenticationPlugin(auth_function=auth_function)
     sdk_infos = [{'identifier': 'default', 'module': 'specdk.v1_0'}]
     repo_import_logic_plugin = SDRepositoryImporterLogicPlugin()

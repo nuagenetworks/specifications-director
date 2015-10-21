@@ -61,7 +61,7 @@ NURESTUserRoleOrgAdmin = @"NURESTUserRoleOrgAdmin"
 - (void)applicationDidFinishLaunching:(CPNotification)aNotification
 {
     [CPMenu setMenuBarVisible:NO];
-    [[CPUserDefaults standardUserDefaults] setObject:@"http://127.0.0.1:2000" forKey:@"NUAPIURL"];
+    //[[CPUserDefaults standardUserDefaults] setObject:@"https://127.0.0.1:2000" forKey:@"NUAPIURL"];
 
     [dataViewsLoader load];
 

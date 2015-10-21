@@ -25,7 +25,7 @@
                 </customView>
             </subviews>
             <animations/>
-            <point key="canvasLocation" x="65" y="458.5"/>
+            <point key="canvasLocation" x="572" y="477.5"/>
         </customView>
         <customView id="Upq-sK-5sY" userLabel="Editor Self">
             <rect key="frame" x="0.0" y="0.0" width="216" height="404"/>
@@ -76,7 +76,7 @@
                 <outlet property="viewEditionMain" destination="RY1-6O-kMY" id="rdN-Ps-HWj"/>
                 <outlet property="viewEditorEnumConfig" destination="Frm-tA-wiT" id="H6A-Kb-YEr"/>
                 <outlet property="viewEditorEnumFlags" destination="PKG-gA-bCf" id="MkR-LP-4hH"/>
-                <outlet property="viewEditorNumberConfig" destination="dxt-LH-dkm" id="BuF-e5-DjN"/>
+                <outlet property="viewEditorNumberConfig" destination="CY0-iE-AwE" id="E6y-0g-fJh"/>
                 <outlet property="viewEditorStringConfig" destination="WKB-7o-sen" id="C5A-vO-Jw0"/>
             </connections>
         </viewController>
@@ -144,7 +144,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="2Fv-0O-CRU">
+                <textField verticalHuggingPriority="750" id="2Fv-0O-CRU">
                     <rect key="frame" x="20" y="91" width="197" height="82"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
@@ -548,7 +548,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="14" id="1oM-eM-Us5">
-                                <rect key="frame" x="0.0" y="0.0" width="195" height="66"/>
+                                <rect key="frame" x="0.0" y="0.0" width="195" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <animations/>
                                 <size key="intercellSpacing" width="3" height="3"/>
@@ -745,6 +745,6 @@
         </customView>
     </objects>
     <resources>
-        <image name="icon-repository" width="128" height="128"/>
+        <image name="icon-repository" width="64" height="64"/>
     </resources>
 </document>

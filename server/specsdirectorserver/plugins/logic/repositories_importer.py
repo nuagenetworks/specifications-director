@@ -88,9 +88,9 @@ class SDRepositoryImporterLogicPlugin(GALogicPlugin):
 
             specs_info[mono_specification.remote_name] = {'mono_specification': mono_specification , 'specification': specification}
 
-        self._import_apis(repository=repository, specification_info=specs_info, sdk=sdk)
+        self._import_apis(repository=repository, specification_info=specs_info, mode=mode, sdk=sdk)
 
-    def _import_apis(self, repository, specification_info, sdk):
+    def _import_apis(self, repository, specification_info, mode, sdk):
         """
         """
         for rest_name, spec_info in specification_info.iteritems():
@@ -109,8 +109,9 @@ class SDRepositoryImporterLogicPlugin(GALogicPlugin):
                 api.allows_update = mono_api.allows_update
                 api.allows_delete = mono_api.allows_delete
 
-                remote_specification = specification_info[mono_api.specification]['specification']
-                api.associated_specification_id = remote_specification.id
+                if mode == MODE_RAW_SPECS:
+                    remote_specification = specification_info[mono_api.specification]['specification']
+                    api.associated_specification_id = remote_specification.id
 
                 self.core_controller.storage_controller.create(api, specification)
 

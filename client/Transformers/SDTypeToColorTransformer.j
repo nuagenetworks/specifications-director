@@ -51,7 +51,7 @@
             return [CPColor colorWithHexString:@"009acc"];
     }
 
-    [CPException raise:CPInvalidArgumentException reason:[self class] + @" unexpected value to transform :" + value];
+    return [CPColor redColor];
 }
 
 @end
