@@ -33,9 +33,13 @@ class SDRepositoryExporterLogicPlugin(GALogicPlugin):
         """
         sdk = SDKLibrary().get_sdk('default')
         repository = context.object
+
         self._export_specifications(repository=repository, sdk=sdk)
         self._export_abstracts(repository=repository, sdk=sdk)
+
         return context
+
+    ## UTILITIES
 
     def _export_abstracts(self, repository, sdk):
         """

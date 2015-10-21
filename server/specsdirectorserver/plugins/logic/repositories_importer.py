@@ -10,7 +10,6 @@ from garuda.core.models import GAError, GAPluginManifest, GARequest
 from garuda.core.plugins import GALogicPlugin
 from garuda.core.lib import SDKLibrary
 
-
 logger = logging.getLogger('specsdirector.plugins.logic.repositories.importer')
 
 class SDRepositoryImporterLogicPlugin(GALogicPlugin):
@@ -21,11 +20,8 @@ class SDRepositoryImporterLogicPlugin(GALogicPlugin):
     @classmethod
     def manifest(cls):
         """
-
         """
-        return GAPluginManifest(name='repositories importer logic',
-                                version=1.0,
-                                identifier="specsdirector.plugins.logic.repositories.importer",
+        return GAPluginManifest(name='repositories importer logic', version=1.0, identifier="specsdirector.plugins.logic.repositories.importer",
                                 subscriptions={
                                     "repository": [GARequest.ACTION_CREATE]
                                 })
@@ -41,27 +37,58 @@ class SDRepositoryImporterLogicPlugin(GALogicPlugin):
         logger.debug("populating")
 
         sdk = SDKLibrary().get_sdk('default')
-
         repository = context.object
 
-        # try:
-        manager = RepositoryManager(monolithe_config=None, api_url=repository.url, login_or_token=repository.password,
-                                    password=None, organization=repository.organization, repository=repository.repository, repository_path=repository.path)
+        manager = RepositoryManager(monolithe_config=None,
+                                    api_url=repository.url,
+                                    login_or_token=repository.password,
+                                    password=None,
+                                    organization=repository.organization,
+                                    repository=repository.repository,
+                                    repository_path=repository.path)
 
         # api info
         apiinfo = sdk.SDAPIInfo(data=manager.get_api_info(branch=repository.branch))
         self.core_controller.storage_controller.create(apiinfo, repository)
 
-        # astract specs
-        abstracts_info = self._import_specs(manager=manager, repository=repository, mode=MODE_RAW_ABSTRACTS, sdk=sdk) # abstracts first!
-        self._import_apis(repository=repository, specification_info=abstracts_info, sdk=sdk)
+        # astract specs (first!)
+        self._import_specs(manager=manager, repository=repository, mode=MODE_RAW_ABSTRACTS, sdk=sdk)
 
         # solid specs
-        specs_info = self._import_specs(manager=manager, repository=repository, mode=MODE_RAW_SPECS, sdk=sdk)
-        self._import_apis(repository=repository, specification_info=specs_info, sdk=sdk)
+        self._import_specs(manager=manager, repository=repository, mode=MODE_RAW_SPECS, sdk=sdk)
 
         return context
 
+    ## UTILITIES
+
+    def _import_specs(self, manager, repository, mode, sdk):
+        """
+        """
+        mono_specifications = manager.get_all_specifications(branch=repository.branch, mode=mode)
+
+        specs_info = {}
+
+        for rest_name, mono_specification in mono_specifications.iteritems():
+
+            specification = sdk.SDSpecification() if mode == MODE_RAW_SPECS else sdk.SDAbstract()
+            specification.name = mono_specification.filename
+            specification.description = mono_specification.description
+            specification.package = mono_specification.package
+            specification.object_rest_name = mono_specification.remote_name
+            specification.object_resource_name = mono_specification.resource_name
+            specification.entity_name = mono_specification.instance_name
+            specification.root = mono_specification.is_root
+            specification.allows_create = mono_specification.allows_create
+            specification.allows_get = mono_specification.allows_get
+
+            self.core_controller.storage_controller.create(specification, repository)
+
+            extensions = self._import_extends(mono_specification=mono_specification, repository=repository, specification=specification,  sdk=sdk)
+            attributes = self._import_attributes(mono_specification=mono_specification, specification=specification, sdk=sdk)
+
+            specs_info[mono_specification.remote_name] = {'mono_specification': mono_specification , 'specification': specification}
+
+        self._import_apis(repository=repository, specification_info=specs_info, sdk=sdk)
 
     def _import_apis(self, repository, specification_info, sdk):
         """
@@ -85,7 +112,7 @@ class SDRepositoryImporterLogicPlugin(GALogicPlugin):
                 remote_specification = specification_info[mono_api.specification]['specification']
                 api.associated_specification_id = remote_specification.id
 
-                out = self.core_controller.storage_controller.create(api, specification)
+                self.core_controller.storage_controller.create(api, specification)
 
     def _import_extends(self, repository, mono_specification, specification, sdk):
         """
@@ -151,37 +178,3 @@ class SDRepositoryImporterLogicPlugin(GALogicPlugin):
             ret.append(attr)
 
         return ret
-
-    def _import_specs(self, manager, repository, mode, sdk):
-        """
-        """
-        mono_specifications = manager.get_all_specifications(branch=repository.branch, mode=mode)
-
-        ret = {}
-
-        for rest_name, mono_specification in mono_specifications.iteritems():
-
-            specification = sdk.SDSpecification() if mode == MODE_RAW_SPECS else sdk.SDAbstract()
-            specification.name = mono_specification.filename
-            specification.description = mono_specification.description
-            specification.package = mono_specification.package
-            specification.object_rest_name = mono_specification.remote_name
-            specification.object_resource_name = mono_specification.resource_name
-            specification.entity_name = mono_specification.instance_name
-            specification.root = mono_specification.is_root
-            specification.allows_create = mono_specification.allows_create
-            specification.allows_get = mono_specification.allows_get
-
-            self.core_controller.storage_controller.create(specification, repository)
-
-            extensions = self._import_extends(mono_specification=mono_specification, repository=repository, specification=specification,  sdk=sdk)
-            attributes = self._import_attributes(mono_specification=mono_specification, specification=specification, sdk=sdk)
-
-            ret[mono_specification.remote_name] = {'mono_specification': mono_specification , 'specification': specification}
-
-        return ret
-
-
-
-
-

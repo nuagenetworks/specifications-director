@@ -30,13 +30,16 @@ class SDAPILogicPlugin(GALogicPlugin):
     def preprocess_readall(self, context):
         """
         """
-        for api in context.objects: self._update_path(specification=context.parent_object, api=api)
+        for api in context.objects:
+            self._update_path(specification=context.parent_object, api=api)
+
         return context
 
     def preprocess_read(self, context):
         """
         """
         self._update_path(specification=context.parent_object, api=context.object)
+
         return context
 
     def _update_path(self, specification, api):
@@ -45,8 +48,7 @@ class SDAPILogicPlugin(GALogicPlugin):
         sdk = SDKLibrary().get_sdk('default')
 
         associated_specification = self.core_controller.storage_controller.get(resource_name=sdk.SDSpecification.rest_name, identifier=api.associated_specification_id)
-
-        local_resource_name = specification.object_resource_name
+        local_resource_name      = specification.object_resource_name
         associated_resource_name = associated_specification.object_resource_name
 
         if api.parent_type == sdk.SDAbstract.rest_name and not local_resource_name:
