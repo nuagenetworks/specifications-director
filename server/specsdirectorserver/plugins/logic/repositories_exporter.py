@@ -23,9 +23,7 @@ class SDRepositoryExporterLogicPlugin(GALogicPlugin):
         """
 
         """
-        return GAPluginManifest(name='repositories exporter logic',
-                                version=1.0,
-                                identifier="specsdirector.plugins.logic.repositories.exporter",
+        return GAPluginManifest(name='repositories exporter logic', version=1.0, identifier="specsdirector.plugins.logic.repositories.exporter",
                                 subscriptions={
                                     "repository": [GARequest.ACTION_UPDATE]
                                 })
@@ -54,9 +52,11 @@ class SDRepositoryExporterLogicPlugin(GALogicPlugin):
             mono_spec.package       = abstract.package
             mono_spec.remote_name   = abstract.object_rest_name
             mono_spec.resource_name = abstract.object_resource_name
+            mono_spec.allows_get    = abstract.allows_get
+            mono_spec.allows_update = abstract.allows_update
+            mono_spec.allows_create = abstract.allows_create
+            mono_spec.allows_delete = abstract.allows_delete
 
-            mono_spec.self_apis   = self._export_self_api(specification=abstract)
-            mono_spec.parent_apis = self._export_parent_apis(specification=abstract, apiinfo=apiinfo, sdk=sdk)
             mono_spec.child_apis  = self._export_child_apis(specification=abstract, apiinfo=apiinfo, sdk=sdk)
             mono_spec.attributes  = self._export_attributes(specification=abstract, sdk=sdk)
 
@@ -80,10 +80,12 @@ class SDRepositoryExporterLogicPlugin(GALogicPlugin):
             mono_spec.package       = specification.package
             mono_spec.remote_name   = specification.object_rest_name
             mono_spec.resource_name = specification.object_resource_name
+            mono_spec.allows_get    = specification.allows_get
+            mono_spec.allows_update = specification.allows_update
+            mono_spec.allows_create = specification.allows_create
+            mono_spec.allows_delete = specification.allows_delete
             mono_spec.extends       = [abstract.name.replace(".spec", "") for abstract in abstracts]
 
-            mono_spec.self_apis   = self._export_self_api(specification=specification)
-            mono_spec.parent_apis = self._export_parent_apis(specification=specification, apiinfo=apiinfo, sdk=sdk)
             mono_spec.child_apis  = self._export_child_apis(specification=specification, apiinfo=apiinfo, sdk=sdk)
             mono_spec.attributes  = self._export_attributes(specification=specification, sdk=sdk)
 
@@ -102,53 +104,6 @@ class SDRepositoryExporterLogicPlugin(GALogicPlugin):
 
         return apiinfo
 
-    def _export_self_api(self, specification):
-        """
-        """
-        mono_self_api = SpecificationAPI(specification=specification)
-
-        if specification.object_resource_name and specification.object_resource_name and specification.entity_name:
-            mono_self_api.path          = '/%s/{id}' % (specification.object_resource_name)
-            mono_self_api.resource_name = specification.object_resource_name
-            mono_self_api.remote_name   = specification.object_rest_name
-            mono_self_api.entity_name   = specification.entity_name
-            mono_self_api.operations    = self._export_operations(specification)
-            return [mono_self_api]
-        else:
-            return []
-
-
-    def _export_parent_apis(self, specification, apiinfo, sdk):
-        """
-        """
-        ret = []
-        parent_apis, count = self.core_controller.storage_controller.get_all(parent=specification, resource_name=sdk.SDParentAPI.rest_name)
-
-        for parent_api in parent_apis:
-
-            remote_specification = self.core_controller.storage_controller.get(resource_name=sdk.SDSpecification.rest_name, identifier=parent_api.associated_specification_id)
-            mono_parent_api = SpecificationAPI(specification=specification)
-
-            mono_parent_api.deprecated   = parent_api.deprecated
-            mono_parent_api.relationship = parent_api.relationship
-            mono_parent_api.operations   = self._export_operations(parent_api)
-
-            if remote_specification.object_resource_name == apiinfo.root:
-                mono_parent_api.path  = '/%s' % (specification.object_resource_name)
-                related_specification = specification
-
-            else:
-                mono_parent_api.path  = '/%s/{id}/%s' % (remote_specification.object_resource_name, specification.object_resource_name)
-                related_specification = remote_specification
-
-            mono_parent_api.resource_name = related_specification.object_resource_name
-            mono_parent_api.remote_name   = related_specification.object_rest_name
-            mono_parent_api.entity_name   = related_specification.entity_name
-
-            ret.append(mono_parent_api)
-
-        return ret
-
     def _export_child_apis(self, specification, apiinfo, sdk):
         """
         """
@@ -160,19 +115,13 @@ class SDRepositoryExporterLogicPlugin(GALogicPlugin):
             mono_child_api = SpecificationAPI(specification=specification)
             remote_specification = self.core_controller.storage_controller.get(resource_name=sdk.SDSpecification.rest_name, identifier=child_api.associated_specification_id)
 
-            mono_child_api.deprecated = child_api.deprecated
-            mono_child_api.relationship = child_api.relationship
-            mono_child_api.operations = self._export_operations(child_api)
-
-            if specification.object_rest_name == apiinfo.root:
-                mono_child_api.path = '/%s' % (remote_specification.object_resource_name)
-
-            else:
-                mono_child_api.path = '/%s/{id}/%s' % (specification.object_resource_name, remote_specification.object_resource_name)
-
-            mono_child_api.resource_name = remote_specification.object_resource_name
-            mono_child_api.remote_name   = remote_specification.object_rest_name
-            mono_child_api.entity_name   = remote_specification.entity_name
+            mono_child_api.specification = remote_specification.object_rest_name
+            mono_child_api.deprecated    = child_api.deprecated
+            mono_child_api.relationship  = child_api.relationship
+            mono_child_api.allows_get    = child_api.allows_get
+            mono_child_api.allows_create = child_api.allows_create
+            mono_child_api.allows_update = child_api.allows_update
+            mono_child_api.allows_delete = child_api.allows_delete
 
             ret.append(mono_child_api)
 
@@ -211,32 +160,5 @@ class SDRepositoryExporterLogicPlugin(GALogicPlugin):
             mono_attr.unique_scope    = attribute.unique_scope
 
             ret.append(mono_attr)
-
-        return ret
-
-    def _export_operations(self, obj):
-        """
-        """
-        ret = []
-
-        if hasattr(obj, 'allows_get') and obj.allows_get:
-            mono_operation = SpecificationAPIOperation()
-            mono_operation.method = 'GET'
-            ret.append(mono_operation)
-
-        if hasattr(obj, 'allows_create') and obj.allows_create:
-            mono_operation = SpecificationAPIOperation()
-            mono_operation.method = 'POST'
-            ret.append(mono_operation)
-
-        if hasattr(obj, 'allows_update') and obj.allows_update:
-            mono_operation = SpecificationAPIOperation()
-            mono_operation.method = 'UPDATE'
-            ret.append(mono_operation)
-
-        if hasattr(obj, 'allows_delete') and obj.allows_delete:
-            mono_operation = SpecificationAPIOperation()
-            mono_operation.method = 'DELETE'
-            ret.append(mono_operation)
 
         return ret

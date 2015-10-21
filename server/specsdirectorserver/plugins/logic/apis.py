@@ -22,9 +22,7 @@ class SDAPILogicPlugin(GALogicPlugin):
         """
 
         """
-        return GAPluginManifest(name='apis logic',
-                                version=1.0,
-                                identifier="specsdirector.plugins.logic.apis",
+        return GAPluginManifest(name='apis logic', version=1.0, identifier="specsdirector.plugins.logic.apis",
                                 subscriptions={
                                     "childapi": [GARequest.ACTION_READALL, GARequest.ACTION_READ]
                                 })
@@ -32,16 +30,13 @@ class SDAPILogicPlugin(GALogicPlugin):
     def preprocess_readall(self, context):
         """
         """
-        for api in context.objects:
-            self._update_path(specification=context.parent_object, api=api)
-
+        for api in context.objects: self._update_path(specification=context.parent_object, api=api)
         return context
 
     def preprocess_read(self, context):
         """
         """
         self._update_path(specification=context.parent_object, api=context.object)
-
         return context
 
     def _update_path(self, specification, api):
