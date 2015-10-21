@@ -2,50 +2,36 @@ import logging
 import base64
 import json
 
-from github import Github
 from monolithe.specifications import Specification, SpecificationAttribute, SpecificationAPI, RepositoryManager
-from monolithe.specifications.repositorymanager import MODE_NORMAL, MODE_RAW_SPECS, MODE_RAW_ABSTRACTS
 
 from garuda.core.models import GAError, GAPluginManifest, GARequest
-from garuda.core.plugins import GALogicPlugin
-from garuda.core.lib import SDKLibrary
 
-
-logger = logging.getLogger('specsdirector.plugins.logic.repositories.exporter')
-
-class SDRepositoryExporterLogicPlugin(GALogicPlugin):
+class SDRepositoryExporter():
     """
 
     """
 
-    @classmethod
-    def manifest(cls):
-        """
-
-        """
-        return GAPluginManifest(name='repositories exporter logic', version=1.0, identifier="specsdirector.plugins.logic.repositories.exporter",
-                                subscriptions={
-                                    "repository": [GARequest.ACTION_UPDATE]
-                                })
-
-    def did_perform_write(self, context):
+    def __init__(self, repository, storage_controller, sdk):
         """
         """
-        sdk = SDKLibrary().get_sdk('default')
-        repository = context.object
+        self._sdk = sdk
+        self._repository = repository
+        self._storage_controller = storage_controller
 
-        self._export_specifications(repository=repository, sdk=sdk)
-        self._export_abstracts(repository=repository, sdk=sdk)
 
-        return context
+    def export_specifications(self):
+        """
+        """
+        self._export_specifications()
+        self._export_abstracts()
 
     ## UTILITIES
 
-    def _export_abstracts(self, repository, sdk):
+    def _export_abstracts(self):
         """
         """
-        abstracts, count = self.core_controller.storage_controller.get_all(parent=repository, resource_name=sdk.SDAbstract.rest_name)
-        apiinfo = self._export_apiinfo(repository=repository, sdk=sdk)
+        abstracts, count = self._storage_controller.get_all(parent=self._repository, resource_name=self._sdk.SDAbstract.rest_name)
+        apiinfo = self._export_apiinfo()
 
         for abstract in abstracts:
 
@@ -61,21 +47,21 @@ class SDRepositoryExporterLogicPlugin(GALogicPlugin):
             mono_spec.allows_create = abstract.allows_create
             mono_spec.allows_delete = abstract.allows_delete
 
-            mono_spec.child_apis  = self._export_child_apis(specification=abstract, apiinfo=apiinfo, sdk=sdk)
-            mono_spec.attributes  = self._export_attributes(specification=abstract, sdk=sdk)
+            mono_spec.child_apis  = self._export_child_apis(specification=abstract, apiinfo=apiinfo)
+            mono_spec.attributes  = self._export_attributes(specification=abstract)
 
             with open('/Users/Tonio/Desktop/vomit/%s' % abstract.name, 'w') as f:
                 f.write(json.dumps(mono_spec.to_dict(), indent=4))
 
-    def _export_specifications(self, repository, sdk):
+    def _export_specifications(self):
         """
         """
-        specifications, count = self.core_controller.storage_controller.get_all(parent=repository, resource_name=sdk.SDSpecification.rest_name)
-        apiinfo = self._export_apiinfo(repository=repository, sdk=sdk)
+        specifications, count = self._storage_controller.get_all(parent=self._repository, resource_name=self._sdk.SDSpecification.rest_name)
+        apiinfo = self._export_apiinfo()
 
         for specification in specifications:
 
-            abstracts, count = self.core_controller.storage_controller.get_all(parent=specification, resource_name=sdk.SDAbstract.rest_name)
+            abstracts, count = self._storage_controller.get_all(parent=specification, resource_name=self._sdk.SDAbstract.rest_name)
 
             mono_spec = Specification(monolithe_config=None, filename=specification.name)
 
@@ -91,16 +77,16 @@ class SDRepositoryExporterLogicPlugin(GALogicPlugin):
             mono_spec.allows_delete = specification.allows_delete
             mono_spec.extends       = [abstract.name.replace(".spec", "") for abstract in abstracts]
 
-            mono_spec.child_apis  = self._export_child_apis(specification=specification, apiinfo=apiinfo, sdk=sdk)
-            mono_spec.attributes  = self._export_attributes(specification=specification, sdk=sdk)
+            mono_spec.child_apis  = self._export_child_apis(specification=specification, apiinfo=apiinfo)
+            mono_spec.attributes  = self._export_attributes(specification=specification)
 
             with open('/Users/Tonio/Desktop/vomit/%s' % specification.name, 'w') as f:
                 f.write(json.dumps(mono_spec.to_dict(), indent=4))
 
-    def _export_apiinfo(self, repository, sdk):
+    def _export_apiinfo(self):
         """
         """
-        objects, count = self.core_controller.storage_controller.get_all(parent=repository, resource_name=sdk.SDAPIInfo.rest_name, filter='parentID == %s' % repository.id)
+        objects, count = self._storage_controller.get_all(parent=self._repository, resource_name=self._sdk.SDAPIInfo.rest_name, filter='parentID == %s' % self._repository.id)
         apiinfo = objects[0]
 
         with open('/Users/Tonio/Desktop/vomit/api.info', 'w') as f:
@@ -109,16 +95,16 @@ class SDRepositoryExporterLogicPlugin(GALogicPlugin):
 
         return apiinfo
 
-    def _export_child_apis(self, specification, apiinfo, sdk):
+    def _export_child_apis(self, specification, apiinfo):
         """
         """
         ret = []
-        child_apis, count = self.core_controller.storage_controller.get_all(parent=specification, resource_name=sdk.SDChildAPI.rest_name)
+        child_apis, count = self._storage_controller.get_all(parent=specification, resource_name=self._sdk.SDChildAPI.rest_name)
 
         for child_api in child_apis:
 
             mono_child_api = SpecificationAPI(specification=specification)
-            remote_specification = self.core_controller.storage_controller.get(resource_name=sdk.SDSpecification.rest_name, identifier=child_api.associated_specification_id)
+            remote_specification = self._storage_controller.get(resource_name=self._sdk.SDSpecification.rest_name, identifier=child_api.associated_specification_id)
 
             mono_child_api.specification = remote_specification.object_rest_name
             mono_child_api.deprecated    = child_api.deprecated
@@ -132,11 +118,11 @@ class SDRepositoryExporterLogicPlugin(GALogicPlugin):
 
         return ret
 
-    def _export_attributes(self, specification, sdk):
+    def _export_attributes(self, specification):
         """
         """
         ret = []
-        attributes, count = self.core_controller.storage_controller.get_all(parent=specification, resource_name=sdk.SDAttribute.rest_name)
+        attributes, count = self._storage_controller.get_all(parent=specification, resource_name=self._sdk.SDAttribute.rest_name)
 
         for attribute in attributes:
             mono_attr = SpecificationAttribute(specification=None)

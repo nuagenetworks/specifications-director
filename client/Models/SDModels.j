@@ -1,5 +1,6 @@
 @import <RESTCappuccino/NURESTModelController.j>
 @import "RESTFetchers/SDRESTFetchers.j"
+@import "Jobs/SDJobs.j"
 
 @import "SDAbstract.j"
 @import "SDAPIInfo.j"

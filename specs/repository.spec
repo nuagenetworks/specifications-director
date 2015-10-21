@@ -21,6 +21,10 @@
             "specification": "apiinfo",
             "get": true,
             "create": true
+        },
+        {
+            "specification": "job",
+            "create": true
         }
     ],
 

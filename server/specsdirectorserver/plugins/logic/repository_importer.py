@@ -5,72 +5,52 @@ import json
 from github import Github
 from monolithe.specifications import Specification, RepositoryManager
 from monolithe.specifications.repositorymanager import MODE_NORMAL, MODE_RAW_SPECS, MODE_RAW_ABSTRACTS
-
 from garuda.core.models import GAError, GAPluginManifest, GARequest
-from garuda.core.plugins import GALogicPlugin
-from garuda.core.lib import SDKLibrary
 
-logger = logging.getLogger('specsdirector.plugins.logic.repositories.importer')
-
-class SDRepositoryImporterLogicPlugin(GALogicPlugin):
+class SDRepositoryImporter():
     """
 
     """
-
-    @classmethod
-    def manifest(cls):
+    def __init__(self, repository, storage_controller, sdk):
         """
         """
-        return GAPluginManifest(name='repositories importer logic', version=1.0, identifier="specsdirector.plugins.logic.repositories.importer",
-                                subscriptions={
-                                    "repository": [GARequest.ACTION_CREATE]
-                                })
+        self._sdk = sdk
+        self._repository = repository
+        self._storage_controller = storage_controller
 
-    def did_perform_write(self, context):
+    def import_specifications(self):
         """
         """
-
-        if context.request.action == GARequest.ACTION_UPDATE:
-            self._export_spec(context)
-            return context
-
-        logger.debug("populating")
-
-        sdk = SDKLibrary().get_sdk('default')
-        repository = context.object
-
         manager = RepositoryManager(monolithe_config=None,
-                                    api_url=repository.url,
-                                    login_or_token=repository.password,
+                                    api_url=self._repository.url,
+                                    login_or_token=self._repository.password,
                                     password=None,
-                                    organization=repository.organization,
-                                    repository=repository.repository,
-                                    repository_path=repository.path)
+                                    organization=self._repository.organization,
+                                    repository=self._repository.repository,
+                                    repository_path=self._repository.path)
 
         # api info
-        apiinfo = sdk.SDAPIInfo(data=manager.get_api_info(branch=repository.branch))
-        self.core_controller.storage_controller.create(apiinfo, repository)
+        apiinfo = self._sdk.SDAPIInfo(data=manager.get_api_info(branch=self._repository.branch))
+        self._storage_controller.create(apiinfo, self._repository)
 
         # astract specs (first!)
-        self._import_specs(manager=manager, repository=repository, mode=MODE_RAW_ABSTRACTS, sdk=sdk)
+        self._import_specs(manager=manager, mode=MODE_RAW_ABSTRACTS)
 
         # solid specs
-        self._import_specs(manager=manager, repository=repository, mode=MODE_RAW_SPECS, sdk=sdk)
-
-        return context
+        self._import_specs(manager=manager, mode=MODE_RAW_SPECS)
 
     ## UTILITIES
 
-    def _import_specs(self, manager, repository, mode, sdk):
+    def _import_specs(self, manager, mode):
         """
         """
-        mono_specifications = manager.get_all_specifications(branch=repository.branch, mode=mode)
+        mono_specifications = manager.get_all_specifications(branch=self._repository.branch, mode=mode)
 
         specs_info = {}
 
         for rest_name, mono_specification in mono_specifications.iteritems():
 
-            specification = sdk.SDSpecification() if mode == MODE_RAW_SPECS else sdk.SDAbstract()
+            specification = self._sdk.SDSpecification() if mode == MODE_RAW_SPECS else self._sdk.SDAbstract()
             specification.name = mono_specification.filename
             specification.description = mono_specification.description
             specification.package = mono_specification.package
@@ -81,16 +61,16 @@ class SDRepositoryImporterLogicPlugin(GALogicPlugin):
             specification.allows_create = mono_specification.allows_create
             specification.allows_get = mono_specification.allows_get
 
-            self.core_controller.storage_controller.create(specification, repository)
+            self._storage_controller.create(specification, self._repository)
 
-            extensions = self._import_extends(mono_specification=mono_specification, repository=repository, specification=specification,  sdk=sdk)
-            attributes = self._import_attributes(mono_specification=mono_specification, specification=specification, sdk=sdk)
+            extensions = self._import_extends(mono_specification=mono_specification, specification=specification)
+            attributes = self._import_attributes(mono_specification=mono_specification, specification=specification)
 
             specs_info[mono_specification.remote_name] = {'mono_specification': mono_specification , 'specification': specification}
 
-        self._import_apis(repository=repository, specification_info=specs_info, mode=mode, sdk=sdk)
+        self._import_apis(specification_info=specs_info, mode=mode)
 
-    def _import_apis(self, repository, specification_info, mode, sdk):
+    def _import_apis(self, specification_info, mode):
         """
         """
         for rest_name, spec_info in specification_info.iteritems():
@@ -100,7 +80,7 @@ class SDRepositoryImporterLogicPlugin(GALogicPlugin):
 
             for mono_api in mono_specification.child_apis:
 
-                api               = sdk.SDChildAPI()
+                api               = self._sdk.SDChildAPI()
                 api.deprecated    = mono_api.deprecated
                 api.relationship  = mono_api.relationship
                 api.specification = mono_api.specification
@@ -113,33 +93,33 @@ class SDRepositoryImporterLogicPlugin(GALogicPlugin):
                     remote_specification = specification_info[mono_api.specification]['specification']
                     api.associated_specification_id = remote_specification.id
 
-                self.core_controller.storage_controller.create(api, specification)
+                self._storage_controller.create(api, specification)
 
-    def _import_extends(self, repository, mono_specification, specification, sdk):
+    def _import_extends(self, mono_specification, specification):
         """
         """
         extensions = []
 
         for extension_name in mono_specification.extends:
 
-            objects, count = self.core_controller.storage_controller.get_all(parent=repository, resource_name=sdk.SDAbstract.rest_name, filter='name == %s.spec' % extension_name)
+            objects, count = self._storage_controller.get_all(parent=self._repository, resource_name=self._sdk.SDAbstract.rest_name, filter='name == %s.spec' % extension_name)
 
             if count:
                 extensions = extensions + objects
 
         if len(extensions):
-            self.core_controller.storage_controller.assign(sdk.SDAbstract.rest_name, extensions, specification)
+            self._storage_controller.assign(self._sdk.SDAbstract.rest_name, extensions, specification)
 
         return extensions
 
-    def _import_attributes(self, mono_specification, specification, sdk):
+    def _import_attributes(self, mono_specification, specification):
         """
         """
         ret = []
         specification.issues = []
 
         for mono_attribute in mono_specification.attributes:
-            attr = sdk.SDAttribute()
+            attr = self._sdk.SDAttribute()
             attr.name = mono_attribute.remote_name
             attr.allowed_chars = mono_attribute.allowed_chars
             attr.allowed_choices = mono_attribute.allowed_choices
@@ -168,13 +148,13 @@ class SDRepositoryImporterLogicPlugin(GALogicPlugin):
             if not attr.validate():
 
                 specification.issues.append('Some attributes were not declared correctly. Please review attributes')
-                self.core_controller.storage_controller.update(specification)
+                self._storage_controller.update(specification)
 
                 for property_name, error in attr.errors.iteritems():
                     attr.issues.append('Some error has been found in attribute %s declaration: Type has been reverted to "string". please review' % attr.name)
                     attr.type = 'string'
 
-            self.core_controller.storage_controller.create(attr, specification)
+            self._storage_controller.create(attr, specification)
 
             ret.append(attr)
 
