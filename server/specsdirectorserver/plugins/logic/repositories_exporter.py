@@ -75,7 +75,7 @@ class SDRepositoryExporterLogicPlugin(GALogicPlugin):
 
         for specification in specifications:
 
-            abstracts, count = self.core_controller.storage_controller.get_all(parent=repository, resource_name=sdk.SDAbstract.rest_name)
+            abstracts, count = self.core_controller.storage_controller.get_all(parent=specification, resource_name=sdk.SDAbstract.rest_name)
 
             mono_spec = Specification(monolithe_config=None, filename=specification.name)
 
