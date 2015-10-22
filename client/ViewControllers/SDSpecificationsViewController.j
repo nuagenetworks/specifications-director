@@ -16,6 +16,7 @@
 */
 
 @import <Foundation/Foundation.j>
+@import <AppKit/CPVisualEffectView.j>
 @import <NUKit/NUModule.j>
 @import "../Models/SDModels.j"
 
@@ -25,7 +26,7 @@
 
 @implementation SDSpecificationsViewController : NUModule
 {
-    @outlet CPView                      viewWorking;
+    @outlet CPVisualEffectView          viewWorking;
     @outlet CPTextField                 labelWorking;
     @outlet SDModelViewController       modelController;
     @outlet SDAttributesViewController  attributesController;

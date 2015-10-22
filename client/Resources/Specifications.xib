@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15B38b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDSpecificationsViewController">
@@ -26,7 +26,7 @@
                 <outlet property="viewSubtitleContainer" destination="Ee1-0X-LGQ" id="3Uo-Gs-3KL"/>
                 <outlet property="viewTabsContainer" destination="MUk-1k-Qz6" id="bP1-g2-AoR"/>
                 <outlet property="viewTitleContainer" destination="61" id="U77-gg-e5i"/>
-                <outlet property="viewWorking" destination="282-Yj-mmq" id="ed2-IU-flb"/>
+                <outlet property="viewWorking" destination="7rg-kB-oaQ" id="4wB-wT-fYk"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -540,7 +540,7 @@ Finally, it contains the list of all the attributes the represented object will 
         <viewController nibName="Model" id="0xe-57-96x" customClass="SDModelViewController"/>
         <viewController nibName="Attributes" id="SXe-gr-6DS" customClass="SDAttributesViewController"/>
         <viewController nibName="APIs" id="mdX-6R-3Ir" customClass="SDAPIsViewController"/>
-        <customView id="282-Yj-mmq">
+        <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" state="followsWindowActiveState" id="7rg-kB-oaQ">
             <rect key="frame" x="0.0" y="0.0" width="211" height="148"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -556,7 +556,7 @@ Finally, it contains the list of all the attributes the represented object will 
                 </textField>
             </subviews>
             <animations/>
-            <point key="canvasLocation" x="1095.5" y="-33"/>
-        </customView>
+            <point key="canvasLocation" x="1203.5" y="-26"/>
+        </visualEffectView>
     </objects>
 </document>

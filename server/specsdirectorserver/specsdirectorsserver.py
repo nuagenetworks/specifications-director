@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import logging
 import ldap
-from specdk.v1_0 import SDJob
+import specdk.v1_0 as specdk
 from garuda import Garuda
 from garuda.channels.rest import GAFalconChannel, GAFlaskChannel
 from garuda.plugins.storage import GAMongoStoragePlugin
@@ -34,7 +34,10 @@ def auth_function(request, session, root_object_class, storage_controller):
 def db_init(db, root_object_class):
     """
     """
-    db[SDJob.rest_name].create_index('lastUpdatedDate', expireAfterSeconds=60)
+    import pymongo
+    db[specdk.SDJob.rest_name].create_index('lastUpdatedDate', expireAfterSeconds=60)
+    # db[specdk.SDSpecification.rest_name].create_index('name', pymongo.DESCENDING])
+
 
 
 def start():
