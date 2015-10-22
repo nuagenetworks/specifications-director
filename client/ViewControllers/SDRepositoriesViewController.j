@@ -76,6 +76,9 @@
 
     [SDRepository setCurrentRepository:nil];
     [self setApplicationNameAndIcon];
+
+    [hoverView showWithAnimation:NO];
+    [hoverView setEnabled:NO];
 }
 
 - (void)moduleDidSelectObjects:(CPArray)someObject

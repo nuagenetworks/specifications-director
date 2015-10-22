@@ -91,35 +91,9 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" id="87u-Jy-3hB">
-                    <rect key="frame" x="9" y="17" width="23" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <buttonCell key="cell" type="push" title="P" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RP4-LI-FlS">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="miniSystem"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="pull:" target="iHs-D3-jz7" id="2zJ-mE-zqU"/>
-                    </connections>
-                </button>
-                <button verticalHuggingPriority="750" id="UJS-1D-cch">
-                    <rect key="frame" x="9" y="3" width="23" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <buttonCell key="cell" type="push" title="P" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mh6-g4-j4B">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="miniSystem"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="commit:" target="iHs-D3-jz7" id="E5w-8d-dZY"/>
-                    </connections>
-                </button>
             </subviews>
             <animations/>
             <connections>
-                <outlet property="buttonCommit" destination="UJS-1D-cch" id="SyG-QJ-NSK"/>
-                <outlet property="buttonPull" destination="87u-Jy-3hB" id="SyS-qV-rAd"/>
                 <outlet property="fieldName" destination="cF5-fm-fDX" id="Aka-5e-fKD"/>
                 <outlet property="fieldOrganization" destination="8sg-UL-tHT" id="m76-L9-3mr"/>
                 <outlet property="fieldRepository" destination="Usm-Te-frT" id="2rs-9Y-OZ4"/>

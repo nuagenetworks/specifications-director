@@ -25,6 +25,8 @@
 
 @implementation SDSpecificationsViewController : NUModule
 {
+    @outlet CPView                      viewWorking;
+    @outlet CPTextField                 labelWorking;
     @outlet SDModelViewController       modelController;
     @outlet SDAttributesViewController  attributesController;
     @outlet SDAPIsViewController        APIsController;
@@ -51,7 +53,10 @@
     [self registerDataViewWithName:@"specificationDataView" forClass:SDSpecification];
     [self setModuleTitle:@"Specifications"];
 
-    [self setSubModules:[modelController, attributesController, APIsController]]
+    [self setSubModules:[modelController, attributesController, APIsController]];
+
+    [viewWorking setBackgroundColor:NUSkinColorWhite];
+    [viewWorking setAlphaValue:0.8];
 }
 
 - (void)configureContexts
@@ -60,6 +65,63 @@
     [context setPopover:popover];
     [context setFetcherKeyPath:@"specifications"];
     [self registerContext:context forClass:SDSpecification];
+}
+
+- (void)moduleWillHide
+{
+    [super moduleWillHide];
+    [self showWorkingView:NO title:@""];
+}
+
+#pragma mark -
+#pragma mark Utilities
+
+- (void)showWorkingView:(BOOL)shouldShow title:(CPString)aTitle
+{
+    if (shouldShow)
+    {
+        if ([viewWorking superview])
+            return;
+
+        [labelWorking setStringValue:aTitle];
+
+        [viewWorking setFrame:[[[CPApp mainWindow] contentView] bounds]];
+        [[[CPApp mainWindow] contentView] addSubview:viewWorking];
+        [[NUDataTransferController defaultDataTransferController] showFetchingViewOnView:viewWorking];
+    }
+    else
+    {
+        if (![viewWorking superview])
+            return;
+
+        [[NUDataTransferController defaultDataTransferController] hideFetchingViewFromView:viewWorking];
+        [viewWorking removeFromSuperview];
+    }
+}
+
+#pragma mark -
+#pragma mark Actions
+
+- (@action)pull:(id)aSender
+{
+    [[NURESTJobsController defaultController] postJob:[SDPullJob new] toEntity:_currentParent andCallSelector:@selector(_didPull:) ofObject:self];
+    [self showWorkingView:YES title:@"Pulling Specifications..."];
+}
+
+- (void)_didPull:(NURESTJob)aJob
+{
+    [self showWorkingView:NO title:@""];
+}
+
+- (@action)commit:(id)aSender
+{
+    [[NURESTJobsController defaultController] postJob:[SDCommitJob new] toEntity:_currentParent andCallSelector:@selector(_didCommit:) ofObject:self];
+    [self showWorkingView:YES title:@"Pushing Specifications..."]
+}
+
+- (void)_didCommit:(NURESTJob)aJob
+{
+    [self showWorkingView:NO title:@""];
 }
 
 @end

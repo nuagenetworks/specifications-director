@@ -1,7 +1,7 @@
 @import <Foundation/Foundation.j>
 @import "Abstracts/SDRESTObject.j"
 
-SDAttributeTypeBoolean = @"boolean"
+SDAttributeTypeBoolean = @"bool"
 SDAttributeTypeEnum    = @"enum"
 SDAttributeTypeFloat   = @"float"
 SDAttributeTypeInteger = @"integer"

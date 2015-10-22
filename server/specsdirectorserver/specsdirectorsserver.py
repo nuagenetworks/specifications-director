@@ -25,6 +25,7 @@ def auth_function(request, session, root_api, storage_controller):
     except Exception as ex:
         return None
 
+    auth.id = request.username
     auth.api_key = session.uuid
     auth.password = None
     auth.user_name = request.username

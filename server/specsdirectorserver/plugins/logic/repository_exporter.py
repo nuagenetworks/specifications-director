@@ -4,20 +4,21 @@ import json
 
 from monolithe.specifications import Specification, SpecificationAttribute, SpecificationAPI, RepositoryManager
 
-from garuda.core.models import GAError, GAPluginManifest, GARequest
+from garuda.core.models import GAError, GAPluginManifest, GARequest, GAPushEvent
 
 class SDRepositoryExporter():
     """
 
     """
 
-    def __init__(self, repository, storage_controller, sdk):
+    def __init__(self, repository, storage_controller, push_controller, job, sdk):
         """
         """
         self._sdk = sdk
         self._repository = repository
+        self._job = job
         self._storage_controller = storage_controller
-
+        self._push_controller = push_controller
 
     def export_specifications(self):
         """
@@ -25,7 +26,18 @@ class SDRepositoryExporter():
         self._export_specifications()
         self._export_abstracts()
 
+        self._set_job_complete()
+
     ## UTILITIES
+
+    def _set_job_complete(self):
+        """
+        """
+        self._job.progress = 1.0
+        self._job.status = 'SUCCESS'
+        self._storage_controller.update(self._job)
+        event = GAPushEvent(action=GARequest.ACTION_UPDATE, entity=self._job)
+        self._push_controller.push_events(events=[event])
 
     def _export_abstracts(self):
         """
@@ -38,9 +50,9 @@ class SDRepositoryExporter():
             mono_spec = Specification(monolithe_config=None, filename=abstract.name)
 
             mono_spec.description   = abstract.description
-            mono_spec.name          = abstract.entity_name
+            mono_spec.entity_name   = abstract.entity_name
             mono_spec.package       = abstract.package
-            mono_spec.remote_name   = abstract.object_rest_name
+            mono_spec.rest_name   = abstract.object_rest_name
             mono_spec.resource_name = abstract.object_resource_name
             mono_spec.allows_get    = abstract.allows_get
             mono_spec.allows_update = abstract.allows_update
@@ -66,9 +78,9 @@ class SDRepositoryExporter():
             mono_spec = Specification(monolithe_config=None, filename=specification.name)
 
             mono_spec.description   = specification.description
-            mono_spec.name          = specification.entity_name
+            mono_spec.entity_name   = specification.entity_name
             mono_spec.package       = specification.package
-            mono_spec.remote_name   = specification.object_rest_name
+            mono_spec.rest_name   = specification.object_rest_name
             mono_spec.resource_name = specification.object_resource_name
             mono_spec.is_root       = specification.root
             mono_spec.allows_get    = specification.allows_get
@@ -125,10 +137,10 @@ class SDRepositoryExporter():
         attributes, count = self._storage_controller.get_all(parent=specification, resource_name=self._sdk.SDAttribute.rest_name)
 
         for attribute in attributes:
-            mono_attr = SpecificationAttribute(specification=None)
+            mono_attr = SpecificationAttribute(rest_name=attribute.name)
 
             mono_attr.description     = attribute.description
-            mono_attr.remote_name     = attribute.name
+            mono_attr.rest_name     = attribute.name
             mono_attr.type            = attribute.type
             mono_attr.allowed_chars   = attribute.allowed_chars
             mono_attr.allowed_choices = attribute.allowed_choices
