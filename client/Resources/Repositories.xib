@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15B38b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
@@ -597,7 +597,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" autosaveColumns="NO" rowHeight="58" indentationPerLevel="14" outlineTableColumn="IWy-IF-fo5" id="PNx-HB-2ff">
-                                <rect key="frame" x="0.0" y="0.0" width="230" height="58"/>
+                                <rect key="frame" x="0.0" y="0.0" width="214" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <animations/>
                                 <size key="intercellSpacing" width="3" height="0.0"/>
@@ -653,7 +653,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                 </customView>
             </subviews>
             <animations/>
-            <point key="canvasLocation" x="197.5" y="-6"/>
+            <point key="canvasLocation" x="273" y="-50"/>
         </customView>
         <customView id="hoT-eQ-Umk" customClass="NUHoverView">
             <rect key="frame" x="0.0" y="0.0" width="230" height="438"/>
