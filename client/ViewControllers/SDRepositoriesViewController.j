@@ -21,6 +21,11 @@
     return @"repositories";
 }
 
++ (BOOL)automaticSelectionSaving
+{
+    return NO;
+}
+
 + (CPImage)moduleIcon
 {
     return [SDRepostory icon];
@@ -76,6 +81,7 @@
 
     [SDRepository setCurrentRepository:nil];
     [self setApplicationNameAndIcon];
+    [tableView deselectAll];
 
     [hoverView showWithAnimation:NO];
     [hoverView setEnabled:NO];
