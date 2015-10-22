@@ -63,7 +63,7 @@ class SDRepositoryExporter():
             mono_spec.attributes  = self._export_attributes(specification=abstract)
 
             with open('/Users/Tonio/Desktop/vomit/%s' % abstract.name, 'w') as f:
-                f.write(json.dumps(mono_spec.to_dict(), indent=4))
+                f.write(json.dumps(mono_spec.to_dict(), indent=4, sort_keys=True))
 
     def _export_specifications(self):
         """
@@ -93,7 +93,7 @@ class SDRepositoryExporter():
             mono_spec.attributes  = self._export_attributes(specification=specification)
 
             with open('/Users/Tonio/Desktop/vomit/%s' % specification.name, 'w') as f:
-                f.write(json.dumps(mono_spec.to_dict(), indent=4))
+                f.write(json.dumps(mono_spec.to_dict(), indent=4, sort_keys=True))
 
     def _export_apiinfo(self):
         """
@@ -103,7 +103,7 @@ class SDRepositoryExporter():
 
         with open('/Users/Tonio/Desktop/vomit/api.info', 'w') as f:
             info = {'version': apiinfo.version, 'prefix': apiinfo.prefix, 'root': apiinfo.root}
-            f.write(json.dumps(info, indent=4))
+            f.write(json.dumps(info, indent=4, sort_keys=True))
 
         return apiinfo
 

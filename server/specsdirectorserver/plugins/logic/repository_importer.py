@@ -95,10 +95,12 @@ class SDRepositoryImporter():
             specification.package = mono_specification.package
             specification.object_rest_name = mono_specification.rest_name
             specification.object_resource_name = mono_specification.resource_name
-            specification.entity_name = mono_specification.instance_name
+            specification.entity_name = mono_specification.entity_name
             specification.root = mono_specification.is_root
             specification.allows_create = mono_specification.allows_create
             specification.allows_get = mono_specification.allows_get
+            specification.allows_update = mono_specification.allows_update
+            specification.allows_delete = mono_specification.allows_delete
 
             self._storage_controller.create(specification, self._repository)
 
