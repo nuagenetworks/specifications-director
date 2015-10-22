@@ -127,14 +127,14 @@ class SDRepositoryImporter():
                 api               = self._sdk.SDChildAPI()
                 api.deprecated    = mono_api.deprecated
                 api.relationship  = mono_api.relationship
-                api.specification = mono_api.specification
+                api.remote_specification_name = mono_api.remote_specification_name
                 api.allows_create = mono_api.allows_create
                 api.allows_get    = mono_api.allows_get
                 api.allows_update = mono_api.allows_update
                 api.allows_delete = mono_api.allows_delete
 
                 if mode == MODE_RAW_SPECS:
-                    remote_specification = specification_info[mono_api.specification]['specification']
+                    remote_specification = specification_info[mono_api.remote_specification_name]['specification']
                     api.associated_specification_id = remote_specification.id
 
                 self._storage_controller.create(api, specification)

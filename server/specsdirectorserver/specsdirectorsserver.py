@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import logging
 import ldap
-from specdk.v1_0 import SDAuth, SDJob
+from specdk.v1_0 import SDJob
 from garuda import Garuda
 from garuda.channels.rest import GAFalconChannel, GAFlaskChannel
 from garuda.plugins.storage import GAMongoStoragePlugin
@@ -13,10 +13,10 @@ from plugins.logic.apis import SDAPILogicPlugin
 from plugins.logic.specifications import SDSpecificationLogicPlugin
 from plugins.logic.attributes import SDAttributeLogicPlugin
 
-def auth_function(request, session, root_api, storage_controller):
+def auth_function(request, session, root_object_class, storage_controller):
     """
     """
-    auth = SDAuth()
+    auth = root_object_class()
 
     # try:
     #     base_dn = 'uid=%s,cn=users,cn=accounts,dc=us,dc=alcatel-lucent,dc=com' % request.username
@@ -31,7 +31,7 @@ def auth_function(request, session, root_api, storage_controller):
     auth.user_name = request.username
     return auth
 
-def db_init(db, root_rest_name):
+def db_init(db, root_object_class):
     """
     """
     db[SDJob.rest_name].create_index('lastUpdatedDate', expireAfterSeconds=60)

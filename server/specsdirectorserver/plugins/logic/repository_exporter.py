@@ -118,7 +118,7 @@ class SDRepositoryExporter():
             mono_child_api = SpecificationAPI(remote_specification_name=specification.name)
             remote_specification = self._storage_controller.get(resource_name=self._sdk.SDSpecification.rest_name, identifier=child_api.associated_specification_id)
 
-            mono_child_api.specification = remote_specification.object_rest_name
+            mono_child_api.remote_specification_name = remote_specification.object_rest_name
             mono_child_api.deprecated    = child_api.deprecated
             mono_child_api.relationship  = child_api.relationship
             mono_child_api.allows_get    = child_api.allows_get
