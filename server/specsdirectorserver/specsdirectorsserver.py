@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import logging
 import ldap
-from specdk.v1_0 import SDAuth
+from specdk.v1_0 import SDAuth, SDJob
 from garuda import Garuda
 from garuda.channels.rest import GAFalconChannel, GAFlaskChannel
 from garuda.plugins.storage import GAMongoStoragePlugin
@@ -18,12 +18,12 @@ def auth_function(request, session, root_api, storage_controller):
     """
     auth = SDAuth()
 
-    try:
-        base_dn = 'uid=%s,cn=users,cn=accounts,dc=us,dc=alcatel-lucent,dc=com' % request.username
-        ldap_connection = ldap.open('nuageldap1.us.alcatel-lucent.com')
-        ldap_connection.bind_s(base_dn, request.token)
-    except Exception as ex:
-        return None
+    # try:
+    #     base_dn = 'uid=%s,cn=users,cn=accounts,dc=us,dc=alcatel-lucent,dc=com' % request.username
+    #     ldap_connection = ldap.open('nuageldap1.us.alcatel-lucent.com')
+    #     ldap_connection.bind_s(base_dn, request.token)
+    # except Exception as ex:
+    #     return None
 
     auth.id = request.username
     auth.api_key = session.uuid
@@ -31,13 +31,17 @@ def auth_function(request, session, root_api, storage_controller):
     auth.user_name = request.username
     return auth
 
+def db_init(db, root_rest_name):
+    """
+    """
+    db[SDJob.rest_name].create_index('lastUpdatedDate', expireAfterSeconds=60)
 
 
 def start():
     """
     """
     channel = GAFalconChannel(ssl_certificate='ssl/server.crt', ssl_key='ssl/server.key')
-    storage_plugin = GAMongoStoragePlugin(db_name='specsdirector')
+    storage_plugin = GAMongoStoragePlugin(db_name='specsdirector', db_initialization_function=db_init)
     authentication_plugin = GASimpleAuthenticationPlugin(auth_function=auth_function)
     sdk_infos = [{'identifier': 'default', 'module': 'specdk.v1_0'}]
     job_logic_plugin = SDJobLogicPlugin()
