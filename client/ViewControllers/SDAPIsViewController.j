@@ -65,7 +65,6 @@
         [labelRelationship setHidden:YES];
         [checkBoxAllowsUpdate setHidden:YES];
         [checkBoxAllowsCreate setHidden:NO];
-        [editedObject setAllowsCreate:YES];
         [editedObject setAllowsUpdate:NO];
         [editedObject setRelationship:SDAPIRelationshipRoot];
         return;
@@ -79,7 +78,6 @@
             [labelRelationship setHidden:NO];
             [checkBoxAllowsUpdate setHidden:YES];
             [checkBoxAllowsCreate setHidden:NO];
-            [editedObject setAllowsCreate:YES];
             [editedObject setAllowsUpdate:NO];
             break;
 
@@ -90,7 +88,6 @@
             [checkBoxAllowsUpdate setHidden:NO];
             [checkBoxAllowsCreate setHidden:YES];
             [editedObject setAllowsCreate:NO];
-            [editedObject setAllowsUpdate:YES];
             break;
     }
 }
