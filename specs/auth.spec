@@ -7,13 +7,13 @@
     "package": "github",
     "root": true,
 
-    "children": [
-        {
-            "specification": "repository",
+    "children": {
+        "repository": {
+            "membership": "root",
             "get": true,
             "create": true
         }
-    ],
+    },
 
     "attributes": {
         "userName": {

@@ -1,26 +1,23 @@
 {
     "package": "specifications",
 
-    "children": [
-        {
-            "specification": "attribute",
+    "children": {
+        "attribute": {
             "relationship": "child",
             "get": true,
             "create": true
         },
-        {
-            "specification": "childapi",
+        "childapi": {
             "relationship": "child",
             "get": true,
             "create": false
         },
-        {
-            "specification": "abstract",
+        "abstract": {
             "relationship": "member",
             "get": true,
             "update": true
         }
-    ],
+    },
 
     "attributes": {
         "name": {

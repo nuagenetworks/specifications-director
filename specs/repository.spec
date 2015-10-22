@@ -6,27 +6,24 @@
     "extends": [],
     "package": "github",
 
-    "children": [
-        {
-            "specification": "specification",
+    "children": {
+        "specification": {
             "get": true,
             "create": true
         },
-        {
-            "specification": "abstract",
+        "abstract": {
             "get": true,
             "create": true
         },
-        {
-            "specification": "apiinfo",
+        "apiinfo": {
             "get": true,
             "create": true
         },
-        {
-            "specification": "job",
+        "job": {
+            "get": true,
             "create": true
         }
-    ],
+    },
 
     "attributes": {
         "name": {
