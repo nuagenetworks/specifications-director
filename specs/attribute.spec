@@ -1,10 +1,12 @@
 {
-    "rest_name": "attribute",
-    "resource_name": "attributes",
-    "entity_name": "Attribute",
-    "package": "specifications",
-    "extends": ["@parsable"],
-    "description": "Represents an attribute of an object.",
+    "model": {
+        "rest_name": "attribute",
+        "resource_name": "attributes",
+        "entity_name": "Attribute",
+        "package": "specifications",
+        "extends": ["@parsable"],
+        "description": "Represents an attribute of an object."
+    },
 
     "attributes": {
         "name": {

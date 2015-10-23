@@ -1,10 +1,12 @@
 {
-    "rest_name": "apiinfo",
-    "resource_name": "apiinfos",
-    "entity_name": "APIInfo",
-    "description": "Represents information about the entire specifications.",
-    "extends": ["@parsable"],
-    "package": "specifications",
+    "model": {
+        "rest_name": "apiinfo",
+        "resource_name": "apiinfos",
+        "entity_name": "APIInfo",
+        "description": "Represents information about the entire specifications.",
+        "extends": ["@parsable"],
+        "package": "specifications"
+    },
 
     "attributes": {
         "version": {

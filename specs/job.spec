@@ -1,10 +1,12 @@
 {
-    "rest_name": "job",
-    "resource_name": "jobs",
-    "description": "Represent a job",
-    "entity_name": "Job",
-    "package": "specifications",
-    "extends": [],
+    "model": {
+        "rest_name": "job",
+        "resource_name": "jobs",
+        "description": "Represent a job",
+        "entity_name": "Job",
+        "package": "specifications",
+        "extends": []
+    },
 
     "attributes": {
         "command": {

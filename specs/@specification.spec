@@ -1,5 +1,7 @@
 {
-    "package": "specifications",
+    "model" : {
+        "package": "specifications"
+    },
 
     "children": {
         "attribute": {

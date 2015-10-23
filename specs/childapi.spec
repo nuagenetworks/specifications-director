@@ -1,10 +1,12 @@
 {
-    "rest_name": "childapi",
-    "resource_name": "childapis",
-    "description": "Represents an child api.",
-    "entity_name": "ChildAPI",
-    "package": "specifications",
-    "extends": ["@parsable"],
+    "model": {
+        "rest_name": "childapi",
+        "resource_name": "childapis",
+        "description": "Represents an child api.",
+        "entity_name": "ChildAPI",
+        "package": "specifications",
+        "extends": ["@parsable"]
+    },
 
     "attributes": {
         "path": {

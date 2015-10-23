@@ -1,10 +1,12 @@
 {
-    "rest_name": "repository",
-    "resource_name": "repositories",
-    "entity_name": "Repository",
-    "description": "Represents a github repository.",
-    "extends": [],
-    "package": "github",
+    "model": {
+        "rest_name": "repository",
+        "resource_name": "repositories",
+        "entity_name": "Repository",
+        "description": "Represents a github repository.",
+        "extends": [],
+        "package": "github"
+    },
 
     "children": {
         "specification": {
