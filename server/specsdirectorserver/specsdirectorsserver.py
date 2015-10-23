@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import logging
-# import ldap
+import simpleldap
 import argparse
 import specdk.v1_0 as specdk
 from garuda import Garuda
-from garuda.channels.rest import GAFalconChannel, GAFlaskChannel
+from garuda.channels.rest import GAFalconChannel
 from garuda.plugins.storage import GAMongoStoragePlugin
 from garuda.plugins.authentication import GASimpleAuthenticationPlugin
 
@@ -19,12 +19,11 @@ def auth_function(request, session, root_object_class, storage_controller):
     """
     auth = root_object_class()
 
-    # try:
-    #     base_dn = 'uid=%s,cn=users,cn=accounts,dc=us,dc=alcatel-lucent,dc=com' % request.username
-    #     ldap_connection = ldap.open('nuageldap1.us.alcatel-lucent.com')
-    #     ldap_connection.bind_s(base_dn, request.token)
-    # except Exception as ex:
-    #     return None
+    base_dn = 'uid=%s,cn=users,cn=accounts,dc=us,dc=alcatel-lucent,dc=com' % request.username
+    ldap_connection = simpleldap.Connection('nuageldap1.us.alcatel-lucent.com')
+
+    if not ldap_connection.authenticate(base_dn, request.token):
+        return None
 
     auth.id = request.username
     auth.api_key = session.uuid
@@ -38,7 +37,6 @@ def db_init(db, root_object_class):
     import pymongo
     db[specdk.SDJob.rest_name].create_index('lastUpdatedDate', expireAfterSeconds=60)
     db[specdk.SDSpecification.rest_name].create_index([('name', pymongo.TEXT)])
-    # db[specdk.SDSpecification.rest_name].create_index('name', pymongo.DESCENDING])
 
 
 

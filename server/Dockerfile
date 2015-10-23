@@ -4,14 +4,17 @@ MAINTAINER Antoine Mercadal <antoine@nuagenetworks.net>
 
 ADD . /app
 
-RUN cd /app/libs && \
+RUN apt-get update && apt-get install -y --force-yes libsasl2-dev libldap2-dev && \
+    cd /app/libs && \
     pip install bambou*.tar.gz && \
     pip install monolithe*.tar.gz && \
     pip install garuda*.tar.gz && \
     pip install specdk*.tar.gz && \
     cd /app && \
     pip install -r requirements.txt && \
-    rm -rf /app/libs
+    rm -rf /app/libs && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 EXPOSE 2000
 WORKDIR /app/specsdirectorserver
