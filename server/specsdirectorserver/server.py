@@ -4,6 +4,7 @@ import logging
 import simpleldap
 import argparse
 import specdk.v1_0 as specdk
+
 from garuda import Garuda
 from garuda.channels.rest import GAFalconChannel
 from garuda.plugins.storage import GAMongoStoragePlugin
@@ -13,6 +14,8 @@ from plugins.logic.jobs import SDJobLogicPlugin
 from plugins.logic.apis import SDAPILogicPlugin
 from plugins.logic.specifications import SDSpecificationLogicPlugin
 from plugins.logic.attributes import SDAttributeLogicPlugin
+
+from lib.github_operations_controller import GitHubOperationsController
 
 def auth_function(request, session, root_object_class, storage_controller):
     """
@@ -57,10 +60,18 @@ def start(mongo_host, mongo_port, mongo_db, redis_host, redis_port, redis_db):
     apis_logic_plugin = SDAPILogicPlugin()
     spec_logic_plugin = SDSpecificationLogicPlugin()
     attr_logic_plugin = SDAttributeLogicPlugin()
+
     plugins = [storage_plugin, authentication_plugin, job_logic_plugin, apis_logic_plugin, spec_logic_plugin, attr_logic_plugin]
 
+    garuda = Garuda(sdks_info=sdk_infos,
+                    redis_info=redis_info,
+                    channels=[channel],
+                    additional_controller_classes=[GitHubOperationsController],
+                    plugins=plugins,
+                    log_level=logging.DEBUG)
 
-    garuda = Garuda(sdks_info=sdk_infos, redis_info=redis_info, channels=[channel], plugins=plugins, log_level=logging.DEBUG)
+
+
     garuda.start()
 
 

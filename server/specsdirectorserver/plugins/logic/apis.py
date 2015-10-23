@@ -1,15 +1,8 @@
 import logging
-import base64
-import json
 
-from github import Github
-from monolithe.specifications import Specification, RepositoryManager
-from monolithe.specifications.repositorymanager import MODE_NORMAL, MODE_RAW_SPECS, MODE_RAW_ABSTRACTS
-
-from garuda.core.models import GAError, GAPluginManifest, GARequest
+from garuda.core.models import GAError, GAPluginManifest, GARequest, GAPushEvent
 from garuda.core.plugins import GALogicPlugin
 from garuda.core.lib import SDKLibrary
-
 
 logger = logging.getLogger('specsdirector.plugins.logic.apis')
 
@@ -24,8 +17,18 @@ class SDAPILogicPlugin(GALogicPlugin):
         """
         return GAPluginManifest(name='apis logic', version=1.0, identifier="specsdirector.plugins.logic.apis",
                                 subscriptions={
-                                    "childapi": [GARequest.ACTION_READALL, GARequest.ACTION_READ]
+                                    "childapi": [   GARequest.ACTION_READALL,
+                                                    GARequest.ACTION_READ,
+                                                    GARequest.ACTION_UPDATE,
+                                                    GARequest.ACTION_CREATE,
+                                                    GARequest.ACTION_DELETE]
                                 })
+
+    def did_register(self):
+        """
+        """
+        self._sdk = SDKLibrary().get_sdk('default')
+        self._github_operations_controller = self.core_controller.additional_controller(identifier='sd.controller.githuboperations')
 
     def preprocess_readall(self, context):
         """
@@ -42,16 +45,32 @@ class SDAPILogicPlugin(GALogicPlugin):
 
         return context
 
+    def did_perform_write(self, context):
+        """
+        """
+        self._commit_specification_change(context)
+        return context
+
+    ## processing
+
+    def _commit_specification_change(self, context):
+        """
+        """
+        specification = context.parent_object
+        repository    = self.core_controller.storage_controller.get(resource_name=self._sdk.SDRepository.rest_name, identifier=specification.parent_id)
+
+        self._github_operations_controller.enqueue_operation(action=context.request.action, repository=repository, specification=specification, commit_message="Update child api %s" % context.object.path)
+
     def _update_path(self, specification, api):
         """
         """
         sdk = SDKLibrary().get_sdk('default')
 
-        associated_specification = self.core_controller.storage_controller.get(resource_name=sdk.SDSpecification.rest_name, identifier=api.associated_specification_id)
+        associated_specification = self.core_controller.storage_controller.get(resource_name=self._sdk.SDSpecification.rest_name, identifier=api.associated_specification_id)
         local_resource_name      = specification.object_resource_name
         associated_resource_name = associated_specification.object_resource_name
 
-        if api.parent_type == sdk.SDAbstract.rest_name and not local_resource_name:
+        if api.parent_type == self._sdk.SDAbstract.rest_name and not local_resource_name:
             local_resource_name = '[[resource_name]]'
 
         if api.relationship == 'root':

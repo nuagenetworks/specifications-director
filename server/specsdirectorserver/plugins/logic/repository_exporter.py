@@ -52,7 +52,7 @@ class SDRepositoryExporter():
             mono_spec.description   = abstract.description
             mono_spec.entity_name   = abstract.entity_name
             mono_spec.package       = abstract.package
-            mono_spec.rest_name   = abstract.object_rest_name
+            mono_spec.rest_name     = abstract.object_rest_name
             mono_spec.resource_name = abstract.object_resource_name
             mono_spec.allows_get    = abstract.allows_get
             mono_spec.allows_update = abstract.allows_update
@@ -80,7 +80,7 @@ class SDRepositoryExporter():
             mono_spec.description   = specification.description
             mono_spec.entity_name   = specification.entity_name
             mono_spec.package       = specification.package
-            mono_spec.rest_name   = specification.object_rest_name
+            mono_spec.rest_name     = specification.object_rest_name
             mono_spec.resource_name = specification.object_resource_name
             mono_spec.is_root       = specification.root
             mono_spec.allows_get    = specification.allows_get
