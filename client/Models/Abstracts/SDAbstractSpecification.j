@@ -10,6 +10,7 @@
     BOOL                _allowsDelete           @accessors(property=allowsDelete);
     BOOL                _allowsGet              @accessors(property=allowsGet);
     BOOL                _allowsUpdate           @accessors(property=allowsUpdate);
+    BOOL                _syncing                @accessors(property=syncing);
     BOOL                _root                   @accessors(property=root);
     CPString            _description            @accessors(property=description);
     CPString            _entityName             @accessors(property=entityName);
@@ -32,6 +33,7 @@
         [self exposeLocalKeyPathToREST:@"allowsGet"];
         [self exposeLocalKeyPathToREST:@"allowsUpdate"];
         [self exposeLocalKeyPathToREST:@"description"];
+        [self exposeLocalKeyPathToREST:@"syncing"];
         [self exposeLocalKeyPathToREST:@"entityName"];
         [self exposeLocalKeyPathToREST:@"name"];
         [self exposeLocalKeyPathToREST:@"objectResourceName"];

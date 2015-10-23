@@ -3,6 +3,7 @@
 
 @implementation SDAPIInfo : SDRESTObject
 {
+    BOOL        _edited     @accessors(property=edited);
     CPString    _prefix     @accessors(property=prefix);
     CPString    _root       @accessors(property=root);
     CPString    _version    @accessors(property=version);
@@ -21,6 +22,7 @@
 {
     if (self = [super init])
     {
+        [self exposeLocalKeyPathToREST:@"edited"];
         [self exposeLocalKeyPathToREST:@"prefix"];
         [self exposeLocalKeyPathToREST:@"root"];
         [self exposeLocalKeyPathToREST:@"version"];

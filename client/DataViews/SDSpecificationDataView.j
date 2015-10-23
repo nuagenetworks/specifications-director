@@ -4,8 +4,9 @@
 
 @implementation SDSpecificationDataView : NUAbstractDataView
 {
-    @outlet CPTextField fieldName;
+    @outlet CPImageView imageViewEdited;
     @outlet CPImageView imageViewWarning;
+    @outlet CPTextField fieldName;
 }
 
 
@@ -16,9 +17,12 @@
 {
     [super bindDataView];
 
+    var negateBoolTransformer = @{CPValueTransformerNameBindingOption: CPNegateBooleanTransformerName};
+
     [fieldName bind:CPValueBinding toObject:_objectValue withKeyPath:@"displayName" options:nil];
 
     [imageViewWarning setHidden:!!![_objectValue issues]];
+    [imageViewEdited bind:CPHiddenBinding toObject:_objectValue withKeyPath:@"syncing" options:negateBoolTransformer];
 
     if ([_objectValue issues])
         [imageViewWarning setToolTip:@"Some errors has been found during the parsing of the remote specification. Please review"];
@@ -33,6 +37,7 @@
     if (self = [super initWithCoder:aCoder])
     {
         fieldName        = [aCoder decodeObjectForKey:@"fieldName"];
+        imageViewEdited  = [aCoder decodeObjectForKey:@"imageViewEdited"];
         imageViewWarning = [aCoder decodeObjectForKey:@"imageViewWarning"];
     }
 
@@ -44,6 +49,7 @@
     [super encodeWithCoder:aCoder];
 
     [aCoder encodeObject:fieldName forKey:@"fieldName"];
+    [aCoder encodeObject:imageViewEdited forKey:@"imageViewEdited"];
     [aCoder encodeObject:imageViewWarning forKey:@"imageViewWarning"];
 }
 

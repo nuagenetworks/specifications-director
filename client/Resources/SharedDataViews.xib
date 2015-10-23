@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15B38b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDDataViewsLoader">
@@ -105,6 +105,18 @@
             <rect key="frame" x="0.0" y="0.0" width="177" height="24"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <subviews>
+                <imageView toolTip="This specification has been edited" id="wiB-3N-Lxm">
+                    <rect key="frame" x="13" y="3" width="8" height="8"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="badge-edited" id="GUA-jQ-IhU"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="FYK-jc-Xaf">
+                    <rect key="frame" x="161" y="6" width="12" height="12"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="badge-warning" id="kJ0-ka-Rua"/>
+                </imageView>
                 <textField verticalHuggingPriority="750" id="ePJ-0O-TjB" userLabel="Name">
                     <rect key="frame" x="24" y="5" width="142" height="14"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -121,16 +133,11 @@
                     <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="icon-specification" id="V1M-bO-Vp6"/>
                 </imageView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="FYK-jc-Xaf">
-                    <rect key="frame" x="161" y="6" width="12" height="12"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="badge-warning" id="kJ0-ka-Rua"/>
-                </imageView>
             </subviews>
             <animations/>
             <connections>
                 <outlet property="fieldName" destination="ePJ-0O-TjB" id="lJR-Fy-tq8"/>
+                <outlet property="imageViewEdited" destination="wiB-3N-Lxm" id="5NA-3b-FVd"/>
                 <outlet property="imageViewWarning" destination="FYK-jc-Xaf" id="kPE-D2-lSn"/>
             </connections>
             <point key="canvasLocation" x="211.5" y="421"/>
@@ -139,16 +146,6 @@
             <rect key="frame" x="0.0" y="0.0" width="209" height="38"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" id="JG2-30-2ve" userLabel="Name">
-                    <rect key="frame" x="59" y="19" width="132" height="14"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Attribute" id="qIw-U3-C61">
-                        <font key="font" size="11" name="CourierNewPS-BoldMT"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField verticalHuggingPriority="750" id="tca-a5-vya">
                     <rect key="frame" x="59" y="5" width="132" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -175,6 +172,16 @@
                     <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="badge-warning" id="nr9-QI-Eb3"/>
                 </imageView>
+                <textField verticalHuggingPriority="750" id="JG2-30-2ve" userLabel="Name">
+                    <rect key="frame" x="59" y="19" width="132" height="14"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Attribute" id="qIw-U3-C61">
+                        <font key="font" size="11" name="CourierNewPS-BoldMT"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <animations/>
             <connections>
@@ -230,6 +237,7 @@
         </customView>
     </objects>
     <resources>
+        <image name="badge-edited" width="32" height="32"/>
         <image name="badge-warning" width="16" height="16"/>
         <image name="icon-repository" width="64" height="64"/>
         <image name="icon-specification" width="64" height="64"/>
