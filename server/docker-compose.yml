@@ -1,0 +1,13 @@
+mongo:
+  image: mongo
+
+redis:
+   image: redis
+
+specsdesigner:
+  build: .
+  ports:
+   - "2000:2000"
+  links:
+   - redis
+   - mongo
