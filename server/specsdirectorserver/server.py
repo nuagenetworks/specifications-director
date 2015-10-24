@@ -16,18 +16,18 @@ from plugins.logic.specifications import SDSpecificationLogicPlugin
 from plugins.logic.attributes import SDAttributeLogicPlugin
 from plugins.logic.apiinfo import SDAPIInfoLogicPlugin
 
-from lib.github_operations_controller import SDGitHubOperationsController
+from lib import SDGitHubOperationsController, SDGitHubOperationsClient
 
 def auth_function(request, session, root_object_class, storage_controller):
     """
     """
     auth = root_object_class()
 
-    base_dn = 'uid=%s,cn=users,cn=accounts,dc=us,dc=alcatel-lucent,dc=com' % request.username
-    ldap_connection = simpleldap.Connection('nuageldap1.us.alcatel-lucent.com')
-
-    if not ldap_connection.authenticate(base_dn, request.token):
-        return None
+    # base_dn = 'uid=%s,cn=users,cn=accounts,dc=us,dc=alcatel-lucent,dc=com' % request.username
+    # ldap_connection = simpleldap.Connection('nuageldap1.us.alcatel-lucent.com')
+    #
+    # if not ldap_connection.authenticate(base_dn, request.token):
+    #     return None
 
     auth.id = request.username
     auth.api_key = session.uuid
@@ -68,7 +68,8 @@ def start(mongo_host, mongo_port, mongo_db, redis_host, redis_port, redis_db):
     garuda = Garuda(sdks_info=sdk_infos,
                     redis_info=redis_info,
                     channels=[channel],
-                    additional_controller_classes=[SDGitHubOperationsController],
+                    additional_controller_classes=[SDGitHubOperationsClient],
+                    additional_master_controller_classes=[SDGitHubOperationsController],
                     plugins=plugins,
                     log_level=logging.DEBUG)
 

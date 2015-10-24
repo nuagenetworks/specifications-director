@@ -28,7 +28,7 @@ class SDAPILogicPlugin(GALogicPlugin):
         """
         """
         self._sdk = SDKLibrary().get_sdk('default')
-        self._github_operations_controller = self.core_controller.additional_controller(identifier='sd.controller.githuboperations')
+        self._github_operations_controller = self.core_controller.additional_controller(identifier='sd.controller.githuboperations.client')
 
     def preprocess_readall(self, context):
         """

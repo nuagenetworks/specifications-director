@@ -1,6 +1,5 @@
 import logging
 import json
-from Queue import Queue
 
 from monolithe.specifications import Specification, RepositoryManager, SpecificationAttribute, SpecificationAPI, RepositoryManager
 from garuda.core.models import GAController, GAPushEvent, GARequest
@@ -20,9 +19,7 @@ class SDGitHubOperationsController(GAController):
         self._storage_controller  = None
         self._push_controller     = None
         self._sdk                 = None
-        self._thread              = None
         self._repository_managers = {}
-        self._operation_queue     = Queue()
 
     @classmethod
     def identifier(cls):
@@ -39,95 +36,67 @@ class SDGitHubOperationsController(GAController):
         self._specification_exporter    = SDSpecificationExporter(storage_controller=self._storage_controller, push_controller=self._push_controller, sdk=self._sdk)
         self._specification_importer    = SDSpecificationImporter(storage_controller=self._storage_controller, push_controller=self._push_controller, sdk=self._sdk)
 
+        self.subscribe(channel='github-operation:new', handler=self._on_github_operation)
+
     def start(self):
         """
         """
-        self._thread = ThreadManager.start_thread(self._listen_to_operations)
+        self.start_listening_to_events()
 
     def stop(self):
         """
         """
-        ThreadManager.stop_thread(self._thread)
-
-    def checkout_repository(self, repository, job):
-        """
-        """
-        self._operation_queue.put({ 'action': 'checkout_repository',
-                                    'repository': repository,
-                                    'job': job})
-
-    def commit_specification(self, repository, specification, commit_message):
-        """
-        """
-        self._operation_queue.put({ 'action': 'commit_specification',
-                                    'repository': repository,
-                                    'specification': specification,
-                                    'commit_message': commit_message})
-
-    def create_specification(self, repository, specification, commit_message):
-        """
-        """
-        self._operation_queue.put({ 'action': 'create_specification',
-                                    'repository': repository,
-                                    'specification': specification,
-                                    'commit_message': commit_message})
-
-    def delete_specification(self, repository, specification, commit_message):
-        """
-        """
-        self._operation_queue.put({ 'action': 'delete_specification',
-                                    'repository': repository,
-                                    'specification': specification,
-                                    'commit_message': commit_message})
-
-    def commit_apiinfo(self, repository, apiinfo, commit_message):
-        """
-        """
-        self._operation_queue.put({ 'action': 'commit_apiinfo',
-                                    'repository': repository,
-                                    'apiinfo': apiinfo,
-                                    'commit_message': commit_message})
+        self.stop_listening_to_events()
 
     ## PRIVATES
 
-    def _listen_to_operations(self):
+    def _on_github_operation(self, data):
         """
         """
-        while True:
 
-            info = self._operation_queue.get()
+        info       = json.loads(data)
+        action     = info['action']
+        repository = self._sdk.SDRepository(data=info['repository'])
 
-            action     = info['action']
-            repository = info['repository']
+        if action == 'checkout_repository':
 
-            if action == 'checkout_repository':
+            job = self._sdk.SDJob(data=info['job'])
 
-                self._peform_checkout_repository(repository=repository,
-                                                 job=info['job'])
+            self._peform_checkout_repository(repository=repository,
+                                             job=job)
 
-            elif action == 'commit_specification':
+        elif action == 'commit_specification':
 
-                self._perform_commit_specification(repository=repository,
-                                                   specification=info['specification'],
-                                                   commit_message=info['commit_message'])
+            specification = self._sdk.SDSpecification(data=info['specification'])
 
-            elif action == 'create_specification':
+            self._perform_commit_specification(repository=repository,
+                                               specification=specification,
+                                               commit_message=info['commit_message'])
 
-                self._perform_create_specification(repository=repository,
-                                                   specification=info['specification'],
-                                                   commit_message=info['commit_message'])
+        elif action == 'rename_specification':
 
-            elif action == 'delete_specification':
+            specification = self._sdk.SDSpecification(data=info['specification'])
 
-                self._perform_delete_specification(repository=repository,
-                                                   specification=info['specification'],
-                                                   commit_message=info['commit_message'])
+            self._perform_rename_specification(repository=repository,
+                                               specification=specification,
+                                               old_name=info['old_name'],
+                                               commit_message=info['commit_message'])
 
-            elif action == 'commit_apiinfo':
+        elif action == 'delete_specification':
 
-                self._perform_commit_apiinfo(repository=repository,
-                                             apiinfo=info['apiinfo'],
-                                             commit_message=info['commit_message'])
+            specification = self._sdk.SDSpecification(data=info['specification'])
+
+            self._perform_delete_specification(repository=repository,
+                                               specification=specification,
+                                               commit_message=info['commit_message'])
+
+        elif action == 'commit_apiinfo':
+
+            apiinfo = self._sdk.SDAPIInfo(data=info['apiinfo'])
+
+            self._perform_commit_apiinfo(repository=repository,
+                                         apiinfo=apiinfo,
+                                         commit_message=info['commit_message'])
 
 
     def _peform_checkout_repository(self, repository, job):
@@ -155,13 +124,15 @@ class SDGitHubOperationsController(GAController):
         manager.save_specification(specification=mono_spec, message=commit_message, branch=repository.branch)
         self._set_specification_syncing(specification=specification, syncing=False)
 
-    def _perform_create_specification(self, repository, specification, commit_message):
+    def _perform_rename_specification(self, repository, specification, old_name, commit_message):
         """
         """
         manager = self._get_repository_manager_for_repository(repository=repository)
         mono_spec = self._specification_exporter.export_specification(specification=specification)
 
-        manager.create_specification(specification=mono_spec, message=commit_message, branch=repository.branch)
+        self._set_specification_syncing(specification=specification, syncing=True)
+        manager.rename_specification(specification=mono_spec, old_name=old_name, message=commit_message, branch=repository.branch)
+        self._set_specification_syncing(specification=specification, syncing=False)
 
     def _perform_delete_specification(self, repository, specification, commit_message):
         """
