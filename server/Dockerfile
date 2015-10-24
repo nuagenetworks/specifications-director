@@ -18,5 +18,5 @@ RUN apt-get update && apt-get install -y --force-yes libsasl2-dev libldap2-dev &
 
 EXPOSE 2000
 WORKDIR /app/specsdirectorserver
-CMD ./specsdirectorsserver.py --redis-host=redis --mongo-host=mongo
+CMD ./server.py --redis-host=redis --mongo-host=mongo
 

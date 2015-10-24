@@ -7,83 +7,40 @@ from monolithe.specifications import Specification, RepositoryManager
 from monolithe.specifications.repositorymanager import MODE_NORMAL, MODE_RAW_SPECS, MODE_RAW_ABSTRACTS
 from garuda.core.models import GAError, GAPluginManifest, GARequest, GAPushEvent
 
-class SDRepositoryImporter():
+class SDSpecificationImporter():
     """
 
     """
-    def __init__(self, repository, storage_controller, push_controller, job, sdk):
+    def __init__(self, storage_controller, push_controller, sdk):
         """
         """
-        self._sdk = sdk
-        self._repository = repository
-        self._job = job
+        self._sdk                = sdk
         self._storage_controller = storage_controller
-        self._push_controller = push_controller
+        self._push_controller    = push_controller
 
-    def _clean_specifications(self):
+    def import_apiinfo(self, repository, manager):
         """
         """
-        specifications, count = self._storage_controller.get_all(resource_name=self._sdk.SDSpecification.rest_name, parent=self._repository)
-        if count:
-            self._storage_controller.delete_multiple(resources=specifications, cascade=True)
-            events = []
-            for specification in specifications:
-                events.append(GAPushEvent(action=GARequest.ACTION_DELETE, entity=specification))
-            self._push_controller.push_events(events=events)
+        apiinfo = self._sdk.SDAPIInfo(data=manager.get_api_info(branch=repository.branch))
+        self._storage_controller.create(apiinfo, repository)
 
-        abstracts, count = self._storage_controller.get_all(resource_name=self._sdk.SDAbstract.rest_name, parent=self._repository)
-        if count:
-            self._storage_controller.delete_multiple(resources=abstracts, cascade=True)
-            events = []
-            for asbtract in abstracts:
-                events.append(GAPushEvent(action=GARequest.ACTION_DELETE, entity=asbtract))
-            self._push_controller.push_events(events=events)
-
-        apiinfos, count = self._storage_controller.get_all(resource_name=self._sdk.SDAPIInfo.rest_name, parent=self._repository)
-        if count: self._storage_controller.delete_multiple(resources=apiinfos, cascade=True)
-
-    def _set_job_complete(self):
+    def import_specifications(self, repository, manager):
         """
         """
-        self._job.progress = 1.0
-        self._job.status = 'SUCCESS'
-        self._storage_controller.update(self._job)
-        event = GAPushEvent(action=GARequest.ACTION_UPDATE, entity=self._job)
-        self._push_controller.push_events(events=[event])
+        self._import_specs(repository=repository, manager=manager, mode=MODE_RAW_SPECS)
 
-
-    def import_specifications(self):
+    def import_abstracts(self, repository, manager):
         """
         """
+        self._import_specs(repository=repository, manager=manager, mode=MODE_RAW_ABSTRACTS)
 
-        self._clean_specifications()
 
-        manager = RepositoryManager(monolithe_config=None,
-                                    api_url=self._repository.url,
-                                    login_or_token=self._repository.password,
-                                    password=None,
-                                    organization=self._repository.organization,
-                                    repository=self._repository.repository,
-                                    repository_path=self._repository.path)
+    ## PRIVATE
 
-        # api info
-        apiinfo = self._sdk.SDAPIInfo(data=manager.get_api_info(branch=self._repository.branch))
-        self._storage_controller.create(apiinfo, self._repository)
-
-        # astract specs (first!)
-        self._import_specs(manager=manager, mode=MODE_RAW_ABSTRACTS)
-
-        # solid specs
-        self._import_specs(manager=manager, mode=MODE_RAW_SPECS)
-
-        self._set_job_complete()
-
-    ## UTILITIES
-
-    def _import_specs(self, manager, mode):
+    def _import_specs(self, repository, manager, mode):
         """
         """
-        mono_specifications = manager.get_all_specifications(branch=self._repository.branch, mode=mode)
+        mono_specifications = manager.get_all_specifications(branch=repository.branch, mode=mode)
 
         specs_info = {}
 
@@ -103,12 +60,12 @@ class SDRepositoryImporter():
             specification.allows_update        = mono_specification.allows_update
             specification.allows_delete        = mono_specification.allows_delete
 
-            self._storage_controller.create(specification, self._repository)
+            self._storage_controller.create(specification, repository)
 
             event = GAPushEvent(action=GARequest.ACTION_CREATE, entity=specification)
             self._push_controller.push_events(events=[event])
 
-            extensions = self._import_extends(mono_specification=mono_specification, specification=specification)
+            extensions = self._import_extends(repository=repository, mono_specification=mono_specification, specification=specification)
             attributes = self._import_attributes(mono_specification=mono_specification, specification=specification)
 
             specs_info[mono_specification.rest_name] = {'mono_specification': mono_specification , 'specification': specification}
@@ -141,14 +98,14 @@ class SDRepositoryImporter():
 
                 self._storage_controller.create(api, specification)
 
-    def _import_extends(self, mono_specification, specification):
+    def _import_extends(self, repository, mono_specification, specification):
         """
         """
         extensions = []
 
         for extension_name in mono_specification.extends:
 
-            objects, count = self._storage_controller.get_all(parent=self._repository, resource_name=self._sdk.SDAbstract.rest_name, filter='name == %s.spec' % extension_name)
+            objects, count = self._storage_controller.get_all(parent=repository, resource_name=self._sdk.SDAbstract.rest_name, filter='name == %s.spec' % extension_name)
 
             if count:
                 extensions = extensions + objects

@@ -15,7 +15,7 @@ from plugins.logic.apis import SDAPILogicPlugin
 from plugins.logic.specifications import SDSpecificationLogicPlugin
 from plugins.logic.attributes import SDAttributeLogicPlugin
 
-from lib.github_operations_controller import GitHubOperationsController
+from lib.github_operations_controller import SDGitHubOperationsController
 
 def auth_function(request, session, root_object_class, storage_controller):
     """
@@ -66,7 +66,7 @@ def start(mongo_host, mongo_port, mongo_db, redis_host, redis_port, redis_db):
     garuda = Garuda(sdks_info=sdk_infos,
                     redis_info=redis_info,
                     channels=[channel],
-                    additional_controller_classes=[GitHubOperationsController],
+                    additional_controller_classes=[SDGitHubOperationsController],
                     plugins=plugins,
                     log_level=logging.DEBUG)
 
