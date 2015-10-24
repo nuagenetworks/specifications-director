@@ -243,38 +243,11 @@
             </connections>
         </viewController>
         <customView id="8" userLabel="Popover View">
-            <rect key="frame" x="0.0" y="0.0" width="365" height="338"/>
+            <rect key="frame" x="0.0" y="0.0" width="365" height="288"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" id="13">
-                    <rect key="frame" x="20" y="236" width="325" height="22"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="unicorn.spec" drawsBackground="YES" id="21">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="name"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <outlet property="nextKeyView" destination="ZGS-Fz-3WQ" id="Rbk-gn-mPD"/>
-                    </connections>
-                </textField>
-                <textField verticalHuggingPriority="750" id="12">
-                    <rect key="frame" x="18" y="266" width="41" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Name" id="22">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField verticalHuggingPriority="750" id="16">
-                    <rect key="frame" x="18" y="291" width="329" height="34"/>
+                    <rect key="frame" x="18" y="241" width="329" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="New Specification" id="19">
@@ -284,59 +257,6 @@
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="title"/>
-                    </userDefinedRuntimeAttributes>
-                </textField>
-                <textField verticalHuggingPriority="750" id="1432">
-                    <rect key="frame" x="62" y="261" width="285" height="13"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="1433">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_name"/>
-                    </userDefinedRuntimeAttributes>
-                </textField>
-                <textField verticalHuggingPriority="750" id="ZGS-Fz-3WQ">
-                    <rect key="frame" x="20" y="181" width="325" height="22"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="unicorn" drawsBackground="YES" id="x71-TX-cPu">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="objectRESTName"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <outlet property="nextKeyView" destination="7xS-FP-tlE" id="sIS-aG-3lf"/>
-                    </connections>
-                </textField>
-                <textField verticalHuggingPriority="750" id="aLC-sz-ZhN">
-                    <rect key="frame" x="18" y="211" width="75" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ReST Name" id="vtN-i2-m4k">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" id="bW1-fE-pGG">
-                    <rect key="frame" x="102" y="210" width="245" height="13"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="yHS-GR-AfL">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_objectRESTName"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <button toolTip="Save group" verticalHuggingPriority="750" id="15">
@@ -380,8 +300,48 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="button-help"/>
                     </userDefinedRuntimeAttributes>
                 </customView>
+                <textField verticalHuggingPriority="750" id="ZGS-Fz-3WQ">
+                    <rect key="frame" x="20" y="186" width="325" height="22"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="unicorn" drawsBackground="YES" id="x71-TX-cPu">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="objectRESTName"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="nextKeyView" destination="7xS-FP-tlE" id="sIS-aG-3lf"/>
+                    </connections>
+                </textField>
+                <textField verticalHuggingPriority="750" id="aLC-sz-ZhN">
+                    <rect key="frame" x="18" y="216" width="75" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ReST Name" id="vtN-i2-m4k">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="bW1-fE-pGG">
+                    <rect key="frame" x="102" y="215" width="245" height="13"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="yHS-GR-AfL">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_objectRESTName"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
                 <textField verticalHuggingPriority="750" id="7xS-FP-tlE">
-                    <rect key="frame" x="20" y="126" width="325" height="22"/>
+                    <rect key="frame" x="20" y="131" width="325" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="unicorns" drawsBackground="YES" id="jER-ZT-Qys">
@@ -398,7 +358,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="HTO-aq-jK6">
-                    <rect key="frame" x="18" y="156" width="100" height="17"/>
+                    <rect key="frame" x="18" y="161" width="100" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Resource Name" id="G2t-pZ-rqa">
@@ -408,7 +368,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="pSS-nT-Bm6">
-                    <rect key="frame" x="116" y="151" width="231" height="13"/>
+                    <rect key="frame" x="116" y="156" width="231" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="dgn-XC-Tyb">
@@ -421,7 +381,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="ebz-ru-ubX">
-                    <rect key="frame" x="20" y="71" width="325" height="22"/>
+                    <rect key="frame" x="20" y="76" width="325" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="unicorns" drawsBackground="YES" id="ODD-Hq-dIM">
@@ -433,12 +393,9 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="entityName"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <outlet property="nextKeyView" destination="13" id="bvc-3Y-hbE"/>
-                    </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="tLc-OC-cQg">
-                    <rect key="frame" x="18" y="101" width="78" height="17"/>
+                    <rect key="frame" x="18" y="106" width="78" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Entity Name" id="lkz-g4-5OZ">
@@ -448,7 +405,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="vsr-Fw-kPY">
-                    <rect key="frame" x="116" y="96" width="231" height="13"/>
+                    <rect key="frame" x="116" y="101" width="231" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="GEc-Kd-awm">
@@ -462,7 +419,7 @@
                 </textField>
             </subviews>
             <animations/>
-            <point key="canvasLocation" x="643.5" y="-87"/>
+            <point key="canvasLocation" x="643.5" y="-112"/>
         </customView>
         <customView id="nkZ-8x-iet" userLabel="Getting Started View">
             <rect key="frame" x="0.0" y="0.0" width="291" height="501"/>

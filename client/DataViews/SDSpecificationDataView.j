@@ -19,7 +19,7 @@
 
     var negateBoolTransformer = @{CPValueTransformerNameBindingOption: CPNegateBooleanTransformerName};
 
-    [fieldName bind:CPValueBinding toObject:_objectValue withKeyPath:@"displayName" options:nil];
+    [fieldName bind:CPValueBinding toObject:_objectValue withKeyPath:@"objectRESTName" options:nil];
 
     [imageViewWarning setHidden:!!![_objectValue issues]];
     [imageViewEdited bind:CPHiddenBinding toObject:_objectValue withKeyPath:@"syncing" options:negateBoolTransformer];

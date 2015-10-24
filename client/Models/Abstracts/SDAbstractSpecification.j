@@ -4,6 +4,8 @@
 @class SDAttributesFetcher
 @class SDChildAPIsFetcher
 
+@global _pluralize_rest_name
+
 @implementation SDAbstractSpecification : SDRESTObject
 {
     BOOL                _allowsCreate           @accessors(property=allowsCreate);
@@ -43,29 +45,29 @@
 
         _attributes = [SDAttributesFetcher fetcherWithParentObject:self];
         _childAPIs  = [SDChildAPIsFetcher fetcherWithParentObject:self];
+        _allowsDelete = YES;
+        _allowsGet = YES;
+        _allowsUpdate = YES;
     }
 
     return self;
 }
 
-- (void)setName:(CPString)aName
+- (void)setObjectRESTName:(CPString)anObjectRESTName
 {
-    if (_name == aName)
+    if (_objectRESTName == anObjectRESTName)
         return;
 
+    [self willChangeValueForKey:@"objectRESTName"];
     [self willChangeValueForKey:@"name"];
-    [self willChangeValueForKey:@"displayName"];
-    if (aName.indexOf('.spec') == -1)
-        aName += @".spec";
-
-    _name = aName;
+    _name = anObjectRESTName + @".spec";
+    _objectRESTName = anObjectRESTName;
     [self didChangeValueForKey:@"name"];
-    [self didChangeValueForKey:@"displayName"];
+    [self didChangeValueForKey:@"objectRESTName"];
+
+    [self setObjectResourceName:_pluralize_rest_name(_objectRESTName)];
+    [self setEntityName:[_objectRESTName capitalizedString]];
 }
 
-- (CPString)displayName
-{
-    return _name.replace(/\.spec$/, "");
-}
 
 @end
