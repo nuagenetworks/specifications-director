@@ -36,7 +36,7 @@ class SDGitHubOperationsController(GAController):
         self._sdk                       = SDKLibrary().get_sdk('default')
         self._storage_controller        = self.core_controller.storage_controller
         self._push_controller           = self.core_controller.push_controller
-        self._specification_exporter    = SDSpecificationExporter(storage_controller=self._storage_controller, sdk=self._sdk)
+        self._specification_exporter    = SDSpecificationExporter(storage_controller=self._storage_controller, push_controller=self._push_controller, sdk=self._sdk)
         self._specification_importer    = SDSpecificationImporter(storage_controller=self._storage_controller, push_controller=self._push_controller, sdk=self._sdk)
 
     def start(self):
@@ -49,21 +49,44 @@ class SDGitHubOperationsController(GAController):
         """
         ThreadManager.stop_thread(self._thread)
 
-    def enqueue_operation(self, action, repository, specification, commit_message):
+    def checkout_repository(self, repository, job):
         """
         """
-        self._operation_queue.put((action, repository, specification, commit_message))
+        self._operation_queue.put({ 'action': 'checkout_repository',
+                                    'repository': repository,
+                                    'job': job})
 
-
-    def import_repository(self, repository):
+    def commit_specification(self, repository, specification, commit_message):
         """
         """
-        repo_manager = self._get_repository_manager_for_repository(repository=repository)
+        self._operation_queue.put({ 'action': 'commit_specification',
+                                    'repository': repository,
+                                    'specification': specification,
+                                    'commit_message': commit_message})
 
-        self._specification_importer.import_apiinfo(repository=repository, manager=repo_manager)
-        self._specification_importer.import_abstracts(repository=repository, manager=repo_manager)
-        self._specification_importer.import_specifications(repository=repository, manager=repo_manager)
+    def create_specification(self, repository, specification, commit_message):
+        """
+        """
+        self._operation_queue.put({ 'action': 'create_specification',
+                                    'repository': repository,
+                                    'specification': specification,
+                                    'commit_message': commit_message})
 
+    def delete_specification(self, repository, specification, commit_message):
+        """
+        """
+        self._operation_queue.put({ 'action': 'delete_specification',
+                                    'repository': repository,
+                                    'specification': specification,
+                                    'commit_message': commit_message})
+
+    def commit_apiinfo(self, repository, apiinfo, commit_message):
+        """
+        """
+        self._operation_queue.put({ 'action': 'commit_apiinfo',
+                                    'repository': repository,
+                                    'apiinfo': apiinfo,
+                                    'commit_message': commit_message})
 
     ## PRIVATES
 
@@ -72,20 +95,99 @@ class SDGitHubOperationsController(GAController):
         """
         while True:
 
-            action, repository, specification, commit_message = self._operation_queue.get()
+            info = self._operation_queue.get()
 
-            repo_manager       = self._get_repository_manager_for_repository(repository=repository)
-            mono_specification = self._specification_exporter.export_specification(repository=repository, specification=specification)
+            action     = info['action']
+            repository = info['repository']
 
-            specification.syncing = True
-            self._storage_controller.update(specification)
-            self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=specification)])
+            if action == 'checkout_repository':
 
-            repo_manager.save_specification(specification=mono_specification, message=commit_message, branch=repository.branch)
+                self._peform_checkout_repository(repository=repository,
+                                                 job=info['job'])
 
-            specification.syncing = False
-            self._storage_controller.update(specification)
-            self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=specification)])
+            elif action == 'commit_specification':
+
+                self._perform_commit_specification(repository=repository,
+                                                   specification=info['specification'],
+                                                   commit_message=info['commit_message'])
+
+            elif action == 'create_specification':
+
+                self._perform_create_specification(repository=repository,
+                                                   specification=info['specification'],
+                                                   commit_message=info['commit_message'])
+
+            elif action == 'delete_specification':
+
+                self._perform_delete_specification(repository=repository,
+                                                   specification=info['specification'],
+                                                   commit_message=info['commit_message'])
+
+            elif action == 'commit_apiinfo':
+
+                self._perform_commit_apiinfo(repository=repository,
+                                             apiinfo=info['apiinfo'],
+                                             commit_message=info['commit_message'])
+
+
+    def _peform_checkout_repository(self, repository, job):
+        """
+        """
+        manager = self._get_repository_manager_for_repository(repository=repository)
+
+        self._specification_importer.clean_repository(repository=repository)
+        self._specification_importer.import_apiinfo(repository=repository, manager=manager)
+        self._specification_importer.import_abstracts(repository=repository, manager=manager)
+        self._specification_importer.import_specifications(repository=repository, manager=manager)
+
+        job.progress = 1.0
+        job.status = 'SUCCESS'
+        self._storage_controller.update(job)
+        self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=job)])
+
+    def _perform_commit_specification(self, repository, specification, commit_message):
+        """
+        """
+        manager = self._get_repository_manager_for_repository(repository=repository)
+        mono_spec = self._specification_exporter.export_specification(specification=specification)
+
+        self._set_specification_syncing(specification=specification, syncing=True)
+        manager.save_specification(specification=mono_spec, message=commit_message, branch=repository.branch)
+        self._set_specification_syncing(specification=specification, syncing=False)
+
+    def _perform_create_specification(self, repository, job):
+        """
+        """
+        manager = self._get_repository_manager_for_repository(repository=repository)
+        mono_spec = self._specification_exporter.export_specification(specification=specification)
+
+        manager.create_specification(specification=mono_spec, message=commit_message, branch=repository.branch)
+
+    def _perform_delete_specification(self, repository, job):
+        """
+        """
+        manager = self._get_repository_manager_for_repository(repository=repository)
+        mono_spec = self._specification_exporter.export_specification(specification=specification)
+
+        manager.delete_specification(specification=mono_spec, message=commit_message, branch=repository.branch)
+
+    def _perform_commit_apiinfo(self, repository, apiinfo, commit_message):
+        """
+        """
+        manager = self._get_repository_manager_for_repository(repository=repository)
+
+        manager.save_apiinfo(   version=apiinfo.version,
+                                root_api=apiinfo.root,
+                                prefix=apiinfo.prefix,
+                                message=commit_message,
+                                branch=repository.branch)
+
+    def _set_specification_syncing(self, specification, syncing):
+        """
+        """
+        specification.syncing = syncing
+        self._storage_controller.update(specification)
+        self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=specification)])
 
     def _get_repository_manager_for_repository(self, repository):
         """

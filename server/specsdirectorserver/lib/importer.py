@@ -37,6 +37,28 @@ class SDSpecificationImporter():
 
     ## PRIVATE
 
+    def clean_repository(self, repository):
+        """
+        """
+        specifications, count = self._storage_controller.get_all(resource_name=self._sdk.SDSpecification.rest_name, parent=repository)
+        if count:
+            self._storage_controller.delete_multiple(resources=specifications, cascade=True)
+            events = []
+            for specification in specifications:
+                events.append(GAPushEvent(action=GARequest.ACTION_DELETE, entity=specification))
+            self._push_controller.push_events(events=events)
+
+        abstracts, count = self._storage_controller.get_all(resource_name=self._sdk.SDAbstract.rest_name, parent=repository)
+        if count:
+            self._storage_controller.delete_multiple(resources=abstracts, cascade=True)
+            events = []
+            for asbtract in abstracts:
+                events.append(GAPushEvent(action=GARequest.ACTION_DELETE, entity=asbtract))
+            self._push_controller.push_events(events=events)
+
+        apiinfos, count = self._storage_controller.get_all(resource_name=self._sdk.SDAPIInfo.rest_name, parent=repository)
+        if count: self._storage_controller.delete_multiple(resources=apiinfos, cascade=True)
+
     def _import_specs(self, repository, manager, mode):
         """
         """

@@ -17,7 +17,7 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         """
         return GAPluginManifest(name='specifications logic', version=1.0, identifier="specsdirector.plugins.logic.specifications",
                                 subscriptions={
-                                    "specification": [GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE],
+                                    "specification": [GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE, GARequest.ACTION_ASSIGN],
                                     "abstract": [GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE]
                                 })
 
@@ -50,6 +50,6 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         specification = context.object
         repository    = context.parent_object
 
-        self._github_operations_controller.enqueue_operation(action=context.request.action, repository=repository, specification=specification, commit_message="Update specification model %s" % specification.name)
+        self._github_operations_controller.commit_specification(repository=repository, specification=specification, commit_message="Update specification model %s" % specification.name)
 
         return context

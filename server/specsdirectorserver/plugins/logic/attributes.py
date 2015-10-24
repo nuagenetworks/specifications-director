@@ -55,7 +55,7 @@ class SDAttributeLogicPlugin(GALogicPlugin):
         specification = context.parent_object
         repository    = self.core_controller.storage_controller.get(resource_name=self._sdk.SDRepository.rest_name, identifier=specification.parent_id)
 
-        self._github_operations_controller.enqueue_operation(action=context.request.action, repository=repository, specification=specification, commit_message="Update attribute %s" % context.object.name)
+        self._github_operations_controller.commit_specification(repository=repository, specification=specification, commit_message="Update attribute %s" % context.object.name)
 
     def _check_unique_name(self, context):
         """

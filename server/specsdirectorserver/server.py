@@ -14,6 +14,7 @@ from plugins.logic.jobs import SDJobLogicPlugin
 from plugins.logic.apis import SDAPILogicPlugin
 from plugins.logic.specifications import SDSpecificationLogicPlugin
 from plugins.logic.attributes import SDAttributeLogicPlugin
+from plugins.logic.apiinfo import SDAPIInfoLogicPlugin
 
 from lib.github_operations_controller import SDGitHubOperationsController
 
@@ -60,8 +61,9 @@ def start(mongo_host, mongo_port, mongo_db, redis_host, redis_port, redis_db):
     apis_logic_plugin = SDAPILogicPlugin()
     spec_logic_plugin = SDSpecificationLogicPlugin()
     attr_logic_plugin = SDAttributeLogicPlugin()
+    apiinfo_logic_plugin = SDAPIInfoLogicPlugin()
 
-    plugins = [storage_plugin, authentication_plugin, job_logic_plugin, apis_logic_plugin, spec_logic_plugin, attr_logic_plugin]
+    plugins = [storage_plugin, authentication_plugin, job_logic_plugin, apis_logic_plugin, spec_logic_plugin, attr_logic_plugin, apiinfo_logic_plugin]
 
     garuda = Garuda(sdks_info=sdk_infos,
                     redis_info=redis_info,

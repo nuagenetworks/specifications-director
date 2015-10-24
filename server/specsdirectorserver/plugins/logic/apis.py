@@ -59,7 +59,7 @@ class SDAPILogicPlugin(GALogicPlugin):
         specification = context.parent_object
         repository    = self.core_controller.storage_controller.get(resource_name=self._sdk.SDRepository.rest_name, identifier=specification.parent_id)
 
-        self._github_operations_controller.enqueue_operation(action=context.request.action, repository=repository, specification=specification, commit_message="Update child api %s" % context.object.path)
+        self._github_operations_controller.commit_specification(repository=repository, specification=specification, commit_message="Update child api %s" % context.object.path)
 
     def _update_path(self, specification, api):
         """

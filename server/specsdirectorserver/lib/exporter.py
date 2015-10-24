@@ -1,6 +1,8 @@
 import logging
 import json
 
+from garuda.core.models import GARequest, GAPushEvent
+
 from monolithe.specifications import Specification, SpecificationAttribute, SpecificationAPI, RepositoryManager
 
 
@@ -9,19 +11,18 @@ class SDSpecificationExporter():
 
     """
 
-    def __init__(self, storage_controller, sdk):
+    def __init__(self, storage_controller, push_controller, sdk):
         """
         """
         self._sdk = sdk
         self._storage_controller = storage_controller
+        self._push_controller = push_controller
 
 
-    ## UTILITIES
-
-    def export_specification(self, repository, specification):
+    ## PRIVATE
+    def export_specification(self, specification):
         """
         """
-
         mono_spec = Specification(monolithe_config=None, filename=specification.name)
 
         mono_spec.description   = specification.description
@@ -43,17 +44,6 @@ class SDSpecificationExporter():
         mono_spec.attributes  = self._export_attributes(specification=specification)
 
         return mono_spec
-
-    def export_apiinfo(self, repository):
-        """
-        """
-        objects, count = self._storage_controller.get_all(parent=repository, resource_name=self._sdk.SDAPIInfo.rest_name, filter='parentID == %s' % repository.id)
-        apiinfo = objects[0]
-
-        return apiinfo
-
-
-    ## PRIVATE
 
     def _export_child_apis(self, specification):
         """
@@ -88,7 +78,7 @@ class SDSpecificationExporter():
             mono_attr = SpecificationAttribute(rest_name=attribute.name)
 
             mono_attr.description     = attribute.description
-            mono_attr.rest_name     = attribute.name
+            mono_attr.rest_name       = attribute.name
             mono_attr.type            = attribute.type
             mono_attr.allowed_chars   = attribute.allowed_chars
             mono_attr.allowed_choices = attribute.allowed_choices
