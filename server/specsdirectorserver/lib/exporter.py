@@ -37,7 +37,8 @@ class SDSpecificationExporter():
 
         if specification.rest_name == self._sdk.SDSpecification.rest_name:
             abstracts, count = self._storage_controller.get_all(parent=specification, resource_name=self._sdk.SDAbstract.rest_name)
-            mono_spec.extends = [abstract.name.replace(".spec", "") for abstract in abstracts]
+            if count:
+                mono_spec.extends = [abstract.name.replace(".spec", "") for abstract in abstracts]
             mono_spec.is_root = specification.root
 
         mono_spec.child_apis  = self._export_child_apis(specification=specification)

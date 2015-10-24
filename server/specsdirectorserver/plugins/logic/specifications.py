@@ -17,8 +17,8 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         """
         return GAPluginManifest(name='specifications logic', version=1.0, identifier="specsdirector.plugins.logic.specifications",
                                 subscriptions={
-                                    "specification": [GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE, GARequest.ACTION_ASSIGN],
-                                    "abstract": [GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE]
+                                    "specification": [GARequest.ACTION_DELETE, GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE, GARequest.ACTION_ASSIGN],
+                                    "abstract": [GARequest.ACTION_DELETE, GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE, GARequest.ACTION_ASSIGN]
                                 })
 
     def did_register(self):
@@ -30,6 +30,12 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
     def check_perform_write(self, context):
         """
         """
+        if context.request.action == GARequest.ACTION_DELETE:
+            return context
+
+        if context.request.action == GARequest.ACTION_ASSIGN:
+            return context
+
         repository    = context.parent_object
         specification = context.object
 
@@ -49,7 +55,15 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         """
         specification = context.object
         repository    = context.parent_object
+        action        = context.request.action
 
-        self._github_operations_controller.commit_specification(repository=repository, specification=specification, commit_message="Update specification model %s" % specification.name)
+        if action == GARequest.ACTION_UPDATE:
+            self._github_operations_controller.commit_specification(repository=repository, specification=specification, commit_message="Update specification model %s" % specification.name)
+
+        elif action == GARequest.ACTION_CREATE:
+            self._github_operations_controller.create_specification(repository=repository, specification=specification, commit_message="Create specification model %s" % specification.name)
+
+        elif action == GARequest.ACTION_DELETE:
+            self._github_operations_controller.delete_specification(repository=repository, specification=specification, commit_message="Delete specification model %s" % specification.name)
 
         return context

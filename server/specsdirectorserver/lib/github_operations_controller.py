@@ -155,7 +155,7 @@ class SDGitHubOperationsController(GAController):
         manager.save_specification(specification=mono_spec, message=commit_message, branch=repository.branch)
         self._set_specification_syncing(specification=specification, syncing=False)
 
-    def _perform_create_specification(self, repository, job):
+    def _perform_create_specification(self, repository, specification, commit_message):
         """
         """
         manager = self._get_repository_manager_for_repository(repository=repository)
@@ -163,7 +163,7 @@ class SDGitHubOperationsController(GAController):
 
         manager.create_specification(specification=mono_spec, message=commit_message, branch=repository.branch)
 
-    def _perform_delete_specification(self, repository, job):
+    def _perform_delete_specification(self, repository, specification, commit_message):
         """
         """
         manager = self._get_repository_manager_for_repository(repository=repository)
