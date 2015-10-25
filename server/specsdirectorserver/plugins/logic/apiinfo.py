@@ -32,6 +32,6 @@ class SDAPIInfoLogicPlugin(GALogicPlugin):
         apiinfo    = context.object
         repository = context.parent_object
 
-        self._github_operations_controller.commit_apiinfo(repository=repository, apiinfo=apiinfo, commit_message="Update apiinfo")
+        self._github_operations_controller.commit_apiinfo(repository=repository, apiinfo=apiinfo, commit_message="Updated api.info")
 
         return context

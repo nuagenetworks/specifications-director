@@ -52,10 +52,19 @@ class SDAttributeLogicPlugin(GALogicPlugin):
     def _commit_specification_change(self, context):
         """
         """
+        action        = context.action
+        attribute     = context.object
         specification = context.parent_object
         repository    = self.core_controller.storage_controller.get(resource_name=self._sdk.SDRepository.rest_name, identifier=specification.parent_id)
 
-        self._github_operations_controller.commit_specification(repository=repository, specification=specification, commit_message="Update attribute %s" % context.object.name)
+        if action == GARequest.ACTION_CREATE:
+            message = "Added attribute %s to specification %s" % (attribute.name, specification.name)
+        elif action == GARequest.ACTION_UPDATE:
+            message = "Updated attribute %s in specification %s" % (attribute.name, specification.name)
+        elif action == GARequest.ACTION_DELETE:
+            message = "Deleted attribute %s from specification %s" % (attribute.name, specification.name)
+
+        self._github_operations_controller.commit_specification(repository=repository, specification=specification, commit_message=message)
 
     def _check_unique_name(self, context):
         """

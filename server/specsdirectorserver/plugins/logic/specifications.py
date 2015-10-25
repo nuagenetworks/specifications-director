@@ -74,7 +74,7 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         if action == GARequest.ACTION_CREATE:
             self._github_operations_controller.commit_specification(repository=repository,
                                                                     specification=specification,
-                                                                    commit_message="Created specification %s" % specification.name)
+                                                                    commit_message="Added specification %s" % specification.name)
 
         elif action == GARequest.ACTION_UPDATE:
 
@@ -85,15 +85,15 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
                 self._github_operations_controller.rename_specification(repository=repository,
                                                                         specification=specification,
                                                                         old_name=old_name,
-                                                                        commit_message="Renaming specification from %s to %s" % (old_name, specification.name))
+                                                                        commit_message="Renamed specification from %s to %s" % (old_name, specification.name))
             else:
                 self._github_operations_controller.commit_specification(repository=repository,
                                                                         specification=specification,
-                                                                        commit_message="Update specification %s" % specification.name)
+                                                                        commit_message="Updated specification %s" % specification.name)
 
         elif action == GARequest.ACTION_DELETE:
             self._github_operations_controller.delete_specification(repository=repository,
                                                                     specification=specification,
-                                                                    commit_message="Delete specification %s" % specification.name)
+                                                                    commit_message="Deleted specification %s" % specification.name)
 
         return context

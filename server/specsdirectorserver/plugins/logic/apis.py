@@ -56,8 +56,17 @@ class SDAPILogicPlugin(GALogicPlugin):
     def _commit_specification_change(self, context):
         """
         """
+        action        = context.action
+        api           = context.object
         specification = context.parent_object
         repository    = self.core_controller.storage_controller.get(resource_name=self._sdk.SDRepository.rest_name, identifier=specification.parent_id)
+
+        if action == GARequest.ACTION_CREATE:
+            message = "Added child api %s to specification %s" % (api.name, specification.name)
+        elif action == GARequest.ACTION_UPDATE:
+            message = "Updated child api %s in specification %s" % (api.name, specification.name)
+        elif action == GARequest.ACTION_DELETE:
+            message = "Deleted child api %s from specification %s" % (api.name, specification.name)
 
         self._github_operations_controller.commit_specification(repository=repository, specification=specification, commit_message="Update child api %s" % context.object.path)
 
