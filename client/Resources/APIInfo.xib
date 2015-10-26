@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15B38b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDAPIInfoViewController">
@@ -121,7 +121,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_server"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_version"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField toolTip="The bare LDAP server FQDN or IP." verticalHuggingPriority="750" id="5">
@@ -158,7 +158,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_server"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_prefix"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField toolTip="The bare LDAP server FQDN or IP." verticalHuggingPriority="750" id="4Us-j2-HI0">
@@ -195,7 +195,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_server"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_root"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField toolTip="The bare LDAP server FQDN or IP." verticalHuggingPriority="750" id="e5k-hS-Q2t">

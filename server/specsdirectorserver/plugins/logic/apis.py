@@ -45,6 +45,21 @@ class SDAPILogicPlugin(GALogicPlugin):
 
         return context
 
+
+    def check_perform_write(self, context):
+        """
+        """
+
+        if context.request.action in (GARequest.ACTION_DELETE):
+            return context
+
+        api = context.object
+
+        if not api.associated_specification_id or not len(api.associated_specification_id):
+            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute associatedSpecificationID is mandatory.', property_name='associatedSpecificationID'))
+
+        return context
+
     def did_perform_write(self, context):
         """
         """

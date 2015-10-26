@@ -493,7 +493,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <customView id="RJg-20-xXM" customClass="TNTabView">
-                            <rect key="frame" x="11" y="-75" width="509" height="407"/>
+                            <rect key="frame" x="11" y="0.0" width="509" height="332"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <animations/>
                         </customView>

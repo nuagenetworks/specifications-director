@@ -40,18 +40,6 @@
             "description": "The package of the specification",
             "type": "string"
         },
-        "objectRESTName": {
-            "description": "The rest name of the object. example 'unicorn'",
-            "type": "string"
-        },
-        "objectResourceName": {
-            "description": "The resource name of the object. example 'unicorns'",
-            "type": "string"
-        },
-        "entityName": {
-            "description": "The entoty name of the object. example 'Unicorn'.",
-            "type": "string"
-        },
         "allowsGet": {
             "description": "Defines if teh available operations",
             "type": "bool"

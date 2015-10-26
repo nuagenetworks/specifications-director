@@ -30,13 +30,21 @@ class SDAttributeLogicPlugin(GALogicPlugin):
     def check_perform_write(self, context):
         """
         """
-        action = context.request.action
+        if context.request.action in (GARequest.ACTION_DELETE):
+            return context
 
-        if action == GARequest.ACTION_CREATE:
-            self._check_unique_name(context)
+        specification  = context.parent_object
+        attribute      = context.object
+        objects, count = self.core_controller.storage_controller.get_all(parent=specification, resource_name=self._sdk.SDAttribute.rest_name, filter='name == %s' % attribute.name)
 
-        elif action == GARequest.ACTION_UPDATE:
-            self._check_unique_name(context)
+        if count and objects[0].id != attribute.id:
+            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another attribute exists with the name %s' % attribute.name, property_name='name'))
+
+        if not attribute.name or not len(attribute.name):
+            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute name is mandatory.', property_name='name'))
+
+        if not attribute.type or not len(attribute.type):
+            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute type is mandatory.', property_name='type'))
 
         return context
 
@@ -69,13 +77,3 @@ class SDAttributeLogicPlugin(GALogicPlugin):
     def _check_unique_name(self, context):
         """
         """
-        specification = context.parent_object
-        attribute = context.object
-
-        objects, count = self.core_controller.storage_controller.get_all(parent=specification, resource_name=self._sdk.SDAttribute.rest_name, filter='name == %s' % attribute.name)
-
-        if count and objects[0].id != attribute.id:
-            context.report_error(GAError(   type=GAError.TYPE_CONFLICT,
-                                            title='Duplicate Name',
-                                            description='Another attribute exists with the name %s' % attribute.name,
-                                            property_name='name'))

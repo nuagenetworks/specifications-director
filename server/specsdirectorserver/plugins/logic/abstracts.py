@@ -31,24 +31,19 @@ class SDAbstractLogicPlugin(GALogicPlugin):
     def check_perform_write(self, context):
         """
         """
-        if context.request.action == GARequest.ACTION_DELETE:
+        if context.request.action in (GARequest.ACTION_DELETE):
             return context
 
-        if context.request.action == GARequest.ACTION_ASSIGN:
-            return context
+        repository     = context.parent_object
+        abstract       = context.object
+        objects, count = self._storage_controller.get_all(parent=repository, resource_name=abstract.rest_name, filter='name == %s' % abstract.name)
 
-        repository = context.parent_object
-        abstract   = context.object
+        if count and objects[0].id != abstract.id:
+            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another abstract exists with the name %s' % abstract.name, property_name='name'))
 
-        objects, count = self._storage_controller.get_all(  parent=repository,
-                                                            resource_name=abstract.rest_name,
-                                                            filter='name == %s' % abstract.name)
+        if not abstract.name or not len(abstract.name) or abstract.name == '.spec':
+            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute name is mandatory.', property_name='name'))
 
-        if count and objects[0].id !=  abstract.id:
-            context.report_error(GAError(   type=GAError.TYPE_CONFLICT,
-                                            title='Duplicate Name',
-                                            description='Another abstract exists with the name %s' % abstract.name,
-                                            property_name='name'))
         return context
 
     def preprocess_write(self, context):
@@ -56,6 +51,12 @@ class SDAbstractLogicPlugin(GALogicPlugin):
         """
         abstract = context.object
         action   = context.request.action
+
+        if abstract.name[1] != '@':
+            abstract.name = '@%s' % abstract.name
+
+        if abstract.name[-5:] != '.spec':
+            abstract.name = '%s.spec' % abstract.name
 
         if action == GARequest.ACTION_UPDATE:
 
