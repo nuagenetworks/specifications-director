@@ -12,7 +12,6 @@
                 <outlet property="fieldModuleTitle" destination="62" id="zyQ-qp-ser"/>
                 <outlet property="fieldTotalEntities" destination="HNA-mf-Lwd" id="lX6-E4-kYs"/>
                 <outlet property="filterField" destination="63" id="1100"/>
-                <outlet property="labelWorking" destination="Kn3-nd-raA" id="k6Y-RA-LLg"/>
                 <outlet property="maskingView" destination="260" id="291"/>
                 <outlet property="modelController" destination="0xe-57-96x" id="qrB-UE-Xfz"/>
                 <outlet property="popover" destination="3" id="1102"/>
@@ -20,13 +19,11 @@
                 <outlet property="tabViewContent" destination="1330" id="1336"/>
                 <outlet property="tableView" destination="1421" id="1429"/>
                 <outlet property="view" destination="5" id="256"/>
-                <outlet property="viewEditObject" destination="MUk-1k-Qz6" id="0Pe-E4-Hzv"/>
+                <outlet property="viewEditObject" destination="1327" id="eyh-l5-bQG"/>
                 <outlet property="viewGettingStarted" destination="nkZ-8x-iet" id="y5F-Bc-VPW"/>
                 <outlet property="viewMainTableViewContainer" destination="58" id="1108"/>
-                <outlet property="viewSubtitleContainer" destination="Ee1-0X-LGQ" id="3Uo-Gs-3KL"/>
-                <outlet property="viewTabsContainer" destination="MUk-1k-Qz6" id="bP1-g2-AoR"/>
+                <outlet property="viewTabsContainer" destination="1327" id="B2K-Oc-F2c"/>
                 <outlet property="viewTitleContainer" destination="61" id="U77-gg-e5i"/>
-                <outlet property="viewWorking" destination="7rg-kB-oaQ" id="4wB-wT-fYk"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -149,53 +146,9 @@
                                     <rect key="frame" x="-1" y="0.0" width="618" height="392"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <customView id="Ee1-0X-LGQ">
-                                            <rect key="frame" x="0.0" y="360" width="618" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                            <subviews>
-                                                <button toolTip="Save group" verticalHuggingPriority="750" id="AcV-c7-a6p">
-                                                    <rect key="frame" x="477" y="-1" width="71" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                    <animations/>
-                                                    <buttonCell key="cell" type="push" title="Pull" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="luS-wR-YGz">
-                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="save"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="pull:" target="-2" id="UXX-GL-5hi"/>
-                                                    </connections>
-                                                </button>
-                                                <button toolTip="Save group" verticalHuggingPriority="750" id="P5w-uA-szd">
-                                                    <rect key="frame" x="543" y="-1" width="71" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                    <animations/>
-                                                    <buttonCell key="cell" type="push" title="Push" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Es4-tG-Jfs">
-                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                        <font key="font" metaFont="system"/>
-                                                    </buttonCell>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="save"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="commit:" target="-2" id="Zom-IH-Nik"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <animations/>
-                                        </customView>
-                                        <customView id="MUk-1k-Qz6">
-                                            <rect key="frame" x="0.0" y="0.0" width="618" height="360"/>
+                                        <customView id="1330" customClass="TNTabView">
+                                            <rect key="frame" x="0.0" y="0.0" width="618" height="392"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <customView id="1330" customClass="TNTabView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="618" height="360"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <animations/>
-                                                </customView>
-                                            </subviews>
                                             <animations/>
                                         </customView>
                                     </subviews>
@@ -213,7 +166,7 @@
                 </splitView>
             </subviews>
             <animations/>
-            <point key="canvasLocation" x="912.5" y="300"/>
+            <point key="canvasLocation" x="823.5" y="280"/>
         </customView>
         <customView id="260" userLabel="Masking View">
             <rect key="frame" x="0.0" y="0.0" width="490" height="274"/>
@@ -497,23 +450,5 @@ Finally, it contains the list of all the attributes the represented object will 
         <viewController nibName="Model" id="0xe-57-96x" customClass="SDModelViewController"/>
         <viewController nibName="Attributes" id="SXe-gr-6DS" customClass="SDAttributesViewController"/>
         <viewController nibName="APIs" id="mdX-6R-3Ir" customClass="SDAPIsViewController"/>
-        <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" state="followsWindowActiveState" id="7rg-kB-oaQ">
-            <rect key="frame" x="0.0" y="0.0" width="211" height="148"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Kn3-nd-raA">
-                    <rect key="frame" x="18" y="41" width="175" height="66"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Working..." id="kJN-Ku-IeI">
-                        <font key="font" metaFont="systemBold" size="16"/>
-                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-            </subviews>
-            <animations/>
-            <point key="canvasLocation" x="1203.5" y="-26"/>
-        </visualEffectView>
     </objects>
 </document>

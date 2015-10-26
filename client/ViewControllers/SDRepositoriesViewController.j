@@ -9,6 +9,10 @@
 {
     @outlet NUHoverView                 hoverView;
     @outlet CPView                      viewRepositories;
+    @outlet CPVisualEffectView          viewWorking;
+    @outlet CPTextField                 labelWorking;
+    @outlet CPButton                    buttonDownload;
+    @outlet CPButton                    buttonPull;
 
     @outlet SDItemizedSpecifications    itemizedSpecificationsController;
 }
@@ -62,6 +66,10 @@
 
     [self setSubModules:[itemizedSpecificationsController]];
     [self setCurrentParent:nil];
+
+    [viewSubtitleContainer setBackgroundColor:[CPColor colorWithHexString:@"e21b2d"]];
+    [buttonDownload setHidden:YES];
+    [buttonPull setHidden:YES];
 }
 
 - (void)configureContexts
@@ -85,6 +93,8 @@
 
     [hoverView showWithAnimation:NO];
     [hoverView setEnabled:NO];
+
+    [self showWorkingView:NO title:@""];
 }
 
 - (void)moduleDidSelectObjects:(CPArray)someObject
@@ -100,8 +110,14 @@
         [SDRepository setCurrentRepository:nil];
         [self setApplicationNameAndIcon];
 
+        [buttonDownload setHidden:YES];
+        [buttonPull setHidden:YES];
+
         return;
     }
+
+    [buttonDownload setHidden:NO];
+    [buttonPull setHidden:NO];
 
     [hoverView setEnabled:YES];
     [SDRepository setCurrentRepository:[someObject firstObject]];
@@ -125,6 +141,51 @@
 - (void)setApplicationNameAndIcon
 {
     [[NUKit kit] bindApplicationNameToObject:[SDRepository currentRepository] withKeyPath:@"name"];
+}
+
+- (void)showWorkingView:(BOOL)shouldShow title:(CPString)aTitle
+{
+    if (shouldShow)
+    {
+        if ([viewWorking superview])
+            return;
+
+        [labelWorking setStringValue:aTitle];
+
+        [viewWorking setFrame:[[[CPApp mainWindow] contentView] bounds]];
+        [[[CPApp mainWindow] contentView] addSubview:viewWorking];
+        [[NUDataTransferController defaultDataTransferController] showFetchingViewOnView:viewWorking];
+    }
+    else
+    {
+        if (![viewWorking superview])
+            return;
+
+        [[NUDataTransferController defaultDataTransferController] hideFetchingViewFromView:viewWorking];
+        [viewWorking removeFromSuperview];
+    }
+}
+
+#pragma mark -
+#pragma mark Actions
+
+- (@action)pull:(id)aSender
+{
+    [[NURESTJobsController defaultController] postJob:[SDPullJob new] toEntity:[_currentSelectedObjects firstObject] andCallSelector:@selector(_didPull:) ofObject:self];
+    [self showWorkingView:YES title:@"Pulling Specifications..."];
+}
+
+- (void)_didPull:(NURESTJob)aJob
+{
+    [self showWorkingView:NO title:@""];
+}
+
+- (@action)download:(id)aSender
+{
+    var repository = [_currentSelectedObjects firstObject],
+        url = [repository url] + @"/repos/" + [repository organization] + @"/" + [repository repository] + @"/zipball/" + [repository branch];
+
+    window.location.assign(url);
 }
 
 @end

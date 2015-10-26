@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDRepositoriesViewController">
             <connections>
                 <outlet property="buttonBarMain" destination="W8h-PQ-gii" id="tVG-aU-LbS"/>
+                <outlet property="buttonDownload" destination="PPC-1J-RrR" id="a8k-ZH-eZb"/>
+                <outlet property="buttonPull" destination="FM4-Wf-kG9" id="Z55-oq-rsQ"/>
                 <outlet property="fieldTotalEntities" destination="hIs-yB-U5l" id="Fsi-cC-RYi"/>
                 <outlet property="hoverView" destination="hoT-eQ-Umk" id="DkW-Ie-dAI"/>
                 <outlet property="itemizedSpecificationsController" destination="hIX-Md-Xbw" id="nyC-2K-D2M"/>
+                <outlet property="labelWorking" destination="c7q-oy-Pya" id="ieo-aj-eme"/>
                 <outlet property="maskingView" destination="OnZ-Zd-MpU" id="D9f-QZ-ksp"/>
                 <outlet property="popover" destination="bVs-Fg-b6Y" id="pLx-yJ-TIV"/>
                 <outlet property="tabViewContent" destination="RJg-20-xXM" id="vJA-9l-sMl"/>
@@ -19,7 +22,9 @@
                 <outlet property="viewGettingStarted" destination="atY-KZ-GJG" id="j3Y-KS-Ayh"/>
                 <outlet property="viewMainTableViewContainer" destination="WkN-ij-BXB" id="00s-d2-Cpd"/>
                 <outlet property="viewRepositories" destination="WkN-ij-BXB" id="p0N-ul-qzP"/>
+                <outlet property="viewSubtitleContainer" destination="ftW-CG-LIG" id="50j-4W-Hc6"/>
                 <outlet property="viewTabsContainer" destination="awq-QO-v1Y" id="Joj-oW-04w"/>
+                <outlet property="viewWorking" destination="GWl-mJ-Ufl" id="O9k-jq-gpx"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -95,7 +100,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                 </customView>
             </subviews>
             <animations/>
-            <point key="canvasLocation" x="535" y="-48.5"/>
+            <point key="canvasLocation" x="535" y="-44.5"/>
         </customView>
         <customView id="Vhy-KX-2L5" userLabel="Popover View">
             <rect key="frame" x="0.0" y="0.0" width="386" height="511"/>
@@ -443,15 +448,52 @@ If you need to work on multiple version of a Specification, you can just add mul
             <point key="canvasLocation" x="948" y="-138.5"/>
         </customView>
         <customView id="awq-QO-v1Y" userLabel="Main View">
-            <rect key="frame" x="0.0" y="0.0" width="520" height="339"/>
+            <rect key="frame" x="0.0" y="0.0" width="519" height="339"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <customView id="ftW-CG-LIG">
+                    <rect key="frame" x="-1" y="307" width="520" height="32"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <button toolTip="Save group" verticalHuggingPriority="750" id="FM4-Wf-kG9">
+                            <rect key="frame" x="449" y="-2" width="63" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <animations/>
+                            <buttonCell key="cell" type="push" title="Pull" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1Hp-LN-Kpp">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="tag" value="save"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="pull:" target="-2" id="Mom-oc-327"/>
+                            </connections>
+                        </button>
+                        <button toolTip="Save group" verticalHuggingPriority="750" id="PPC-1J-RrR">
+                            <rect key="frame" x="348" y="-2" width="101" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <animations/>
+                            <buttonCell key="cell" type="push" title="Download" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cta-Dt-nlJ">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="tag" value="save"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="download:" target="-2" id="I3r-P5-1kf"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <animations/>
+                </customView>
                 <customView id="i8o-Pf-hqX">
-                    <rect key="frame" x="0.0" y="0.0" width="520" height="339"/>
+                    <rect key="frame" x="-1" y="0.0" width="520" height="332"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <customView id="RJg-20-xXM" customClass="TNTabView">
-                            <rect key="frame" x="11" y="0.0" width="509" height="364"/>
+                            <rect key="frame" x="11" y="-75" width="509" height="407"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <animations/>
                         </customView>
@@ -460,7 +502,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                 </customView>
             </subviews>
             <animations/>
-            <point key="canvasLocation" x="502" y="290.5"/>
+            <point key="canvasLocation" x="1203.5" y="277.5"/>
         </customView>
         <customView id="Yyh-vd-Vvs" userLabel="Empty Editor View">
             <rect key="frame" x="0.0" y="0.0" width="163" height="234"/>
@@ -619,6 +661,24 @@ If you need to work on multiple version of a Specification, you can just add mul
             <point key="canvasLocation" x="143.5" y="85"/>
         </customView>
         <viewController nibName="ItemizedSpecifications" id="hIX-Md-Xbw" customClass="SDItemizedSpecifications"/>
+        <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" state="followsWindowActiveState" id="GWl-mJ-Ufl">
+            <rect key="frame" x="0.0" y="0.0" width="211" height="148"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="c7q-oy-Pya">
+                    <rect key="frame" x="18" y="41" width="175" height="66"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Working..." id="LG7-QR-6BL">
+                        <font key="font" metaFont="systemBold" size="16"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <animations/>
+            <point key="canvasLocation" x="1075.5" y="-420"/>
+        </visualEffectView>
     </objects>
     <resources>
         <image name="logo-application" width="290" height="290"/>

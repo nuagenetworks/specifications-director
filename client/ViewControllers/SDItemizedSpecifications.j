@@ -16,35 +16,36 @@
 #pragma mark -
 #pragma mark Initialization
 
-+ (CPColor)backgroundColor
-{
-    return NUSkinColorWhite;
-}
+// + (CPColor)backgroundColor
+// {
+//     return NUSkinColorWhite;
+// }
+//
+// + (CPColor)selectionColor
+// {
+//     return NUSkinColorGrey;
+// }
+//
+// + (CPColor)itemBorderColor
+// {
+//     return nil;
+// }
+//
+// + (CPColor)itemTextColor
+// {
+//     return NUSkinColorBlack;
+// }
+//
+// + (CPColor)itemSelectedTextColor
+// {
+//     return NUSkinColorBlack;
+// }
+//
+// + (CPColor)separatorColor
+// {
+//     return NUSkinColorGreyLight;
+// }
 
-+ (CPColor)selectionColor
-{
-    return NUSkinColorGrey;
-}
-
-+ (CPColor)itemBorderColor
-{
-    return nil;
-}
-
-+ (CPColor)itemTextColor
-{
-    return NUSkinColorBlack;
-}
-
-+ (CPColor)itemSelectedTextColor
-{
-    return NUSkinColorBlack;
-}
-
-+ (CPColor)separatorColor
-{
-    return NUSkinColorGreyLight;
-}
 + (CPString)moduleName
 {
     return @"Specifications";
