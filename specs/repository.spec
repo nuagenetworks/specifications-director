@@ -37,10 +37,6 @@
             "description": "The Github API Url",
             "type": "string"
         },
-        "username": {
-            "description": "The username.",
-            "type": "string"
-        },
         "password": {
             "description": "The password.",
             "type": "string"

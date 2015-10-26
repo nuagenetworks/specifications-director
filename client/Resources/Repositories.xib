@@ -340,7 +340,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_url"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_branch"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="vqf-TW-xxU">
