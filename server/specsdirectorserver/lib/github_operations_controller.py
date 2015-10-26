@@ -1,5 +1,4 @@
 import logging
-import json
 
 from monolithe.specifications import Specification, RepositoryManager, SpecificationAttribute, SpecificationAPI, RepositoryManager
 from garuda.core.models import GAController, GAPushEvent, GARequest
