@@ -57,26 +57,34 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         """
         specification        = context.object
         action               = context.request.action
-        stored_specification = self._storage_controller.get(resource_name=self._sdk.SDSpecification.rest_name, identifier=specification.id)
 
-        if action == GARequest.ACTION_UPDATE and stored_specification and stored_specification.name != specification.name:
-            self._old_names[context.request.uuid] = stored_specification.name
+        if action == GARequest.ACTION_UPDATE:
+
+            stored_specification = self._storage_controller.get(resource_name=self._sdk.SDSpecification.rest_name, identifier=specification.id)
+
+            if stored_specification and stored_specification.name != specification.name:
+                self._old_names[context.request.uuid] = stored_specification.name
 
         return context
 
     def did_perform_write(self, context):
         """
         """
-        specification        = context.object
-        repository           = context.parent_object
         action               = context.request.action
 
         if action == GARequest.ACTION_CREATE:
+
+            specification = context.object
+            repository    = context.parent_object
+
             self._github_operations_controller.commit_specification(repository=repository,
                                                                     specification=specification,
                                                                     commit_message="Added specification %s" % specification.name)
 
         elif action == GARequest.ACTION_UPDATE:
+
+            specification = context.object
+            repository    = context.parent_object
 
             if context.request.uuid in self._old_names:
                 old_name = self._old_names[context.request.uuid]
@@ -92,8 +100,20 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
                                                                         commit_message="Updated specification %s" % specification.name)
 
         elif action == GARequest.ACTION_DELETE:
+
+            specification = context.object
+            repository    = context.parent_object
+
             self._github_operations_controller.delete_specification(repository=repository,
                                                                     specification=specification,
                                                                     commit_message="Deleted specification %s" % specification.name)
 
+        elif action == GARequest.ACTION_ASSIGN:
+
+            specification = context.parent_object
+            repository    = self._storage_controller.get(resource_name=specification.parent_type, identifier=specification.parent_id)
+
+            self._github_operations_controller.commit_specification(repository=repository,
+                                                                    specification=specification,
+                                                                    commit_message="Updated extensions for specification %s" % specification.name)
         return context
