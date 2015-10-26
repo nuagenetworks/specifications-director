@@ -1,4 +1,5 @@
 import logging
+import msgpack
 
 from monolithe.specifications import Specification, RepositoryManager, SpecificationAttribute, SpecificationAPI, RepositoryManager
 from garuda.core.models import GAController, GAPushEvent, GARequest
@@ -53,49 +54,58 @@ class SDGitHubOperationsController(GAController):
         """
         """
 
-        info       = data
-        action     = info['action']
-        repository = self._sdk.SDRepository(data=info['repository'])
+        try:
 
-        if action == 'checkout_repository':
+            info       = msgpack.unpackb(data)
+            action     = info['action']
+            repository = self._sdk.SDRepository(data=info['repository'])
 
-            job = self._sdk.SDJob(data=info['job'])
+            if action == 'checkout_repository':
 
-            self._peform_checkout_repository(repository=repository,
-                                             job=job)
+                job = self._sdk.SDJob(data=info['job'])
 
-        elif action == 'commit_specification':
+                self._peform_checkout_repository(repository=repository,
+                                                 job=job)
 
-            specification = self._sdk.SDSpecification(data=info['specification'])
+            elif action == 'commit_specification':
 
-            self._perform_commit_specification(repository=repository,
-                                               specification=specification,
-                                               commit_message=info['commit_message'])
+                klass = self._sdk.SDSpecification if info['specification_type'] == self._sdk.SDSpecification.rest_name else self._sdk.SDAbstract
 
-        elif action == 'rename_specification':
+                specification = klass(data=info['specification'])
 
-            specification = self._sdk.SDSpecification(data=info['specification'])
+                self._perform_commit_specification(repository=repository,
+                                                   specification=specification,
+                                                   commit_message=info['commit_message'])
 
-            self._perform_rename_specification(repository=repository,
-                                               specification=specification,
-                                               old_name=info['old_name'],
-                                               commit_message=info['commit_message'])
+            elif action == 'rename_specification':
 
-        elif action == 'delete_specification':
+                klass = self._sdk.SDSpecification if info['specification_type'] == self._sdk.SDSpecification.rest_name else self._sdk.SDAbstract
 
-            specification = self._sdk.SDSpecification(data=info['specification'])
+                specification = klass(data=info['specification'])
 
-            self._perform_delete_specification(repository=repository,
-                                               specification=specification,
-                                               commit_message=info['commit_message'])
+                self._perform_rename_specification(repository=repository,
+                                                   specification=specification,
+                                                   old_name=info['old_name'],
+                                                   commit_message=info['commit_message'])
 
-        elif action == 'commit_apiinfo':
+            elif action == 'delete_specification':
 
-            apiinfo = self._sdk.SDAPIInfo(data=info['apiinfo'])
+                klass = self._sdk.SDSpecification if info['specification_type'] == self._sdk.SDSpecification.rest_name else self._sdk.SDAbstract
+                specification = klass(data=info['specification'])
 
-            self._perform_commit_apiinfo(repository=repository,
-                                         apiinfo=apiinfo,
-                                         commit_message=info['commit_message'])
+                self._perform_delete_specification(repository=repository,
+                                                   specification=specification,
+                                                   commit_message=info['commit_message'])
+
+            elif action == 'commit_apiinfo':
+
+                apiinfo = self._sdk.SDAPIInfo(data=info['apiinfo'])
+
+                self._perform_commit_apiinfo(repository=repository,
+                                             apiinfo=apiinfo,
+                                             commit_message=info['commit_message'])
+        except Exception as ex:
+            print "Exception while executing git operation: %s" % ex
 
 
     def _peform_checkout_repository(self, repository, job):

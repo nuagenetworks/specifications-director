@@ -43,11 +43,14 @@
         [self exposeLocalKeyPathToREST:@"package"];
         [self exposeLocalKeyPathToREST:@"root"];
 
-        _attributes = [SDAttributesFetcher fetcherWithParentObject:self];
-        _childAPIs  = [SDChildAPIsFetcher fetcherWithParentObject:self];
+        [self exposeBindableAttribute:@"filename"];
+
         _allowsDelete = YES;
-        _allowsGet = YES;
+        _allowsGet    = YES;
         _allowsUpdate = YES;
+
+        _attributes   = [SDAttributesFetcher fetcherWithParentObject:self];
+        _childAPIs    = [SDChildAPIsFetcher fetcherWithParentObject:self];
     }
 
     return self;
@@ -59,15 +62,29 @@
         return;
 
     [self willChangeValueForKey:@"objectRESTName"];
-    [self willChangeValueForKey:@"name"];
-    _name = anObjectRESTName + @".spec";
     _objectRESTName = anObjectRESTName;
-    [self didChangeValueForKey:@"name"];
     [self didChangeValueForKey:@"objectRESTName"];
 
     [self setObjectResourceName:_pluralize_rest_name(_objectRESTName)];
     [self setEntityName:[_objectRESTName capitalizedString]];
+    [self setFilename:anObjectRESTName];
 }
 
+- (void)setFilename:(CPString)aName
+{
+    if (_name == aName + ".spec")
+        return;
+
+    [self willChangeValueForKey:@"name"];
+    [self willChangeValueForKey:@"displayName"];
+    _name = aName + ".spec"
+    [self didChangeValueForKey:@"displayName"];
+    [self didChangeValueForKey:@"name"];
+}
+
+- (CPString)filename
+{
+    return _name ? _name.replace(/\.spec$/, @"") : @"";
+}
 
 @end

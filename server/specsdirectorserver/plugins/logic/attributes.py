@@ -52,7 +52,7 @@ class SDAttributeLogicPlugin(GALogicPlugin):
     def _commit_specification_change(self, context):
         """
         """
-        action        = context.action
+        action        = context.request.action
         attribute     = context.object
         specification = context.parent_object
         repository    = self.core_controller.storage_controller.get(resource_name=self._sdk.SDRepository.rest_name, identifier=specification.parent_id)

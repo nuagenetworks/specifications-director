@@ -6,7 +6,9 @@
 
 @implementation SDModelViewController : NUModuleSelfParent
 {
-    @outlet CPView                          editionViewGeneral;
+    @outlet CPView                          editionViewDocumentation;
+    @outlet CPView                          editionViewREST;
+    @outlet CPView                          editionViewOperations;
     @outlet CPView                          viewAbstractsContainer;
     @outlet CPView                          viewContainer;
 
@@ -35,9 +37,17 @@
     [viewContainer setBackgroundColor:NUSkinColorWhite];
     [viewBottom setBorderTopColor:NUSkinColorGrey];
 
-    var frame = [editionViewGeneral frame];
-    [frame.size.width = [scrollViewMain contentSize].width];
-    [editionViewGeneral setFrame:frame];
+    // var frame = [editionViewREST frame];
+    // [frame.size.width = [scrollViewMain contentSize].width];
+    // [editionViewREST setFrame:frame];
+    //
+    // var frame = [editionViewREST frame];
+    // [frame.size.width = [scrollViewMain contentSize].width];
+    // [editionViewGeneral setFrame:frame];
+    //
+    // var frame = [editionViewGeneral frame];
+    // [frame.size.width = [scrollViewMain contentSize].width];
+    // [editionViewGeneral setFrame:frame];
 
     var view = [abstractsController view];
 
@@ -81,19 +91,22 @@
     var contextSpecification = [[NUModuleContext alloc] initWithName:@"Model" identifier:[SDSpecification RESTName]];
     [contextSpecification setButtonSave:buttonSave];
     [contextSpecification setEditionView:[self view]];
-    [contextSpecification setAdditionalEditionViews:[editionViewGeneral]];
+    [contextSpecification setAdditionalEditionViews:[editionViewREST, editionViewDocumentation, editionViewOperations]];
     [self registerContext:contextSpecification forClass:SDSpecification];
 
     var contextAbstract = [[NUModuleContext alloc] initWithName:@"Model" identifier:[SDAbstract RESTName]];
     [contextAbstract setButtonSave:buttonSave];
     [contextAbstract setEditionView:[self view]];
-    [contextAbstract setAdditionalEditionViews:[editionViewGeneral]];
+    [contextAbstract setAdditionalEditionViews:[editionViewDocumentation, editionViewOperations]];
     [self registerContext:contextAbstract forClass:SDAbstract];
 }
 
 - (CPArray)moduleCurrentVisibleEditionViews
 {
-    return [editionViewGeneral];
+    if ([_currentParent RESTName] == [SDSpecification RESTName])
+        return [editionViewREST, editionViewOperations, editionViewDocumentation];
+    else
+        return [editionViewOperations, editionViewDocumentation];
 }
 
 - (void)performPostPushOperation

@@ -52,8 +52,8 @@ class SDSpecificationImporter():
         if count:
             self._storage_controller.delete_multiple(resources=abstracts, cascade=True)
             events = []
-            for asbtract in abstracts:
-                events.append(GAPushEvent(action=GARequest.ACTION_DELETE, entity=asbtract))
+            for  abstract in abstracts:
+                events.append(GAPushEvent(action=GARequest.ACTION_DELETE, entity=abstract))
             self._push_controller.push_events(events=events)
 
         apiinfos, count = self._storage_controller.get_all(resource_name=self._sdk.SDAPIInfo.rest_name, parent=repository)

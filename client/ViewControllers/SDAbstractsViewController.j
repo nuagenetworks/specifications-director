@@ -32,8 +32,7 @@
 
     [self registerDataViewWithName:@"specificationDataView" forClass:SDAbstract];
     [self setModuleTitle:@"Abstracts"];
-
-    [self setSubModules:[modelController, attributesController, APIsController]]
+    [self setSubModules:[modelController, attributesController, APIsController]];
 }
 
 - (void)configureContexts

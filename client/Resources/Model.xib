@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15B38b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDModelViewController">
@@ -9,7 +9,9 @@
                 <outlet property="abstractsController" destination="qbA-Uh-tgT" id="4Hz-pT-eU3"/>
                 <outlet property="buttonHelp" destination="WYe-gH-56P" id="fem-a9-9xT"/>
                 <outlet property="buttonSave" destination="j9h-om-vAO" id="JsS-U6-IlH"/>
-                <outlet property="editionViewGeneral" destination="ePO-8D-WzU" id="HEW-86-osM"/>
+                <outlet property="editionViewDocumentation" destination="ePO-8D-WzU" id="HoO-hX-1x3"/>
+                <outlet property="editionViewOperations" destination="Wbv-wx-pBt" id="3F3-7H-0nS"/>
+                <outlet property="editionViewREST" destination="tKt-qr-NJk" id="fDS-Vx-ygr"/>
                 <outlet property="scrollViewMain" destination="nFv-3U-Y02" id="teH-WK-bxD"/>
                 <outlet property="splitViewEditor" destination="CF7-94-sye" id="QVb-ns-Qzm"/>
                 <outlet property="view" destination="1" id="g9j-fa-jAg"/>
@@ -122,21 +124,21 @@
             <point key="canvasLocation" x="529" y="690"/>
         </customView>
         <customView id="ePO-8D-WzU">
-            <rect key="frame" x="0.0" y="0.0" width="405" height="579"/>
+            <rect key="frame" x="0.0" y="0.0" width="405" height="227"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="Iqj-0b-dml">
-                    <rect key="frame" x="18" y="552" width="369" height="17"/>
+                    <rect key="frame" x="18" y="200" width="369" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="General Information" id="G3q-lk-iDv">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Documentation Information" id="G3q-lk-iDv">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="34">
-                    <rect key="frame" x="18" y="527" width="74" height="17"/>
+                    <rect key="frame" x="18" y="175" width="74" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Description" id="35">
@@ -146,7 +148,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="227">
-                    <rect key="frame" x="95" y="522" width="292" height="13"/>
+                    <rect key="frame" x="95" y="170" width="292" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="228">
@@ -159,7 +161,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="5">
-                    <rect key="frame" x="20" y="427" width="365" height="92"/>
+                    <rect key="frame" x="20" y="75" width="365" height="92"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <string key="toolTip">The description of the object represented by the specification. This will be used when generating the API documentation using Monolithe.</string>
                     <animations/>
@@ -176,8 +178,57 @@
                         <outlet property="nextKeyView" destination="w6R-sk-3RM" id="Hyz-if-Hkv"/>
                     </connections>
                 </textField>
+                <textField verticalHuggingPriority="750" id="Abs-XW-UMd">
+                    <rect key="frame" x="18" y="50" width="56" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Package" id="7an-z1-5Kg">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="9qT-Sk-obn">
+                    <rect key="frame" x="142" y="45" width="245" height="13"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="E8N-4x-lXy">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_server"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField toolTip="The bare LDAP server FQDN or IP." verticalHuggingPriority="750" id="w6R-sk-3RM">
+                    <rect key="frame" x="20" y="20" width="365" height="22"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="fabulous" drawsBackground="YES" id="5Ab-eC-1ww">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="package"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="nextKeyView" destination="4Us-j2-HI0" id="Dxj-AN-uax"/>
+                    </connections>
+                </textField>
+            </subviews>
+            <animations/>
+            <point key="canvasLocation" x="351.5" y="213.5"/>
+        </customView>
+        <viewController nibName="ModelAbstracts" id="qbA-Uh-tgT" customClass="SDModelAbstractsViewController"/>
+        <customView id="tKt-qr-NJk">
+            <rect key="frame" x="0.0" y="0.0" width="405" height="212"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
                 <textField verticalHuggingPriority="750" id="U13-sM-HdF">
-                    <rect key="frame" x="18" y="312" width="76" height="17"/>
+                    <rect key="frame" x="18" y="160" width="76" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="REST Name" id="K8r-QR-n9h">
@@ -187,7 +238,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="p5X-7R-2W7">
-                    <rect key="frame" x="95" y="307" width="292" height="13"/>
+                    <rect key="frame" x="95" y="155" width="292" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="5jD-j4-UyZ">
@@ -200,7 +251,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField toolTip="The ReST Name is a singular word representing the object. For example 'unicorn'" verticalHuggingPriority="750" id="4Us-j2-HI0">
-                    <rect key="frame" x="20" y="282" width="365" height="22"/>
+                    <rect key="frame" x="20" y="130" width="365" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="unicorn" drawsBackground="YES" id="US4-Uo-H21">
@@ -217,7 +268,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="e7F-Bv-PAU">
-                    <rect key="frame" x="18" y="257" width="100" height="17"/>
+                    <rect key="frame" x="18" y="105" width="100" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Resource Name" id="QaL-bH-oO0">
@@ -227,7 +278,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="ztL-Rg-ael">
-                    <rect key="frame" x="142" y="252" width="245" height="13"/>
+                    <rect key="frame" x="142" y="100" width="245" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="szS-X6-1dA">
@@ -240,7 +291,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField toolTip="The resource name represents a collection of objects. It is basically the ReST name, but in the plural form." verticalHuggingPriority="750" id="e5k-hS-Q2t">
-                    <rect key="frame" x="20" y="227" width="365" height="22"/>
+                    <rect key="frame" x="20" y="75" width="365" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="unicorns" drawsBackground="YES" id="hSs-Gk-Vbp">
@@ -256,48 +307,8 @@
                         <outlet property="nextKeyView" destination="WAv-JT-ePB" id="Au7-5W-Zuy"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" id="Abs-XW-UMd">
-                    <rect key="frame" x="18" y="402" width="56" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Package" id="7an-z1-5Kg">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" id="9qT-Sk-obn">
-                    <rect key="frame" x="142" y="397" width="245" height="13"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="E8N-4x-lXy">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_server"/>
-                    </userDefinedRuntimeAttributes>
-                </textField>
-                <textField toolTip="The bare LDAP server FQDN or IP." verticalHuggingPriority="750" id="w6R-sk-3RM">
-                    <rect key="frame" x="20" y="372" width="365" height="22"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="fabulous" drawsBackground="YES" id="5Ab-eC-1ww">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="package"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <outlet property="nextKeyView" destination="4Us-j2-HI0" id="Dxj-AN-uax"/>
-                    </connections>
-                </textField>
                 <textField verticalHuggingPriority="750" id="ju6-6i-t8f">
-                    <rect key="frame" x="18" y="337" width="369" height="17"/>
+                    <rect key="frame" x="18" y="185" width="369" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ReST Configuration" id="YYk-RV-GKF">
@@ -306,54 +317,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="bDs-IN-af6">
-                    <rect key="frame" x="18" y="168" width="111" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <buttonCell key="cell" type="check" title="Allow Retrieval" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W4P-qe-Bbp">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="allowsGet"/>
-                    </userDefinedRuntimeAttributes>
-                </button>
-                <button id="aGv-zV-iTl">
-                    <rect key="frame" x="18" y="146" width="133" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <buttonCell key="cell" type="check" title="Allow Modification" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="h4K-Qc-g2l">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="allowsUpdate"/>
-                    </userDefinedRuntimeAttributes>
-                </button>
-                <textField verticalHuggingPriority="750" id="sXX-L2-Emn">
-                    <rect key="frame" x="18" y="192" width="369" height="17"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Operations" id="UgX-f9-OCv">
-                        <font key="font" metaFont="systemBold"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button id="nyr-ce-eiU">
-                    <rect key="frame" x="18" y="124" width="109" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <buttonCell key="cell" type="check" title="Allow Deletion" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g42-H4-FXP">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="allowsDelete"/>
-                    </userDefinedRuntimeAttributes>
-                </button>
                 <textField verticalHuggingPriority="750" id="dQQ-gT-A7V">
-                    <rect key="frame" x="18" y="66" width="78" height="17"/>
+                    <rect key="frame" x="18" y="50" width="78" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Entity Name" id="YZr-JE-hka">
@@ -363,7 +328,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="EQS-py-ie4">
-                    <rect key="frame" x="142" y="61" width="245" height="13"/>
+                    <rect key="frame" x="142" y="45" width="245" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="cjR-fV-ncb">
@@ -376,7 +341,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="WAv-JT-ePB">
-                    <rect key="frame" x="20" y="36" width="365" height="22"/>
+                    <rect key="frame" x="20" y="20" width="365" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <string key="toolTip">The Entity Name will be used to generate classes when generating a SDK using Monolithe. This should be camel cased. For instance, 'Unicorn'</string>
                     <animations/>
@@ -393,20 +358,63 @@
                         <outlet property="nextKeyView" destination="5" id="Sq5-ww-WXe"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" id="kvs-qb-IzU">
-                    <rect key="frame" x="18" y="91" width="369" height="17"/>
+            </subviews>
+            <animations/>
+            <point key="canvasLocation" x="659.5" y="178"/>
+        </customView>
+        <customView id="Wbv-wx-pBt">
+            <rect key="frame" x="0.0" y="0.0" width="405" height="123"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button id="bDs-IN-af6">
+                    <rect key="frame" x="18" y="62" width="111" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <buttonCell key="cell" type="check" title="Allow Retrieval" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W4P-qe-Bbp">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="allowsGet"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button id="aGv-zV-iTl">
+                    <rect key="frame" x="18" y="40" width="133" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <buttonCell key="cell" type="check" title="Allow Modification" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="h4K-Qc-g2l">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="allowsUpdate"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <textField verticalHuggingPriority="750" id="sXX-L2-Emn">
+                    <rect key="frame" x="18" y="86" width="369" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="SDK Configuration" id="5EX-5O-X6V">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Operations" id="UgX-f9-OCv">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button id="nyr-ce-eiU">
+                    <rect key="frame" x="18" y="18" width="109" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <buttonCell key="cell" type="check" title="Allow Deletion" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g42-H4-FXP">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="allowsDelete"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
             </subviews>
             <animations/>
-            <point key="canvasLocation" x="363.5" y="390.5"/>
+            <point key="canvasLocation" x="659.5" y="379.5"/>
         </customView>
-        <viewController nibName="ModelAbstracts" id="qbA-Uh-tgT" customClass="SDModelAbstractsViewController"/>
     </objects>
 </document>
