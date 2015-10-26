@@ -54,7 +54,7 @@ class SDGitHubOperationsController(GAController):
         """
         """
 
-        info       = json.loads(data)
+        info       = data
         action     = info['action']
         repository = self._sdk.SDRepository(data=info['repository'])
 
