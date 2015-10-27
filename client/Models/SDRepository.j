@@ -9,6 +9,7 @@ NURepositoryCurrent = nil;
 
 @implementation SDRepository : SDRESTObject
 {
+    BOOL                        _valid          @accessors(property=valid);
     CPString                    _name           @accessors(property=name);
     CPString                    _url            @accessors(property=url);
     CPString                    _username       @accessors(property=username);
@@ -53,6 +54,7 @@ NURepositoryCurrent = nil;
         [self exposeLocalKeyPathToREST:@"repository"];
         [self exposeLocalKeyPathToREST:@"branch"];
         [self exposeLocalKeyPathToREST:@"path"];
+        [self exposeLocalKeyPathToREST:@"valid"];
 
         _APIInfos = [SDAPIInfosFetcher fetcherWithParentObject:self];
         _specifications = [SDSpecificationsFetcher fetcherWithParentObject:self];
