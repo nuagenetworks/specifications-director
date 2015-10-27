@@ -111,16 +111,30 @@ class SDGitHubOperationsController(GAController):
     def _peform_checkout_repository(self, repository, job):
         """
         """
-        manager = self._get_repository_manager_for_repository(repository=repository)
+        try:
+            manager = self._get_repository_manager_for_repository(repository=repository)
 
-        self._specification_importer.clean_repository(repository=repository)
-        self._specification_importer.import_apiinfo(repository=repository, manager=manager)
-        self._specification_importer.import_abstracts(repository=repository, manager=manager)
-        self._specification_importer.import_specifications(repository=repository, manager=manager)
+            self._specification_importer.clean_repository(repository=repository)
+            self._specification_importer.import_apiinfo(repository=repository, manager=manager)
+            self._specification_importer.import_abstracts(repository=repository, manager=manager)
+            self._specification_importer.import_specifications(repository=repository, manager=manager)
 
-        job.progress = 1.0
-        job.status = 'SUCCESS'
-        self._storage_controller.update(job)
+            job.progress = 1.0
+            job.status = 'SUCCESS'
+
+            repository.valid = True
+            self._storage_controller.update(repository)
+            self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
+
+        except:
+            job.progress = 1.0
+            job.status = 'FAILED'
+            job.result = 'Unable to find repository, or bad authentication. Please check your GitHub credentials.'
+
+        finally:
+            self._storage_controller.update(job)
+            self._storage_controller.get(resource_name=job.rest_name, identifier=job.id).to_dict()
+
         self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=job)])
 
     def _perform_commit_specification(self, repository, specification, commit_message):
