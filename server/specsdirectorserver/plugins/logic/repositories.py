@@ -46,7 +46,9 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
     def check_perform_read(self, context):
         """
         """
-        if not self._permissions_controller.has_permission(resource=context.session.root_object.user_name, target=context.object, permission='read'):
+        user_name = context.session.root_object.user_name
+
+        if not context.object.owner == user_name and not self._permissions_controller.has_permission(resource=user_name, target=context.object, permission='read'):
             context.add_error(GAError(type=GAError.TYPE_UNAUTHORIZED, title='Not Authorized', description='You do not have permission to read this resource.'))
 
         return context
