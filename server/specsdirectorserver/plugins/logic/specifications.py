@@ -17,7 +17,7 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         """
         return GAPluginManifest(name='specifications logic', version=1.0, identifier="specsdirector.plugins.logic.specifications",
                                 subscriptions={
-                                    "specification": [GARequest.ACTION_DELETE, GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE, GARequest.ACTION_ASSIGN]
+                                    "specification": [GARequest.ACTION_DELETE, GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE]
                                 })
 
     def did_register(self):
@@ -59,8 +59,8 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
     def preprocess_write(self, context):
         """
         """
-        specification        = context.object
-        action               = context.request.action
+        specification = context.object
+        action        = context.request.action
 
         if specification.name[-5:] != '.spec':
             specification.name = '%s.spec' % specification.name
@@ -77,21 +77,17 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
     def did_perform_write(self, context):
         """
         """
-        action               = context.request.action
+        action        = context.request.action
+        specification = context.object
+        repository    = context.parent_object
 
         if action == GARequest.ACTION_CREATE:
-
-            specification = context.object
-            repository    = context.parent_object
 
             self._github_operations_controller.commit_specification(repository=repository,
                                                                     specification=specification,
                                                                     commit_message="Added specification %s" % specification.name)
 
         elif action == GARequest.ACTION_UPDATE:
-
-            specification = context.object
-            repository    = context.parent_object
 
             if context.request.uuid in self._old_names:
                 old_name = self._old_names[context.request.uuid]
@@ -108,19 +104,7 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
 
         elif action == GARequest.ACTION_DELETE:
 
-            specification = context.object
-            repository    = context.parent_object
-
             self._github_operations_controller.delete_specification(repository=repository,
                                                                     specification=specification,
                                                                     commit_message="Deleted specification %s" % specification.name)
-
-        elif action == GARequest.ACTION_ASSIGN:
-
-            specification = context.parent_object
-            repository    = self._storage_controller.get(resource_name=specification.parent_type, identifier=specification.parent_id)
-
-            self._github_operations_controller.commit_specification(repository=repository,
-                                                                    specification=specification,
-                                                                    commit_message="Updated extensions for specification %s" % specification.name)
         return context

@@ -17,7 +17,7 @@ class SDAbstractLogicPlugin(GALogicPlugin):
         """
         return GAPluginManifest(name=' abstracts logic', version=1.0, identifier="specsdirector.plugins.logic.abstracts",
                                 subscriptions={
-                                    "abstract": [GARequest.ACTION_DELETE, GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE]
+                                    "abstract": [GARequest.ACTION_DELETE, GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE, GARequest.ACTION_ASSIGN]
                                 })
 
     def did_register(self):
@@ -31,7 +31,7 @@ class SDAbstractLogicPlugin(GALogicPlugin):
     def check_perform_write(self, context):
         """
         """
-        if context.request.action in (GARequest.ACTION_DELETE):
+        if context.request.action in (GARequest.ACTION_DELETE, GARequest.ACTION_ASSIGN):
             return context
 
         repository     = context.parent_object
@@ -51,6 +51,9 @@ class SDAbstractLogicPlugin(GALogicPlugin):
         """
         abstract = context.object
         action   = context.request.action
+
+        if action == GARequest.ACTION_ASSIGN:
+            return context
 
         if abstract.name[1] != '@':
             abstract.name = '@%s' % abstract.name
@@ -107,4 +110,14 @@ class SDAbstractLogicPlugin(GALogicPlugin):
             self._github_operations_controller.delete_specification(repository=repository,
                                                                     specification=abstract,
                                                                     commit_message="Deleted  abstract %s" % abstract.name)
+
+        elif action == GARequest.ACTION_ASSIGN:
+
+            specification = context.parent_object
+            repository    = self._storage_controller.get(resource_name=specification.parent_type, identifier=specification.parent_id)
+
+            self._github_operations_controller.commit_specification(repository=repository,
+                                                                    specification=specification,
+                                                                    commit_message="Updated extensions for specification %s" % specification.name)
+
         return context
