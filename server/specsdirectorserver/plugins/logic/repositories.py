@@ -17,13 +17,35 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
         """
         return GAPluginManifest(name='repositories logic', version=1.0, identifier="specsdirector.plugins.logic.repositories",
                                 subscriptions={
-                                    "repository": [GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE]
+                                    "repository": [GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE, GARequest.ACTION_READ, GARequest.ACTION_READALL]
                                 })
 
     def did_register(self):
         """
         """
         self._sdk = SDKLibrary().get_sdk('default')
+        self._permissions_controller = self.core_controller.permissions_controller
+
+    def preprocess_readall(self, context):
+        """
+        """
+        final_repo_list = []
+
+        for repository in context.objects:
+            if self._permissions_controller.has_permission(resource=context.session.root_object.user_name, target=repository, permission='all'):
+                final_repo_list.append(repository)
+
+        context.objects = final_repo_list
+
+        return context
+
+    def check_perform_read(self, context):
+        """
+        """
+        if not self._permissions_controller.has_permission(resource=context.session.root_object.user_name, target=context.object, permission='read'):
+            context.add_error(GAError(type=GAError.TYPE_UNAUTHORIZED, title='Not Authorized', description='You do not have permission to read this resource.'))
+
+        return context
 
     def check_perform_write(self, context):
         """
@@ -50,5 +72,22 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
 
         if not repository.path or not len(repository.path):
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute path is mandatory.', property_name='path'))
+
+        return context
+
+    def preprocess_write(self, context):
+        """
+        """
+        context.object.valid = False
+        context.object.owner = context.request.username
+
+        return context
+
+    def did_perform_write(self, context):
+        """
+        """
+
+        if context.request.action == GARequest.ACTION_CREATE:
+            self._permissions_controller.create_permission(resource=context.request.username, target=context.object, permission='all')
 
         return context
