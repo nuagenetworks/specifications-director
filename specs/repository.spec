@@ -24,6 +24,10 @@
         "job": {
             "get": true,
             "create": true
+        },
+        "monolitheconfig": {
+            "get": true,
+            "create": true
         }
     },
 
