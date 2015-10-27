@@ -78,8 +78,6 @@ def start(mongo_host, mongo_port, mongo_db, redis_host, redis_port, redis_db):
                     plugins=plugins,
                     log_level=logging.DEBUG)
 
-
-
     garuda.start()
 
 
