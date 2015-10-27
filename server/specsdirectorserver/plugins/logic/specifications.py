@@ -40,19 +40,19 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         objects, count = self._storage_controller.get_all(parent=repository, resource_name=specification.rest_name, filter='name == %s' % specification.name)
 
         if count and objects[0].id != specification.id:
-            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another specification exists with the name %s' % specification.name, property_name='name'))
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another specification exists with the name %s' % specification.name, property_name='name'))
 
         if not specification.name or not len(specification.name) or specification.name == '.spec':
-            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute name is mandatory.', property_name='name'))
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute name is mandatory.', property_name='name'))
 
         if not specification.object_rest_name or not len(specification.object_rest_name):
-            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute objectRESTName is mandatory.', property_name='objectRESTName'))
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute objectRESTName is mandatory.', property_name='objectRESTName'))
 
         if not specification.object_resource_name or not len(specification.object_resource_name):
-            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute objectResourceName is mandatory.', property_name='objectResourceName'))
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute objectResourceName is mandatory.', property_name='objectResourceName'))
 
         if not specification.entity_name or not len(specification.entity_name):
-            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute entityName is mandatory.', property_name='entityName'))
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute entityName is mandatory.', property_name='entityName'))
 
         return context
 

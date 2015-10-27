@@ -39,10 +39,10 @@ class SDAbstractLogicPlugin(GALogicPlugin):
         objects, count = self._storage_controller.get_all(parent=repository, resource_name=abstract.rest_name, filter='name == %s' % abstract.name)
 
         if count and objects[0].id != abstract.id:
-            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another abstract exists with the name %s' % abstract.name, property_name='name'))
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another abstract exists with the name %s' % abstract.name, property_name='name'))
 
         if not abstract.name or not len(abstract.name) or abstract.name == '.spec':
-            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute name is mandatory.', property_name='name'))
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute name is mandatory.', property_name='name'))
 
         return context
 

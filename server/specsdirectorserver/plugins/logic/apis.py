@@ -56,7 +56,7 @@ class SDAPILogicPlugin(GALogicPlugin):
         api = context.object
 
         if not api.associated_specification_id or not len(api.associated_specification_id):
-            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute associatedSpecificationID is mandatory.', property_name='associatedSpecificationID'))
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute associatedSpecificationID is mandatory.', property_name='associatedSpecificationID'))
 
         return context
 

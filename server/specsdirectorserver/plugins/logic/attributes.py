@@ -38,13 +38,13 @@ class SDAttributeLogicPlugin(GALogicPlugin):
         objects, count = self.core_controller.storage_controller.get_all(parent=specification, resource_name=self._sdk.SDAttribute.rest_name, filter='name == %s' % attribute.name)
 
         if count and objects[0].id != attribute.id:
-            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another attribute exists with the name %s' % attribute.name, property_name='name'))
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another attribute exists with the name %s' % attribute.name, property_name='name'))
 
         if not attribute.name or not len(attribute.name):
-            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute name is mandatory.', property_name='name'))
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute name is mandatory.', property_name='name'))
 
         if not attribute.type or not len(attribute.type):
-            context.report_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute type is mandatory.', property_name='type'))
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute type is mandatory.', property_name='type'))
 
         return context
 
