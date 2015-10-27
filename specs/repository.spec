@@ -56,6 +56,10 @@
         "path": {
             "description": "The relative path inside the repository.",
             "type": "string"
+        },
+        "valid": {
+            "description": "Defines if everything is fine with the information.",
+            "type": "boolean"
         }
     }
 }

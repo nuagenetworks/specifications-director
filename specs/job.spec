@@ -20,7 +20,7 @@
         },
         "result": {
             "description": "the result",
-            "type": "integer"
+            "type": "string"
         }
     }
 }
