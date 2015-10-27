@@ -74,7 +74,7 @@
                             <rect key="frame" x="18" y="514" width="464" height="20"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <animations/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Monolithe Config" id="cXp-oP-vEW">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Monolithe Configuration" id="cXp-oP-vEW">
                                 <font key="font" metaFont="system" size="15"/>
                                 <color key="textColor" red="0.41960787770000002" green="0.58039218189999997" blue="0.92549026010000002" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -88,11 +88,11 @@
             <point key="canvasLocation" x="365" y="410.5"/>
         </customView>
         <customView id="ePO-8D-WzU">
-            <rect key="frame" x="0.0" y="0.0" width="399" height="1307"/>
+            <rect key="frame" x="0.0" y="0.0" width="399" height="1840"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="Iqj-0b-dml">
-                    <rect key="frame" x="18" y="1280" width="363" height="17"/>
+                    <rect key="frame" x="18" y="1813" width="363" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Product Information" id="G3q-lk-iDv">
@@ -102,7 +102,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="34">
-                    <rect key="frame" x="18" y="1255" width="91" height="17"/>
+                    <rect key="frame" x="18" y="1788" width="91" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Product Name" id="35">
@@ -112,7 +112,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="227">
-                    <rect key="frame" x="113" y="1250" width="268" height="13"/>
+                    <rect key="frame" x="113" y="1783" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="228">
@@ -125,7 +125,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="5">
-                    <rect key="frame" x="20" y="1225" width="359" height="22"/>
+                    <rect key="frame" x="20" y="1758" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="My Product" drawsBackground="YES" id="6">
@@ -142,7 +142,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="U13-sM-HdF">
-                    <rect key="frame" x="18" y="1200" width="116" height="17"/>
+                    <rect key="frame" x="18" y="1708" width="116" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Product Accronym" id="K8r-QR-n9h">
@@ -152,7 +152,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="p5X-7R-2W7">
-                    <rect key="frame" x="132" y="1195" width="249" height="13"/>
+                    <rect key="frame" x="132" y="1703" width="249" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="5jD-j4-UyZ">
@@ -165,7 +165,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="4Us-j2-HI0">
-                    <rect key="frame" x="20" y="1170" width="359" height="22"/>
+                    <rect key="frame" x="20" y="1678" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="PRD" drawsBackground="YES" id="US4-Uo-H21">
@@ -182,7 +182,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="e7F-Bv-PAU">
-                    <rect key="frame" x="18" y="1145" width="64" height="17"/>
+                    <rect key="frame" x="18" y="1622" width="64" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright" id="QaL-bH-oO0">
@@ -192,7 +192,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="ztL-Rg-ael">
-                    <rect key="frame" x="86" y="1140" width="295" height="13"/>
+                    <rect key="frame" x="86" y="1617" width="295" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="szS-X6-1dA">
@@ -205,7 +205,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="e5k-hS-Q2t">
-                    <rect key="frame" x="20" y="1115" width="359" height="22"/>
+                    <rect key="frame" x="20" y="1592" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Copyright (c) 2042 Monolithe Corp" drawsBackground="YES" id="hSs-Gk-Vbp">
@@ -222,7 +222,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="MXc-bd-ERS">
-                    <rect key="frame" x="18" y="1080" width="363" height="17"/>
+                    <rect key="frame" x="18" y="1540" width="363" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="SDK Information" id="kdY-Ba-A1R">
@@ -232,7 +232,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="6d0-Hc-Rug">
-                    <rect key="frame" x="18" y="1055" width="40" height="17"/>
+                    <rect key="frame" x="18" y="1515" width="40" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Name" id="VV7-r8-XM1">
@@ -242,7 +242,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="HcH-kI-CBE">
-                    <rect key="frame" x="113" y="1050" width="268" height="13"/>
+                    <rect key="frame" x="113" y="1510" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="dOg-dj-pbq">
@@ -255,7 +255,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="pqq-zF-YWX">
-                    <rect key="frame" x="20" y="1025" width="359" height="22"/>
+                    <rect key="frame" x="20" y="1485" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="prddk" drawsBackground="YES" id="Zbv-HM-yqt">
@@ -272,7 +272,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="jhT-w0-E9f">
-                    <rect key="frame" x="18" y="1000" width="74" height="17"/>
+                    <rect key="frame" x="18" y="1443" width="74" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Description" id="B02-Dp-eS7">
@@ -282,7 +282,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="Qzf-1h-nny">
-                    <rect key="frame" x="132" y="995" width="249" height="13"/>
+                    <rect key="frame" x="132" y="1438" width="249" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="AH1-jM-HEh">
@@ -295,7 +295,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="7Em-v4-cLm">
-                    <rect key="frame" x="20" y="970" width="359" height="22"/>
+                    <rect key="frame" x="20" y="1413" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="This SDK is very nice" drawsBackground="YES" id="Umq-GY-HBq">
@@ -312,7 +312,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="KM9-Qm-mUE">
-                    <rect key="frame" x="18" y="945" width="50" height="17"/>
+                    <rect key="frame" x="18" y="1371" width="50" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version" id="fa4-Af-2rn">
@@ -322,7 +322,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="IVW-lD-4ld">
-                    <rect key="frame" x="113" y="940" width="268" height="13"/>
+                    <rect key="frame" x="113" y="1366" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="VJs-LY-rFQ">
@@ -335,7 +335,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="Pyy-37-TaC">
-                    <rect key="frame" x="20" y="915" width="359" height="22"/>
+                    <rect key="frame" x="20" y="1341" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="1.0" drawsBackground="YES" id="uag-ME-Cxf">
@@ -352,7 +352,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="N0o-Gu-dlB">
-                    <rect key="frame" x="18" y="890" width="107" height="17"/>
+                    <rect key="frame" x="18" y="1299" width="107" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Revision Number" id="Uhm-BI-hZg">
@@ -362,7 +362,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="P6s-yS-Beo">
-                    <rect key="frame" x="155" y="885" width="226" height="13"/>
+                    <rect key="frame" x="155" y="1294" width="226" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="cvO-tD-mbO">
@@ -374,8 +374,25 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKRevisionNumber"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
+                <textField verticalHuggingPriority="750" id="8h9-iR-F60">
+                    <rect key="frame" x="20" y="1269" width="359" height="22"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="1" drawsBackground="YES" id="Wqc-PU-22h">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKRevisionNumber"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="nextKeyView" destination="7L0-d3-jIU" id="5pE-nf-QW9"/>
+                    </connections>
+                </textField>
                 <textField verticalHuggingPriority="750" id="pHm-vJ-Ne1">
-                    <rect key="frame" x="18" y="780" width="45" height="17"/>
+                    <rect key="frame" x="18" y="1127" width="45" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Author" id="0Ei-zK-ume">
@@ -385,7 +402,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="VEk-Zd-qw7">
-                    <rect key="frame" x="113" y="775" width="268" height="13"/>
+                    <rect key="frame" x="113" y="1122" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="h1p-2l-Ljs">
@@ -398,7 +415,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="nK0-jn-Ax0">
-                    <rect key="frame" x="20" y="750" width="359" height="22"/>
+                    <rect key="frame" x="20" y="1097" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="primalmotion" drawsBackground="YES" id="iwe-lb-pPv">
@@ -415,7 +432,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="7Fx-Sy-igc">
-                    <rect key="frame" x="18" y="725" width="81" height="17"/>
+                    <rect key="frame" x="18" y="1055" width="81" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Author Email" id="s1j-UV-N83">
@@ -425,7 +442,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="ID9-0A-2Wm">
-                    <rect key="frame" x="113" y="720" width="268" height="13"/>
+                    <rect key="frame" x="113" y="1050" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="h0c-nx-fIE">
@@ -438,7 +455,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="Cet-Rz-1QK">
-                    <rect key="frame" x="20" y="695" width="359" height="22"/>
+                    <rect key="frame" x="20" y="1025" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="primalmotion@monolithe.io" drawsBackground="YES" id="FVL-cu-Xuj">
@@ -455,7 +472,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="gc9-H3-NTe">
-                    <rect key="frame" x="18" y="670" width="76" height="17"/>
+                    <rect key="frame" x="18" y="983" width="76" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Project URL" id="7o0-mV-6je">
@@ -465,7 +482,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="G49-2S-u8A">
-                    <rect key="frame" x="113" y="665" width="268" height="13"/>
+                    <rect key="frame" x="113" y="978" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="Tpq-Z1-Tql">
@@ -478,7 +495,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="bw3-DD-QpQ">
-                    <rect key="frame" x="20" y="640" width="359" height="22"/>
+                    <rect key="frame" x="20" y="953" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="monolithe.io" drawsBackground="YES" id="CIH-ML-3JK">
@@ -495,7 +512,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="owX-Yi-Yjo">
-                    <rect key="frame" x="18" y="615" width="63" height="17"/>
+                    <rect key="frame" x="18" y="911" width="63" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CLI Name" id="zRV-lE-Ufc">
@@ -505,7 +522,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="aRb-Yw-FJp">
-                    <rect key="frame" x="113" y="610" width="268" height="13"/>
+                    <rect key="frame" x="113" y="906" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="zYq-NW-jDE">
@@ -518,7 +535,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="peZ-av-Icw">
-                    <rect key="frame" x="20" y="585" width="359" height="22"/>
+                    <rect key="frame" x="20" y="881" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="prdcli" drawsBackground="YES" id="fIe-pP-EX3">
@@ -535,7 +552,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="Pd1-QJ-ZLa">
-                    <rect key="frame" x="18" y="560" width="161" height="17"/>
+                    <rect key="frame" x="18" y="825" width="161" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Required Bambou Version" id="5F8-hs-pV2">
@@ -545,7 +562,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="rpO-Dh-WTy">
-                    <rect key="frame" x="183" y="555" width="198" height="13"/>
+                    <rect key="frame" x="183" y="820" width="198" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="VIv-FE-eNa">
@@ -558,7 +575,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="iH2-o9-GfH">
-                    <rect key="frame" x="20" y="530" width="359" height="22"/>
+                    <rect key="frame" x="20" y="795" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="2.0.0" drawsBackground="YES" id="nWT-tg-7Uw">
@@ -575,7 +592,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="6O0-hN-W2k">
-                    <rect key="frame" x="18" y="505" width="127" height="17"/>
+                    <rect key="frame" x="18" y="739" width="127" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="License Short Name" id="gHH-vc-yql">
@@ -585,7 +602,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="Kms-ms-RSC">
-                    <rect key="frame" x="155" y="500" width="226" height="13"/>
+                    <rect key="frame" x="155" y="734" width="226" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="NLF-bF-NxF">
@@ -598,7 +615,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="eCe-lR-VBf">
-                    <rect key="frame" x="20" y="475" width="359" height="22"/>
+                    <rect key="frame" x="20" y="709" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="LGPL" drawsBackground="YES" id="8uW-MU-do3">
@@ -615,7 +632,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="EHh-sV-gDe">
-                    <rect key="frame" x="18" y="450" width="78" height="17"/>
+                    <rect key="frame" x="18" y="653" width="78" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Output Path" id="Sbm-6L-fVW">
@@ -625,7 +642,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="dyW-jy-ckT">
-                    <rect key="frame" x="155" y="445" width="226" height="13"/>
+                    <rect key="frame" x="155" y="648" width="226" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="7Nq-cO-caB">
@@ -638,7 +655,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="1Oj-ug-UHi">
-                    <rect key="frame" x="20" y="420" width="359" height="22"/>
+                    <rect key="frame" x="20" y="623" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="./codegen" drawsBackground="YES" id="amZ-5h-bgw">
@@ -655,7 +672,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="9Yo-Qt-Xmb">
-                    <rect key="frame" x="18" y="835" width="76" height="17"/>
+                    <rect key="frame" x="18" y="1227" width="76" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Class Prefix" id="c0s-uT-dLV">
@@ -665,7 +682,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="gU1-Sg-GPN">
-                    <rect key="frame" x="120" y="830" width="261" height="13"/>
+                    <rect key="frame" x="120" y="1222" width="261" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="eoI-ep-viz">
@@ -678,7 +695,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="7L0-d3-jIU">
-                    <rect key="frame" x="20" y="805" width="359" height="22"/>
+                    <rect key="frame" x="20" y="1197" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="GA" drawsBackground="YES" id="s12-K7-bne">
@@ -695,7 +712,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="cel-Jy-Bo1">
-                    <rect key="frame" x="18" y="395" width="107" height="17"/>
+                    <rect key="frame" x="18" y="581" width="107" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="User Vanilla Path" id="baV-Gx-lFr">
@@ -705,7 +722,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="FbJ-t7-YCA">
-                    <rect key="frame" x="155" y="390" width="226" height="13"/>
+                    <rect key="frame" x="155" y="576" width="226" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="vuw-vs-3IS">
@@ -718,7 +735,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="gck-PO-3jT">
-                    <rect key="frame" x="20" y="365" width="359" height="22"/>
+                    <rect key="frame" x="20" y="551" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="./vanilla/sdk" drawsBackground="YES" id="2nj-GR-Eqj">
@@ -735,7 +752,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="xqr-d6-cDN">
-                    <rect key="frame" x="18" y="330" width="363" height="17"/>
+                    <rect key="frame" x="18" y="485" width="363" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="API Documentation Information" id="NGZ-qc-scl">
@@ -745,7 +762,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="YdC-5L-af6">
-                    <rect key="frame" x="18" y="305" width="78" height="17"/>
+                    <rect key="frame" x="18" y="460" width="78" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Output Path" id="W5E-Tl-4vb">
@@ -755,7 +772,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="WMf-OG-ajI">
-                    <rect key="frame" x="113" y="300" width="268" height="13"/>
+                    <rect key="frame" x="113" y="455" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="mdr-hB-7u8">
@@ -768,7 +785,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="Afw-Nb-PUN">
-                    <rect key="frame" x="20" y="275" width="359" height="22"/>
+                    <rect key="frame" x="20" y="430" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="./apidocgen" drawsBackground="YES" id="Kii-DT-Qgt">
@@ -785,7 +802,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="3Py-ar-UbK">
-                    <rect key="frame" x="18" y="250" width="75" height="17"/>
+                    <rect key="frame" x="18" y="374" width="75" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vanilla Path" id="urL-T7-GyD">
@@ -795,7 +812,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="Kzb-AG-qTE">
-                    <rect key="frame" x="113" y="245" width="268" height="13"/>
+                    <rect key="frame" x="113" y="369" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="Uhr-d1-2Ve">
@@ -808,7 +825,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="uk9-oP-ZIn">
-                    <rect key="frame" x="20" y="220" width="359" height="22"/>
+                    <rect key="frame" x="20" y="344" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="./vanilla/apidoc" drawsBackground="YES" id="CTG-BR-7Dd">
@@ -825,7 +842,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="RJy-nu-DNq">
-                    <rect key="frame" x="18" y="185" width="363" height="17"/>
+                    <rect key="frame" x="18" y="278" width="363" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="SDK Documentation Information" id="pSP-Kj-eeQ">
@@ -835,7 +852,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="DTG-aI-fHu">
-                    <rect key="frame" x="18" y="160" width="78" height="17"/>
+                    <rect key="frame" x="18" y="253" width="78" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Output Path" id="MoL-ph-fBR">
@@ -845,7 +862,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="dGB-OM-RyI">
-                    <rect key="frame" x="113" y="155" width="268" height="13"/>
+                    <rect key="frame" x="113" y="248" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="dcj-Gj-TZ7">
@@ -858,7 +875,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="HMu-X3-Cpr">
-                    <rect key="frame" x="20" y="130" width="359" height="22"/>
+                    <rect key="frame" x="20" y="223" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="./sdkdocgen" drawsBackground="YES" id="yvX-C9-QqU">
@@ -875,7 +892,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="2Y4-2x-5Jy">
-                    <rect key="frame" x="18" y="105" width="75" height="17"/>
+                    <rect key="frame" x="18" y="167" width="75" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vanilla Path" id="lHq-UO-x9E">
@@ -885,7 +902,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="dfa-yy-R7q">
-                    <rect key="frame" x="113" y="100" width="268" height="13"/>
+                    <rect key="frame" x="113" y="162" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="9aI-o0-zNJ">
@@ -898,7 +915,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="jcQ-Nb-eJx">
-                    <rect key="frame" x="20" y="75" width="359" height="22"/>
+                    <rect key="frame" x="20" y="137" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="./vanilla/sdkdoc" drawsBackground="YES" id="7Po-TX-HRn">
@@ -915,7 +932,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="IfU-Sa-ctB">
-                    <rect key="frame" x="18" y="50" width="69" height="17"/>
+                    <rect key="frame" x="18" y="81" width="69" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Temp Path" id="nHk-Vh-0BY">
@@ -925,7 +942,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="ia5-Cg-hJk">
-                    <rect key="frame" x="113" y="45" width="268" height="13"/>
+                    <rect key="frame" x="113" y="76" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="jJY-WK-TtK">
@@ -938,7 +955,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="37Q-fj-wtF">
-                    <rect key="frame" x="20" y="20" width="359" height="22"/>
+                    <rect key="frame" x="20" y="51" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="/tmp" drawsBackground="YES" id="CkM-wC-Pfk">
@@ -954,26 +971,223 @@
                         <outlet property="nextKeyView" destination="5" id="vrb-WA-WdU"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" id="8h9-iR-F60">
-                    <rect key="frame" x="20" y="860" width="359" height="22"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="QvU-m8-lId">
+                    <rect key="frame" x="18" y="1733" width="363" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="1" drawsBackground="YES" id="Wqc-PU-22h">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The name of your product. It will be used in various places" id="Obi-7e-3fo">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKRevisionNumber"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <outlet property="nextKeyView" destination="7L0-d3-jIU" id="5pE-nf-QW9"/>
-                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="OfU-Q0-qVF">
+                    <rect key="frame" x="18" y="1647" width="363" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The accronym of your product. This will be used to generate certain objects of the SDK, like the session object class name." id="ujK-Vw-eFC">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="1OY-KO-tzX">
+                    <rect key="frame" x="18" y="1575" width="363" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="This copyright will be used in the setup.py file of your SDK." id="Hym-26-0gs">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="UKP-9n-ML3">
+                    <rect key="frame" x="18" y="1468" width="363" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The name of your SDK. For instance VSDK" id="LWM-K6-rIN">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="9dc-aJ-dKM">
+                    <rect key="frame" x="18" y="1396" width="363" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The description of your SDK. Will be used in setup.py." id="bhP-aw-4ki">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="W3C-FB-Mu0">
+                    <rect key="frame" x="18" y="1324" width="363" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The version of your SDK. It should follow the python convention." id="rMT-FE-Voq">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="PFp-dO-KgS">
+                    <rect key="frame" x="18" y="1252" width="363" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Not used for now. You should just put 1." id="U9T-dK-GdM">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="l94-j9-U3t">
+                    <rect key="frame" x="18" y="1152" width="363" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" id="f8T-D6-uAH">
+                        <font key="font" metaFont="smallSystem"/>
+                        <string key="title">Will be used to prefix all the classes of your SDK. This is a good practice in order to know right away from where your classes are coming from in your code.</string>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="1kL-Y6-uxc">
+                    <rect key="frame" x="18" y="1080" width="363" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The author of your SDK. Will be used in the setup.py." id="Kjm-5g-9la">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="GUm-dY-Rcp">
+                    <rect key="frame" x="18" y="1008" width="363" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The email of the author of your SDK. Will be used in the setup.py." id="seE-ps-pUB">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="83D-m2-Nx7">
+                    <rect key="frame" x="18" y="936" width="363" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The URL of your product. Will be used in the setup.py." id="UeE-78-VGe">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="huQ-ig-u7t">
+                    <rect key="frame" x="18" y="850" width="363" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The command line interface name that will be generated alongside your SDK." id="gcX-4b-AM0">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="Bu3-c5-JSv">
+                    <rect key="frame" x="18" y="764" width="363" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" id="qLV-N8-gOC">
+                        <font key="font" metaFont="smallSystem"/>
+                        <string key="title">The required Bambou version or your SDK. Will be used in setup.py. Please note that this version number will be enforced strictly.</string>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="WAa-hd-Vza">
+                    <rect key="frame" x="18" y="678" width="363" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The short name of the license of your SDK. Will be used in the setup.py." id="HKS-0s-Er0">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="nui-SM-xY0">
+                    <rect key="frame" x="18" y="606" width="363" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The path of the generated SDK when running monogen-sdk." id="1gE-nw-PC3">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="LGu-6M-Muf">
+                    <rect key="frame" x="18" y="520" width="363" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The path of the user vanilla files for your SDK. You can leave this field blank if you don't use any special files." id="r0W-ua-1Aj">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="tSZ-DN-tuS">
+                    <rect key="frame" x="18" y="399" width="363" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The path of the generated API Documentation when running monogen-apidoc." id="ius-rs-WNd">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="FWC-pF-itA">
+                    <rect key="frame" x="18" y="313" width="363" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" id="PoL-UY-4OW">
+                        <font key="font" metaFont="smallSystem"/>
+                        <string key="title">The path of the user vanilla files for your API Documentation. You can leave this field blank if you don't use any special files.</string>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="l6x-xZ-Mlk">
+                    <rect key="frame" x="18" y="192" width="363" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The path of the generated SDK Documentation when running monogen-sdkdoc." id="Sdz-We-gxF">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="Zcz-e9-btv">
+                    <rect key="frame" x="18" y="106" width="363" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" id="8uz-bG-fG2">
+                        <font key="font" metaFont="smallSystem"/>
+                        <string key="title">The path of the user vanilla files for your SDK Documentation. You can leave this field blank if you don't use any special files.</string>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="Rhd-Zh-UZo">
+                    <rect key="frame" x="18" y="20" width="363" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Work folder for intermediate files used for the construction of the SDK Documentation. Most of the time, /tmp is good enough." id="mkh-Sn-iUO">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
                 </textField>
             </subviews>
             <animations/>
-            <point key="canvasLocation" x="407.5" y="751.5"/>
+            <point key="canvasLocation" x="341.5" y="1019"/>
         </customView>
     </objects>
 </document>

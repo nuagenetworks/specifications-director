@@ -155,6 +155,9 @@
 
 - (void)_showViewPullIfNeeded
 {
+    if (![_currentSelectedObjects count])
+        return;
+
     [self showPullView:![[_currentSelectedObjects firstObject] valid]];
 }
 
