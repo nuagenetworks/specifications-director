@@ -17,6 +17,7 @@ from plugins.logic.abstracts import SDAbstractLogicPlugin
 from plugins.logic.attributes import SDAttributeLogicPlugin
 from plugins.logic.apiinfo import SDAPIInfoLogicPlugin
 from plugins.logic.repositories import SDRepositoryLogicPlugin
+from plugins.logic.monolitheconfig import SDMonolitheConfigLogicPlugin
 
 from lib import SDGitHubOperationsController, SDGitHubOperationsClient
 
@@ -68,7 +69,8 @@ def start(mongo_host, mongo_port, mongo_db, redis_host, redis_port, redis_db):
                 SDAbstractLogicPlugin(),
                 SDAttributeLogicPlugin(),
                 SDAPIInfoLogicPlugin(),
-                SDRepositoryLogicPlugin()]
+                SDRepositoryLogicPlugin(),
+                SDMonolitheConfigLogicPlugin()]
 
     garuda = Garuda(sdks_info=sdk_infos,
                     redis_info=redis_info,

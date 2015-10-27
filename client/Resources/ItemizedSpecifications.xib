@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15B38b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDItemizedSpecifications">
             <connections>
                 <outlet property="APIInfoController" destination="ANQ-66-SNF" id="s2p-GA-35Z"/>
                 <outlet property="abstractsController" destination="pAP-1m-H0e" id="7x9-W5-14Z"/>
+                <outlet property="monolitheConfigController" destination="BYq-cF-pvK" id="5DD-H0-dhe"/>
                 <outlet property="specificationsController" destination="92E-uN-KJA" id="jfD-c9-Hb0"/>
                 <outlet property="tabViewContent" destination="RHH-aT-5L1" id="ySd-FW-NwL"/>
                 <outlet property="tableViewItems" destination="Qou-xu-s6a" id="731-Nk-z4W"/>
@@ -85,5 +86,6 @@
         <viewController nibName="APIInfo" id="ANQ-66-SNF" customClass="SDAPIInfoViewController"/>
         <viewController nibName="Specifications" id="92E-uN-KJA" customClass="SDSpecificationsViewController"/>
         <viewController nibName="Abstracts" id="pAP-1m-H0e" customClass="SDAbstractsViewController"/>
+        <viewController nibName="MonolitheConfig" id="BYq-cF-pvK" customClass="SDMonolitheConfigsViewController"/>
     </objects>
 </document>

@@ -104,6 +104,15 @@ class SDGitHubOperationsController(GAController):
                 self._perform_commit_apiinfo(repository=repository,
                                              apiinfo=apiinfo,
                                              commit_message=info['commit_message'])
+
+            elif action == 'commit_monolitheconfig':
+
+                monolitheconfig = self._sdk.SDMonolitheConfig(data=info['monolitheconfig'])
+
+                self._perform_commit_monolitheconfig(repository=repository,
+                                                     monolitheconfig=monolitheconfig,
+                                                     commit_message=info['commit_message'])
+
         except Exception as ex:
             print "Exception while executing git operation: %s" % ex
 
@@ -118,6 +127,7 @@ class SDGitHubOperationsController(GAController):
             self._specification_importer.import_apiinfo(repository=repository, manager=manager)
             self._specification_importer.import_abstracts(repository=repository, manager=manager)
             self._specification_importer.import_specifications(repository=repository, manager=manager)
+            self._specification_importer.import_monolitheconfig(repository=repository, manager=manager)
 
             job.progress = 1.0
             job.status = 'SUCCESS'
@@ -175,6 +185,15 @@ class SDGitHubOperationsController(GAController):
                                 prefix=apiinfo.prefix,
                                 message=commit_message,
                                 branch=repository.branch)
+
+    def _perform_commit_monolitheconfig(self, repository, monolitheconfig, commit_message):
+        """
+        """
+        manager = self._get_repository_manager_for_repository(repository=repository)
+        parser = self._specification_exporter.export_monolithe_config(monolitheconfig=monolitheconfig)
+        manager.save_monolithe_config(  monolithe_config_parser=parser,
+                                        message=commit_message,
+                                        branch=repository.branch)
 
     def _set_specification_syncing(self, specification, syncing):
         """

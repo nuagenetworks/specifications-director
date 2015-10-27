@@ -21,8 +21,56 @@ class SDSpecificationImporter():
     def import_apiinfo(self, repository, manager):
         """
         """
-        apiinfo = self._sdk.SDAPIInfo(data=manager.get_api_info(branch=repository.branch))
-        self._storage_controller.create(apiinfo, repository)
+        try:
+            apiinfo = self._sdk.SDAPIInfo(data=manager.get_api_info(branch=repository.branch))
+        except:
+            apiinfo = self._sdk.SDAPIInfo()
+
+        self._storage_controller.create(resource=apiinfo, parent=repository)
+
+    def import_monolitheconfig(self, repository, manager):
+        """
+        """
+        monolithe_config = self._sdk.SDMonolitheConfig()
+
+        try:
+            parser = manager.get_monolithe_config(branch=repository.branch)
+
+            monolithe_config.product_name         = parser.get('monolithe', 'product_name')
+            monolithe_config.product_accronym     = parser.get('monolithe', 'product_accronym')
+            monolithe_config.copyright            = parser.get('monolithe', 'copyright')
+
+            monolithe_config.sdk_output           = parser.get('sdk', 'sdk_output')
+            monolithe_config.sdkuser_vanilla      = parser.get('sdk', 'sdk_user_vanilla')
+            monolithe_config.sdk_name             = parser.get('sdk', 'sdk_name')
+            monolithe_config.sdk_class_prefix     = parser.get('sdk', 'sdk_class_prefix')
+            monolithe_config.sdk_bambou_version   = parser.get('sdk', 'sdk_bambou_version')
+            monolithe_config.sdk_version          = parser.get('sdk', 'sdk_version')
+            monolithe_config.sdk_revision_number  = parser.get('sdk', 'sdk_revision_number')
+            monolithe_config.sdkurl               = parser.get('sdk', 'sdk_url')
+            monolithe_config.sdk_author           = parser.get('sdk', 'sdk_author')
+            monolithe_config.sdk_email            = parser.get('sdk', 'sdk_email')
+            monolithe_config.sdk_description      = parser.get('sdk', 'sdk_description')
+            monolithe_config.sdk_license_name     = parser.get('sdk', 'sdk_license_name')
+            monolithe_config.sdkcli_name          = parser.get('sdk', 'sdk_cli_name')
+
+            monolithe_config.api_doc_output       = parser.get('apidoc', 'apidoc_output')
+            monolithe_config.api_doc_user_vanilla = parser.get('apidoc', 'apidoc_user_vanilla')
+
+            monolithe_config.sdk_doc_output       = parser.get('sdkdoc', 'sdkdoc_output')
+            monolithe_config.sdk_doc_user_vanilla = parser.get('sdkdoc', 'sdkdoc_user_vanilla')
+            monolithe_config.sdk_doc_tmp_path     = parser.get('sdkdoc', 'sdkdoc_tmp_path')
+
+        except:
+            monolithe_config.sdk_output = './codegen'
+            monolithe_config.sdk_class_prefix = 'GA'
+            monolithe_config.sdk_bambou_version = '2.0.0'
+            monolithe_config.sdk_version = '1.0'
+            monolithe_config.sdk_revision_number = '1'
+            monolithe_config.api_doc_output = './apidocgen'
+            monolithe_config.sdk_doc_output = './sdkdocgen'
+
+        self._storage_controller.create(resource=monolithe_config, parent=repository)
 
     def import_specifications(self, repository, manager):
         """
@@ -58,6 +106,9 @@ class SDSpecificationImporter():
 
         apiinfos, count = self._storage_controller.get_all(resource_name=self._sdk.SDAPIInfo.rest_name, parent=repository)
         if count: self._storage_controller.delete_multiple(resources=apiinfos, cascade=True)
+
+        monolitheconfigs, count = self._storage_controller.get_all(resource_name=self._sdk.SDMonolitheConfig.rest_name, parent=repository)
+        if count: self._storage_controller.delete_multiple(resources=monolitheconfigs, cascade=True)
 
     def _import_specs(self, repository, manager, mode):
         """

@@ -1,5 +1,6 @@
 import logging
 import json
+import ConfigParser
 
 from garuda.core.models import GARequest, GAPushEvent
 
@@ -18,8 +19,6 @@ class SDSpecificationExporter():
         self._storage_controller = storage_controller
         self._push_controller = push_controller
 
-
-    ## PRIVATE
     def export_specification(self, specification):
         """
         """
@@ -46,6 +45,42 @@ class SDSpecificationExporter():
 
         return mono_spec
 
+    def export_monolithe_config(self, monolitheconfig):
+        """
+        """
+        parser = ConfigParser.ConfigParser()
+        parser.add_section('monolithe')
+        parser.set('monolithe', 'product_name', monolitheconfig.product_name if monolitheconfig.product_name else "")
+        parser.set('monolithe', 'product_accronym', monolitheconfig.product_accronym if monolitheconfig.product_accronym else "")
+        parser.set('monolithe', 'copyright', monolitheconfig.copyright if monolitheconfig.copyright else "")
+
+        parser.add_section('sdk')
+        parser.set('sdk', 'sdk_output', monolitheconfig.sdk_output if monolitheconfig.sdk_output else "")
+        parser.set('sdk', 'sdk_user_vanilla', monolitheconfig.sdkuser_vanilla if monolitheconfig.sdkuser_vanilla else "")
+        parser.set('sdk', 'sdk_name', monolitheconfig.sdk_name if monolitheconfig.sdk_name else "")
+        parser.set('sdk', 'sdk_class_prefix', monolitheconfig.sdk_class_prefix if monolitheconfig.sdk_class_prefix else "")
+        parser.set('sdk', 'sdk_bambou_version', monolitheconfig.sdk_bambou_version if monolitheconfig.sdk_bambou_version else "")
+        parser.set('sdk', 'sdk_version', monolitheconfig.sdk_version if monolitheconfig.sdk_version else "")
+        parser.set('sdk', 'sdk_revision_number', monolitheconfig.sdk_revision_number if monolitheconfig.sdk_revision_number else "")
+        parser.set('sdk', 'sdk_url', monolitheconfig.sdkurl if monolitheconfig.sdkurl else "")
+        parser.set('sdk', 'sdk_author', monolitheconfig.sdk_author if monolitheconfig.sdk_author else "")
+        parser.set('sdk', 'sdk_email', monolitheconfig.sdk_email if monolitheconfig.sdk_email else "")
+        parser.set('sdk', 'sdk_description', monolitheconfig.sdk_description if monolitheconfig.sdk_description else "")
+        parser.set('sdk', 'sdk_license_name', monolitheconfig.sdk_license_name if monolitheconfig.sdk_license_name else "")
+        parser.set('sdk', 'sdk_cli_name', monolitheconfig.sdkcli_name if monolitheconfig.sdkcli_name else "")
+
+        parser.add_section('apidoc')
+        parser.set('apidoc', 'apidoc_output', monolitheconfig.api_doc_output if monolitheconfig.api_doc_output else "")
+        parser.set('apidoc', 'apidoc_user_vanilla', monolitheconfig.api_doc_user_vanilla if monolitheconfig.api_doc_user_vanilla else "")
+
+        parser.add_section('sdkdoc')
+        parser.set('sdkdoc', 'sdkdoc_output', monolitheconfig.sdk_doc_output if monolitheconfig.sdk_doc_output else "")
+        parser.set('sdkdoc', 'sdkdoc_user_vanilla', monolitheconfig.sdk_doc_user_vanilla if monolitheconfig.sdk_doc_user_vanilla else "")
+        parser.set('sdkdoc', 'sdkdoc_tmp_path', monolitheconfig.sdk_doc_tmp_path if monolitheconfig.sdk_doc_tmp_path else "")
+
+        return parser
+
+    ## PRIVATE
     def _export_child_apis(self, specification):
         """
         """

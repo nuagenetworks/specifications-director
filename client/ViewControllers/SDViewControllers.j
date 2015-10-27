@@ -3,10 +3,11 @@
 
 @import "SDAbstractsViewController.j"
 @import "SDAPIInfoViewController.j"
+@import "SDAPIsViewController.j"
 @import "SDAttributesViewController.j"
 @import "SDItemizedSpecifications.j"
 @import "SDModelAbstractsViewController.j"
 @import "SDModelViewController.j"
+@import "SDMonolitheConfigsViewController.j"
 @import "SDRepositoriesViewController.j"
 @import "SDSpecificationsViewController.j"
-@import "SDAPIsViewController.j"

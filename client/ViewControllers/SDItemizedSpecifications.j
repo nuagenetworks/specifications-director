@@ -2,15 +2,17 @@
 @import <NUKit/NUModuleItemized.j>
 @import "../Models/SDModels.j"
 
-@class SDSpecificationsViewController
-@class SDAPIInfoViewController
 @class SDAbstractsViewController
+@class SDAPIInfoViewController
+@class SDMonolitheConfigsViewController
+@class SDSpecificationsViewController
 
 @implementation SDItemizedSpecifications : NUModuleItemized
 {
-    @outlet SDSpecificationsViewController      specificationsController;
     @outlet SDAbstractsViewController           abstractsController;
     @outlet SDAPIInfoViewController             APIInfoController;
+    @outlet SDMonolitheConfigsViewController    monolitheConfigController;
+    @outlet SDSpecificationsViewController      specificationsController;
 }
 
 #pragma mark -
@@ -55,7 +57,7 @@
 {
     [super viewDidLoad];
 
-    [self setSubModules:[specificationsController, abstractsController, APIInfoController]];
+    [self setSubModules:[specificationsController, abstractsController, APIInfoController, monolitheConfigController]];
 }
 
 
@@ -67,7 +69,8 @@
     return  [   {"module": specificationsController, "children": nil},
                 {"module": abstractsController, "children": nil},
                 {"module": nil},
-                {"module": APIInfoController, "children": nil}
+                {"module": APIInfoController, "children": nil},
+                {"module": monolitheConfigController, "children": nil}
             ];
 }
 

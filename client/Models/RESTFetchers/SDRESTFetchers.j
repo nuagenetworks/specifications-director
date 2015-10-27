@@ -2,5 +2,6 @@
 @import "SDAPIInfosFetcher.j"
 @import "SDAttributesFetcher.j"
 @import "SDChildAPIsFetcher.j"
+@import "SDMonolitheConfigsFetcher.j"
 @import "SDRepositoriesFetcher.j"
 @import "SDSpecificationsFetcher.j"

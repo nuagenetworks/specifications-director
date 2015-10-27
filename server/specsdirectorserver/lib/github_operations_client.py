@@ -63,3 +63,12 @@ class SDGitHubOperationsClient(GAController):
             'repository': repository.to_dict(),
             'apiinfo': apiinfo.to_dict(),
             'commit_message': commit_message}))
+
+    def commit_monolitheconfig(self, repository, monolitheconfig, commit_message):
+        """
+        """
+        self.publish('github-operation:new', msgpack.packb({
+            'action': 'commit_monolitheconfig',
+            'repository': repository.to_dict(),
+            'monolitheconfig': monolitheconfig.to_dict(),
+            'commit_message': commit_message}))
