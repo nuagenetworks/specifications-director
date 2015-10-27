@@ -17,7 +17,11 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
         """
         return GAPluginManifest(name='repositories logic', version=1.0, identifier="specsdirector.plugins.logic.repositories",
                                 subscriptions={
-                                    "repository": [GARequest.ACTION_CREATE, GARequest.ACTION_UPDATE, GARequest.ACTION_READ, GARequest.ACTION_READALL]
+                                    "repository": [GARequest.ACTION_CREATE,
+                                                   GARequest.ACTION_UPDATE,
+                                                   GARequest.ACTION_READ,
+                                                   GARequest.ACTION_READALL,
+                                                   GARequest.ACTION_DELETE]
                                 })
 
     def did_register(self):
@@ -50,6 +54,10 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
     def check_perform_write(self, context):
         """
         """
+
+        if context.request.action in (GARequest.ACTION_DELETE):
+            return context
+
         repository = context.object
 
         if not repository.name or not len(repository.name):
@@ -78,6 +86,10 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
     def preprocess_write(self, context):
         """
         """
+
+        if context.request.action in (GARequest.ACTION_DELETE):
+            return context
+
         context.object.valid = False
         context.object.owner = context.request.username
 
@@ -90,4 +102,12 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
         if context.request.action == GARequest.ACTION_CREATE:
             self._permissions_controller.create_permission(resource=context.request.username, target=context.object, permission='all')
 
+
+        # TODO: if I remove the permission here as I should, the push triggered operation won't work as the user
+        # won't have any permissions anymore. We need to figure out a way to make this work.
+
+        # elif context.request.action == GARequest.ACTION_DELETE:
+        #     self._permissions_controller.remove_permission(resource=context.request.username, target=context.object, permission='all')
+
         return context
+
