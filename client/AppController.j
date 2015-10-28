@@ -74,7 +74,7 @@ NURESTUserRoleOrgAdmin = @"NURESTUserRoleOrgAdmin"
     [[NUKit kit] setAPIPrefix:@"api/"];
 
     [[[NUKit kit] loginWindowController] setOrganizationFieldHidden:YES];
-    [[[NUKit kit] loginWindowController] setServerFieldHidden:YES];
+    // [[[NUKit kit] loginWindowController] setServerFieldHidden:YES];
     [[NUKit kit] parseStandardApplicationArguments];
     [[NUKit kit] loadFrameworkDataViews];
     [[NUKit kit] setDelegate:self];
