@@ -29,6 +29,8 @@
     @outlet SDModelViewController       modelController;
     @outlet SDAttributesViewController  attributesController;
     @outlet SDAPIsViewController        APIsController;
+
+    @outlet CPCheckBox                  checkBoxRootAPI;
 }
 
 
@@ -61,6 +63,32 @@
     [context setPopover:popover];
     [context setFetcherKeyPath:@"specifications"];
     [self registerContext:context forClass:SDSpecification];
+}
+
+- (void)performPostPushOperation
+{
+    [self disableCheckBoxRootAPIIfNeeded];
+}
+
+#pragma mark -
+#pragma mark Utilities
+
+- (void)disableCheckBoxRootAPIIfNeeded
+{
+    var editedObject = [_currentContext editedObject]
+
+    if (!editedObject)
+        return;
+
+    [checkBoxRootAPI setEnabled:![editedObject root]];
+}
+
+#pragma mark -
+#pragma mark NUModuleContext delegates
+
+- (void)moduleContext:(NUModuleContext)aContext willManageObject:(NUVSDObject)anObject
+{
+    [self disableCheckBoxRootAPIIfNeeded];
 }
 
 @end

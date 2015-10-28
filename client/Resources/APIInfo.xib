@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15C27e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
     </dependencies>
@@ -124,7 +124,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_version"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField toolTip="The bare LDAP server FQDN or IP." verticalHuggingPriority="750" id="5">
+                <textField verticalHuggingPriority="750" id="5">
                     <rect key="frame" x="20" y="255" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
@@ -137,6 +137,9 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="version"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="nextKeyView" destination="4Us-j2-HI0" id="kh2-nX-7Jk"/>
+                    </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="U13-sM-HdF">
                     <rect key="frame" x="18" y="196" width="63" height="17"/>
@@ -161,7 +164,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_prefix"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField toolTip="The bare LDAP server FQDN or IP." verticalHuggingPriority="750" id="4Us-j2-HI0">
+                <textField verticalHuggingPriority="750" id="4Us-j2-HI0">
                     <rect key="frame" x="20" y="166" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
@@ -174,6 +177,9 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="prefix"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="nextKeyView" destination="5" id="fS0-bm-Pjq"/>
+                    </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="e7F-Bv-PAU">
                     <rect key="frame" x="18" y="91" width="56" height="17"/>
@@ -198,18 +204,17 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_root"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField toolTip="The bare LDAP server FQDN or IP." verticalHuggingPriority="750" id="e5k-hS-Q2t">
+                <textField verticalHuggingPriority="750" id="e5k-hS-Q2t">
                     <rect key="frame" x="20" y="61" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="auth" drawsBackground="YES" id="hSs-Gk-Vbp">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="auth" drawsBackground="YES" id="hSs-Gk-Vbp">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="root"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="Zup-Sz-PwZ">
@@ -237,8 +242,9 @@
                     <rect key="frame" x="18" y="20" width="363" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="This is the special api that will need to be called to obtain an API key." id="Exg-LH-5LL">
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" id="Exg-LH-5LL">
                         <font key="font" metaFont="smallSystem"/>
+                        <string key="title">This is the special api that will need to be called to obtain an API key. You must check the root api box on a specification to set it.</string>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

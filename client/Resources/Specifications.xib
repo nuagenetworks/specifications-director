@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15C27e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
     </dependencies>
@@ -9,6 +9,7 @@
                 <outlet property="APIsController" destination="mdX-6R-3Ir" id="Tcp-5F-BpT"/>
                 <outlet property="attributesController" destination="SXe-gr-6DS" id="ci1-wZ-66d"/>
                 <outlet property="buttonBarMain" destination="59" id="1096"/>
+                <outlet property="checkBoxRootAPI" destination="tfe-Sj-dR5" id="Gni-5l-UBQ"/>
                 <outlet property="fieldModuleTitle" destination="62" id="zyQ-qp-ser"/>
                 <outlet property="fieldTotalEntities" destination="HNA-mf-Lwd" id="lX6-E4-kYs"/>
                 <outlet property="filterField" destination="63" id="1100"/>
@@ -196,11 +197,11 @@
             </connections>
         </viewController>
         <customView id="8" userLabel="Popover View">
-            <rect key="frame" x="0.0" y="0.0" width="365" height="288"/>
+            <rect key="frame" x="0.0" y="0.0" width="365" height="363"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="16">
-                    <rect key="frame" x="18" y="241" width="329" height="34"/>
+                    <rect key="frame" x="18" y="316" width="329" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="New Specification" id="19">
@@ -254,7 +255,7 @@
                     </userDefinedRuntimeAttributes>
                 </customView>
                 <textField verticalHuggingPriority="750" id="ZGS-Fz-3WQ">
-                    <rect key="frame" x="20" y="186" width="325" height="22"/>
+                    <rect key="frame" x="20" y="261" width="325" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="unicorn" drawsBackground="YES" id="x71-TX-cPu">
@@ -271,7 +272,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="aLC-sz-ZhN">
-                    <rect key="frame" x="18" y="216" width="75" height="17"/>
+                    <rect key="frame" x="18" y="291" width="75" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ReST Name" id="vtN-i2-m4k">
@@ -281,7 +282,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="bW1-fE-pGG">
-                    <rect key="frame" x="102" y="215" width="245" height="13"/>
+                    <rect key="frame" x="102" y="290" width="245" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="yHS-GR-AfL">
@@ -294,7 +295,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="7xS-FP-tlE">
-                    <rect key="frame" x="20" y="131" width="325" height="22"/>
+                    <rect key="frame" x="20" y="206" width="325" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="unicorns" drawsBackground="YES" id="jER-ZT-Qys">
@@ -311,7 +312,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="HTO-aq-jK6">
-                    <rect key="frame" x="18" y="161" width="100" height="17"/>
+                    <rect key="frame" x="18" y="236" width="100" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Resource Name" id="G2t-pZ-rqa">
@@ -321,7 +322,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="pSS-nT-Bm6">
-                    <rect key="frame" x="116" y="156" width="231" height="13"/>
+                    <rect key="frame" x="116" y="231" width="231" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="dgn-XC-Tyb">
@@ -334,7 +335,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="ebz-ru-ubX">
-                    <rect key="frame" x="20" y="76" width="325" height="22"/>
+                    <rect key="frame" x="20" y="151" width="325" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="unicorns" drawsBackground="YES" id="ODD-Hq-dIM">
@@ -348,7 +349,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="tLc-OC-cQg">
-                    <rect key="frame" x="18" y="106" width="78" height="17"/>
+                    <rect key="frame" x="18" y="181" width="78" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Entity Name" id="lkz-g4-5OZ">
@@ -358,7 +359,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="vsr-Fw-kPY">
-                    <rect key="frame" x="116" y="101" width="231" height="13"/>
+                    <rect key="frame" x="116" y="176" width="231" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="GEc-Kd-awm">
@@ -370,9 +371,31 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_entityName"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
+                <button id="tfe-Sj-dR5" customClass="CPCheckBox">
+                    <rect key="frame" x="18" y="127" width="155" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <buttonCell key="cell" type="check" title="Root API specification" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="z97-Dg-PTR">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="root"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="wGs-4i-V6S">
+                    <rect key="frame" x="18" y="79" width="329" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="You can only have one root specification. To change the current root specification, enable it in a different specification." id="196-gO-Fho">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <animations/>
-            <point key="canvasLocation" x="643.5" y="-112"/>
+            <point key="canvasLocation" x="643.5" y="-74.5"/>
         </customView>
         <customView id="nkZ-8x-iet" userLabel="Getting Started View">
             <rect key="frame" x="0.0" y="0.0" width="291" height="501"/>

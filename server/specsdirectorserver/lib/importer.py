@@ -21,10 +21,13 @@ class SDSpecificationImporter():
     def import_apiinfo(self, repository, manager):
         """
         """
+        apiinfo = self._sdk.SDAPIInfo()
+
         try:
-            apiinfo = self._sdk.SDAPIInfo(data=manager.get_api_info(branch=repository.branch))
+            apiinfo.from_dict(manager.get_api_info(branch=repository.branch))
         except:
-            apiinfo = self._sdk.SDAPIInfo()
+            apiinfo.version = '1.0'
+            apiinfo.prefix = 'api'
 
         self._storage_controller.create(resource=apiinfo, parent=repository)
 

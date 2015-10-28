@@ -1,6 +1,6 @@
 import logging
 
-from garuda.core.models import GAError, GAPluginManifest, GARequest
+from garuda.core.models import GAError, GAPluginManifest, GARequest, GAPushEvent
 from garuda.core.plugins import GALogicPlugin
 from garuda.core.lib import SDKLibrary
 
@@ -37,7 +37,7 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
 
         repository     = context.parent_object
         specification  = context.object
-        objects, count = self._storage_controller.get_all(parent=repository, resource_name=specification.rest_name, filter='name == %s' % specification.name)
+        objects, count = self._storage_controller.get_all(parent=repository, resource_name=self._sdk.SDSpecification.rest_name, filter='name == %s' % specification.name)
 
         if count and objects[0].id != specification.id:
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another specification exists with the name %s' % specification.name, property_name='name'))
@@ -59,6 +59,7 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
     def preprocess_write(self, context):
         """
         """
+        repository    = context.parent_object
         specification = context.object
         action        = context.request.action
 
@@ -71,6 +72,38 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
 
             if stored_specification and stored_specification.name != specification.name:
                 self._old_names[context.request.uuid] = stored_specification.name
+
+        objects, count = self._storage_controller.get_all(resource_name=self._sdk.SDAPIInfo.rest_name, parent=repository)
+        apiinfo = objects[0] if count else None
+
+        if specification.root:
+
+            objects, count = self._storage_controller.get_all(resource_name=self._sdk.SDSpecification.rest_name, parent=repository, filter='name == %s.spec' % apiinfo.root)
+            current_root_specification = objects[0] if count else None
+
+            if current_root_specification and current_root_specification.id != specification.id:
+                current_root_specification.root = False
+                self._storage_controller.update(current_root_specification)
+                context.add_event(GAPushEvent(action=GARequest.ACTION_UPDATE, entity=current_root_specification))
+
+                apis, count = self._storage_controller.get_all(resource_name=self._sdk.SDChildAPI.rest_name, parent=current_root_specification)
+
+                for api in apis:
+                    api.relationship = 'child'
+                    self._storage_controller.update(api)
+                    context.add_event(GAPushEvent(action=GARequest.ACTION_UPDATE, entity=api))
+
+            if apiinfo and apiinfo.root != specification.object_rest_name:
+                apiinfo.root = specification.object_rest_name
+                self._storage_controller.update(apiinfo)
+                context.add_event(GAPushEvent(action=GARequest.ACTION_UPDATE, entity=apiinfo))
+
+
+            apis, count = self._storage_controller.get_all(resource_name=self._sdk.SDChildAPI.rest_name, parent=specification)
+            for api in apis:
+                api.relationship = 'root'
+                self._storage_controller.update(api)
+                context.add_event(GAPushEvent(action=GARequest.ACTION_UPDATE, entity=api))
 
         return context
 
