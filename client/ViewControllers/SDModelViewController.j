@@ -104,7 +104,12 @@
 - (CPArray)moduleCurrentVisibleEditionViews
 {
     if ([_currentParent RESTName] == [SDSpecification RESTName])
-        return [editionViewREST, editionViewOperations, editionViewDocumentation];
+    {
+        if ([_currentParent root])
+            return [editionViewREST, editionViewDocumentation];
+        else
+            return [editionViewREST, editionViewOperations, editionViewDocumentation];
+    }
     else
         return [editionViewOperations, editionViewDocumentation];
 }

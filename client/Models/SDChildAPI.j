@@ -42,7 +42,7 @@ SDAPIRelationshipRoot = @"root"
         _relationship = SDAPIRelationshipChild
         _allowsCreate = NO;
         _allowsDelete = NO;
-        _allowsGet    = NO;
+        _allowsGet    = YES;
         _allowsUpdate = NO;
     }
 
