@@ -4,10 +4,15 @@ mongo:
 redis:
    image: redis
 
-specsdesigner:
-  build: .
+server:
+  build: server
   ports:
-   - "2000:2000"
+   - "443:2000"
   links:
    - redis
    - mongo
+
+client:
+  build: client
+  ports:
+   - "80:80"

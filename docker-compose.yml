@@ -1,0 +1,18 @@
+mongo:
+  image: mongo
+
+redis:
+   image: redis
+
+server:
+  image: nuage-cloud-images:5000/specsdirector-server
+  ports:
+   - "443:2000"
+  links:
+   - redis
+   - mongo
+
+client:
+  image: nuage-cloud-images:5000/specsdirector-client
+  ports:
+   - "80:80"
