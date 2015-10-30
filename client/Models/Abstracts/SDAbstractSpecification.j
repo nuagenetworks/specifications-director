@@ -43,8 +43,6 @@
         [self exposeLocalKeyPathToREST:@"package"];
         [self exposeLocalKeyPathToREST:@"root"];
 
-        [self exposeBindableAttribute:@"filename"];
-
         _allowsDelete = YES;
         _allowsGet    = YES;
         _allowsUpdate = YES;
@@ -54,37 +52,6 @@
     }
 
     return self;
-}
-
-- (void)setObjectRESTName:(CPString)anObjectRESTName
-{
-    if (_objectRESTName == anObjectRESTName)
-        return;
-
-    [self willChangeValueForKey:@"objectRESTName"];
-    _objectRESTName = anObjectRESTName;
-    [self didChangeValueForKey:@"objectRESTName"];
-
-    [self setFilename:_objectRESTName];
-    [self setObjectResourceName:_pluralize_rest_name(_objectRESTName)];
-    [self setEntityName:[_objectRESTName capitalizedString]];
-}
-
-- (void)setFilename:(CPString)aName
-{
-    if (_name == aName + ".spec")
-        return;
-
-    [self willChangeValueForKey:@"name"];
-    [self willChangeValueForKey:@"displayName"];
-    _name = aName + ".spec"
-    [self didChangeValueForKey:@"displayName"];
-    [self didChangeValueForKey:@"name"];
-}
-
-- (CPString)filename
-{
-    return _name ? _name.replace(/\.spec$/, @"") : @"";
 }
 
 @end

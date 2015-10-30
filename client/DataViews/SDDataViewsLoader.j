@@ -4,6 +4,7 @@
 
 @implementation SDDataViewsLoader : NUAbstractDataViewsLoader
 {
+    @outlet SDAbstractDataView      abstractDataView        @accessors(readonly);
     @outlet SDAPIDataView           APIDataView             @accessors(readonly);
     @outlet SDAttributeDataView     attributeDataView       @accessors(readonly);
     @outlet SDRepositoryDataView    repositoryDataView      @accessors(readonly);

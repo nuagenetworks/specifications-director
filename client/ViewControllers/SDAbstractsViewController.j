@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
 
-    [self registerDataViewWithName:@"specificationDataView" forClass:SDAbstract];
+    [self registerDataViewWithName:@"abstractDataView" forClass:SDAbstract];
     [self setModuleTitle:@"Abstracts"];
     [self setSubModules:[modelController, attributesController, APIsController]];
 }

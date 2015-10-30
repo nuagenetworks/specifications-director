@@ -2,3 +2,4 @@
 @import "SDAttributeDataView.j"
 @import "SDRepositoryDataView.j"
 @import "SDSpecificationDataView.j"
+@import "SDAbstractDataView.j"

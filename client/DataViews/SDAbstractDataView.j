@@ -1,8 +1,9 @@
 @import <Foundation/Foundation.j>
 @import <NUKit/NUAbstractDataView.j>
 
+@global SDAbstractNameTransformerName
 
-@implementation SDSpecificationDataView : NUAbstractDataView
+@implementation SDAbstractDataView : NUAbstractDataView
 {
     @outlet CPImageView imageViewEdited;
     @outlet CPImageView imageViewWarning;
@@ -17,9 +18,10 @@
 {
     [super bindDataView];
 
-    var negateBoolTransformer = @{CPValueTransformerNameBindingOption: CPNegateBooleanTransformerName};
+    var negateBoolTransformer = @{CPValueTransformerNameBindingOption: CPNegateBooleanTransformerName},
+        nameTransformer       = @{CPValueTransformerNameBindingOption: SDAbstractNameTransformerName};
 
-    [fieldName bind:CPValueBinding toObject:_objectValue withKeyPath:@"objectRESTName" options:nil];
+    [fieldName bind:CPValueBinding toObject:_objectValue withKeyPath:@"name" options:nameTransformer];
 
     [imageViewWarning setHidden:!!![_objectValue issues]];
     [imageViewEdited bind:CPHiddenBinding toObject:_objectValue withKeyPath:@"syncing" options:negateBoolTransformer];

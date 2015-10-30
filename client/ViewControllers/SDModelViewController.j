@@ -129,4 +129,17 @@
     [self reloadStackView];
 }
 
+- (void)moduleContext:(NUModuleContext)aContext validateObject:(id)anObject attribute:(CPString)anAttribute validation:(NUValidation)validation
+{
+    if ([anObject RESTName] == [SDAbstract RESTName] || anAttribute != @"objectRESTName")
+        return
+
+    if ([anObject objectRESTName])
+    {
+        [anObject setObjectResourceName:_pluralize_rest_name([anObject objectRESTName])];
+        [anObject setEntityName:[[anObject objectRESTName] capitalizedString]];
+    }
+}
+
+
 @end

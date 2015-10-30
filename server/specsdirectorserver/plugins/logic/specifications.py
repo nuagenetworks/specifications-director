@@ -42,9 +42,6 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         if count and objects[0].id != specification.id:
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another specification exists with the name %s' % specification.name, property_name='name'))
 
-        if not specification.name or not len(specification.name) or specification.name == '.spec':
-            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute name is mandatory.', property_name='name'))
-
         if not specification.object_rest_name or not len(specification.object_rest_name):
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute objectRESTName is mandatory.', property_name='objectRESTName'))
 
@@ -63,8 +60,7 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         specification = context.object
         action        = context.request.action
 
-        if specification.name[-5:] != '.spec':
-            specification.name = '%s.spec' % specification.name
+        specification.name = '%s.spec' % specification.object_rest_name
 
         if action == GARequest.ACTION_UPDATE:
 

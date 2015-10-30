@@ -1,2 +1,3 @@
-@import "SDTypeToColorTransformer.j"
+@import "SDAbstractNameTransformer.j"
 @import "SDRelationshipToColorTransformer.j"
+@import "SDTypeToColorTransformer.j"
