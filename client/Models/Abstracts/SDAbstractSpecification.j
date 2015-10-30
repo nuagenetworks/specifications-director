@@ -65,11 +65,9 @@
     _objectRESTName = anObjectRESTName;
     [self didChangeValueForKey:@"objectRESTName"];
 
-    if (!_objectResourceName || ![_objectResourceName length])
-        [self setObjectResourceName:_pluralize_rest_name(_objectRESTName)];
-
-    if (!_entityName || ![_entityName length])
-        [self setEntityName:[_objectRESTName capitalizedString]];
+    [self setFilename:_objectRESTName];
+    [self setObjectResourceName:_pluralize_rest_name(_objectRESTName)];
+    [self setEntityName:[_objectRESTName capitalizedString]];
 }
 
 - (void)setFilename:(CPString)aName
