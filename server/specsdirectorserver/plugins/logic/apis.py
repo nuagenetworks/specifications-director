@@ -91,14 +91,16 @@ class SDAPILogicPlugin(GALogicPlugin):
         sdk = SDKLibrary().get_sdk('default')
 
         associated_specification = self.core_controller.storage_controller.get(resource_name=self._sdk.SDSpecification.rest_name, identifier=api.associated_specification_id)
-        local_resource_name      = specification.object_resource_name
         associated_resource_name = associated_specification.object_resource_name
 
-        if api.parent_type == self._sdk.SDAbstract.rest_name and not local_resource_name:
+        if api.parent_type == self._sdk.SDAbstract.rest_name:
             local_resource_name = '[[resource_name]]'
+        else:
+            local_resource_name = specification.object_resource_name
 
         if api.relationship == 'root':
             api.path = '/%s' % associated_resource_name
         else:
             api.path = '/%s/id/%s' % (local_resource_name, associated_resource_name)
+
 

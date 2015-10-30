@@ -55,7 +55,7 @@ class SDAbstractLogicPlugin(GALogicPlugin):
         if action == GARequest.ACTION_ASSIGN:
             return context
 
-        if abstract.name[1] != '@':
+        if abstract.name[0] != '@':
             abstract.name = '@%s' % abstract.name
 
         if abstract.name[-5:] != '.spec':

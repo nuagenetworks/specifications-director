@@ -25,10 +25,7 @@ class SDSpecificationExporter():
         mono_spec = Specification(monolithe_config=None, filename=specification.name)
 
         mono_spec.description   = specification.description
-        mono_spec.entity_name   = specification.entity_name
         mono_spec.package       = specification.package
-        mono_spec.rest_name     = specification.object_rest_name
-        mono_spec.resource_name = specification.object_resource_name
         mono_spec.allows_get    = specification.allows_get
         mono_spec.allows_update = specification.allows_update
         mono_spec.allows_create = specification.allows_create
@@ -38,7 +35,11 @@ class SDSpecificationExporter():
             abstracts, count = self._storage_controller.get_all(parent=specification, resource_name=self._sdk.SDAbstract.rest_name)
             if count:
                 mono_spec.extends = [abstract.name.replace(".spec", "") for abstract in abstracts]
-            mono_spec.is_root = specification.root
+
+            mono_spec.is_root       = specification.root
+            mono_spec.entity_name   = specification.entity_name
+            mono_spec.rest_name     = specification.object_rest_name
+            mono_spec.resource_name = specification.object_resource_name
 
         mono_spec.child_apis  = self._export_child_apis(specification=specification)
         mono_spec.attributes  = self._export_attributes(specification=specification)
