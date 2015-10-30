@@ -4,5 +4,6 @@
 *Build
 *Frameworks
 *dump.rdb
-
+*webapp
+/server/libs
 *.gz
