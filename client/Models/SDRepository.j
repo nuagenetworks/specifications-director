@@ -62,15 +62,6 @@ NURepositoryCurrent = nil;
         _specifications   = [SDSpecificationsFetcher fetcherWithParentObject:self];
         _abstracts        = [SDAbstractsFetcher fetcherWithParentObject:self];
         _monolitheConfigs = [SDMonolitheConfigsFetcher fetcherWithParentObject:self];
-
-        _name         = @"test repo"
-        _url          = @"https://api.github.com"
-        _username     = @"primalmotion"
-        _password     = @"2b5da4574ed82d64435db1cbb269e775f1f4a7f8"
-        _organization = "primalmotion"
-        _repository   = "monolithe"
-        _branch       = "specv2"
-        _path         = "/examples/specifications"
     }
 
     return self;
