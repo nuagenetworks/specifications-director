@@ -6,6 +6,8 @@ ADD . /app
 
 RUN apt-get update && apt-get install -y --force-yes libsasl2-dev libldap2-dev && \
     cd /app/libs && \
+    cp nuage.pem /etc/ssl/certs && \
+    ln -s /etc/ssl/certs/nuage.pem /etc/ssl/certs/`cat nuage.pem | openssl x509 -hash -noout`.0 && \
     pip install bambou*.tar.gz && \
     pip install monolithe*.tar.gz && \
     pip install garuda*.tar.gz && \
