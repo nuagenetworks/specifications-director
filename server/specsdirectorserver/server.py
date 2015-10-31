@@ -56,7 +56,8 @@ def start(mongo_host, mongo_port, mongo_db, redis_host, redis_port, redis_db):
     #mongo
     mongo_uri = 'mongodb://%s:%d' % (mongo_host, mongo_port)
 
-    channel = GAFalconChannel(ssl_certificate='ssl/server.crt', ssl_key='ssl/server.key')
+    # channel = GAFalconChannel(ssl_certificate='ssl/server.crt', ssl_key='ssl/server.key')
+    channel = GAFalconChannel()
     storage_plugin = GAMongoStoragePlugin(db_name=mongo_db, mongo_uri=mongo_uri, db_initialization_function=db_init)
     authentication_plugin = GASimpleAuthenticationPlugin(auth_function=auth_function)
     sdk_infos = [{'identifier': 'default', 'module': 'specdk.v1_0'}]
