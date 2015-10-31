@@ -20,6 +20,7 @@ class SDGitHubOperationsClient(GAController):
         """
         """
         self.publish('github-operation:new', msgpack.packb({
+            'garuda_uuid': self.core_controller.garuda_uuid,
             'action': 'checkout_repository',
             'repository': repository.to_dict(),
             'job': job.to_dict()}))
@@ -28,6 +29,7 @@ class SDGitHubOperationsClient(GAController):
         """
         """
         self.publish('github-operation:new', msgpack.packb({
+            'garuda_uuid': self.core_controller.garuda_uuid,
             'action': 'commit_specification',
             'repository': repository.to_dict(),
             'specification': specification.to_dict(),
@@ -38,17 +40,19 @@ class SDGitHubOperationsClient(GAController):
         """
         """
         self.publish('github-operation:new', msgpack.packb({
+            'garuda_uuid': self.core_controller.garuda_uuid,
             'action': 'rename_specification',
-             'repository': repository.to_dict(),
-             'specification': specification.to_dict(),
-             'specification_type': specification.rest_name,
-             'old_name': old_name,
-             'commit_message': commit_message}))
+            'repository': repository.to_dict(),
+            'specification': specification.to_dict(),
+            'specification_type': specification.rest_name,
+            'old_name': old_name,
+            'commit_message': commit_message}))
 
     def delete_specification(self, repository, specification, commit_message):
         """
         """
         self.publish('github-operation:new', msgpack.packb({
+            'garuda_uuid': self.core_controller.garuda_uuid,
             'action': 'delete_specification',
             'repository': repository.to_dict(),
             'specification': specification.to_dict(),
@@ -59,6 +63,7 @@ class SDGitHubOperationsClient(GAController):
         """
         """
         self.publish('github-operation:new', msgpack.packb({
+            'garuda_uuid': self.core_controller.garuda_uuid,
             'action': 'commit_apiinfo',
             'repository': repository.to_dict(),
             'apiinfo': apiinfo.to_dict(),
@@ -68,6 +73,7 @@ class SDGitHubOperationsClient(GAController):
         """
         """
         self.publish('github-operation:new', msgpack.packb({
+            'garuda_uuid': self.core_controller.garuda_uuid,
             'action': 'commit_monolitheconfig',
             'repository': repository.to_dict(),
             'monolitheconfig': monolitheconfig.to_dict(),

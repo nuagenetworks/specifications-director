@@ -55,9 +55,16 @@ class SDGitHubOperationsController(GAController):
         """
 
         try:
+            info        = msgpack.unpackb(data)
+            action      = info['action']
+            garuda_uuid = info['garuda_uuid']
 
-            info       = msgpack.unpackb(data)
-            action     = info['action']
+            # let initiator handle the request
+            print garuda_uuid
+            print self.core_controller.garuda_uuid
+            if garuda_uuid != self.core_controller.garuda_uuid:
+                return
+
             repository = self._sdk.SDRepository(data=info['repository'])
 
             if action == 'checkout_repository':
@@ -136,7 +143,11 @@ class SDGitHubOperationsController(GAController):
             self._storage_controller.update(repository)
             self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
 
-        except:
+        except Exception as ex:
+            print ex
+            import ipdb
+            ipdb.set_trace()
+
             job.progress = 1.0
             job.status = 'FAILED'
             job.result = 'Unable to find repository, or bad authentication. Please check your GitHub credentials.'
@@ -217,6 +228,8 @@ class SDGitHubOperationsController(GAController):
                                           organization=repository.organization,
                                           repository=repository.repository,
                                           repository_path=repository.path)
+
+        repo_manager = RepositoryManager( monolithe_config=None, api_url=repository.url, login_or_token=repository.password, password=None, organization=repository.organization, repository=repository.repository, repository_path=repository.path)
 
         self._repository_managers[key] = repo_manager
 
