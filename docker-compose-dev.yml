@@ -7,7 +7,7 @@ redis:
 server:
   build: server
   ports:
-   - "443:2000"
+   - "80:2000"
   links:
    - redis
    - mongo

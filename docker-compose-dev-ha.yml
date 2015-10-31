@@ -4,23 +4,7 @@ mongo:
 redis:
    image: redis
 
-server1:
-  build: server
-  expose:
-   - 2000
-  links:
-   - redis
-   - mongo
-
-server2:
-  build: server
-  expose:
-   - 2000
-  links:
-   - redis
-   - mongo
-
-server3:
+server:
   build: server
   expose:
    - 2000
@@ -31,13 +15,10 @@ server3:
 proxy:
   build: haproxy
   links:
-   - server1
-   - server2
-   - server3
+   - server
    - client
   ports:
-   - "80:80"
-   - "70:70"
+   - "443:443"
 
 client:
   build: client
