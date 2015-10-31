@@ -3,6 +3,7 @@
 import logging
 import simpleldap
 import argparse
+import os
 import specdk.v1_0 as specdk
 
 from garuda import Garuda
@@ -26,11 +27,12 @@ def auth_function(request, session, root_object_class, storage_controller):
     """
     auth = root_object_class()
 
-    base_dn = 'uid=%s,cn=users,cn=accounts,dc=us,dc=alcatel-lucent,dc=com' % request.username
-    ldap_connection = simpleldap.Connection('nuageldap1.us.alcatel-lucent.com')
+    if not 'NO_AUTHENTICATION' in os.environ:
+        base_dn = 'uid=%s,cn=users,cn=accounts,dc=us,dc=alcatel-lucent,dc=com' % request.username
+        ldap_connection = simpleldap.Connection('nuageldap1.us.alcatel-lucent.com')
 
-    if not ldap_connection.authenticate(base_dn, request.token):
-        return None
+        if not ldap_connection.authenticate(base_dn, request.token):
+            return None
 
     auth.id = request.username
     auth.api_key = session.uuid
