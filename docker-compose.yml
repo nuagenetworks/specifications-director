@@ -4,15 +4,32 @@ mongo:
 redis:
    image: redis
 
+proxy:
+  image: tutum/haproxy
+  environment:
+   - DEFAULT_SSL_CERT
+   - TIMEOUT=connect 600000, client 600000, server 600000
+  links:
+   - server
+   - client
+  ports:
+   - "443:443"
+   - "80:80"
+
 server:
   image: nuage-cloud-images:5000/specsdirector-server
-  ports:
-   - "443:2000"
+  environment:
+   - NO_AUTHENTICATION=1
+   - VIRTUAL_HOST=https://*:443/api/*
+   - VIRTUAL_HOST_WEIGHT=1
+   - HTTP_CHECK=OPTIONS /api/v1_0/events
   links:
    - redis
    - mongo
 
 client:
   image: nuage-cloud-images:5000/specsdirector-client
-  ports:
-   - "80:80"
+  environment:
+  - VIRTUAL_HOST=https://*:443/, https://*:443/*
+  - VIRTUAL_HOST_WEIGHT=0
+  - EXCLUDE_PORTS=443
