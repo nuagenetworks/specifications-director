@@ -18,7 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self registerDataViewWithName:@"specificationDataView" forClass:SDAbstract];
+    [self registerDataViewWithName:@"abstractDataView" forClass:SDAbstract];
 }
 
 - (void)configureContexts
@@ -36,7 +36,7 @@
 - (void)configureObjectsChooser:(NUObjectChooser)anObjectChooser
 {
     [anObjectChooser setModuleTitle:"Select Abstracts Specification"];
-    [anObjectChooser registerDataViewWithName:@"specificationDataView" forClass:SDAbstract];
+    [anObjectChooser registerDataViewWithName:@"abstractDataView" forClass:SDAbstract];
 }
 
 - (NUVSDObject)parentOfAssociatedObject

@@ -144,13 +144,9 @@ class SDGitHubOperationsController(GAController):
             self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
 
         except Exception as ex:
-            print ex
-            import ipdb
-            ipdb.set_trace()
-
             job.progress = 1.0
             job.status = 'FAILED'
-            job.result = 'Unable to find repository, or bad authentication. Please check your GitHub credentials.'
+            job.result = 'Unable to find repository, or bad authentication. Please check your GitHub credentials: %s' % ex
 
         finally:
             self._storage_controller.update(job)

@@ -15,7 +15,9 @@
 
 - (id)transformedValue:(id)value
 {
-    console.error(value)
+    if (!value)
+        return;
+
     return value.replace(/^@/, @"").replace(/\.spec$/, @"");
 }
 
