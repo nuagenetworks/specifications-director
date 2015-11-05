@@ -11,10 +11,10 @@ from importer import SDSpecificationImporter
 
 class SDGitHubOperationsController(GAController):
 
-    def __init__(self, core_controller, redis_conn):
+    def __init__(self, core_controller):
         """
         """
-        super(SDGitHubOperationsController, self).__init__(core_controller=core_controller, redis_conn=redis_conn)
+        super(SDGitHubOperationsController, self).__init__(core_controller=core_controller)
 
         self._storage_controller  = None
         self._push_controller     = None

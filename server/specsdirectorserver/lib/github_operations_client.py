@@ -5,10 +5,10 @@ from garuda.core.models import GAController
 
 class SDGitHubOperationsClient(GAController):
 
-    def __init__(self, core_controller, redis_conn):
+    def __init__(self, core_controller):
         """
         """
-        super(SDGitHubOperationsClient, self).__init__(core_controller=core_controller, redis_conn=redis_conn)
+        super(SDGitHubOperationsClient, self).__init__(core_controller=core_controller)
 
     @classmethod
     def identifier(cls):
