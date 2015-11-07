@@ -2,7 +2,7 @@ import logging
 
 from garuda.core.models import GAError, GAPluginManifest, GARequest, GAPushEvent
 from garuda.core.plugins import GALogicPlugin
-from garuda.core.lib import SDKLibrary, ThreadManager
+from garuda.core.lib import GASDKLibrary, GAThreadManager
 
 class SDJobLogicPlugin(GALogicPlugin):
     """
@@ -21,7 +21,7 @@ class SDJobLogicPlugin(GALogicPlugin):
     def did_register(self):
         """
         """
-        self._sdk                          = SDKLibrary().get_sdk('default')
+        self._sdk                          = GASDKLibrary().get_sdk('default')
         self._push_controller              = self.core_controller.push_controller
         self._storage_controller           = self.core_controller.storage_controller
         self._github_operations_controller = self.core_controller.additional_controller(identifier='sd.controller.githuboperations.client')

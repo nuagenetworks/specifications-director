@@ -2,7 +2,7 @@ import logging
 
 from garuda.core.models import GAError, GAPluginManifest, GARequest
 from garuda.core.plugins import GALogicPlugin
-from garuda.core.lib import SDKLibrary
+from garuda.core.lib import GASDKLibrary
 
 logger = logging.getLogger('specsdirector.plugins.logic.monolitheconfigs')
 
@@ -23,7 +23,7 @@ class SDMonolitheConfigLogicPlugin(GALogicPlugin):
     def did_register(self):
         """
         """
-        self._sdk = SDKLibrary().get_sdk('default')
+        self._sdk = GASDKLibrary().get_sdk('default')
         self._github_operations_controller = self.core_controller.additional_controller(identifier='sd.controller.githuboperations.client')
 
     def check_perform_write(self, context):

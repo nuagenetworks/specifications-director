@@ -2,7 +2,7 @@ import logging
 
 from garuda.core.models import GAError, GAPluginManifest, GARequest
 from garuda.core.plugins import GALogicPlugin
-from garuda.core.lib import SDKLibrary
+from garuda.core.lib import GASDKLibrary
 
 logger = logging.getLogger('specsdirector.plugins.logic.repositories')
 
@@ -27,7 +27,7 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
     def did_register(self):
         """
         """
-        self._sdk = SDKLibrary().get_sdk('default')
+        self._sdk = GASDKLibrary().get_sdk('default')
         self._permissions_controller = self.core_controller.permissions_controller
 
     def preprocess_readall(self, context):

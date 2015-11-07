@@ -3,7 +3,7 @@ import msgpack
 
 from monolithe.specifications import Specification, RepositoryManager, SpecificationAttribute, SpecificationAPI, RepositoryManager
 from garuda.core.models import GAController, GAPushEvent, GARequest
-from garuda.core.lib import ThreadManager, SDKLibrary
+from garuda.core.lib import GAThreadManager, GASDKLibrary
 
 from exporter import SDSpecificationExporter
 from importer import SDSpecificationImporter
@@ -30,7 +30,7 @@ class SDGitHubOperationsController(GAController):
     def ready(self):
         """
         """
-        self._sdk                       = SDKLibrary().get_sdk('default')
+        self._sdk                       = GASDKLibrary().get_sdk('default')
         self._storage_controller        = self.core_controller.storage_controller
         self._push_controller           = self.core_controller.push_controller
         self._specification_exporter    = SDSpecificationExporter(storage_controller=self._storage_controller, push_controller=self._push_controller, sdk=self._sdk)
