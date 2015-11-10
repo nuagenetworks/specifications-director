@@ -28,96 +28,98 @@ class SDAbstractLogicPlugin(GALogicPlugin):
         self._storage_controller = self.core_controller.storage_controller
         self._github_operations_controller = self.core_controller.additional_controller(identifier='sd.controller.githuboperations.client')
 
-    def check_perform_write(self, context):
+
+    def _check_valid_name(self, repository, abstract, context):
         """
         """
-        if context.request.action in (GARequest.ACTION_DELETE, GARequest.ACTION_ASSIGN):
-            return context
-
-        repository     = context.parent_object
-        abstract       = context.object
-        objects, count = self._storage_controller.get_all(parent=repository, resource_name=abstract.rest_name, filter='name == %s' % abstract.name)
-
-        if count and objects[0].id != abstract.id:
-            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another abstract exists with the name %s' % abstract.name, property_name='name'))
-
-        if not abstract.name or not len(abstract.name) or abstract.name == '.spec':
-            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute name is mandatory.', property_name='name'))
-
-        return context
-
-    def preprocess_write(self, context):
-        """
-        """
-        abstract = context.object
-        action   = context.request.action
-
-        if action == GARequest.ACTION_ASSIGN:
-            return context
-
         if abstract.name[0] != '@':
             abstract.name = '@%s' % abstract.name
 
         if abstract.name[-5:] != '.spec':
             abstract.name = '%s.spec' % abstract.name
 
-        if action == GARequest.ACTION_UPDATE:
+        objects, count = self._storage_controller.get_all(parent=repository, resource_name=abstract.rest_name, filter='name == %s' % abstract.name)
 
-            stored_abstract = self._storage_controller.get(resource_name=self._sdk.SDAbstract.rest_name, identifier=abstract.id)
+        if count and objects[0].id != abstract.id:
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another abstract exists with the name %s' % abstract.name, property_name='name'))
+            return False
 
-            if stored_abstract and stored_abstract.name !=  abstract.name:
-                self._old_names[context.request.uuid] = stored_abstract.name
+        if not abstract.name or not len(abstract.name) or abstract.name == '.spec':
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute name is mandatory.', property_name='name'))
+            return False
+
+        return True
+
+    def will_perform_create(self, context):
+        """
+        """
+        repository = context.parent_object
+        abstract   = context.object
+
+        self._check_valid_name(repository=repository, abstract=abstract, context=context)
 
         return context
 
-    def did_perform_write(self, context):
+    def will_perform_update(self, context):
         """
         """
-        action = context.request.action
+        repository = context.parent_object
+        abstract   = context.object
 
-        if action == GARequest.ACTION_CREATE:
+        if not self._check_valid_name(repository=repository, abstract=abstract, context=context):
+            return context
 
-            abstract   = context.object
-            repository = context.parent_object
+        stored_abstract = self._storage_controller.get(resource_name=self._sdk.SDAbstract.rest_name, identifier=abstract.id)
 
-            self._github_operations_controller.commit_specification(repository=repository,
-                                                                    specification=abstract,
-                                                                    commit_message="Added abstract %s" % abstract.name)
+        if stored_abstract and stored_abstract.name !=  abstract.name:
+            self._old_names[context.request.uuid] = stored_abstract.name
 
-        elif action == GARequest.ACTION_UPDATE:
+        return context
 
-            abstract   = context.object
-            repository = context.parent_object
+    def did_perform_create(self, context):
+        """
+        """
+        action     = context.request.action
+        abstract   = context.object
+        repository = context.parent_object
 
-            if context.request.uuid in self._old_names:
-                old_name = self._old_names[context.request.uuid]
-                del self._old_names[context.request.uuid]
+        self._github_operations_controller.commit_specification(repository=repository, specification=abstract, commit_message="Added abstract %s" % abstract.name)
 
-                self._github_operations_controller.rename_specification(repository=repository,
-                                                                        specification=abstract,
-                                                                        old_name=old_name,
-                                                                        commit_message="Renamed abstract from %s to %s" % (old_name,  abstract.name))
-            else:
-                self._github_operations_controller.commit_specification(repository=repository,
-                                                                        specification=abstract,
-                                                                        commit_message="Updated abstract %s" % abstract.name)
+        return context
 
-        elif action == GARequest.ACTION_DELETE:
+    def did_perform_update(self, context):
+        """
+        """
+        abstract   = context.object
+        repository = context.parent_object
 
-            abstract   = context.object
-            repository = context.parent_object
+        if context.request.uuid in self._old_names:
+            old_name = self._old_names[context.request.uuid]
+            del self._old_names[context.request.uuid]
 
-            self._github_operations_controller.delete_specification(repository=repository,
-                                                                    specification=abstract,
-                                                                    commit_message="Deleted  abstract %s" % abstract.name)
+            self._github_operations_controller.rename_specification(repository=repository, specification=abstract, old_name=old_name,
+                                                                    commit_message="Renamed abstract from %s to %s" % (old_name,  abstract.name))
+        else:
+            self._github_operations_controller.commit_specification(repository=repository, specification=abstract,
+                                                                    commit_message="Updated abstract %s" % abstract.name)
+        return context
 
-        elif action == GARequest.ACTION_ASSIGN:
+    def did_perform_delete(self, context):
+        """
+        """
+        abstract   = context.object
+        repository = context.parent_object
 
-            specification = context.parent_object
-            repository    = self._storage_controller.get(resource_name=specification.parent_type, identifier=specification.parent_id)
+        self._github_operations_controller.delete_specification(repository=repository, specification=abstract, commit_message="Deleted  abstract %s" % abstract.name)
+        return context
 
-            self._github_operations_controller.commit_specification(repository=repository,
-                                                                    specification=specification,
-                                                                    commit_message="Updated extensions for specification %s" % specification.name)
+    def did_perform_assign(self, context):
+        """
+        """
+        specification = context.parent_object
+        repository    = self._storage_controller.get(resource_name=specification.parent_type, identifier=specification.parent_id)
+
+        self._github_operations_controller.commit_specification(repository=repository, specification=specification,
+                                                                commit_message="Updated extensions for specification %s" % specification.name)
 
         return context

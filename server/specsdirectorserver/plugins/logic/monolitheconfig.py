@@ -26,7 +26,7 @@ class SDMonolitheConfigLogicPlugin(GALogicPlugin):
         self._sdk = GASDKLibrary().get_sdk('default')
         self._github_operations_controller = self.core_controller.additional_controller(identifier='sd.controller.githuboperations.client')
 
-    def check_perform_write(self, context):
+    def will_perform_write(self, context):
         """
         """
         monolithe_config = context.object
@@ -65,19 +65,6 @@ class SDMonolitheConfigLogicPlugin(GALogicPlugin):
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute SDKDocOutput is mandatory.', property_name='SDKDocOutput'))
 
         return context
-
-    # def preprocess_write(self, context):
-    #     """
-    #     """
-    #     apiinfo = context.object
-    #
-    #     if apiinfo.prefix[1] == '/':
-    #         apiinfo.prefix = apiinfo.prefix[1:]
-    #
-    #     if apiinfo.prefix[-1] == '/':
-    #         apiinfo.prefix = apiinfo.prefix[:-1]
-    #
-    #     return context
 
     def did_perform_write(self, context):
         """

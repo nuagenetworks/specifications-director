@@ -60,8 +60,6 @@ class SDGitHubOperationsController(GAController):
             garuda_uuid = info['garuda_uuid']
 
             # let initiator handle the request
-            print garuda_uuid
-            print self.core_controller.garuda_uuid
             if garuda_uuid != self.core_controller.garuda_uuid:
                 return
 

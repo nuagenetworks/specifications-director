@@ -233,8 +233,6 @@ class SDSpecificationImporter():
                 specification.issues.append('Some attributes were not declared correctly. Please review attributes')
                 self._storage_controller.update(specification)
 
-                print attr.errors
-
                 for property_name, error in attr.errors.iteritems():
                     attr.issues.append('Some error has been found in attribute %s declaration: Type has been reverted to "string". please review' % attr.name)
                     attr.type = 'string'

@@ -26,10 +26,16 @@ class SDAPIInfoLogicPlugin(GALogicPlugin):
         self._sdk = GASDKLibrary().get_sdk('default')
         self._github_operations_controller = self.core_controller.additional_controller(identifier='sd.controller.githuboperations.client')
 
-    def check_perform_write(self, context):
+    def will_perform_update(self, context):
         """
         """
         apiinfo = context.object
+
+        if apiinfo.prefix[1] == '/':
+            apiinfo.prefix = apiinfo.prefix[1:]
+
+        if apiinfo.prefix[-1] == '/':
+            apiinfo.prefix = apiinfo.prefix[:-1]
 
         if not apiinfo.version or not len(apiinfo.version):
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute version is mandatory.', property_name='version'))
@@ -47,20 +53,7 @@ class SDAPIInfoLogicPlugin(GALogicPlugin):
 
         return context
 
-    def preprocess_write(self, context):
-        """
-        """
-        apiinfo = context.object
-
-        if apiinfo.prefix[1] == '/':
-            apiinfo.prefix = apiinfo.prefix[1:]
-
-        if apiinfo.prefix[-1] == '/':
-            apiinfo.prefix = apiinfo.prefix[:-1]
-
-        return context
-
-    def did_perform_write(self, context):
+    def did_perform_update(self, context):
         """
         """
         apiinfo    = context.object

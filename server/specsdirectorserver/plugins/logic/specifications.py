@@ -28,15 +28,19 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         self._storage_controller = self.core_controller.storage_controller
         self._github_operations_controller = self.core_controller.additional_controller(identifier='sd.controller.githuboperations.client')
 
-    def check_perform_write(self, context):
+    def will_perform_write(self, context):
         """
         """
 
-        if context.request.action in (GARequest.ACTION_DELETE, GARequest.ACTION_ASSIGN):
+        if context.request.action in (GARequest.ACTION_DELETE):
             return context
 
         repository     = context.parent_object
         specification  = context.object
+        action         = context.request.action
+
+        specification.name = '%s.spec' % specification.object_rest_name
+
         objects, count = self._storage_controller.get_all(parent=repository, resource_name=self._sdk.SDSpecification.rest_name, filter='name == %s' % specification.name)
 
         if count and objects[0].id != specification.id:
@@ -50,17 +54,6 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
 
         if not specification.entity_name or not len(specification.entity_name):
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute entityName is mandatory.', property_name='entityName'))
-
-        return context
-
-    def preprocess_write(self, context):
-        """
-        """
-        repository    = context.parent_object
-        specification = context.object
-        action        = context.request.action
-
-        specification.name = '%s.spec' % specification.object_rest_name
 
         if action == GARequest.ACTION_UPDATE:
 
@@ -93,7 +86,6 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
                 apiinfo.root = specification.object_rest_name
                 self._storage_controller.update(apiinfo)
                 context.add_event(GAPushEvent(action=GARequest.ACTION_UPDATE, entity=apiinfo))
-
 
             apis, count = self._storage_controller.get_all(resource_name=self._sdk.SDChildAPI.rest_name, parent=specification)
             for api in apis:

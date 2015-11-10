@@ -30,7 +30,7 @@ class SDAPILogicPlugin(GALogicPlugin):
         self._sdk = GASDKLibrary().get_sdk('default')
         self._github_operations_controller = self.core_controller.additional_controller(identifier='sd.controller.githuboperations.client')
 
-    def preprocess_readall(self, context):
+    def will_perform_readall(self, context):
         """
         """
         for api in context.objects:
@@ -38,7 +38,7 @@ class SDAPILogicPlugin(GALogicPlugin):
 
         return context
 
-    def preprocess_read(self, context):
+    def will_perform_read(self, context):
         """
         """
         self._update_path(specification=context.parent_object, api=context.object)
@@ -46,10 +46,9 @@ class SDAPILogicPlugin(GALogicPlugin):
         return context
 
 
-    def check_perform_write(self, context):
+    def will_perform_write(self, context):
         """
         """
-
         if context.request.action in (GARequest.ACTION_DELETE):
             return context
 

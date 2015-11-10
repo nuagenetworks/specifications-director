@@ -30,7 +30,7 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
         self._sdk = GASDKLibrary().get_sdk('default')
         self._permissions_controller = self.core_controller.permissions_controller
 
-    def preprocess_readall(self, context):
+    def will_perform_readall(self, context):
         """
         """
         final_repo_list = []
@@ -43,7 +43,7 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
 
         return context
 
-    def check_perform_read(self, context):
+    def will_perform_read(self, context):
         """
         """
         user_name = context.session.root_object.user_name
@@ -53,7 +53,7 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
 
         return context
 
-    def check_perform_write(self, context):
+    def will_perform_write(self, context):
         """
         """
 
@@ -82,15 +82,6 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
 
         if not repository.path or not len(repository.path):
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute path is mandatory.', property_name='path'))
-
-        return context
-
-    def preprocess_write(self, context):
-        """
-        """
-
-        if context.request.action in (GARequest.ACTION_DELETE):
-            return context
 
         context.object.valid = False
         context.object.owner = context.request.username

@@ -26,7 +26,7 @@ class SDJobLogicPlugin(GALogicPlugin):
         self._storage_controller           = self.core_controller.storage_controller
         self._github_operations_controller = self.core_controller.additional_controller(identifier='sd.controller.githuboperations.client')
 
-    def preprocess_write(self, context):
+    def will_perform_write(self, context):
         """
         """
         job          = context.object
