@@ -19,8 +19,6 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
                                 subscriptions={
                                     "repository": [GARequest.ACTION_CREATE,
                                                    GARequest.ACTION_UPDATE,
-                                                   GARequest.ACTION_READ,
-                                                   GARequest.ACTION_READALL,
                                                    GARequest.ACTION_DELETE]
                                 })
 
@@ -29,29 +27,6 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
         """
         self._sdk = GASDKLibrary().get_sdk('default')
         self._permissions_controller = self.core_controller.permissions_controller
-
-    def will_perform_readall(self, context):
-        """
-        """
-        final_repo_list = []
-
-        for repository in context.objects:
-            if self._permissions_controller.has_permission(resource=context.session.root_object.user_name, target=repository, permission='all'):
-                final_repo_list.append(repository)
-
-        context.objects = final_repo_list
-
-        return context
-
-    def will_perform_read(self, context):
-        """
-        """
-        user_name = context.session.root_object.user_name
-
-        if not context.object.owner == user_name and not self._permissions_controller.has_permission(resource=user_name, target=context.object, permission='read'):
-            context.add_error(GAError(type=GAError.TYPE_UNAUTHORIZED, title='Not Authorized', description='You do not have permission to read this resource.'))
-
-        return context
 
     def will_perform_write(self, context):
         """
@@ -87,20 +62,3 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
         context.object.owner = context.request.username
 
         return context
-
-    def did_perform_write(self, context):
-        """
-        """
-
-        if context.request.action == GARequest.ACTION_CREATE:
-            self._permissions_controller.create_permission(resource=context.request.username, target=context.object, permission='all')
-
-
-        # TODO: if I remove the permission here as I should, the push triggered operation won't work as the user
-        # won't have any permissions anymore. We need to figure out a way to make this work.
-
-        # elif context.request.action == GARequest.ACTION_DELETE:
-        #     self._permissions_controller.remove_permission(resource=context.request.username, target=context.object, permission='all')
-
-        return context
-
