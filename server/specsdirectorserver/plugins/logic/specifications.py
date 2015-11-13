@@ -41,9 +41,9 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
 
         specification.name = '%s.spec' % specification.object_rest_name
 
-        objects, count = self._storage_controller.get_all(parent=repository, resource_name=self._sdk.SDSpecification.rest_name, filter='name == %s' % specification.name)
+        response = self._storage_controller.get_all(user_identifier=context.session.root_object.id, parent=repository, resource_name=self._sdk.SDSpecification.rest_name, filter='name == %s' % specification.name)
 
-        if count and objects[0].id != specification.id:
+        if response.count and response.data[0].id != specification.id:
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another specification exists with the name %s' % specification.name, property_name='name'))
 
         if not specification.object_rest_name or not len(specification.object_rest_name):
@@ -57,40 +57,56 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
 
         if action == GARequest.ACTION_UPDATE:
 
-            stored_specification = self._storage_controller.get(resource_name=self._sdk.SDSpecification.rest_name, identifier=specification.id)
+            response = self._storage_controller.get(user_identifier=context.session.root_object.id, resource_name=self._sdk.SDSpecification.rest_name, identifier=specification.id)
 
-            if stored_specification and stored_specification.name != specification.name:
-                self._old_names[context.request.uuid] = stored_specification.name
+            if response.data and response.data.name != specification.name:
+                self._old_names[context.request.uuid] = response.data.name
 
-        objects, count = self._storage_controller.get_all(resource_name=self._sdk.SDAPIInfo.rest_name, parent=repository)
-        apiinfo = objects[0] if count else None
+        response = self._storage_controller.get_all(user_identifier=context.session.root_object.id, resource_name=self._sdk.SDAPIInfo.rest_name, parent=repository)
+        apiinfo = response.data[0] if response.count else None
 
         if specification.root:
 
-            objects, count = self._storage_controller.get_all(resource_name=self._sdk.SDSpecification.rest_name, parent=repository, filter='name == %s.spec' % apiinfo.root)
-            current_root_specification = objects[0] if count else None
+            response = self._storage_controller.get_all(user_identifier=context.session.root_object.id, resource_name=self._sdk.SDSpecification.rest_name, parent=repository, filter='name == %s.spec' % apiinfo.root)
+            current_root_specification = response.data[0] if response.count else None
 
             if current_root_specification and current_root_specification.id != specification.id:
                 current_root_specification.root = False
-                self._storage_controller.update(current_root_specification)
+                response = self._storage_controller.update(user_identifier=context.session.root_object.id, resource=current_root_specification)
                 context.add_event(GAPushEvent(action=GARequest.ACTION_UPDATE, entity=current_root_specification))
 
-                apis, count = self._storage_controller.get_all(resource_name=self._sdk.SDChildAPI.rest_name, parent=current_root_specification)
+                response = self._storage_controller.get_all(user_identifier=context.session.root_object.id, resource_name=self._sdk.SDChildAPI.rest_name, parent=current_root_specification)
 
-                for api in apis:
+                for api in response.data:
                     api.relationship = 'child'
-                    self._storage_controller.update(api)
+                    response = self.core_controller.storage_controller.get(user_identifier=context.session.root_object.id,
+                                                                           resource_name=self._sdk.SDSpecification.rest_name,
+                                                                           identifier=api.associated_specification_id)
+                    api.path = '/%s/id/%s' % (current_root_specification.object_resource_name, response.data.object_resource_name)
+
+                    self._storage_controller.update(user_identifier=context.session.root_object.id, resource=api)
                     context.add_event(GAPushEvent(action=GARequest.ACTION_UPDATE, entity=api))
+
+                self._github_operations_controller.commit_specification(repository=repository,
+                                                                        specification=current_root_specification,
+                                                                        commit_message="Updated specification %s" % current_root_specification.name,
+                                                                        session_username=context.session.root_object.id)
 
             if apiinfo and apiinfo.root != specification.object_rest_name:
                 apiinfo.root = specification.object_rest_name
-                self._storage_controller.update(apiinfo)
+                self._storage_controller.update(user_identifier=context.session.root_object.id, resource=apiinfo)
                 context.add_event(GAPushEvent(action=GARequest.ACTION_UPDATE, entity=apiinfo))
+                self._github_operations_controller.commit_apiinfo(repository=repository,
+                                                                   apiinfo=apiinfo,
+                                                                   commit_message="Updated api.info",
+                                                                   session_username=context.session.root_object.id)
 
-            apis, count = self._storage_controller.get_all(resource_name=self._sdk.SDChildAPI.rest_name, parent=specification)
-            for api in apis:
+            response = self._storage_controller.get_all(user_identifier=context.session.root_object.id, resource_name=self._sdk.SDChildAPI.rest_name, parent=specification)
+
+            for api in response.data:
                 api.relationship = 'root'
-                self._storage_controller.update(api)
+                api.path = '/%s' % api.path.split('/')[3]
+                self._storage_controller.update(user_identifier=context.session.root_object.id, resource=api)
                 context.add_event(GAPushEvent(action=GARequest.ACTION_UPDATE, entity=api))
 
         return context
@@ -101,12 +117,14 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         action        = context.request.action
         specification = context.object
         repository    = context.parent_object
+        session_username = context.session.root_object.id
 
         if action == GARequest.ACTION_CREATE:
 
             self._github_operations_controller.commit_specification(repository=repository,
                                                                     specification=specification,
-                                                                    commit_message="Added specification %s" % specification.name)
+                                                                    commit_message="Added specification %s" % specification.name,
+                                                                    session_username=session_username)
 
         elif action == GARequest.ACTION_UPDATE:
 
@@ -117,15 +135,18 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
                 self._github_operations_controller.rename_specification(repository=repository,
                                                                         specification=specification,
                                                                         old_name=old_name,
-                                                                        commit_message="Renamed specification from %s to %s" % (old_name, specification.name))
+                                                                        commit_message="Renamed specification from %s to %s" % (old_name, specification.name),
+                                                                        session_username=session_username)
             else:
                 self._github_operations_controller.commit_specification(repository=repository,
                                                                         specification=specification,
-                                                                        commit_message="Updated specification %s" % specification.name)
+                                                                        commit_message="Updated specification %s" % specification.name,
+                                                                        session_username=session_username)
 
         elif action == GARequest.ACTION_DELETE:
 
             self._github_operations_controller.delete_specification(repository=repository,
                                                                     specification=specification,
-                                                                    commit_message="Deleted specification %s" % specification.name)
+                                                                    commit_message="Deleted specification %s" % specification.name,
+                                                                    session_username=session_username)
         return context

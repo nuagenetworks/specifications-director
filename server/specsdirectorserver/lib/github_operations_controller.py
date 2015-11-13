@@ -55,9 +55,10 @@ class SDGitHubOperationsController(GAController):
         """
 
         try:
-            info        = msgpack.unpackb(data)
-            action      = info['action']
+            info = msgpack.unpackb(data)
+            action = info['action']
             garuda_uuid = info['garuda_uuid']
+            session_username = info['session_username']
 
             # let initiator handle the request
             if garuda_uuid != self.core_controller.garuda_uuid:
@@ -70,7 +71,8 @@ class SDGitHubOperationsController(GAController):
                 job = self._sdk.SDJob(data=info['job'])
 
                 self._peform_checkout_repository(repository=repository,
-                                                 job=job)
+                                                 job=job,
+                                                 session_username=session_username)
 
             elif action == 'commit_specification':
 
@@ -80,7 +82,8 @@ class SDGitHubOperationsController(GAController):
 
                 self._perform_commit_specification(repository=repository,
                                                    specification=specification,
-                                                   commit_message=info['commit_message'])
+                                                   commit_message=info['commit_message'],
+                                                   session_username=session_username)
 
             elif action == 'rename_specification':
 
@@ -91,7 +94,8 @@ class SDGitHubOperationsController(GAController):
                 self._perform_rename_specification(repository=repository,
                                                    specification=specification,
                                                    old_name=info['old_name'],
-                                                   commit_message=info['commit_message'])
+                                                   commit_message=info['commit_message'],
+                                                   session_username=session_username)
 
             elif action == 'delete_specification':
 
@@ -100,7 +104,8 @@ class SDGitHubOperationsController(GAController):
 
                 self._perform_delete_specification(repository=repository,
                                                    specification=specification,
-                                                   commit_message=info['commit_message'])
+                                                   commit_message=info['commit_message'],
+                                                   session_username=session_username)
 
             elif action == 'commit_apiinfo':
 
@@ -108,7 +113,8 @@ class SDGitHubOperationsController(GAController):
 
                 self._perform_commit_apiinfo(repository=repository,
                                              apiinfo=apiinfo,
-                                             commit_message=info['commit_message'])
+                                             commit_message=info['commit_message'],
+                                             session_username=session_username)
 
             elif action == 'commit_monolitheconfig':
 
@@ -116,29 +122,30 @@ class SDGitHubOperationsController(GAController):
 
                 self._perform_commit_monolitheconfig(repository=repository,
                                                      monolitheconfig=monolitheconfig,
-                                                     commit_message=info['commit_message'])
+                                                     commit_message=info['commit_message'],
+                                                     session_username=session_username)
 
         except Exception as ex:
             print "Exception while executing git operation: %s" % ex
 
 
-    def _peform_checkout_repository(self, repository, job):
+    def _peform_checkout_repository(self, repository, job, session_username):
         """
         """
         try:
             manager = self._get_repository_manager_for_repository(repository=repository)
 
-            self._specification_importer.clean_repository(repository=repository)
-            self._specification_importer.import_apiinfo(repository=repository, manager=manager)
-            self._specification_importer.import_abstracts(repository=repository, manager=manager)
-            self._specification_importer.import_specifications(repository=repository, manager=manager)
-            self._specification_importer.import_monolitheconfig(repository=repository, manager=manager)
+            self._specification_importer.clean_repository(repository=repository, session_username=session_username)
+            self._specification_importer.import_apiinfo(repository=repository, manager=manager, session_username=session_username)
+            self._specification_importer.import_abstracts(repository=repository, manager=manager, session_username=session_username)
+            self._specification_importer.import_specifications(repository=repository, manager=manager, session_username=session_username)
+            self._specification_importer.import_monolitheconfig(repository=repository, manager=manager, session_username=session_username)
 
             job.progress = 1.0
             job.status = 'SUCCESS'
 
             repository.valid = True
-            self._storage_controller.update(repository)
+            self._storage_controller.update(user_identifier=session_username, resource=repository)
             self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
 
         except Exception as ex:
@@ -147,40 +154,39 @@ class SDGitHubOperationsController(GAController):
             job.result = 'Unable to find repository, or bad authentication. Please check your GitHub credentials: %s' % ex
 
         finally:
-            self._storage_controller.update(job)
-            self._storage_controller.get(resource_name=job.rest_name, identifier=job.id).to_dict()
+            self._storage_controller.update(user_identifier=session_username, resource=job)
 
         self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=job)])
 
-    def _perform_commit_specification(self, repository, specification, commit_message):
+    def _perform_commit_specification(self, repository, specification, commit_message, session_username):
         """
         """
         manager = self._get_repository_manager_for_repository(repository=repository)
-        mono_spec = self._specification_exporter.export_specification(specification=specification)
+        mono_spec = self._specification_exporter.export_specification(specification=specification, session_username=session_username)
 
-        self._set_specification_syncing(specification=specification, syncing=True)
+        self._set_specification_syncing(specification=specification, syncing=True, session_username=session_username)
         manager.save_specification(specification=mono_spec, message=commit_message, branch=repository.branch)
-        self._set_specification_syncing(specification=specification, syncing=False)
+        self._set_specification_syncing(specification=specification, syncing=False, session_username=session_username)
 
-    def _perform_rename_specification(self, repository, specification, old_name, commit_message):
+    def _perform_rename_specification(self, repository, specification, old_name, commit_message, session_username):
         """
         """
         manager = self._get_repository_manager_for_repository(repository=repository)
-        mono_spec = self._specification_exporter.export_specification(specification=specification)
+        mono_spec = self._specification_exporter.export_specification(specification=specification, session_username=session_username)
 
-        self._set_specification_syncing(specification=specification, syncing=True)
+        self._set_specification_syncing(specification=specification, syncing=True, session_username=session_username)
         manager.rename_specification(specification=mono_spec, old_name=old_name, message=commit_message, branch=repository.branch)
-        self._set_specification_syncing(specification=specification, syncing=False)
+        self._set_specification_syncing(specification=specification, syncing=False, session_username=session_username)
 
-    def _perform_delete_specification(self, repository, specification, commit_message):
+    def _perform_delete_specification(self, repository, specification, commit_message, session_username):
         """
         """
         manager = self._get_repository_manager_for_repository(repository=repository)
-        mono_spec = self._specification_exporter.export_specification(specification=specification)
+        mono_spec = self._specification_exporter.export_specification(specification=specification, session_username=session_username)
 
         manager.delete_specification(specification=mono_spec, message=commit_message, branch=repository.branch)
 
-    def _perform_commit_apiinfo(self, repository, apiinfo, commit_message):
+    def _perform_commit_apiinfo(self, repository, apiinfo, commit_message, session_username):
         """
         """
         manager = self._get_repository_manager_for_repository(repository=repository)
@@ -191,7 +197,7 @@ class SDGitHubOperationsController(GAController):
                                 message=commit_message,
                                 branch=repository.branch)
 
-    def _perform_commit_monolitheconfig(self, repository, monolitheconfig, commit_message):
+    def _perform_commit_monolitheconfig(self, repository, monolitheconfig, commit_message, session_username):
         """
         """
         manager = self._get_repository_manager_for_repository(repository=repository)
@@ -200,11 +206,11 @@ class SDGitHubOperationsController(GAController):
                                         message=commit_message,
                                         branch=repository.branch)
 
-    def _set_specification_syncing(self, specification, syncing):
+    def _set_specification_syncing(self, specification, syncing, session_username):
         """
         """
         specification.syncing = syncing
-        self._storage_controller.update(specification)
+        self._storage_controller.update(user_identifier=session_username, resource=specification)
         self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=specification)])
 
     def _get_repository_manager_for_repository(self, repository):

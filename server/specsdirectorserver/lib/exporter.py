@@ -19,7 +19,7 @@ class SDSpecificationExporter():
         self._storage_controller = storage_controller
         self._push_controller = push_controller
 
-    def export_specification(self, specification):
+    def export_specification(self, specification, session_username):
         """
         """
         mono_spec = Specification(monolithe_config=None, filename=specification.name)
@@ -32,17 +32,18 @@ class SDSpecificationExporter():
         mono_spec.allows_delete = specification.allows_delete
 
         if specification.rest_name == self._sdk.SDSpecification.rest_name:
-            abstracts, count = self._storage_controller.get_all(parent=specification, resource_name=self._sdk.SDAbstract.rest_name)
-            if count:
-                mono_spec.extends = [abstract.name.replace(".spec", "") for abstract in abstracts]
+            response = self._storage_controller.get_all(user_identifier=session_username, parent=specification, resource_name=self._sdk.SDAbstract.rest_name)
+
+            if response.count:
+                mono_spec.extends = [abstract.name.replace(".spec", "") for abstract in response.data]
 
             mono_spec.is_root       = specification.root
             mono_spec.entity_name   = specification.entity_name
             mono_spec.rest_name     = specification.object_rest_name
             mono_spec.resource_name = specification.object_resource_name
 
-        mono_spec.child_apis  = self._export_child_apis(specification=specification)
-        mono_spec.attributes  = self._export_attributes(specification=specification)
+        mono_spec.child_apis  = self._export_child_apis(specification=specification, session_username=session_username)
+        mono_spec.attributes  = self._export_attributes(specification=specification, session_username=session_username)
 
         return mono_spec
 
@@ -82,18 +83,18 @@ class SDSpecificationExporter():
         return parser
 
     ## PRIVATE
-    def _export_child_apis(self, specification):
+    def _export_child_apis(self, specification, session_username):
         """
         """
         ret = []
-        child_apis, count = self._storage_controller.get_all(parent=specification, resource_name=self._sdk.SDChildAPI.rest_name)
+        response = self._storage_controller.get_all(user_identifier=session_username, parent=specification, resource_name=self._sdk.SDChildAPI.rest_name)
 
-        for child_api in child_apis:
+        for child_api in response.data:
 
             mono_child_api = SpecificationAPI(remote_specification_name=specification.name)
-            remote_specification = self._storage_controller.get(resource_name=self._sdk.SDSpecification.rest_name, identifier=child_api.associated_specification_id)
+            response = self._storage_controller.get(user_identifier=session_username, resource_name=self._sdk.SDSpecification.rest_name, identifier=child_api.associated_specification_id)
 
-            mono_child_api.remote_specification_name = remote_specification.object_rest_name
+            mono_child_api.remote_specification_name = response.data.object_rest_name
             mono_child_api.deprecated    = child_api.deprecated
             mono_child_api.relationship  = child_api.relationship
             mono_child_api.allows_get    = child_api.allows_get
@@ -105,13 +106,13 @@ class SDSpecificationExporter():
 
         return ret
 
-    def _export_attributes(self, specification):
+    def _export_attributes(self, specification, session_username):
         """
         """
         ret = []
-        attributes, count = self._storage_controller.get_all(parent=specification, resource_name=self._sdk.SDAttribute.rest_name)
+        response = self._storage_controller.get_all(user_identifier=session_username, parent=specification, resource_name=self._sdk.SDAttribute.rest_name)
 
-        for attribute in attributes:
+        for attribute in response.data:
             mono_attr = SpecificationAttribute(rest_name=attribute.name)
 
             mono_attr.description     = attribute.description

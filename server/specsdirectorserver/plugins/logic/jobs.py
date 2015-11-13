@@ -42,6 +42,6 @@ class SDJobLogicPlugin(GALogicPlugin):
         repository = context.parent_object
 
         if job.command == 'pull':
-            self._github_operations_controller.checkout_repository(repository=repository, job=job)
+            self._github_operations_controller.checkout_repository(repository=repository, job=job, session_username=context.session.root_object.id)
 
         return context

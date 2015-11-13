@@ -18,7 +18,7 @@ class SDSpecificationImporter():
         self._storage_controller = storage_controller
         self._push_controller    = push_controller
 
-    def import_apiinfo(self, repository, manager):
+    def import_apiinfo(self, repository, manager, session_username):
         """
         """
         apiinfo = self._sdk.SDAPIInfo()
@@ -29,9 +29,9 @@ class SDSpecificationImporter():
             apiinfo.version = '1.0'
             apiinfo.prefix = 'api'
 
-        self._storage_controller.create(resource=apiinfo, parent=repository)
+        self._storage_controller.create(user_identifier=session_username, resource=apiinfo, parent=repository)
 
-    def import_monolitheconfig(self, repository, manager):
+    def import_monolitheconfig(self, repository, manager, session_username):
         """
         """
         monolithe_config = self._sdk.SDMonolitheConfig()
@@ -73,47 +73,52 @@ class SDSpecificationImporter():
             monolithe_config.api_doc_output = './apidocgen'
             monolithe_config.sdk_doc_output = './sdkdocgen'
 
-        self._storage_controller.create(resource=monolithe_config, parent=repository)
+        self._storage_controller.create(user_identifier=session_username, resource=monolithe_config, parent=repository)
 
-    def import_specifications(self, repository, manager):
+    def import_specifications(self, repository, manager, session_username):
         """
         """
-        self._import_specs(repository=repository, manager=manager, mode=MODE_RAW_SPECS)
+        self._import_specs(repository=repository, manager=manager, mode=MODE_RAW_SPECS, session_username=session_username)
 
-    def import_abstracts(self, repository, manager):
+    def import_abstracts(self, repository, manager, session_username):
         """
         """
-        self._import_specs(repository=repository, manager=manager, mode=MODE_RAW_ABSTRACTS)
+        self._import_specs(repository=repository, manager=manager, mode=MODE_RAW_ABSTRACTS, session_username=session_username)
 
 
     ## PRIVATE
 
-    def clean_repository(self, repository):
+    def clean_repository(self, repository, session_username):
         """
         """
-        specifications, count = self._storage_controller.get_all(resource_name=self._sdk.SDSpecification.rest_name, parent=repository)
-        if count:
-            self._storage_controller.delete_multiple(resources=specifications, cascade=True)
+        response = self._storage_controller.get_all(user_identifier=session_username, resource_name=self._sdk.SDSpecification.rest_name, parent=repository)
+        if response.count:
+            self._storage_controller.delete_multiple(user_identifier=session_username, resources=response.data, cascade=True)
             events = []
-            for specification in specifications:
+            for specification in response.data:
                 events.append(GAPushEvent(action=GARequest.ACTION_DELETE, entity=specification))
             self._push_controller.push_events(events=events)
 
-        abstracts, count = self._storage_controller.get_all(resource_name=self._sdk.SDAbstract.rest_name, parent=repository)
-        if count:
-            self._storage_controller.delete_multiple(resources=abstracts, cascade=True)
+        response = self._storage_controller.get_all(user_identifier=session_username, resource_name=self._sdk.SDAbstract.rest_name, parent=repository)
+
+        if response.count:
+            self._storage_controller.delete_multiple(user_identifier=session_username, resources=response.data, cascade=True)
             events = []
-            for  abstract in abstracts:
+            for  abstract in response.data:
                 events.append(GAPushEvent(action=GARequest.ACTION_DELETE, entity=abstract))
             self._push_controller.push_events(events=events)
 
-        apiinfos, count = self._storage_controller.get_all(resource_name=self._sdk.SDAPIInfo.rest_name, parent=repository)
-        if count: self._storage_controller.delete_multiple(resources=apiinfos, cascade=True)
+        response = self._storage_controller.get_all(user_identifier=session_username, resource_name=self._sdk.SDAPIInfo.rest_name, parent=repository)
 
-        monolitheconfigs, count = self._storage_controller.get_all(resource_name=self._sdk.SDMonolitheConfig.rest_name, parent=repository)
-        if count: self._storage_controller.delete_multiple(resources=monolitheconfigs, cascade=True)
+        if response.count:
+            self._storage_controller.delete_multiple(user_identifier=session_username, resources=response.data, cascade=True)
 
-    def _import_specs(self, repository, manager, mode):
+        response = self._storage_controller.get_all(user_identifier=session_username, resource_name=self._sdk.SDMonolitheConfig.rest_name, parent=repository)
+
+        if response.count:
+            self._storage_controller.delete_multiple(user_identifier=session_username, resources=response.data, cascade=True)
+
+    def _import_specs(self, repository, manager, mode, session_username):
         """
         """
         mono_specifications = manager.get_all_specifications(branch=repository.branch, mode=mode)
@@ -138,19 +143,19 @@ class SDSpecificationImporter():
                 specification.entity_name          = mono_specification.entity_name
                 specification.root                 = mono_specification.is_root
 
-            self._storage_controller.create(specification, repository)
+            self._storage_controller.create(user_identifier=session_username, resource=specification, parent=repository)
 
             event = GAPushEvent(action=GARequest.ACTION_CREATE, entity=specification)
             self._push_controller.push_events(events=[event])
 
-            extensions = self._import_extends(repository=repository, mono_specification=mono_specification, specification=specification)
-            attributes = self._import_attributes(mono_specification=mono_specification, specification=specification)
+            extensions = self._import_extends(repository=repository, mono_specification=mono_specification, specification=specification, session_username=session_username)
+            attributes = self._import_attributes(mono_specification=mono_specification, specification=specification, session_username=session_username)
 
             specs_info[mono_specification.rest_name] = {'mono_specification': mono_specification , 'specification': specification}
 
-        self._import_apis(specification_info=specs_info, mode=mode)
+        self._import_apis(specification_info=specs_info, mode=mode, session_username=session_username)
 
-    def _import_apis(self, specification_info, mode):
+    def _import_apis(self, specification_info, mode, session_username):
         """
         """
         for rest_name, spec_info in specification_info.iteritems():
@@ -174,26 +179,31 @@ class SDSpecificationImporter():
                     remote_specification = specification_info[mono_api.remote_specification_name]['specification']
                     api.associated_specification_id = remote_specification.id
 
-                self._storage_controller.create(api, specification)
+                    if api.relationship == 'root':
+                        api.path = '/%s' % remote_specification.object_resource_name
+                    else:
+                        api.path = '/%s/id/%s' % (specification.object_resource_name, remote_specification.object_resource_name)
 
-    def _import_extends(self, repository, mono_specification, specification):
+                self._storage_controller.create(user_identifier=session_username, resource=api, parent=specification)
+
+    def _import_extends(self, repository, mono_specification, specification, session_username):
         """
         """
         extensions = []
 
         for extension_name in mono_specification.extends:
 
-            objects, count = self._storage_controller.get_all(parent=repository, resource_name=self._sdk.SDAbstract.rest_name, filter='name == %s.spec' % extension_name)
+            response = self._storage_controller.get_all(user_identifier=session_username, parent=repository, resource_name=self._sdk.SDAbstract.rest_name, filter='name == %s.spec' % extension_name)
 
-            if count:
-                extensions = extensions + objects
+            if response.count:
+                extensions = extensions + response.data
 
         if len(extensions):
-            self._storage_controller.assign(self._sdk.SDAbstract.rest_name, extensions, specification)
+            self._storage_controller.assign(user_identifier=session_username, resource_name=self._sdk.SDAbstract.rest_name, resources=extensions, parent=specification)
 
         return extensions
 
-    def _import_attributes(self, mono_specification, specification):
+    def _import_attributes(self, mono_specification, specification, session_username):
         """
         """
         ret = []
@@ -231,13 +241,13 @@ class SDSpecificationImporter():
             if not attr.validate():
 
                 specification.issues.append('Some attributes were not declared correctly. Please review attributes')
-                self._storage_controller.update(specification)
+                self._storage_controller.update(user_identifier=session_username, resource=specification)
 
                 for property_name, error in attr.errors.iteritems():
                     attr.issues.append('Some error has been found in attribute %s declaration: Type has been reverted to "string". please review' % attr.name)
                     attr.type = 'string'
 
-            self._storage_controller.create(attr, specification)
+            self._storage_controller.create(user_identifier=session_username, resource=attr, parent=specification)
 
             ret.append(attr)
 

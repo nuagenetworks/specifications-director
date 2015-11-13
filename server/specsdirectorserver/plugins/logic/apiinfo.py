@@ -58,7 +58,8 @@ class SDAPIInfoLogicPlugin(GALogicPlugin):
         """
         apiinfo    = context.object
         repository = context.parent_object
+        session_username = context.session.root_object.id
 
-        self._github_operations_controller.commit_apiinfo(repository=repository, apiinfo=apiinfo, commit_message="Updated api.info")
+        self._github_operations_controller.commit_apiinfo(repository=repository, apiinfo=apiinfo, commit_message="Updated api.info", session_username=session_username)
 
         return context

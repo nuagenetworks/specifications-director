@@ -71,7 +71,8 @@ class SDMonolitheConfigLogicPlugin(GALogicPlugin):
         """
         monolitheconfig = context.object
         repository      = context.parent_object
+        session_username = context.session.root_object.id
 
-        self._github_operations_controller.commit_monolitheconfig(repository=repository, monolitheconfig=monolitheconfig, commit_message="Updated Monolithe.ini")
+        self._github_operations_controller.commit_monolitheconfig(repository=repository, monolitheconfig=monolitheconfig, commit_message="Updated Monolithe.ini", session_username=session_username)
 
         return context

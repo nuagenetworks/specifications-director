@@ -1,6 +1,6 @@
 import logging
 
-from garuda.core.models import GAError, GAPluginManifest, GARequest, GAPushEvent
+from garuda.core.models import GAError, GAPluginManifest, GARequest
 from garuda.core.plugins import GALogicPlugin
 from garuda.core.lib import GASDKLibrary
 
@@ -35,9 +35,10 @@ class SDAttributeLogicPlugin(GALogicPlugin):
 
         specification  = context.parent_object
         attribute      = context.object
-        objects, count = self.core_controller.storage_controller.get_all(parent=specification, resource_name=self._sdk.SDAttribute.rest_name, filter='name == %s' % attribute.name)
 
-        if count and objects[0].id != attribute.id:
+        response = self.core_controller.storage_controller.get_all(user_identifier=context.session.root_object.id, parent=specification, resource_name=self._sdk.SDAttribute.rest_name, filter='name == %s' % attribute.name)
+
+        if response.count and response.data[0].id != attribute.id:
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another attribute exists with the name %s' % attribute.name, property_name='name'))
 
         if not attribute.name or not len(attribute.name):
@@ -62,7 +63,9 @@ class SDAttributeLogicPlugin(GALogicPlugin):
         action        = context.request.action
         attribute     = context.object
         specification = context.parent_object
-        repository    = self.core_controller.storage_controller.get(resource_name=self._sdk.SDRepository.rest_name, identifier=specification.parent_id)
+        session_username = context.session.root_object.id
+
+        response = self.core_controller.storage_controller.get(user_identifier=context.session.root_object.id, resource_name=self._sdk.SDRepository.rest_name, identifier=specification.parent_id)
 
         if action == GARequest.ACTION_CREATE:
             message = "Added attribute %s to specification %s" % (attribute.name, specification.name)
@@ -71,8 +74,7 @@ class SDAttributeLogicPlugin(GALogicPlugin):
         elif action == GARequest.ACTION_DELETE:
             message = "Deleted attribute %s from specification %s" % (attribute.name, specification.name)
 
-        self._github_operations_controller.commit_specification(repository=repository, specification=specification, commit_message=message)
-
-    def _check_unique_name(self, context):
-        """
-        """
+        self._github_operations_controller.commit_specification(repository=response.data,
+                                                                specification=specification,
+                                                                commit_message=message,
+                                                                session_username=session_username)

@@ -30,22 +30,6 @@ class SDAPILogicPlugin(GALogicPlugin):
         self._sdk = GASDKLibrary().get_sdk('default')
         self._github_operations_controller = self.core_controller.additional_controller(identifier='sd.controller.githuboperations.client')
 
-    def will_perform_readall(self, context):
-        """
-        """
-        for api in context.objects:
-            self._update_path(specification=context.parent_object, api=api)
-
-        return context
-
-    def will_perform_read(self, context):
-        """
-        """
-        self._update_path(specification=context.parent_object, api=context.object)
-
-        return context
-
-
     def will_perform_write(self, context):
         """
         """
@@ -56,6 +40,8 @@ class SDAPILogicPlugin(GALogicPlugin):
 
         if not api.associated_specification_id or not len(api.associated_specification_id):
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute associatedSpecificationID is mandatory.', property_name='associatedSpecificationID'))
+
+        self._update_path(specification=context.parent_object, api=api, session_username=context.session.root_object.id)
 
         return context
 
@@ -73,7 +59,9 @@ class SDAPILogicPlugin(GALogicPlugin):
         action        = context.request.action
         api           = context.object
         specification = context.parent_object
-        repository    = self.core_controller.storage_controller.get(resource_name=self._sdk.SDRepository.rest_name, identifier=specification.parent_id)
+        session_username = context.session.root_object.id
+
+        response = self.core_controller.storage_controller.get(user_identifier=context.session.root_object.id, resource_name=self._sdk.SDRepository.rest_name, identifier=specification.parent_id)
 
         if action == GARequest.ACTION_CREATE:
             message = "Added child specification api to specification %s" % (specification.name)
@@ -82,18 +70,22 @@ class SDAPILogicPlugin(GALogicPlugin):
         elif action == GARequest.ACTION_DELETE:
             message = "Deleted child specification api from specification %s" % (specification.name)
 
-        self._github_operations_controller.commit_specification(repository=repository, specification=specification, commit_message=message)
+        self._github_operations_controller.commit_specification(repository=response.data, specification=specification, commit_message=message, session_username=session_username)
 
-    def _update_path(self, specification, api):
+    def _update_path(self, specification, api, session_username):
         """
         """
         sdk = GASDKLibrary().get_sdk('default')
 
-        associated_specification = self.core_controller.storage_controller.get(resource_name=self._sdk.SDSpecification.rest_name, identifier=api.associated_specification_id)
-        associated_resource_name = associated_specification.object_resource_name
+        response = self.core_controller.storage_controller.get(user_identifier=session_username, resource_name=self._sdk.SDSpecification.rest_name, identifier=api.associated_specification_id)
 
-        if api.parent_type == self._sdk.SDAbstract.rest_name:
-            local_resource_name = '[[resource_name]]'
+        if not response.data:
+            return
+
+        associated_resource_name = response.data.object_resource_name
+
+        if specification.rest_name == self._sdk.SDAbstract.rest_name:
+            local_resource_name = '<abstract>'
         else:
             local_resource_name = specification.object_resource_name
 

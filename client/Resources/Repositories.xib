@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15C40a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDRepositoriesViewController">
@@ -705,15 +705,15 @@ from GitHub</string>
             <point key="canvasLocation" x="299.5" y="-787.5"/>
         </customView>
         <customView id="fbm-YB-oVO">
-            <rect key="frame" x="0.0" y="0.0" width="387" height="221"/>
+            <rect key="frame" x="0.0" y="0.0" width="692" height="468"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <customView id="nYf-zo-HDg">
-                    <rect key="frame" x="47" y="49" width="312" height="122"/>
+                    <rect key="frame" x="81" y="173" width="550" height="122"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button verticalHuggingPriority="750" id="jvU-y8-pJd">
-                            <rect key="frame" x="118" y="13" width="77" height="32"/>
+                            <rect key="frame" x="237.5" y="13" width="77" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mhC-qY-u2C">
@@ -725,7 +725,7 @@ from GitHub</string>
                             </connections>
                         </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="giZ-Mq-ztJ">
-                            <rect key="frame" x="18" y="49" width="276" height="62"/>
+                            <rect key="frame" x="18" y="49" width="514" height="62"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Error" id="zqm-xp-GHt">
@@ -739,7 +739,7 @@ from GitHub</string>
                 </customView>
             </subviews>
             <animations/>
-            <point key="canvasLocation" x="718.5" y="-787.5"/>
+            <point key="canvasLocation" x="627" y="-704"/>
         </customView>
         <customView id="PBN-3C-nmF">
             <rect key="frame" x="0.0" y="0.0" width="387" height="221"/>
