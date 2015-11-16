@@ -21,7 +21,7 @@ proxy:
 server:
   image: nuage-cloud-images:5000/specsdirector-server
   environment:
-   - NO_AUTHENTICATION=1
+   # - NO_AUTHENTICATION=0
    - VIRTUAL_HOST=https://*:443/api/*
    - VIRTUAL_HOST_WEIGHT=1
    - HTTP_CHECK=OPTIONS /api/v1_0/events
