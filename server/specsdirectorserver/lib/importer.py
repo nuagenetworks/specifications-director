@@ -5,7 +5,7 @@ import json
 from github import Github
 from monolithe.specifications import Specification, RepositoryManager
 from monolithe.specifications.repositorymanager import MODE_NORMAL, MODE_RAW_SPECS, MODE_RAW_ABSTRACTS
-from garuda.core.models import GAError, GAPluginManifest, GARequest, GAPushEvent
+from garuda.core.models import GAError, GAPluginManifest, GARequest
 
 class SDSpecificationImporter():
     """
@@ -94,19 +94,11 @@ class SDSpecificationImporter():
         response = self._storage_controller.get_all(user_identifier=session_username, resource_name=self._sdk.SDSpecification.rest_name, parent=repository)
         if response.count:
             self._storage_controller.delete_multiple(user_identifier=session_username, resources=response.data, cascade=True)
-            events = []
-            for specification in response.data:
-                events.append(GAPushEvent(action=GARequest.ACTION_DELETE, entity=specification))
-            self._push_controller.push_events(events=events)
 
         response = self._storage_controller.get_all(user_identifier=session_username, resource_name=self._sdk.SDAbstract.rest_name, parent=repository)
 
         if response.count:
             self._storage_controller.delete_multiple(user_identifier=session_username, resources=response.data, cascade=True)
-            events = []
-            for  abstract in response.data:
-                events.append(GAPushEvent(action=GARequest.ACTION_DELETE, entity=abstract))
-            self._push_controller.push_events(events=events)
 
         response = self._storage_controller.get_all(user_identifier=session_username, resource_name=self._sdk.SDAPIInfo.rest_name, parent=repository)
 
@@ -144,9 +136,6 @@ class SDSpecificationImporter():
                 specification.root                 = mono_specification.is_root
 
             self._storage_controller.create(user_identifier=session_username, resource=specification, parent=repository)
-
-            event = GAPushEvent(action=GARequest.ACTION_CREATE, entity=specification)
-            self._push_controller.push_events(events=[event])
 
             extensions = self._import_extends(repository=repository, mono_specification=mono_specification, specification=specification, session_username=session_username)
             attributes = self._import_attributes(mono_specification=mono_specification, specification=specification, session_username=session_username)
@@ -193,7 +182,7 @@ class SDSpecificationImporter():
 
         for extension_name in mono_specification.extends:
 
-            response = self._storage_controller.get_all(user_identifier=session_username, parent=repository, resource_name=self._sdk.SDAbstract.rest_name, filter='name == %s.spec' % extension_name)
+            response = self._storage_controller.get_all(user_identifier=session_username, parent=repository, resource_name=self._sdk.SDAbstract.rest_name, filter='name == "%s.spec"' % extension_name)
 
             if response.count:
                 extensions = extensions + response.data

@@ -41,7 +41,7 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
 
         specification.name = '%s.spec' % specification.object_rest_name
 
-        response = self._storage_controller.get_all(user_identifier=context.session.root_object.id, parent=repository, resource_name=self._sdk.SDSpecification.rest_name, filter='name == %s' % specification.name)
+        response = self._storage_controller.get_all(user_identifier=context.session.root_object.id, parent=repository, resource_name=self._sdk.SDSpecification.rest_name, filter='name == "%s"' % specification.name)
 
         if response.count and response.data[0].id != specification.id:
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another specification exists with the name %s' % specification.name, property_name='name'))
@@ -67,7 +67,7 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
 
         if specification.root:
 
-            response = self._storage_controller.get_all(user_identifier=context.session.root_object.id, resource_name=self._sdk.SDSpecification.rest_name, parent=repository, filter='name == %s.spec' % apiinfo.root)
+            response = self._storage_controller.get_all(user_identifier=context.session.root_object.id, resource_name=self._sdk.SDSpecification.rest_name, parent=repository, filter='name == "%s.spec"' % apiinfo.root)
             current_root_specification = response.data[0] if response.count else None
 
             if current_root_specification and current_root_specification.id != specification.id:

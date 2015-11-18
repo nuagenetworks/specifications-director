@@ -44,7 +44,7 @@ def db_init(db, root_object_class):
     """
     """
     import pymongo
-    db[specdk.SDJob.rest_name].create_index('lastUpdatedDate', expireAfterSeconds=60)
+    db[specdk.SDJob.rest_name].create_index('lastUpdatedDate', expireAfterSeconds=600)
     db[specdk.SDSpecification.rest_name].create_index([('name', pymongo.TEXT)])
 
 

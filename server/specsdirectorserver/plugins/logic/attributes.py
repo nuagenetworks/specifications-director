@@ -36,7 +36,7 @@ class SDAttributeLogicPlugin(GALogicPlugin):
         specification  = context.parent_object
         attribute      = context.object
 
-        response = self.core_controller.storage_controller.get_all(user_identifier=context.session.root_object.id, parent=specification, resource_name=self._sdk.SDAttribute.rest_name, filter='name == %s' % attribute.name)
+        response = self.core_controller.storage_controller.get_all(user_identifier=context.session.root_object.id, parent=specification, resource_name=self._sdk.SDAttribute.rest_name, filter='name == "%s"' % attribute.name)
 
         if response.count and response.data[0].id != attribute.id:
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another attribute exists with the name %s' % attribute.name, property_name='name'))
