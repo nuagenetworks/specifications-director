@@ -21,7 +21,7 @@
 
 @implementation SDRESTObject : NUKitObject
 {
-    CPArrayController _issues   @accessors(property=issues)
+    CPArray _issues   @accessors(property=issues)
 }
 
 - (id)init
