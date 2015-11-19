@@ -280,7 +280,7 @@
 - (void)_didPull:(NURESTJob)aJob
 {
     [self showWorkingView:NO];
-    [[self visibleSubModule] reload];
+    [[[self visibleSubModule] visibleSubModule] reload];
 
     if ([aJob status] == NURESTJobStatusFAILED)
     {

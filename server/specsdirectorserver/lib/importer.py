@@ -93,22 +93,22 @@ class SDSpecificationImporter():
         """
         response = self._storage_controller.get_all(user_identifier=session_username, resource_name=self._sdk.SDSpecification.rest_name, parent=repository)
         if response.count:
-            self._storage_controller.delete_multiple(user_identifier=session_username, resources=response.data, cascade=True)
+            self._storage_controller.delete_multiple(user_identifier=session_username, resources=response.data)
 
         response = self._storage_controller.get_all(user_identifier=session_username, resource_name=self._sdk.SDAbstract.rest_name, parent=repository)
 
         if response.count:
-            self._storage_controller.delete_multiple(user_identifier=session_username, resources=response.data, cascade=True)
+            self._storage_controller.delete_multiple(user_identifier=session_username, resources=response.data)
 
         response = self._storage_controller.get_all(user_identifier=session_username, resource_name=self._sdk.SDAPIInfo.rest_name, parent=repository)
 
         if response.count:
-            self._storage_controller.delete_multiple(user_identifier=session_username, resources=response.data, cascade=True)
+            self._storage_controller.delete_multiple(user_identifier=session_username, resources=response.data)
 
         response = self._storage_controller.get_all(user_identifier=session_username, resource_name=self._sdk.SDMonolitheConfig.rest_name, parent=repository)
 
         if response.count:
-            self._storage_controller.delete_multiple(user_identifier=session_username, resources=response.data, cascade=True)
+            self._storage_controller.delete_multiple(user_identifier=session_username, resources=response.data)
 
     def _import_specs(self, repository, manager, mode, session_username):
         """

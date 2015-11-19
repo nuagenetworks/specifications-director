@@ -62,6 +62,9 @@ NURepositoryCurrent = nil;
         _specifications   = [SDSpecificationsFetcher fetcherWithParentObject:self];
         _abstracts        = [SDAbstractsFetcher fetcherWithParentObject:self];
         _monolitheConfigs = [SDMonolitheConfigsFetcher fetcherWithParentObject:self];
+
+        _branch = @"master";
+        _path = @"/";
     }
 
     return self;
