@@ -1,2 +1,3 @@
 garuda
 simpleldap
+-e git+https://github.com/nuagenetworks/monolithe.git#egg=monolithe

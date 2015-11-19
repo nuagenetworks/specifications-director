@@ -1,4 +1,4 @@
-FROM python:2.7
+FROM garuda:latest
 
 MAINTAINER Antoine Mercadal <antoine@nuagenetworks.net>
 
@@ -8,9 +8,6 @@ RUN apt-get update && apt-get install -y --force-yes libsasl2-dev libldap2-dev &
     cd /app/libs && \
     cp nuage.pem /etc/ssl/certs && \
     ln -s /etc/ssl/certs/nuage.pem /etc/ssl/certs/`cat nuage.pem | openssl x509 -hash -noout`.0 && \
-    pip install bambou*.tar.gz && \
-    pip install monolithe*.tar.gz && \
-    pip install garuda*.tar.gz && \
     pip install specdk*.tar.gz && \
     cd /app && \
     pip install -r requirements.txt && \
