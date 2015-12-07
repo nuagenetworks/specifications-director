@@ -40,7 +40,7 @@ class SDAbstractLogicPlugin(GALogicPlugin):
 
         response = self._storage_controller.get_all(user_identifier=context.session.root_object.id, parent=repository, resource_name=abstract.rest_name, filter='name == "%s"' % abstract.name)
 
-        if response.count and response.objects[0].id != abstract.id:
+        if response.count and response.data[0].id != abstract.id:
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another abstract exists with the name %s' % abstract.name, property_name='name'))
             return False
 
