@@ -132,6 +132,15 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
                 old_name = self._old_names[context.request.uuid]
                 del self._old_names[context.request.uuid]
 
+                apis = self._get_all_related_child_api(context=context)
+
+                for api in apis:
+                    components = api.path.split('/')
+                    components[-1] = specification.object_resource_name
+                    api.path = "/".join(components)
+                    self._storage_controller.update(user_identifier=context.session.root_object.id, resource=api)
+                    context.add_event(GAPushEvent(action=GARequest.ACTION_UPDATE, entity=api))
+
                 self._github_operations_controller.rename_specification(repository=repository,
                                                                         specification=specification,
                                                                         old_name=old_name,
@@ -143,10 +152,39 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
                                                                         commit_message="Updated specification %s" % specification.name,
                                                                         session_username=session_username)
 
+
         elif action == GARequest.ACTION_DELETE:
+
+            apis = self._get_all_related_child_api(context=context)
+
+            if len(apis):
+                self._storage_controller.delete_multiple(user_identifier=context.session.root_object.id, resources=apis)
+                context.add_events([GAPushEvent(action=GARequest.ACTION_DELETE, entity=api) for api in apis])
 
             self._github_operations_controller.delete_specification(repository=repository,
                                                                     specification=specification,
                                                                     commit_message="Deleted specification %s" % specification.name,
                                                                     session_username=session_username)
         return context
+
+    # Utilities
+
+    def _get_all_related_child_api(self, context):
+        """
+        """
+        apis = []
+
+        response = self._storage_controller.get_all(user_identifier=context.session.root_object.id,
+                                                    parent=context.parent_object,
+                                                    resource_name=self._sdk.SDSpecification.rest_name)
+
+        for spec in response.data:
+
+            response = self._storage_controller.get_all(user_identifier=context.session.root_object.id,
+                                                        parent=spec,
+                                                        resource_name=self._sdk.SDChildAPI.rest_name,
+                                                        filter='associatedSpecificationID == "%s"' % context.object.id)
+            if response.count:
+                apis += response.data
+
+        return apis
