@@ -1,0 +1,30 @@
+server:
+  image: registry.mv.nuagenetworks.net:5000/specificationsdirector/server:latest
+  labels:
+    SERVICE_NAME: specificationsdirector-server
+    SERVICE_TAGS: 'dns=mv.nuagenetworks.net,vhost=specificationsdirector,https=443,url=/api,check=OPTIONS /api/v1_0/events'
+  environment:
+    - "affinity:container!=~specificationsdirector_server*"
+  ports:
+   - 2000
+  command: ./server.py --redis-host=specificationsdirector-redis --mongo-host=specificationsdirector-mongo
+
+client:
+  image: registry.mv.nuagenetworks.net:5000/specificationsdirector/client:latest
+  labels:
+    SERVICE_NAME: specificationsdirector-ui
+    SERVICE_TAGS: 'dns=mv.nuagenetworks.net,vhost=specificationsdirector,https=443'
+  ports:
+   - 80
+
+redis:
+  image: redis
+  container_name: specificationsdirector-redis
+  volumes:
+    - "/cloud_images/specificationsdirector/redis:/data"
+
+mongo:
+  image: mongo
+  container_name: specificationsdirector-mongo
+  volumes:
+    - "/cloud_images/specificationsdirector/mongo:/data/db"
