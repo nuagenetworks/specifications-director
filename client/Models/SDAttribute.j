@@ -44,6 +44,7 @@ SDAttributeFormatDate = @"date";
     CPString            _format         @accessors(property=format);
     CPString            _name           @accessors(property=name);
     CPString            _type           @accessors(property=type);
+    CPString            _subtype        @accessors(property=subtype);
 }
 
 
