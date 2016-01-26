@@ -269,6 +269,9 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="defaultValue"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="NO"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="nextKeyView" destination="Ks6-Ro-EiL" id="AVH-sf-nZT"/>
+                    </connections>
                 </textField>
             </subviews>
             <point key="canvasLocation" x="47.5" y="213"/>
@@ -358,7 +361,7 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="NO"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="nextKeyView" destination="dKl-QR-hCh" id="76x-zM-KcO"/>
+                        <outlet property="nextKeyView" destination="dKl-QR-hCh" id="YS6-2r-iTU"/>
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="fie-d7-ttP">
@@ -431,7 +434,7 @@
                     </connections>
                 </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="47.5" y="468"/>
+            <point key="canvasLocation" x="319.5" y="236"/>
         </customView>
         <customView id="CY0-iE-AwE">
             <rect key="frame" x="0.0" y="0.0" width="237" height="118"/>
@@ -468,7 +471,7 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="NO"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="nextKeyView" destination="Zmg-3f-6Jp" id="AUH-Iw-xHq"/>
+                        <outlet property="nextKeyView" destination="Zmg-3f-6Jp" id="ttT-23-MRv"/>
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="YZz-Ck-sff">
@@ -497,7 +500,7 @@
                     </connections>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="47.5" y="669"/>
+            <point key="canvasLocation" x="41.5" y="673"/>
         </customView>
         <customView id="Frm-tA-wiT">
             <rect key="frame" x="0.0" y="0.0" width="237" height="113"/>
