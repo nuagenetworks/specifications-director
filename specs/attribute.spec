@@ -63,7 +63,7 @@
             "type": "boolean"
         },
         "format": {
-            "allowed_choices": ["email", "phone", "ipv4", "ipv6", "date", "id", "free"],
+            "allowed_choices": ["email", "phone", "ipv4", "ipv6", "date", "id", "free", "cidr"],
             "description": "Define what is the format of the attribute. Only available for type string",
             "type": "enum"
         },
@@ -94,6 +94,10 @@
         "required": {
             "description": "Defines if the attribute is required.",
             "type": "boolean"
+        },
+        "subtype": {
+            "description": "The sub type of the attribute. Not used by monolithe.",
+            "type": "string"
         },
         "transient": {
             "description": "Defines if the attribute is transient.",
