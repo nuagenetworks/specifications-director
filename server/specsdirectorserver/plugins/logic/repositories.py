@@ -58,7 +58,7 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
         if not repository.path or not len(repository.path):
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute path is mandatory.', property_name='path'))
 
-        context.object.valid = False
+        context.object.status = 'NEEDS_PULL'
         context.object.owner = context.request.username
 
         return context

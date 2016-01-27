@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15C27e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15E33e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDDataViewsLoader">
@@ -19,88 +19,82 @@
         <customView id="83" userLabel="Main View">
             <rect key="frame" x="0.0" y="0.0" width="161" height="117"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-            <animations/>
             <point key="canvasLocation" x="-9.5" y="389.5"/>
         </customView>
         <customView id="iHs-D3-jz7" customClass="SDRepositoryDataView">
-            <rect key="frame" x="0.0" y="0.0" width="177" height="66"/>
+            <rect key="frame" x="0.0" y="0.0" width="217" height="52"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="cF5-fm-fDX" userLabel="Name">
-                    <rect key="frame" x="39" y="47" width="103" height="14"/>
+                    <rect key="frame" x="54" y="33" width="157" height="14"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Repository" id="o62-ZF-jyf">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="xxJ-jZ-4qb">
-                    <rect key="frame" x="39" y="33" width="103" height="13"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="apiurl" id="HSW-uw-wxB">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" id="3iE-mg-zkh">
-                    <rect key="frame" x="39" y="20" width="31" height="13"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Orga" id="zCU-p7-qNg">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" red="0.34552848339999997" green="0.34552848339999997" blue="0.34552848339999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <imageView id="Cyd-1i-rKR">
-                    <rect key="frame" x="10" y="34" width="24" height="24"/>
+                    <rect key="frame" x="10" y="20" width="24" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="icon-repository" id="gnL-Rq-kUu"/>
                 </imageView>
-                <textField verticalHuggingPriority="750" id="8sg-UL-tHT">
-                    <rect key="frame" x="69" y="20" width="73" height="13"/>
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="4n2-ch-c7E">
+                    <rect key="frame" x="0.0" y="-15" width="217" height="5"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <textField verticalHuggingPriority="750" id="3qh-Oa-7Lh">
+                    <rect key="frame" x="39" y="18" width="36" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="orga" id="Umu-8M-Xlz">
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Branch" id="53b-gQ-QwY">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" red="0.20270270109999999" green="0.20270270109999999" blue="0.20270270109999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="ciF-ce-3Gl">
+                    <rect key="frame" x="39" y="3" width="36" height="13"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Repo" id="nNa-lD-1rD">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" red="0.20270270109999999" green="0.20270270109999999" blue="0.20270270109999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="PEM-PX-cmq">
+                    <rect key="frame" x="41" y="35" width="11" height="11"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="bm0-Gf-K3g"/>
+                </imageView>
+                <textField verticalHuggingPriority="750" id="xxJ-jZ-4qb">
+                    <rect key="frame" x="74" y="3" width="137" height="13"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Desc" id="HSW-uw-wxB">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" id="5Uc-AX-o8o">
-                    <rect key="frame" x="39" y="5" width="31" height="13"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Repo" id="IDL-gM-8Qk">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" red="0.34552848339999997" green="0.34552848339999997" blue="0.34552848339999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" id="Usm-Te-frT">
-                    <rect key="frame" x="69" y="5" width="73" height="13"/>
+                <textField verticalHuggingPriority="750" id="dM7-Xi-dcU">
+                    <rect key="frame" x="74" y="18" width="137" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="repo" id="cNH-zN-ClL">
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Branch" id="w68-lD-Tb5">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
             </subviews>
-            <animations/>
             <connections>
+                <outlet property="fieldBranch" destination="dM7-Xi-dcU" id="Afp-AK-9eq"/>
+                <outlet property="fieldDescription" destination="xxJ-jZ-4qb" id="Zoh-NJ-GtC"/>
                 <outlet property="fieldName" destination="cF5-fm-fDX" id="Aka-5e-fKD"/>
-                <outlet property="fieldOrganization" destination="8sg-UL-tHT" id="m76-L9-3mr"/>
-                <outlet property="fieldRepository" destination="Usm-Te-frT" id="2rs-9Y-OZ4"/>
-                <outlet property="fieldURL" destination="xxJ-jZ-4qb" id="Bc2-QB-A03"/>
+                <outlet property="imageViewStatus" destination="PEM-PX-cmq" id="xtf-dX-YuI"/>
             </connections>
-            <point key="canvasLocation" x="211.5" y="209"/>
+            <point key="canvasLocation" x="176.5" y="199"/>
         </customView>
         <customView id="OvQ-8o-eQS" customClass="SDSpecificationDataView">
             <rect key="frame" x="0.0" y="0.0" width="177" height="24"/>
@@ -109,19 +103,16 @@
                 <imageView toolTip="This specification has been edited" id="wiB-3N-Lxm">
                     <rect key="frame" x="13" y="3" width="8" height="8"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="badge-edited" id="GUA-jQ-IhU"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="FYK-jc-Xaf">
                     <rect key="frame" x="161" y="6" width="12" height="12"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="badge-warning" id="kJ0-ka-Rua"/>
                 </imageView>
                 <textField verticalHuggingPriority="750" id="ePJ-0O-TjB" userLabel="Name">
                     <rect key="frame" x="24" y="5" width="142" height="14"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Specification" id="TXj-F0-pqE">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -131,11 +122,9 @@
                 <imageView id="tGZ-ab-5ez">
                     <rect key="frame" x="5" y="5" width="14" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="icon-specification" id="V1M-bO-Vp6"/>
                 </imageView>
             </subviews>
-            <animations/>
             <connections>
                 <outlet property="fieldName" destination="ePJ-0O-TjB" id="lJR-Fy-tq8"/>
                 <outlet property="imageViewEdited" destination="wiB-3N-Lxm" id="5NA-3b-FVd"/>
@@ -150,7 +139,6 @@
                 <textField verticalHuggingPriority="750" id="tca-a5-vya">
                     <rect key="frame" x="59" y="5" width="132" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="description" id="8vj-uE-mou">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -160,7 +148,6 @@
                 <textField verticalHuggingPriority="750" id="F9t-d0-aLI">
                     <rect key="frame" x="4" y="19" width="51" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="boolean" id="oRE-Bd-Ltl">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.34552848339999997" green="0.34552848339999997" blue="0.34552848339999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -170,13 +157,11 @@
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="XTL-un-BNJ">
                     <rect key="frame" x="194" y="20" width="12" height="12"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="badge-warning" id="nr9-QI-Eb3"/>
                 </imageView>
                 <textField verticalHuggingPriority="750" id="JG2-30-2ve" userLabel="Name">
                     <rect key="frame" x="59" y="19" width="132" height="14"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Attribute" id="qIw-U3-C61">
                         <font key="font" size="11" name="CourierNewPS-BoldMT"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -184,7 +169,6 @@
                     </textFieldCell>
                 </textField>
             </subviews>
-            <animations/>
             <connections>
                 <outlet property="fieldDescription" destination="tca-a5-vya" id="ra7-Qh-wHp"/>
                 <outlet property="fieldName" destination="JG2-30-2ve" id="fcC-Eh-5q9"/>
@@ -200,7 +184,6 @@
                 <textField verticalHuggingPriority="750" id="J2u-3O-3fR" userLabel="Name">
                     <rect key="frame" x="62" y="19" width="290" height="15"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="api" id="EYN-Qt-aDc">
                         <font key="font" size="11" name="CourierNewPS-BoldMT"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -210,7 +193,6 @@
                 <textField verticalHuggingPriority="750" id="7cb-Jx-x4D">
                     <rect key="frame" x="62" y="4" width="290" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Operations" id="zlb-Zx-1Hy">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -220,7 +202,6 @@
                 <textField verticalHuggingPriority="750" id="TeF-xh-zFI">
                     <rect key="frame" x="6" y="20" width="52" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="member" id="p1b-ku-GJm">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -228,7 +209,6 @@
                     </textFieldCell>
                 </textField>
             </subviews>
-            <animations/>
             <connections>
                 <outlet property="fieldOperations" destination="7cb-Jx-x4D" id="7in-MC-Weg"/>
                 <outlet property="fieldPath" destination="J2u-3O-3fR" id="ff3-Zm-TEy"/>
@@ -243,19 +223,16 @@
                 <imageView toolTip="This specification has been edited" id="nrw-9T-je1">
                     <rect key="frame" x="13" y="3" width="8" height="8"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="badge-edited" id="gaX-Zf-qzm"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="SOj-qM-8nv">
                     <rect key="frame" x="161" y="6" width="12" height="12"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="badge-warning" id="jmW-53-gRD"/>
                 </imageView>
                 <textField verticalHuggingPriority="750" id="a96-GR-UeB" userLabel="Name">
                     <rect key="frame" x="24" y="5" width="142" height="14"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Asbtract" id="jap-JK-JVW">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -265,11 +242,9 @@
                 <imageView id="bik-hP-ggD">
                     <rect key="frame" x="5" y="5" width="14" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="icon-abstract" id="IZR-NZ-oDA"/>
                 </imageView>
             </subviews>
-            <animations/>
             <connections>
                 <outlet property="fieldName" destination="a96-GR-UeB" id="htH-MH-HdD"/>
                 <outlet property="imageViewEdited" destination="nrw-9T-je1" id="WaM-vh-PB3"/>

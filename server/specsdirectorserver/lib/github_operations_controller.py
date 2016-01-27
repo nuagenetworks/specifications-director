@@ -135,6 +135,10 @@ class SDGitHubOperationsController(GAController):
         try:
             manager = self._get_repository_manager_for_repository(repository=repository)
 
+            repository.status = 'PULLING'
+            self._storage_controller.update(user_identifier=session_username, resource=repository)
+            self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
+
             self._specification_importer.clean_repository(repository=repository, session_username=session_username)
             self._specification_importer.import_apiinfo(repository=repository, manager=manager, session_username=session_username)
             self._specification_importer.import_abstracts(repository=repository, manager=manager, session_username=session_username)
@@ -144,7 +148,7 @@ class SDGitHubOperationsController(GAController):
             job.progress = 1.0
             job.status = 'SUCCESS'
 
-            repository.valid = True
+            repository.status = 'READY'
             self._storage_controller.update(user_identifier=session_username, resource=repository)
             self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
 
@@ -152,6 +156,10 @@ class SDGitHubOperationsController(GAController):
             job.progress = 1.0
             job.status = 'FAILED'
             job.result = 'Unable to find repository, or bad authentication. Please check your GitHub credentials: %s' % ex
+
+            repository.status = 'ERROR'
+            self._storage_controller.update(user_identifier=session_username, resource=repository)
+            self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
 
         finally:
             self._storage_controller.update(user_identifier=session_username, resource=job)

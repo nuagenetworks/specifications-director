@@ -61,9 +61,11 @@
             "description": "The relative path inside the repository.",
             "type": "string"
         },
-        "valid": {
+        "status": {
+            "allowed_choices": ["READY", "PULLING", "NEEDS_PULL", "ERROR", "QUEUED"],
+            "default_value": "NEEDS_PULL",
             "description": "Defines if everything is fine with the information.",
-            "type": "boolean"
+            "type": "enum"
         }
     }
 }

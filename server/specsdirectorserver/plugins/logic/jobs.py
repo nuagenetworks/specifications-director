@@ -38,10 +38,15 @@ class SDJobLogicPlugin(GALogicPlugin):
     def did_perform_write(self, context):
         """
         """
-        job        = context.object
-        repository = context.parent_object
+        job              = context.object
+        repository       = context.parent_object
+        session_username = context.session.root_object.id
 
         if job.command == 'pull':
+
+            repository.status = 'QUEUED'
+            self._storage_controller.update(user_identifier=session_username, resource=repository)
+            self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
             self._github_operations_controller.checkout_repository(repository=repository, job=job, session_username=context.session.root_object.id)
 
         return context

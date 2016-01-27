@@ -8,9 +8,16 @@
 
 NURepositoryCurrent = nil;
 
+SDRepositoryStatusREADY = @"READY";
+SDRepositoryStatusPULLING = @"PULLING";
+SDRepositoryStatusNEEDS_PULL = @"NEEDS_PULL";
+SDRepositoryStatusERROR = @"ERROR";
+SDRepositoryStatusQUEUED = @"QUEUED";
+
+
 @implementation SDRepository : SDRESTObject
 {
-    BOOL                        _valid              @accessors(property=valid);
+    CPString                    _status             @accessors(property=status);
     CPString                    _name               @accessors(property=name);
     CPString                    _url                @accessors(property=url);
     CPString                    _username           @accessors(property=username);
@@ -56,18 +63,51 @@ NURepositoryCurrent = nil;
         [self exposeLocalKeyPathToREST:@"repository"];
         [self exposeLocalKeyPathToREST:@"branch"];
         [self exposeLocalKeyPathToREST:@"path"];
-        [self exposeLocalKeyPathToREST:@"valid"];
+        [self exposeLocalKeyPathToREST:@"status"];
+
+        _organization = [[SDAuth defaultUser] userName];
+        _url          = @"https://github.mv.usa.alcatel.com/api/v3";
+        _repository   = @"api-specifications";
+        _status       = SDRepositoryStatusNEEDS_PULL;
+        _branch       = @"master";
+        _path         = @"/";
 
         _APIInfos         = [SDAPIInfosFetcher fetcherWithParentObject:self];
         _specifications   = [SDSpecificationsFetcher fetcherWithParentObject:self];
         _abstracts        = [SDAbstractsFetcher fetcherWithParentObject:self];
         _monolitheConfigs = [SDMonolitheConfigsFetcher fetcherWithParentObject:self];
-
-        _branch = @"master";
-        _path = @"/";
     }
 
     return self;
+}
+
+- (void)setOrganization:(CPString)anOrganization
+{
+    if (_organization == anOrganization)
+        return;
+
+    [self willChangeValueForKey:@"organization"];
+    [self willChangeValueForKey:@"description"];
+    _organization = anOrganization
+    [self didChangeValueForKey:@"organization"];
+    [self didChangeValueForKey:@"description"];
+}
+
+- (void)setRepository:(CPString)aRepository
+{
+    if (_repository == aRepository)
+        return;
+
+    [self willChangeValueForKey:@"repository"];
+    [self willChangeValueForKey:@"description"];
+    _repository = aRepository
+    [self didChangeValueForKey:@"repository"];
+    [self didChangeValueForKey:@"description"];
+}
+
+- (CPString)description
+{
+    return _organization + @"/" + _repository
 }
 
 @end

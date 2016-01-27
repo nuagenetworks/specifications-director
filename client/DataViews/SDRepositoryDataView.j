@@ -2,14 +2,15 @@
 @import <NUKit/NUAbstractDataView.j>
 @import <RESTCappuccino/NURESTJobsController.j>
 
-@global NURESTJobsControllerJobCompletedNotification
+@global SDRepositoryStatusToImageTransformer
+
 
 @implementation SDRepositoryDataView : NUAbstractDataView
 {
+    @outlet CPImageView   imageViewStatus;
+    @outlet CPTextField   fieldBranch;
+    @outlet CPTextField   fieldDescription
     @outlet CPTextField   fieldName;
-    @outlet CPTextField   fieldOrganization;
-    @outlet CPTextField   fieldRepository;
-    @outlet CPTextField   fieldURL;
 }
 
 
@@ -20,10 +21,12 @@
 {
     [super bindDataView];
 
+    var statusTransformer = @{CPValueTransformerNameBindingOption: SDRepositoryStatusToImageTransformerName};
+
+    [fieldBranch bind:CPValueBinding toObject:_objectValue withKeyPath:@"branch" options:nil];
+    [fieldDescription bind:CPValueBinding toObject:_objectValue withKeyPath:@"description" options:nil];
     [fieldName bind:CPValueBinding toObject:_objectValue withKeyPath:@"name" options:nil];
-    [fieldURL bind:CPValueBinding toObject:_objectValue withKeyPath:@"url" options:nil];
-    [fieldOrganization bind:CPValueBinding toObject:_objectValue withKeyPath:@"organization" options:nil];
-    [fieldRepository bind:CPValueBinding toObject:_objectValue withKeyPath:@"repository" options:nil];
+    [imageViewStatus bind:CPValueBinding toObject:_objectValue withKeyPath:@"status" options:statusTransformer];
 }
 
 #pragma mark -
@@ -33,10 +36,10 @@
 {
     if (self = [super initWithCoder:aCoder])
     {
-        fieldName         = [aCoder decodeObjectForKey:@"fieldName"];
-        fieldOrganization = [aCoder decodeObjectForKey:@"fieldOrganization"];
-        fieldRepository   = [aCoder decodeObjectForKey:@"fieldRepository"];
-        fieldURL          = [aCoder decodeObjectForKey:@"fieldURL"];
+        fieldBranch      = [aCoder decodeObjectForKey:@"fieldBranch"];
+        fieldDescription = [aCoder decodeObjectForKey:@"fieldDescription"];
+        fieldName        = [aCoder decodeObjectForKey:@"fieldName"];
+        imageViewStatus  = [aCoder decodeObjectForKey:@"imageViewStatus"];
     }
 
     return self;
@@ -46,10 +49,10 @@
 {
     [super encodeWithCoder:aCoder];
 
+    [aCoder encodeObject:fieldBranch forKey:@"fieldBranch"];
+    [aCoder encodeObject:fieldDescription forKey:@"fieldDescription"];
     [aCoder encodeObject:fieldName forKey:@"fieldName"];
-    [aCoder encodeObject:fieldOrganization forKey:@"fieldOrganization"];
-    [aCoder encodeObject:fieldRepository forKey:@"fieldRepository"];
-    [aCoder encodeObject:fieldURL forKey:@"fieldURL"];
+    [aCoder encodeObject:imageViewStatus forKey:@"imageViewStatus"];
 }
 
 @end

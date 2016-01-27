@@ -1,6 +1,6 @@
 ## Configuration
 
-exclude                 = "{*.{o,pyc},Build,Frameworks,Test,*.sublime*,*.cappenvs*,*.xcodeproj,codegen,Libraries/Cappuccino,*.cib,*.png,*.gif,*ico}"
+exclude                 = "{*.{o,pyc},Build,Frameworks,Test,*.sublime*,*.cappenvs*,*.xcodeproj,codegen,Build,webapp,Libraries/Cappuccino,*.cib,*.png,*.gif,*ico}"
 excludeInBrowser        = "{$excludeInBrowser,$exclude}"
 excludeInFileChooser    = "{$excludeInFileChooser,$exclude}"
 excludeInFolderSearch   = "{$excludeInFolderSearch,$exclude,*.cib}"

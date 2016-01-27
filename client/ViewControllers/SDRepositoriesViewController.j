@@ -4,12 +4,18 @@
 @import "../Models/SDModels.j"
 
 @class SDItemizedSpecifications
+@global SDRepositoryStatusNEEDS_PULL
+@global SDRepositoryStatusPULLING
+@global SDRepositoryStatusREADY
+@global SDRepositoryStatusERROR
+
 
 @implementation SDRepositoriesViewController : NUModule
 {
     @outlet CPButton                    buttonDownload;
     @outlet CPButton                    buttonPull;
     @outlet CPTextField                 labelError;
+    @outlet CPTextField                 labelPulling;
     @outlet CPView                      viewError;
     @outlet CPView                      viewLoadingContainer;
     @outlet CPView                      viewPull;
@@ -97,18 +103,12 @@
     [hoverView showWithAnimation:NO];
     [hoverView setEnabled:NO];
 
-    [self showErrorView:NO];
-    [self showPullView:NO];
-    [self showWorkingView:NO];
+    [self _updateCurrentStateView];
 }
 
 - (void)moduleDidSelectObjects:(CPArray)someObject
 {
     [[NUKit kit] closeExternalWindows];
-
-    [self showErrorView:NO];
-    [self showPullView:NO];
-    [self showWorkingView:NO];
 
     if ([someObject count] != 1)
     {
@@ -117,20 +117,23 @@
         [hoverView setEnabled:NO];
 
         [SDRepository setCurrentRepository:nil];
+
         [self setApplicationNameAndIcon];
 
         [self _showControlButtons:NO];
+    }
+    else
+    {
+        [hoverView setEnabled:YES];
 
-        return;
+        [SDRepository setCurrentRepository:[someObject firstObject]];
+
+        [self setApplicationNameAndIcon];
+
+        [self _showControlButtons:YES];
     }
 
-    [self _showControlButtons:YES];
-
-    [hoverView setEnabled:YES];
-    [SDRepository setCurrentRepository:[someObject firstObject]];
-    [self setApplicationNameAndIcon];
-
-    [self _showViewPullIfNeeded];
+    [self _updateCurrentStateView];
 }
 
 - (CPSet)permittedActionsForObject:(id)anObject
@@ -146,19 +149,52 @@
 - (void)performPostPushOperation
 {
     [super performPostPushOperation];
-    [self _showViewPullIfNeeded];
+    [self _updateCurrentStateView];
 }
 
 
 #pragma mark -
 #pragma mark Utilities
 
-- (void)_showViewPullIfNeeded
+- (void)_updateCurrentStateView
 {
     if (![_currentSelectedObjects count])
+    {
+        [self showPullView:NO];
+        [self showWorkingView:NO];
+        [self showErrorView:NO];
         return;
+    }
 
-    [self showPullView:![[_currentSelectedObjects firstObject] valid]];
+    var repoStatus = [[_currentSelectedObjects firstObject] status];
+
+    switch (repoStatus)
+    {
+        case SDRepositoryStatusNEEDS_PULL:
+            [self showPullView:YES];
+            [self showWorkingView:NO];
+            [self showErrorView:NO];
+            break;
+
+        case SDRepositoryStatusPULLING:
+        case SDRepositoryStatusQUEUED:
+            [self showPullView:NO];
+            [self showWorkingView:YES];
+            [self showErrorView:NO];
+            break;
+
+        case SDRepositoryStatusERROR:
+            [self showPullView:NO];
+            [self showWorkingView:NO];
+            [self showErrorView:YES];
+            break;
+
+        case SDRepositoryStatusREADY:
+            [self showPullView:NO];
+            [self showWorkingView:NO];
+            [self showErrorView:NO];
+            break;
+    }
 }
 
 - (void)_showControlButtons:(shouldShow)shouldShow
@@ -172,8 +208,8 @@
     {
         var currentRepository = [_currentSelectedObjects firstObject];
 
-        [buttonDownload setHidden:![currentRepository valid]];
-        [buttonPull setHidden:![currentRepository valid]];
+        [buttonDownload setHidden:[currentRepository status] != SDRepositoryStatusREADY];
+        [buttonPull setHidden:[currentRepository status] != SDRepositoryStatusREADY];
     }
 }
 
@@ -188,19 +224,21 @@
 
     if (shouldShow)
     {
+        var repo = [_currentSelectedObjects firstObject];
+
+        if ([repo status] == SDRepositoryStatusPULLING)
+            [labelPulling setStringValue:@"Pulling Specifications from\n" + [repo description] + "@" + [repo branch] + @"..."]
+        if ([repo status] == SDRepositoryStatusQUEUED)
+            [labelPulling setStringValue:@"Operation Enqueued.\nWaiting for next available pulling slot."];
+
         if ([viewWorking superview])
             return;
-
-        [hoverView setWidth:230];
-        [hoverView showWithAnimation:NO];
-        [hoverView setEnabled:NO];
 
         [self _showControlButtons:NO];
 
         [viewWorking setFrame:[viewEditObject bounds]];
         [viewEditObject addSubview:viewWorking positioned:CPWindowAbove relativeTo:viewEditObject];
         [[NUDataTransferController defaultDataTransferController] showFetchingViewOnView:viewLoadingContainer];
-        [tableView setEnabled:NO];
     }
     else
     {
@@ -209,9 +247,6 @@
 
         [[NUDataTransferController defaultDataTransferController] hideFetchingViewFromView:viewLoadingContainer];
         [viewWorking removeFromSuperview];
-        [tableView setEnabled:YES];
-        [hoverView setEnabled:YES];
-        [hoverView hideWithAnimation:NO];
 
         [self _showControlButtons:YES];
     }
@@ -224,10 +259,6 @@
         if ([viewError superview])
             return;
 
-        [hoverView setWidth:230];
-        [hoverView showWithAnimation:NO];
-        [hoverView setEnabled:NO];
-
         [viewError setFrame:[viewEditObject frame]];
         [viewEditObject addSubview:viewError];
     }
@@ -236,7 +267,6 @@
         if (![viewError superview])
             return;
 
-        [hoverView setEnabled:YES];
 
         [viewError removeFromSuperview];
     }
@@ -249,19 +279,13 @@
         if ([viewPull superview])
             return;
 
-        [hoverView setWidth:230];
-        [hoverView showWithAnimation:NO];
-        [hoverView setEnabled:NO];
-
-        [viewPull setFrame:[viewEditObject frame]];
+        [viewPull setFrame:[viewEditObject bounds]];
         [viewEditObject addSubview:viewPull positioned:CPWindowAbove relativeTo:viewEditObject];
     }
     else
     {
         if (![viewPull superview])
             return;
-
-        [hoverView setEnabled:YES];
 
         [viewPull removeFromSuperview];
     }
@@ -279,14 +303,15 @@
 
 - (void)_didPull:(NURESTJob)aJob
 {
-    [self showWorkingView:NO];
+    if ([aJob parentID] != [[_currentSelectedObjects firstObject] ID])
+        return;
+
     [[[self visibleSubModule] visibleSubModule] reload];
 
     if ([aJob status] == NURESTJobStatusFAILED)
-    {
         [labelError setStringValue:[aJob result]];
-        [self showErrorView:YES];
-    }
+
+    [self _updateCurrentStateView];
 }
 
 - (@action)download:(id)aSender
@@ -299,6 +324,10 @@
 
 - (@action)closeErrorView:(id)aSender
 {
+    [[_currentSelectedObjects firstObject] setStatus:SDRepositoryStatusNEEDS_PULL];
+    [[_currentSelectedObjects firstObject] saveAndCallSelector:nil ofObject:nil];
+
+    [self showPullView:YES];
     [self showErrorView:NO];
 }
 @end
