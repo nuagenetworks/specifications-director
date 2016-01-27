@@ -5,7 +5,7 @@ rm -rf libs
 mkdir libs
 
 cd ..
-../monolithe/commands/monogen-sdk -f specs -c specs/monoconf/config.ini
+../monolithe/commands/monogen-sdk -f specs -c specs/monoconf/config.ini -b master
 cd codegen
 python setup.py sdist
 cd $CURRENT_PATH
