@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="cF5-fm-fDX" userLabel="Name">
-                    <rect key="frame" x="54" y="33" width="157" height="14"/>
+                    <rect key="frame" x="54" y="33" width="145" height="14"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Repository" id="o62-ZF-jyf">
                         <font key="font" metaFont="smallSystem"/>
@@ -87,11 +87,17 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <imageView toolTip="You cannot push to that repository." horizontalHuggingPriority="251" verticalHuggingPriority="251" id="RKU-Qu-s90">
+                    <rect key="frame" x="198" y="36" width="11" height="11"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="badge-locked" id="Ta5-nz-Pc7"/>
+                </imageView>
             </subviews>
             <connections>
                 <outlet property="fieldBranch" destination="dM7-Xi-dcU" id="Afp-AK-9eq"/>
                 <outlet property="fieldDescription" destination="xxJ-jZ-4qb" id="Zoh-NJ-GtC"/>
                 <outlet property="fieldName" destination="cF5-fm-fDX" id="Aka-5e-fKD"/>
+                <outlet property="imageReadOnly" destination="RKU-Qu-s90" id="YnF-9i-eKd"/>
                 <outlet property="imageViewStatus" destination="PEM-PX-cmq" id="xtf-dX-YuI"/>
             </connections>
             <point key="canvasLocation" x="176.5" y="199"/>
@@ -255,6 +261,7 @@
     </objects>
     <resources>
         <image name="badge-edited" width="32" height="32"/>
+        <image name="badge-locked" width="32" height="32"/>
         <image name="badge-warning" width="16" height="16"/>
         <image name="icon-abstract" width="64" height="64"/>
         <image name="icon-repository" width="64" height="64"/>

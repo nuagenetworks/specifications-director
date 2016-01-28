@@ -46,9 +46,12 @@
 
 - (void)moduleUpdateEditorInterface
 {
+    var conditionRepoHasPushPermission = [[SDRepository currentRepository] pushPermission],
+        conditionCanEdit               = conditionRepoHasPushPermission;
 
-    console.error([_currentContext editedObject])
+    [_currentContext setBoundControlsEnabled:conditionCanEdit];
 }
+
 
 #pragma mark -
 #pragma mark NUModuleSelfParent API

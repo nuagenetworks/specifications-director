@@ -17,6 +17,7 @@ SDRepositoryStatusQUEUED = @"QUEUED";
 
 @implementation SDRepository : SDRESTObject
 {
+    BOOL                        _pushPermission     @accessors(property=pushPermission);
     CPString                    _status             @accessors(property=status);
     CPString                    _name               @accessors(property=name);
     CPString                    _url                @accessors(property=url);
@@ -55,15 +56,16 @@ SDRepositoryStatusQUEUED = @"QUEUED";
 {
     if (self = [super init])
     {
+        [self exposeLocalKeyPathToREST:@"branch"];
         [self exposeLocalKeyPathToREST:@"name"];
+        [self exposeLocalKeyPathToREST:@"organization"];
+        [self exposeLocalKeyPathToREST:@"password"];
+        [self exposeLocalKeyPathToREST:@"path"];
+        [self exposeLocalKeyPathToREST:@"pushPermission"];
+        [self exposeLocalKeyPathToREST:@"repository"];
+        [self exposeLocalKeyPathToREST:@"status"];
         [self exposeLocalKeyPathToREST:@"url"];
         [self exposeLocalKeyPathToREST:@"username"];
-        [self exposeLocalKeyPathToREST:@"password"];
-        [self exposeLocalKeyPathToREST:@"organization"];
-        [self exposeLocalKeyPathToREST:@"repository"];
-        [self exposeLocalKeyPathToREST:@"branch"];
-        [self exposeLocalKeyPathToREST:@"path"];
-        [self exposeLocalKeyPathToREST:@"status"];
 
         _organization = [[SDAuth defaultUser] userName];
         _url          = @"https://github.mv.usa.alcatel.com/api/v3";

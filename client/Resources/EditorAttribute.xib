@@ -671,7 +671,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="Orderable"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="orderable"/>
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button id="J1B-ea-GPs">

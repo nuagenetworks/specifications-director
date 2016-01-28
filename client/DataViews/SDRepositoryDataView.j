@@ -7,6 +7,7 @@
 
 @implementation SDRepositoryDataView : NUAbstractDataView
 {
+    @outlet CPImageView   imageReadOnly;
     @outlet CPImageView   imageViewStatus;
     @outlet CPTextField   fieldBranch;
     @outlet CPTextField   fieldDescription
@@ -26,6 +27,7 @@
     [fieldBranch bind:CPValueBinding toObject:_objectValue withKeyPath:@"branch" options:nil];
     [fieldDescription bind:CPValueBinding toObject:_objectValue withKeyPath:@"description" options:nil];
     [fieldName bind:CPValueBinding toObject:_objectValue withKeyPath:@"name" options:nil];
+    [imageReadOnly bind:CPHiddenBinding toObject:_objectValue withKeyPath:@"pushPermission" options:nil];
     [imageViewStatus bind:CPValueBinding toObject:_objectValue withKeyPath:@"status" options:statusTransformer];
 }
 
@@ -39,6 +41,7 @@
         fieldBranch      = [aCoder decodeObjectForKey:@"fieldBranch"];
         fieldDescription = [aCoder decodeObjectForKey:@"fieldDescription"];
         fieldName        = [aCoder decodeObjectForKey:@"fieldName"];
+        imageReadOnly    = [aCoder decodeObjectForKey:@"imageReadOnly"];
         imageViewStatus  = [aCoder decodeObjectForKey:@"imageViewStatus"];
     }
 
@@ -52,6 +55,7 @@
     [aCoder encodeObject:fieldBranch forKey:@"fieldBranch"];
     [aCoder encodeObject:fieldDescription forKey:@"fieldDescription"];
     [aCoder encodeObject:fieldName forKey:@"fieldName"];
+    [aCoder encodeObject:imageReadOnly forKey:@"imageReadOnly"];
     [aCoder encodeObject:imageViewStatus forKey:@"imageViewStatus"];
 }
 

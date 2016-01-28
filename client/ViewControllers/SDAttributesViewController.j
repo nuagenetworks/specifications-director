@@ -42,4 +42,22 @@
     [anEditorController registerEditor:editorAttributesController forObjectsWithRESTName:[SDAttribute RESTName]];
 }
 
+- (CPSet)permittedActionsForObject:(id)anObject
+{
+    var conditionRepoHasPushPermission = [[SDRepository currentRepository] pushPermission],
+        conditionCanAdd                = conditionRepoHasPushPermission,
+        conditionCanEdit               = anObject && conditionRepoHasPushPermission;
+        permittedActionsSet            = [CPSet new];
+
+    if (conditionCanAdd)
+        [permittedActionsSet addObject:NUModuleActionAdd];
+
+    if (conditionCanEdit)
+    {
+        [permittedActionsSet addObject:NUModuleActionEdit];
+        [permittedActionsSet addObject:NUModuleActionDelete];
+    }
+    return permittedActionsSet;
+}
+
 @end

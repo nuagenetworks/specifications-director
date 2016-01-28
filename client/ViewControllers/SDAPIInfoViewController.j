@@ -4,6 +4,8 @@
 
 @implementation SDAPIInfoViewController : NUModuleSelfParent
 {
+    @outlet CPTextField fieldAPIVersion;
+    @outlet CPTextField fieldAPIPrefix;
     @outlet CPView      editionViewGeneral;
     @outlet CPView      viewContainer;
 }
@@ -54,6 +56,14 @@
 {
     [super performPostPushOperation];
     [self updateVisibleEditionsView:self];
+}
+
+- (void)moduleUpdateEditorInterface
+{
+    var conditionRepoHasPushPermission = [[SDRepository currentRepository] pushPermission],
+        conditionCanEdit               = conditionRepoHasPushPermission;
+
+    [_currentContext setBoundControlsEnabled:conditionCanEdit];
 }
 
 

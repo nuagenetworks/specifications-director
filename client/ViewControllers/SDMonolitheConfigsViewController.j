@@ -45,6 +45,14 @@
     [self registerContext:context forClass:SDMonolitheConfig];
 }
 
+- (void)moduleUpdateEditorInterface
+{
+    var conditionRepoHasPushPermission = [[SDRepository currentRepository] pushPermission],
+        conditionCanEdit               = conditionRepoHasPushPermission;
+
+    [_currentContext setBoundControlsEnabled:conditionCanEdit];
+}
+
 - (CPArray)moduleCurrentVisibleEditionViews
 {
     return [editionViewGeneral];

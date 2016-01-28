@@ -139,11 +139,6 @@
     [self _updateCurrentStateView];
 }
 
-- (CPSet)permittedActionsForObject:(id)anObject
-{
-    return [super permittedActionsForObject:anObject];
-}
-
 - (BOOL)shouldProcessJSONObject:(id)aJSONObject ofType:(CPString)aType eventType:(CPString)anEventType
 {
     return YES;

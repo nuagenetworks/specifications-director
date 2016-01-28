@@ -120,6 +120,14 @@
     [self updateVisibleEditionsView:self];
 }
 
+- (void)moduleUpdateEditorInterface
+{
+    var conditionRepoHasPushPermission = [[SDRepository currentRepository] pushPermission],
+        conditionCanEdit               = conditionRepoHasPushPermission;
+
+    [_currentContext setBoundControlsEnabled:conditionCanEdit];
+}
+
 
 #pragma mark -
 #pragma mark Actions
@@ -140,6 +148,5 @@
         [anObject setEntityName:[[anObject objectRESTName] capitalizedString]];
     }
 }
-
 
 @end
