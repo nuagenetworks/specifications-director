@@ -66,6 +66,10 @@
             "default_value": "NEEDS_PULL",
             "description": "Defines if everything is fine with the information.",
             "type": "enum"
+        },
+        "pushPermission": {
+            "description": "Defines if the current user can push on the repository.",
+            "type": "boolean"
         }
     }
 }

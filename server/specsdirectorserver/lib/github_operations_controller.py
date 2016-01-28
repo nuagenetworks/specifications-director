@@ -140,6 +140,7 @@ class SDGitHubOperationsController(GAController):
             self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
 
             self._specification_importer.clean_repository(repository=repository, session_username=session_username)
+            self._specification_importer.import_repository_info(repository=repository, manager=manager, session_username=session_username)
             self._specification_importer.import_apiinfo(repository=repository, manager=manager, session_username=session_username)
             self._specification_importer.import_abstracts(repository=repository, manager=manager, session_username=session_username)
             self._specification_importer.import_specifications(repository=repository, manager=manager, session_username=session_username)

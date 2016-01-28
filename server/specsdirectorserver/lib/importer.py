@@ -18,6 +18,12 @@ class SDSpecificationImporter():
         self._storage_controller = storage_controller
         self._push_controller    = push_controller
 
+    def import_repository_info(self, repository, manager, session_username):
+        """
+        """
+        repository.push_permission = manager.get_repository_push_permission()
+        self._storage_controller.update(user_identifier=session_username, resource=repository)
+
     def import_apiinfo(self, repository, manager, session_username):
         """
         """
