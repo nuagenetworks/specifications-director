@@ -10,6 +10,7 @@ from garuda import Garuda
 from garuda.channels.rest import GAFalconChannel
 from garuda.plugins.storage import GAMongoStoragePlugin
 from garuda.plugins.authentication import GASimpleAuthenticationPlugin
+from garuda.plugins.permissions import GAOwnerPermissionsPlugin
 
 from plugins.logic.jobs import SDJobLogicPlugin
 from plugins.logic.apis import SDAPILogicPlugin
@@ -19,6 +20,8 @@ from plugins.logic.attributes import SDAttributeLogicPlugin
 from plugins.logic.apiinfo import SDAPIInfoLogicPlugin
 from plugins.logic.repositories import SDRepositoryLogicPlugin
 from plugins.logic.monolitheconfig import SDMonolitheConfigLogicPlugin
+
+
 
 from lib import SDGitHubOperationsController, SDGitHubOperationsClient
 
@@ -62,10 +65,12 @@ def start(mongo_host, mongo_port, mongo_db, redis_host, redis_port, redis_db):
     channel = GAFalconChannel()
     storage_plugin = GAMongoStoragePlugin(db_name=mongo_db, mongo_uri=mongo_uri, db_initialization_function=db_init)
     authentication_plugin = GASimpleAuthenticationPlugin(auth_function=auth_function)
+    permissions_plugin = GAOwnerPermissionsPlugin()
     sdk_infos = [{'identifier': 'default', 'module': 'specdk.v1_0'}]
 
     plugins = [ storage_plugin,
                 authentication_plugin,
+                permissions_plugin,
                 SDJobLogicPlugin(),
                 SDAPILogicPlugin(),
                 SDSpecificationLogicPlugin(),
