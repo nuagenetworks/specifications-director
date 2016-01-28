@@ -2,7 +2,7 @@
 @import <NUKit/NUAbstractDataView.j>
 @import <RESTCappuccino/NURESTJobsController.j>
 
-@global SDRepositoryStatusToImageTransformer
+@global SDRepositoryStatusToImageTransformerName
 
 
 @implementation SDRepositoryDataView : NUAbstractDataView

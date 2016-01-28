@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="buttonBarMain" destination="W8h-PQ-gii" id="tVG-aU-LbS"/>
                 <outlet property="buttonDownload" destination="PPC-1J-RrR" id="a8k-ZH-eZb"/>
+                <outlet property="buttonOpen" destination="12u-Gm-YGx" id="ezK-r1-2os"/>
                 <outlet property="buttonPull" destination="FM4-Wf-kG9" id="Z55-oq-rsQ"/>
                 <outlet property="fieldTotalEntities" destination="hIs-yB-U5l" id="Fsi-cC-RYi"/>
                 <outlet property="hoverView" destination="hoT-eQ-Umk" id="DkW-Ie-dAI"/>
@@ -431,7 +432,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <subviews>
                                 <button toolTip="Save group" verticalHuggingPriority="750" id="FM4-Wf-kG9">
-                                    <rect key="frame" x="415" y="-1" width="100" height="32"/>
+                                    <rect key="frame" x="393" y="-1" width="123" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="Pull" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1Hp-LN-Kpp">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -445,7 +446,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                                     </connections>
                                 </button>
                                 <button toolTip="Save group" verticalHuggingPriority="750" id="PPC-1J-RrR">
-                                    <rect key="frame" x="319" y="-1" width="100" height="32"/>
+                                    <rect key="frame" x="275" y="-1" width="123" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="Download" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cta-Dt-nlJ">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -456,6 +457,20 @@ If you need to work on multiple version of a Specification, you can just add mul
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="download:" target="-2" id="I3r-P5-1kf"/>
+                                    </connections>
+                                </button>
+                                <button toolTip="Save group" verticalHuggingPriority="750" id="12u-Gm-YGx">
+                                    <rect key="frame" x="157" y="-1" width="123" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="push" title="Open In Github" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LRT-JW-Vjc">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="save"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="openInGithub:" target="-2" id="C1n-dz-iCe"/>
                                     </connections>
                                 </button>
                             </subviews>

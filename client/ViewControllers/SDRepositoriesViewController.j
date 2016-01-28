@@ -14,6 +14,7 @@
 {
     @outlet CPButton                    buttonDownload;
     @outlet CPButton                    buttonPull;
+    @outlet CPButton                    buttonOpen;
     @outlet CPTextField                 labelError;
     @outlet CPTextField                 labelPulling;
     @outlet CPView                      viewError;
@@ -78,6 +79,8 @@
     [viewError setBackgroundColor:NUSkinColorGreyLight];
     [viewPull setBackgroundColor:NUSkinColorGreyLight];
     [viewWorking setBackgroundColor:NUSkinColorGreyLight];
+
+    [buttonPull setThemeState:CPThemeStateDefault];
 }
 
 - (void)configureContexts
@@ -203,6 +206,7 @@
     {
         [buttonPull setHidden:YES];
         [buttonDownload setHidden:YES];
+        [buttonOpen setHidden:YES];
     }
     else
     {
@@ -210,6 +214,7 @@
 
         [buttonDownload setHidden:[currentRepository status] != SDRepositoryStatusREADY];
         [buttonPull setHidden:[currentRepository status] != SDRepositoryStatusREADY];
+        [buttonOpen setHidden:[currentRepository status] != SDRepositoryStatusREADY];
     }
 }
 
@@ -317,9 +322,17 @@
 - (@action)download:(id)aSender
 {
     var repository = [_currentSelectedObjects firstObject],
-        url = [repository url] + @"/repos/" + [repository organization] + @"/" + [repository repository] + @"/zipball/" + [repository branch];
+        url = [repository url].replace(@"api/v3", @"") + [repository organization] + @"/" + [repository repository] + @"/zipball/" + [repository branch];
 
     window.location.assign(url);
+}
+
+- (@action)openInGithub:(id)aSender
+{
+    var repository = [_currentSelectedObjects firstObject],
+        url = [repository url].replace(@"api/v3", @"") + [repository organization] + @"/" + [repository repository] + @"/tree/" + [repository branch];
+
+    window.open(url, @"_new");
 }
 
 - (@action)closeErrorView:(id)aSender
