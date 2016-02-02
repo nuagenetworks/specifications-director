@@ -11,6 +11,9 @@ SDAPIRelationshipRoot = @"root"
 
 @implementation SDChildAPI : SDRESTObject
 {
+    BOOL        _allowsBulkCreate           @accessors(property=allowsBulkCreate);
+    BOOL        _allowsBulkDelete           @accessors(property=allowsBulkDelete);
+    BOOL        _allowsBulkUpdate           @accessors(property=allowsBulkUpdate);
     BOOL        _allowsCreate               @accessors(property=allowsCreate);
     BOOL        _allowsDelete               @accessors(property=allowsDelete);
     BOOL        _allowsGet                  @accessors(property=allowsGet);
@@ -38,12 +41,18 @@ SDAPIRelationshipRoot = @"root"
         [self exposeLocalKeyPathToREST:@"deprecated"];
         [self exposeLocalKeyPathToREST:@"relationship"];
         [self exposeLocalKeyPathToREST:@"path"];
+        [self exposeLocalKeyPathToREST:@"allowsBulkCreate"];
+        [self exposeLocalKeyPathToREST:@"allowsBulkDelete"];
+        [self exposeLocalKeyPathToREST:@"allowsBulkUpdate"];
 
-        _relationship = SDAPIRelationshipChild
-        _allowsCreate = NO;
-        _allowsDelete = NO;
-        _allowsGet    = YES;
-        _allowsUpdate = NO;
+        _allowsBulkCreate = NO;
+        _allowsBulkDelete = NO;
+        _allowsBulkUpdate = NO;
+        _allowsCreate     = NO;
+        _allowsDelete     = NO;
+        _allowsGet        = YES;
+        _allowsUpdate     = NO;
+        _relationship     = SDAPIRelationshipChild
     }
 
     return self;
@@ -97,21 +106,69 @@ SDAPIRelationshipRoot = @"root"
     [self didChangeValueForKey:@"allowedOperationsString"];
 }
 
+- (void)setAllowsBulkCreate:(BOOL)shouldAllow
+{
+    if (_allowsBulkCreate == shouldAllow)
+        return;
+
+    [self willChangeValueForKey:@"allowsBulkCreate"];
+    [self willChangeValueForKey:@"allowedOperationsString"];
+    _allowsBulkCreate = shouldAllow
+    [self didChangeValueForKey:@"allowsBulkCreate"];
+    [self didChangeValueForKey:@"allowedOperationsString"];
+}
+
+- (void)setAllowsBulkUpdate:(BOOL)shouldAllow
+{
+    if (_allowsBulkUpdate == shouldAllow)
+        return;
+
+    [self willChangeValueForKey:@"allowsBulkUpdate"];
+    [self willChangeValueForKey:@"allowedOperationsString"];
+    _allowsBulkUpdate = shouldAllow
+    [self didChangeValueForKey:@"allowsBulkUpdate"];
+    [self didChangeValueForKey:@"allowedOperationsString"];
+}
+
+- (void)setAllowsBulkDelete:(BOOL)shouldAllow
+{
+    if (_allowsBulkDelete == shouldAllow)
+        return;
+
+    [self willChangeValueForKey:@"allowsBulkDelete"];
+    [self willChangeValueForKey:@"allowedOperationsString"];
+    _allowsBulkDelete = shouldAllow
+    [self didChangeValueForKey:@"allowsBulkDelete"];
+    [self didChangeValueForKey:@"allowedOperationsString"];
+}
+
 - (CPString)allowedOperationsString
 {
     var ret = @"";
 
     if (_allowsGet)
-        ret += @"Retrieval ";
+        ret += @"Retrieval, ";
 
     if (_allowsCreate)
-        ret += @"Creation ";
+        ret += @"Creation, ";
 
     if (_allowsUpdate)
-        ret += @"Modification ";
+        ret += @"Modification, ";
 
     if (_allowsDelete)
-        ret += @"Deletion ";
+        ret += @"Deletion, ";
+
+    if (_allowsBulkCreate)
+        ret += @"Bulk Creation, ";
+
+    if (_allowsBulkUpdate)
+        ret += @"Bulk Modification, ";
+
+    if (_allowsBulkDelete)
+        ret += @"Bulk Deletion, ";
+
+    if (ret.length > 2)
+        ret = ret.substring(0, ret.length - 2);
 
     return ret;
 }

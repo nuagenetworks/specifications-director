@@ -7,6 +7,9 @@
 
 @implementation SDAPIsViewController : NUModule
 {
+    @outlet CPCheckBox                  checkBoxAllowsBulkCreate;
+    @outlet CPCheckBox                  checkBoxAllowsBulkDelete;
+    @outlet CPCheckBox                  checkBoxAllowsBulkUpdate;
     @outlet CPCheckBox                  checkBoxAllowsCreate;
     @outlet CPCheckBox                  checkBoxAllowsUpdate;
     @outlet CPPopUpButton               buttonRelationship;
@@ -78,11 +81,14 @@
 
     if ([_currentParent root])
     {
-        [popover setContentSize:CGSizeMake(320, 260)];
+        [popover setContentSize:CGSizeMake(320, 313)];
         [buttonRelationship setHidden:YES];
         [labelRelationship setHidden:YES];
         [checkBoxAllowsUpdate setHidden:YES];
         [checkBoxAllowsCreate setHidden:NO];
+        [checkBoxAllowsBulkUpdate setHidden:NO];
+        [checkBoxAllowsBulkCreate setHidden:NO];
+        [checkBoxAllowsBulkDelete setHidden:NO];
         [editedObject setAllowsUpdate:NO];
         [editedObject setRelationship:SDAPIRelationshipRoot];
         return;
@@ -91,20 +97,27 @@
     switch ([editedObject relationship])
     {
         case SDAPIRelationshipChild:
-            [popover setContentSize:CGSizeMake(320, 315)];
+            [popover setContentSize:CGSizeMake(320, 368)];
             [buttonRelationship setHidden:NO];
             [labelRelationship setHidden:NO];
             [checkBoxAllowsUpdate setHidden:YES];
             [checkBoxAllowsCreate setHidden:NO];
             [editedObject setAllowsUpdate:NO];
+            [checkBoxAllowsBulkUpdate setHidden:NO];
+            [checkBoxAllowsBulkCreate setHidden:NO];
+            [checkBoxAllowsBulkDelete setHidden:NO];
+            [editedObject setAllowsUpdate:NO];
             break;
 
         case SDAPIRelationshipMember:
-            [popover setContentSize:CGSizeMake(320, 315)];
+            [popover setContentSize:CGSizeMake(320, 368)];
             [buttonRelationship setHidden:NO];
             [labelRelationship setHidden:NO];
             [checkBoxAllowsUpdate setHidden:NO];
             [checkBoxAllowsCreate setHidden:YES];
+            [checkBoxAllowsBulkUpdate setHidden:YES];
+            [checkBoxAllowsBulkCreate setHidden:YES];
+            [checkBoxAllowsBulkDelete setHidden:YES];
             [editedObject setAllowsCreate:NO];
             break;
     }

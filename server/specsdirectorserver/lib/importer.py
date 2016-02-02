@@ -169,6 +169,9 @@ class SDSpecificationImporter():
                 api.allows_get                = mono_api.allows_get
                 api.allows_update             = mono_api.allows_update
                 api.allows_delete             = mono_api.allows_delete
+                api.allows_bulk_create        = mono_api.allows_bulk_create
+                api.allows_bulk_update        = mono_api.allows_bulk_update
+                api.allows_bulk_delete        = mono_api.allows_bulk_delete
 
                 if mode == MODE_RAW_SPECS:
                     remote_specification = specification_info[mono_api.remote_specification_name]['specification']

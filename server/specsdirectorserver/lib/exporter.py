@@ -95,12 +95,15 @@ class SDSpecificationExporter():
             response = self._storage_controller.get(user_identifier=session_username, resource_name=self._sdk.SDSpecification.rest_name, identifier=child_api.associated_specification_id)
 
             mono_child_api.remote_specification_name = response.data.object_rest_name
-            mono_child_api.deprecated    = child_api.deprecated
-            mono_child_api.relationship  = child_api.relationship
-            mono_child_api.allows_get    = child_api.allows_get
-            mono_child_api.allows_create = child_api.allows_create
-            mono_child_api.allows_update = child_api.allows_update
-            mono_child_api.allows_delete = child_api.allows_delete
+            mono_child_api.deprecated                = child_api.deprecated
+            mono_child_api.relationship              = child_api.relationship
+            mono_child_api.allows_get                = child_api.allows_get
+            mono_child_api.allows_create             = child_api.allows_create
+            mono_child_api.allows_update             = child_api.allows_update
+            mono_child_api.allows_delete             = child_api.allows_delete
+            mono_child_api.allows_bulk_create        = child_api.allows_bulk_create
+            mono_child_api.allows_bulk_update        = child_api.allows_bulk_update
+            mono_child_api.allows_bulk_delete        = child_api.allows_bulk_delete
 
             ret.append(mono_child_api)
 
