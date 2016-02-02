@@ -64,6 +64,7 @@
             <connections>
                 <outlet property="buttonSave" destination="AZh-hN-59e" id="3Gw-uK-X1s"/>
                 <outlet property="scrollViewMain" destination="QYZ-X8-JFI" id="4aB-ey-uDU"/>
+                <outlet property="tableViewEnumarationValues" destination="1oM-eM-Us5" id="nqZ-nk-Qc7"/>
                 <outlet property="view" destination="Upq-sK-5sY" id="Yam-Fq-K9P"/>
                 <outlet property="viewBottom" destination="WW1-Qt-D1i" id="2FR-6w-deG"/>
                 <outlet property="viewEditionMain" destination="RY1-6O-kMY" id="rdN-Ps-HWj"/>

@@ -5,10 +5,11 @@
 
 @implementation SDEditorAttributeSelfViewController : NUModuleSelfParent
 {
-    @outlet CPView viewEditorStringConfig;
-    @outlet CPView viewEditorNumberConfig;
-    @outlet CPView viewEditorEnumConfig;
-    @outlet CPView viewEditorEnumFlags;
+    @outlet CPTableView tableViewEnumarationValues;
+    @outlet CPView      viewEditorEnumConfig;
+    @outlet CPView      viewEditorEnumFlags;
+    @outlet CPView      viewEditorNumberConfig;
+    @outlet CPView      viewEditorStringConfig;
 }
 
 
@@ -27,6 +28,11 @@
 
 - (void)viewDidLoad
 {
+    var textField = [[tableViewEnumarationValues tableColumns][0] dataView];
+    [textField setPlaceholderString:@"Double click to enter the value"];
+    [[tableViewEnumarationValues tableColumns][0] setDataView:nil];
+    [[tableViewEnumarationValues tableColumns][0] setDataView:textField];
+
     [super viewDidLoad];
 }
 
