@@ -24,19 +24,31 @@
             "type": "enum"
         },
         "allowsGet": {
-            "description": "Defines if teh available operations",
+            "description": "Defines if the child objects can be retrieved",
             "type": "bool"
         },
         "allowsCreate": {
-            "description": "Defines if teh available operations",
+            "description": "Defines if the child objects can be created",
             "type": "bool"
         },
         "allowsUpdate": {
-            "description": "Defines if teh available operations",
+            "description": "Defines if the member objects can be assigned",
             "type": "bool"
         },
         "allowsDelete": {
-            "description": "Defines if teh available operations",
+            "description": "Defines if the child objects can be deleted",
+            "type": "bool"
+        },
+        "allowsBulkCreate": {
+            "description": "Defines if the child objects can be created in bulk",
+            "type": "bool"
+        },
+        "allowsBulkUpdate": {
+            "description": "Defines if the child objects can be updated in bulk",
+            "type": "bool"
+        },
+        "allowsBulkDelete": {
+            "description": "Defines if the child objects can be deleted in bulk",
             "type": "bool"
         },
         "associatedSpecificationID": {
