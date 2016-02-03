@@ -2,7 +2,7 @@ server:
   image: registry.mv.nuagenetworks.net:5000/specificationsdirector/server:latest
   labels:
     SERVICE_NAME: specificationsdirector-server
-    SERVICE_TAGS: 'dns=mv.nuagenetworks.net,vhost=specificationsdirector,https=443,url=/api,check=OPTIONS /api/v1_0/events'
+    SERVICE_TAGS: 'dns=mv.nuagenetworks.net,vhost=specificationsdirector,https=443,url_prefix=/api,check=OPTIONS /api/v1_0/events'
   environment:
     - "affinity:container!=~specificationsdirector_server*"
   ports:
