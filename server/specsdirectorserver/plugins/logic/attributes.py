@@ -47,6 +47,19 @@ class SDAttributeLogicPlugin(GALogicPlugin):
         if not attribute.type or not len(attribute.type):
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute type is mandatory.', property_name='type'))
 
+        if attribute.type != 'enum':
+            attribute.allowed_choices = None
+
+        if attribute.type != 'string':
+            attribute.min_length = None
+            attribute.max_length = None
+            attribute.format = None
+            attribute.allowed_chars = None
+
+        if attribute.type != 'integer' and attribute.type != 'float':
+            attribute.min_value = None
+            attribute.max_value = None
+
         return context
 
     def did_perform_write(self, context):
