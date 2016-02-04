@@ -12,14 +12,15 @@ from garuda.plugins.storage import GAMongoStoragePlugin
 from garuda.plugins.authentication import GASimpleAuthenticationPlugin
 from garuda.plugins.permissions import GAOwnerPermissionsPlugin
 
-from plugins.logic.jobs import SDJobLogicPlugin
-from plugins.logic.apis import SDAPILogicPlugin
-from plugins.logic.specifications import SDSpecificationLogicPlugin
 from plugins.logic.abstracts import SDAbstractLogicPlugin
-from plugins.logic.attributes import SDAttributeLogicPlugin
 from plugins.logic.apiinfo import SDAPIInfoLogicPlugin
-from plugins.logic.repositories import SDRepositoryLogicPlugin
+from plugins.logic.apis import SDAPILogicPlugin
+from plugins.logic.attributes import SDAttributeLogicPlugin
+from plugins.logic.jobs import SDJobLogicPlugin
 from plugins.logic.monolitheconfig import SDMonolitheConfigLogicPlugin
+from plugins.logic.repositories import SDRepositoryLogicPlugin
+from plugins.logic.specifications import SDSpecificationLogicPlugin
+from plugins.logic.tokens import SDTokenLogicPlugin
 
 
 
@@ -78,7 +79,8 @@ def start(mongo_host, mongo_port, mongo_db, redis_host, redis_port, redis_db):
                 SDAttributeLogicPlugin(),
                 SDAPIInfoLogicPlugin(),
                 SDRepositoryLogicPlugin(),
-                SDMonolitheConfigLogicPlugin()]
+                SDMonolitheConfigLogicPlugin(),
+                SDTokenLogicPlugin()]
 
     garuda = Garuda(sdks_info=sdk_infos,
                     redis_info=redis_info,
