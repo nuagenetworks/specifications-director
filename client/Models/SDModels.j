@@ -10,6 +10,7 @@
 @import "SDMonolitheConfig.j"
 @import "SDRepository.j"
 @import "SDSpecification.j"
+@import "SDToken.j"
 
 [[NURESTModelController defaultController] registerModelClass:SDAbstract];
 [[NURESTModelController defaultController] registerModelClass:SDAPIInfo];
@@ -19,4 +20,4 @@
 [[NURESTModelController defaultController] registerModelClass:SDMonolitheConfig];
 [[NURESTModelController defaultController] registerModelClass:SDRepository];
 [[NURESTModelController defaultController] registerModelClass:SDSpecification];
-
+[[NURESTModelController defaultController] registerModelClass:SDToken];

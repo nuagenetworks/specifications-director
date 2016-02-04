@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15E33e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDAttributesViewController">
@@ -42,7 +42,6 @@
                                         <searchField wantsLayer="YES" verticalHuggingPriority="750" id="14">
                                             <rect key="frame" x="265" y="5" width="158" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="17">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -52,7 +51,6 @@
                                         <textField verticalHuggingPriority="750" id="15">
                                             <rect key="frame" x="7" y="7" width="164" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Attributes" id="16">
                                                 <font key="font" metaFont="system" size="15"/>
                                                 <color key="textColor" red="0.34552848339999997" green="0.34552848339999997" blue="0.34552848339999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -60,7 +58,6 @@
                                             </textFieldCell>
                                         </textField>
                                     </subviews>
-                                    <animations/>
                                 </customView>
                                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="97">
                                     <rect key="frame" x="0.0" y="25" width="433" height="343"/>
@@ -70,9 +67,8 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" autosaveColumns="NO" id="98">
-                                                <rect key="frame" x="0.0" y="0.0" width="433.5" height="19"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="434" height="328"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <animations/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
                                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -93,19 +89,15 @@
                                                 </tableColumns>
                                             </tableView>
                                         </subviews>
-                                        <animations/>
                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </clipView>
-                                    <animations/>
                                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="99">
                                         <rect key="frame" x="0.0" y="327" width="433" height="16"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <animations/>
                                     </scroller>
                                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="101">
                                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <animations/>
                                     </scroller>
                                 </scrollView>
                                 <customView id="106">
@@ -115,7 +107,6 @@
                                         <textField verticalHuggingPriority="750" id="108">
                                             <rect key="frame" x="7" y="2" width="222" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="255" id="109">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" red="0.34509804840000002" green="0.29019609089999998" blue="0.270588249" alpha="1" colorSpace="deviceRGB"/>
@@ -123,30 +114,24 @@
                                             </textFieldCell>
                                         </textField>
                                     </subviews>
-                                    <animations/>
                                 </customView>
                                 <customView id="7" customClass="CPButtonBar">
                                     <rect key="frame" x="0.0" y="0.0" width="433" height="26"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <animations/>
                                 </customView>
                             </subviews>
-                            <animations/>
                         </customView>
                         <customView id="eR7-tC-NAI">
                             <rect key="frame" x="434" y="0.0" width="174" height="419"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <animations/>
                         </customView>
                     </subviews>
-                    <animations/>
                     <holdingPriorities>
                         <real value="250"/>
                         <real value="250"/>
                     </holdingPriorities>
                 </splitView>
             </subviews>
-            <animations/>
             <point key="canvasLocation" x="693" y="546.5"/>
         </customView>
         <popover behavior="t" id="2">
@@ -170,7 +155,6 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="NM3-6F-ixC">
                             <rect key="frame" x="18" y="201" width="402" height="23"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <animations/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Attributes" id="oe2-gD-6rD">
                                 <font key="font" metaFont="system" size="19"/>
                                 <color key="textColor" red="0.34509804840000002" green="0.63529413940000001" blue="1" alpha="1" colorSpace="deviceRGB"/>
@@ -183,7 +167,6 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="fvL-Dy-YQe">
                             <rect key="frame" x="18" y="60" width="402" height="133"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <animations/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="o1o-AH-PmB">
                                 <font key="font" metaFont="system"/>
                                 <string key="title">You can add as many attributes as you wish in a Specification File. These attributes define what kind of information the represented object will hold.
@@ -203,7 +186,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                                 <button toolTip="Create a new object" id="4dS-PU-lXM">
                                     <rect key="frame" x="183" y="0.0" width="32" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <animations/>
                                     <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" inset="2" id="4UJ-Ps-KyR">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -213,19 +195,16 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                                     </userDefinedRuntimeAttributes>
                                 </button>
                             </subviews>
-                            <animations/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="tag" value="buttonscontainer"/>
                             </userDefinedRuntimeAttributes>
                         </customView>
                     </subviews>
-                    <animations/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="container"/>
                     </userDefinedRuntimeAttributes>
                 </customView>
             </subviews>
-            <animations/>
             <point key="canvasLocation" x="639" y="160"/>
         </customView>
         <customView id="abu-G6-tzC" userLabel="Popover">
@@ -235,7 +214,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                 <button toolTip="Save network" verticalHuggingPriority="750" id="Zge-yn-aWN">
                     <rect key="frame" x="226" y="12" width="81" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <animations/>
                     <buttonCell key="cell" type="push" title="Create" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nFK-Vd-hIP">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -247,7 +225,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="Z7d-dt-Dw5">
                     <rect key="frame" x="0.0" y="58" width="321" height="5"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <animations/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
@@ -255,7 +232,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                 <textField verticalHuggingPriority="750" id="U5J-f5-ZrX">
                     <rect key="frame" x="18" y="229" width="285" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="New Attribute" id="CP5-pH-h35">
                         <font key="font" metaFont="system" size="19"/>
                         <color key="textColor" red="0.34552848339999997" green="0.34552848339999997" blue="0.34552848339999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -268,7 +244,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                 <textField toolTip="Name of the network" verticalHuggingPriority="750" id="Y2n-Xx-4fG">
                     <rect key="frame" x="20" y="177" width="281" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="myAttribute" drawsBackground="YES" id="Fc3-Sc-SZw">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -282,7 +257,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                 <textField verticalHuggingPriority="750" id="mi2-f8-oXw">
                     <rect key="frame" x="18" y="207" width="41" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Name" id="tE9-th-dPB">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -292,7 +266,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                 <textField verticalHuggingPriority="750" id="lUY-6d-efD">
                     <rect key="frame" x="62" y="202" width="241" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="32a-SW-j3S">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
@@ -305,7 +278,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                 <textField verticalHuggingPriority="750" id="7xy-HW-xhv">
                     <rect key="frame" x="17" y="46" width="286" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="right" title="Server ERROR" id="diR-FH-040">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
@@ -318,7 +290,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                 <customView id="K3K-pg-fnw" customClass="CPButton">
                     <rect key="frame" x="208" y="22" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                    <animations/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="button-help"/>
                     </userDefinedRuntimeAttributes>
@@ -326,7 +297,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                 <textField toolTip="Name of the network" verticalHuggingPriority="750" id="TVQ-b0-DV4">
                     <rect key="frame" x="20" y="72" width="281" height="72"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="This is a nicely done attribute." drawsBackground="YES" id="Avy-8m-8vU">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -339,7 +309,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                 <textField verticalHuggingPriority="750" id="we2-Vv-Spu">
                     <rect key="frame" x="18" y="152" width="74" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Description" id="8Ej-Iz-ohO">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -349,7 +318,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                 <textField verticalHuggingPriority="750" id="ezN-Lk-XJB">
                     <rect key="frame" x="96" y="147" width="207" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="JFF-H8-RES">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
@@ -360,7 +328,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                     </userDefinedRuntimeAttributes>
                 </textField>
             </subviews>
-            <animations/>
             <point key="canvasLocation" x="489.5" y="125.5"/>
         </customView>
         <viewController id="eYl-FL-099" customClass="NUEditorsViewController">
@@ -377,7 +344,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="j1z-uZ-DDT">
                     <rect key="frame" x="28" y="108" width="106" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No Selection" id="L42-kP-7FO">
                         <font key="font" metaFont="system" size="15"/>
                         <color key="textColor" red="0.69411766529999996" green="0.69411766529999996" blue="0.69411766529999996" alpha="1" colorSpace="deviceRGB"/>
@@ -385,7 +351,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                     </textFieldCell>
                 </textField>
             </subviews>
-            <animations/>
         </customView>
         <customView id="uTP-Dl-P7l">
             <rect key="frame" x="0.0" y="0.0" width="163" height="234"/>
@@ -394,7 +359,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Mua-Jv-e7Y">
                     <rect key="frame" x="15" y="108" width="133" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Multiple Selection" id="7Sa-bX-TdI">
                         <font key="font" metaFont="system" size="15"/>
                         <color key="textColor" red="0.69411766529999996" green="0.69411766529999996" blue="0.69411766529999996" alpha="1" colorSpace="deviceRGB"/>
@@ -402,7 +366,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                     </textFieldCell>
                 </textField>
             </subviews>
-            <animations/>
         </customView>
         <viewController nibName="EditorAttribute" id="M9I-yK-ngY" customClass="SDEditorAttributesViewController"/>
     </objects>

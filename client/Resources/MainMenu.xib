@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15B38b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15E33e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1050" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -86,6 +86,7 @@
         </menu>
         <customObject id="450" customClass="AppController">
             <connections>
+                <outlet property="configurationController" destination="tqy-qD-hzl" id="wrj-yk-gO0"/>
                 <outlet property="dataViewsLoader" destination="1273" id="Xkl-t3-Z9Z"/>
                 <outlet property="repositoriesController" destination="idg-hQ-Wyw" id="uNQ-1F-VyE"/>
             </connections>
@@ -105,14 +106,13 @@
                 <customView id="3cv-wO-a8R">
                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <animations/>
                 </customView>
             </subviews>
-            <animations/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="string" keyPath="tag" value="fetcherImageProto"/>
             </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="-9" y="385"/>
         </customView>
+        <viewController nibName="Configuration" id="tqy-qD-hzl" customClass="SDConfigurationViewController"/>
     </objects>
 </document>

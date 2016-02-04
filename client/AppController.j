@@ -49,6 +49,7 @@ NURESTUserRoleOrgAdmin = @"NURESTUserRoleOrgAdmin"
 
 @implementation AppController : CPObject
 {
+    @outlet SDConfigurationViewController   configurationController;
     @outlet SDDataViewsLoader               dataViewsLoader;
     @outlet SDRepositoriesViewController    repositoriesController;
 }
@@ -86,8 +87,18 @@ NURESTUserRoleOrgAdmin = @"NURESTUserRoleOrgAdmin"
 
     [[NUKit kit] registerCoreModule:repositoriesController];
 
+    [[NUKit kit] registerPrincipalModule:configurationController
+                         withButtonImage:CPImageInBundle(@"toolbar-preferences.png", 32.0, 32.0)
+                                altImage:CPImageInBundle(@"toolbar-preferences-pressed.png", 32.0, 32.0)
+                                 toolTip:@"Open Preferences"
+                              identifier:@"button-toolbar-tokens"
+                       availableToRoles:[NURESTUserRoleCSPRoot]];
+
+
     [[NUKit kit] startListenNotification];
     [[NUKit kit] manageLoginWindow];
+
+    [[[NUKitToolBar defaultToolBar] buttonLogout] setValue:CPImageInBundle(@"toolbar-logout-light.png", 32.0, 32.0) forThemeAttribute:@"image" inState:CPThemeStateNormal];
 }
 
 

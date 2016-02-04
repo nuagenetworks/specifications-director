@@ -74,7 +74,7 @@
 {
     var conditionRepoHasPushPermission = [[SDRepository currentRepository] pushPermission],
         conditionCanAdd                = conditionRepoHasPushPermission,
-        conditionCanEdit               = anObject && conditionRepoHasPushPermission;
+        conditionCanEdit               = anObject && conditionRepoHasPushPermission,
         permittedActionsSet            = [CPSet new];
 
     if (conditionCanAdd)

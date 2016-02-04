@@ -5,3 +5,4 @@
 @import "SDMonolitheConfigsFetcher.j"
 @import "SDRepositoriesFetcher.j"
 @import "SDSpecificationsFetcher.j"
+@import "SDTokensFetcher.j"

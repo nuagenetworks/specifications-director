@@ -18,15 +18,16 @@ SDRepositoryStatusQUEUED = @"QUEUED";
 @implementation SDRepository : SDRESTObject
 {
     BOOL                        _pushPermission     @accessors(property=pushPermission);
-    CPString                    _status             @accessors(property=status);
+    CPString                    _associatedTokenID  @accessors(property=associatedTokenID);
+    CPString                    _branch             @accessors(property=branch);
     CPString                    _name               @accessors(property=name);
+    CPString                    _organization       @accessors(property=organization);
+    CPString                    _password           @accessors(property=password)
+    CPString                    _path               @accessors(property=path);
+    CPString                    _repository         @accessors(property=repository);
+    CPString                    _status             @accessors(property=status);
     CPString                    _url                @accessors(property=url);
     CPString                    _username           @accessors(property=username);
-    CPString                    _password           @accessors(property=password)
-    CPString                    _organization       @accessors(property=organization);
-    CPString                    _repository         @accessors(property=repository);
-    CPString                    _branch             @accessors(property=branch);
-    CPString                    _path               @accessors(property=path);
 
     SDAbstractsFetcher          _abstracts          @accessors(property=abstracts);
     SDAPIInfosFetcher           _APIInfos           @accessors(property=APIInfos);
@@ -56,6 +57,7 @@ SDRepositoryStatusQUEUED = @"QUEUED";
 {
     if (self = [super init])
     {
+        [self exposeLocalKeyPathToREST:@"associatedTokenID"];
         [self exposeLocalKeyPathToREST:@"branch"];
         [self exposeLocalKeyPathToREST:@"name"];
         [self exposeLocalKeyPathToREST:@"organization"];

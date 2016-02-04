@@ -9,6 +9,7 @@
     @outlet SDAttributeDataView     attributeDataView       @accessors(readonly);
     @outlet SDRepositoryDataView    repositoryDataView      @accessors(readonly);
     @outlet SDSpecificationDataView specificationDataView   @accessors(readonly);
+    @outlet SDTokenDataView         tokenDataView           @accessors(readonly);
 }
 
 @end

@@ -2,12 +2,13 @@
 @import <RESTCappuccino/NURESTAbstractUser.j>
 
 @class SDRepositoriesFetcher
+@class SDTokensFetcher
 
 
 @implementation SDAuth : NURESTAbstractUser
 {
     SDRepositoriesFetcher   _repositories   @accessors(property=repositories);
-
+    SDTokensFetcher         _tokens         @accessors(property=tokens);
 }
 
 
@@ -25,6 +26,7 @@
     {
         _role = @"NURESTUserRoleCSPRoot";
         _repositories = [SDRepositoriesFetcher fetcherWithParentObject:self];
+        _tokens = [SDTokensFetcher fetcherWithParentObject:self];
     }
 
     return self;

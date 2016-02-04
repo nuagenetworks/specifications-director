@@ -4,6 +4,8 @@
 @import "../Models/SDModels.j"
 
 @class SDItemizedSpecifications
+@class SDTokenAssociator
+
 @global SDRepositoryStatusNEEDS_PULL
 @global SDRepositoryStatusPULLING
 @global SDRepositoryStatusREADY
@@ -13,16 +15,18 @@
 @implementation SDRepositoriesViewController : NUModule
 {
     @outlet CPButton                    buttonDownload;
-    @outlet CPButton                    buttonPull;
     @outlet CPButton                    buttonOpen;
+    @outlet CPButton                    buttonPull;
     @outlet CPTextField                 labelError;
     @outlet CPTextField                 labelPulling;
     @outlet CPView                      viewError;
     @outlet CPView                      viewLoadingContainer;
+    @outlet CPView                      viewMissingToken;
     @outlet CPView                      viewPull;
     @outlet CPView                      viewRepositories;
     @outlet CPView                      viewWorking;
     @outlet NUHoverView                 hoverView;
+    @outlet SDTokenAssociator           tokenAssociator;
 
     @outlet SDItemizedSpecifications    itemizedSpecificationsController;
 }
@@ -79,8 +83,11 @@
     [viewError setBackgroundColor:NUSkinColorGreyLight];
     [viewPull setBackgroundColor:NUSkinColorGreyLight];
     [viewWorking setBackgroundColor:NUSkinColorGreyLight];
+    [viewMissingToken setBackgroundColor:NUSkinColorGreyLight];
 
     [buttonPull setThemeState:CPThemeStateDefault];
+
+    [tokenAssociator setDisassociationButtonHidden:YES];
 }
 
 - (void)configureContexts
@@ -164,11 +171,18 @@
         return;
     }
 
-    var repoStatus = [[_currentSelectedObjects firstObject] status];
+    var currentRepository = [_currentSelectedObjects firstObject];
 
-    switch (repoStatus)
+    if (![currentRepository associatedTokenID])
+    {
+        [self showMissingTokenView:YES];
+        return;
+    }
+
+    switch ([currentRepository status])
     {
         case SDRepositoryStatusNEEDS_PULL:
+            [self showMissingTokenView:NO];
             [self showPullView:YES];
             [self showWorkingView:NO];
             [self showErrorView:NO];
@@ -176,18 +190,21 @@
 
         case SDRepositoryStatusPULLING:
         case SDRepositoryStatusQUEUED:
+            [self showMissingTokenView:NO];
             [self showPullView:NO];
             [self showWorkingView:YES];
             [self showErrorView:NO];
             break;
 
         case SDRepositoryStatusERROR:
+            [self showMissingTokenView:NO];
             [self showPullView:NO];
             [self showWorkingView:NO];
             [self showErrorView:YES];
             break;
 
         case SDRepositoryStatusREADY:
+            [self showMissingTokenView:NO];
             [self showPullView:NO];
             [self showWorkingView:NO];
             [self showErrorView:NO];
@@ -227,9 +244,9 @@
         var repo = [_currentSelectedObjects firstObject];
 
         if ([repo status] == SDRepositoryStatusPULLING)
-            [labelPulling setStringValue:@"Pulling Specifications from\n" + [repo description] + "@" + [repo branch] + @"..."]
+            [labelPulling setStringValue:@"Pulling Specifications from Github Repository " + [repo description] + "@" + [repo branch] + @".\n\nThis may take a few seconds..."]
         if ([repo status] == SDRepositoryStatusQUEUED)
-            [labelPulling setStringValue:@"Operation Enqueued.\nWaiting for next available pulling slot."];
+            [labelPulling setStringValue:@"Operation Enqueued. Waiting for next available pulling slot..."];
 
         if ([viewWorking superview])
             return;
@@ -259,7 +276,7 @@
         if ([viewError superview])
             return;
 
-        [viewError setFrame:[viewEditObject frame]];
+        [viewError setFrame:[viewEditObject bounds]];
         [viewEditObject addSubview:viewError];
     }
     else
@@ -267,8 +284,26 @@
         if (![viewError superview])
             return;
 
-
         [viewError removeFromSuperview];
+    }
+}
+
+- (void)showMissingTokenView:(BOOL)shouldShow
+{
+    if (shouldShow)
+    {
+        if ([viewMissingToken superview])
+            return;
+
+        [viewMissingToken setFrame:[viewEditObject bounds]];
+        [viewEditObject addSubview:viewMissingToken];
+    }
+    else
+    {
+        if (![viewMissingToken superview])
+            return;
+
+        [viewMissingToken removeFromSuperview];
     }
 }
 
@@ -297,6 +332,7 @@
 
 - (@action)pull:(id)aSender
 {
+    [labelPulling setStringValue:@"Sending Pull Job..."];
     [[NURESTJobsController defaultController] postJob:[SDPullJob new] toEntity:[_currentSelectedObjects firstObject] andCallSelector:@selector(_didPull:) ofObject:self];
     [self showWorkingView:YES];
 }
@@ -338,4 +374,19 @@
     [self showPullView:YES];
     [self showErrorView:NO];
 }
+
+
+#pragma mark -
+#pragma mark NUModuleContext Delegate
+
+- (void)moduleContext:(NUModuleContext)aContext willManageObject:(NUVSDObject)anObject
+{
+    [tokenAssociator setCurrentParent:anObject];
+}
+
+- (void)moduleContext:(NUModuleContext)aContext didManageObject:(NUVSDObject)anObject
+{
+    [tokenAssociator setCurrentParent:nil];
+}
+
 @end
