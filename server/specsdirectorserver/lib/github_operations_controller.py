@@ -19,7 +19,6 @@ class SDGitHubOperationsController(GAController):
         self._storage_controller  = None
         self._push_controller     = None
         self._sdk                 = None
-        self._repository_managers = {}
 
     @classmethod
     def identifier(cls):
@@ -133,7 +132,7 @@ class SDGitHubOperationsController(GAController):
         """
         """
         try:
-            manager = self._get_repository_manager_for_repository(repository=repository)
+            manager = self._get_repository_manager_for_repository(repository=repository, session_username=session_username)
 
             repository.status = 'PULLING'
             self._storage_controller.update(user_identifier=session_username, resource=repository)
@@ -156,7 +155,7 @@ class SDGitHubOperationsController(GAController):
         except Exception as ex:
             job.progress = 1.0
             job.status = 'FAILED'
-            job.result = 'Unable to find repository, or bad authentication. Please check your GitHub credentials: %s' % ex
+            job.result = 'Unable to pull repository.\n\nReason:\n%s' % ex
 
             repository.status = 'ERROR'
             self._storage_controller.update(user_identifier=session_username, resource=repository)
@@ -170,7 +169,7 @@ class SDGitHubOperationsController(GAController):
     def _perform_commit_specification(self, repository, specification, commit_message, session_username):
         """
         """
-        manager = self._get_repository_manager_for_repository(repository=repository)
+        manager = self._get_repository_manager_for_repository(repository=repository, session_username=session_username)
         mono_spec = self._specification_exporter.export_specification(specification=specification, session_username=session_username)
 
         self._set_specification_syncing(specification=specification, syncing=True, session_username=session_username)
@@ -180,7 +179,7 @@ class SDGitHubOperationsController(GAController):
     def _perform_rename_specification(self, repository, specification, old_name, commit_message, session_username):
         """
         """
-        manager = self._get_repository_manager_for_repository(repository=repository)
+        manager = self._get_repository_manager_for_repository(repository=repository, session_username=session_username)
         mono_spec = self._specification_exporter.export_specification(specification=specification, session_username=session_username)
 
         self._set_specification_syncing(specification=specification, syncing=True, session_username=session_username)
@@ -190,7 +189,7 @@ class SDGitHubOperationsController(GAController):
     def _perform_delete_specification(self, repository, specification, commit_message, session_username):
         """
         """
-        manager = self._get_repository_manager_for_repository(repository=repository)
+        manager = self._get_repository_manager_for_repository(repository=repository, session_username=session_username)
         mono_spec = self._specification_exporter.export_specification(specification=specification, session_username=session_username)
 
         manager.delete_specification(specification=mono_spec, message=commit_message, branch=repository.branch)
@@ -198,7 +197,7 @@ class SDGitHubOperationsController(GAController):
     def _perform_commit_apiinfo(self, repository, apiinfo, commit_message, session_username):
         """
         """
-        manager = self._get_repository_manager_for_repository(repository=repository)
+        manager = self._get_repository_manager_for_repository(repository=repository, session_username=session_username)
 
         manager.save_apiinfo(   version=apiinfo.version,
                                 root_api=apiinfo.root,
@@ -209,7 +208,7 @@ class SDGitHubOperationsController(GAController):
     def _perform_commit_monolitheconfig(self, repository, monolitheconfig, commit_message, session_username):
         """
         """
-        manager = self._get_repository_manager_for_repository(repository=repository)
+        manager = self._get_repository_manager_for_repository(repository=repository, session_username=session_username)
         parser = self._specification_exporter.export_monolithe_config(monolitheconfig=monolitheconfig)
         manager.save_monolithe_config(  monolithe_config_parser=parser,
                                         message=commit_message,
@@ -222,24 +221,19 @@ class SDGitHubOperationsController(GAController):
         self._storage_controller.update(user_identifier=session_username, resource=specification)
         self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=specification)])
 
-    def _get_repository_manager_for_repository(self, repository):
+    def _get_repository_manager_for_repository(self, repository, session_username):
         """
         """
         key = repository.id
 
-        if key in self._repository_managers:
-            return self._repository_managers[key];
+        response = self._storage_controller.get(user_identifier=session_username, resource_name=self._sdk.SDToken.rest_name, identifier=repository.associated_token_id)
+        github_token = response.data.value
 
         repo_manager = RepositoryManager( monolithe_config=None,
                                           api_url=repository.url,
-                                          login_or_token=repository.password,
+                                          login_or_token=github_token,
                                           password=None,
                                           organization=repository.organization,
                                           repository=repository.repository,
                                           repository_path=repository.path)
-
-        repo_manager = RepositoryManager( monolithe_config=None, api_url=repository.url, login_or_token=repository.password, password=None, organization=repository.organization, repository=repository.repository, repository_path=repository.path)
-
-        self._repository_managers[key] = repo_manager
-
         return repo_manager

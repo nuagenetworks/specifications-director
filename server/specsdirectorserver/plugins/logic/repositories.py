@@ -43,8 +43,8 @@ class SDRepositoryLogicPlugin(GALogicPlugin):
         if not repository.url or not len(repository.url):
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute url is mandatory.', property_name='url'))
 
-        if not repository.password or not len(repository.password):
-            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute password is mandatory.', property_name='password'))
+        if not repository.associated_token_id or not len(repository.associated_token_id):
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute associatedTokenID is mandatory.', property_name='associatedTokenID'))
 
         if not repository.organization or not len(repository.organization):
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute organization is mandatory.', property_name='organization'))
