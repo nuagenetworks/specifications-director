@@ -140,6 +140,7 @@ class SDSpecificationExporter():
             mono_attr.required        = attribute.required
             mono_attr.unique          = attribute.unique
             mono_attr.unique_scope    = attribute.unique_scope
+            mono_attr.subtype         = attribute.subtype
 
             ret.append(mono_attr)
 

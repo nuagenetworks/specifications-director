@@ -232,6 +232,7 @@ class SDSpecificationImporter():
             attr.required        = mono_attribute.required
             attr.transient       = mono_attribute.transient
             attr.type            = mono_attribute.type
+            attr.subtype         = mono_attribute.subtype
             attr.unique          = mono_attribute.unique
             attr.unique_scope    = mono_attribute.unique_scope
             attr.issues          = []
