@@ -14,6 +14,11 @@
             "membership": "root",
             "get": true,
             "create": true
+        },
+        "token": {
+            "membership": "root",
+            "get": true,
+            "create": true
         }
     },
 

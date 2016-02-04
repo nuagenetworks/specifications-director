@@ -70,6 +70,10 @@
         "pushPermission": {
             "description": "Defines if the current user can push on the repository.",
             "type": "boolean"
+        },
+        "associatedTokenID": {
+            "description": "The token to use.",
+            "type": "string"
         }
     }
 }
