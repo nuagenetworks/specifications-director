@@ -11,7 +11,7 @@
     "attributes": {
         "command": {
             "description": "The command",
-            "allowed_choices": ["pull", "commit", "checkout"],
+            "allowed_choices": ["pull", "commit", "checkout", "merge_master"],
             "type": "enum"
         },
         "status": {

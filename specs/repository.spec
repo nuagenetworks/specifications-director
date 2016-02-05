@@ -62,7 +62,7 @@
             "type": "string"
         },
         "status": {
-            "allowed_choices": ["READY", "PULLING", "NEEDS_PULL", "ERROR", "QUEUED"],
+            "allowed_choices": ["READY", "PULLING", "NEEDS_PULL", "ERROR", "QUEUED", "MERGING"],
             "default_value": "NEEDS_PULL",
             "description": "Defines if everything is fine with the information.",
             "type": "enum"
