@@ -13,6 +13,7 @@ SDRepositoryStatusPULLING = @"PULLING";
 SDRepositoryStatusNEEDS_PULL = @"NEEDS_PULL";
 SDRepositoryStatusERROR = @"ERROR";
 SDRepositoryStatusQUEUED = @"QUEUED";
+SDRepositoryStatusMERGING = @"MERGING";
 
 
 @implementation SDRepository : SDRESTObject

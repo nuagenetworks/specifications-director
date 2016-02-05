@@ -41,12 +41,21 @@ class SDJobLogicPlugin(GALogicPlugin):
         job              = context.object
         repository       = context.parent_object
         session_username = context.session.root_object.id
+        command          = job.command
 
-        if job.command == 'pull':
+        repository.status = 'QUEUED'
+        self._storage_controller.update(user_identifier=session_username, resource=repository)
+        self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
 
-            repository.status = 'QUEUED'
-            self._storage_controller.update(user_identifier=session_username, resource=repository)
-            self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
-            self._github_operations_controller.checkout_repository(repository=repository, job=job, session_username=context.session.root_object.id)
+        if command == 'merge_master':
+            self._github_operations_controller.merge_upstream_master(repository=repository,
+                                                                     job=job,
+                                                                     commit_message="Merged upstream master into %s" % repository.branch,
+                                                                     session_username=session_username)
+
+        elif command == 'pull':
+            self._github_operations_controller.checkout_repository(repository=repository,
+                                                                   job=job,
+                                                                   session_username=session_username)
 
         return context

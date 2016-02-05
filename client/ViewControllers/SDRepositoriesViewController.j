@@ -17,6 +17,7 @@
     @outlet CPButton                    buttonDownload;
     @outlet CPButton                    buttonOpen;
     @outlet CPButton                    buttonPull;
+    @outlet CPButton                    buttonMerge;
     @outlet CPTextField                 labelError;
     @outlet CPTextField                 labelPulling;
     @outlet CPView                      viewError;
@@ -190,6 +191,7 @@
 
         case SDRepositoryStatusPULLING:
         case SDRepositoryStatusQUEUED:
+        case SDRepositoryStatusMERGING:
             [self showMissingTokenView:NO];
             [self showPullView:NO];
             [self showWorkingView:YES];
@@ -346,6 +348,28 @@
 
     if ([aJob status] == NURESTJobStatusFAILED)
         [labelError setStringValue:[aJob result]];
+
+    [self _updateCurrentStateView];
+}
+
+- (@action)merge:(id)aSender
+{
+    [labelPulling setStringValue:@"Sending a Merge Job..."];
+    [[NURESTJobsController defaultController] postJob:[SDMergeJob new] toEntity:[_currentSelectedObjects firstObject] andCallSelector:@selector(_didMerge:) ofObject:self];
+    [self showWorkingView:YES];
+}
+
+- (void)_didMerge:(NURESTJob)aJob
+{
+    if ([aJob parentID] != [[_currentSelectedObjects firstObject] ID])
+        return;
+
+    [[[self visibleSubModule] visibleSubModule] reload];
+
+    if ([aJob status] == NURESTJobStatusFAILED)
+        [labelError setStringValue:[aJob result]];
+    else
+        [self pull:self];
 
     [self _updateCurrentStateView];
 }

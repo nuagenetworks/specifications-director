@@ -124,6 +124,15 @@ class SDGitHubOperationsController(GAController):
                                                      commit_message=info['commit_message'],
                                                      session_username=session_username)
 
+            elif action == 'merge_upstream_master':
+
+                job = self._sdk.SDJob(data=info['job'])
+
+                self._perform_merge_upstream_master(repository=repository,
+                                                    job=job,
+                                                    commit_message=info['commit_message'],
+                                                    session_username=session_username)
+
         except Exception as ex:
             print "Exception while executing git operation: %s" % ex
 
@@ -131,12 +140,12 @@ class SDGitHubOperationsController(GAController):
     def _peform_checkout_repository(self, repository, job, session_username):
         """
         """
+        repository.status = 'PULLING'
+        self._storage_controller.update(user_identifier=session_username, resource=repository)
+        self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
+
         try:
             manager = self._get_repository_manager_for_repository(repository=repository, session_username=session_username)
-
-            repository.status = 'PULLING'
-            self._storage_controller.update(user_identifier=session_username, resource=repository)
-            self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
 
             self._specification_importer.clean_repository(repository=repository, session_username=session_username)
             self._specification_importer.import_repository_info(repository=repository, manager=manager, session_username=session_username)
@@ -149,22 +158,56 @@ class SDGitHubOperationsController(GAController):
             job.status = 'SUCCESS'
 
             repository.status = 'READY'
-            self._storage_controller.update(user_identifier=session_username, resource=repository)
-            self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
 
         except Exception as ex:
+
             job.progress = 1.0
             job.status = 'FAILED'
             job.result = 'Unable to pull repository.\n\nReason:\n%s' % ex
 
             repository.status = 'ERROR'
+
+        finally:
+
+            self._storage_controller.update(user_identifier=session_username, resource=job)
+            self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=job)])
+
             self._storage_controller.update(user_identifier=session_username, resource=repository)
             self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
 
-        finally:
-            self._storage_controller.update(user_identifier=session_username, resource=job)
+    def _perform_merge_upstream_master(self, repository, job, commit_message, session_username):
+        """
+        """
+        repository.status = 'MERGING'
+        self._storage_controller.update(user_identifier=session_username, resource=repository)
+        self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
 
-        self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=job)])
+        try:
+
+            manager = self._get_repository_manager_for_repository(repository=repository, session_username=session_username)
+            manager.merge_upstream_master(local_branch=repository.branch,
+                                          upstream_branch="master",
+                                          commit_message="Merged upstream master branch")
+            job.progress = 1.0
+            job.status = 'SUCCESS'
+
+            repository.status = 'NEEDS_PULL'
+
+        except Exception as ex:
+
+            job.progress = 1.0
+            job.status = 'FAILED'
+            job.result = 'Unable to merge repository.\n\nReason:\n%s' % ex
+
+            repository.status = 'ERROR'
+
+        finally:
+
+            self._storage_controller.update(user_identifier=session_username, resource=job)
+            self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=job)])
+
+            self._storage_controller.update(user_identifier=session_username, resource=repository)
+            self._push_controller.push_events(events=[GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository)])
 
     def _perform_commit_specification(self, repository, specification, commit_message, session_username):
         """

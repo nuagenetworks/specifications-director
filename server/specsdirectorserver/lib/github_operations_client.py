@@ -84,3 +84,14 @@ class SDGitHubOperationsClient(GAController):
             'repository': repository.to_dict(),
             'monolitheconfig': monolitheconfig.to_dict(),
             'commit_message': commit_message}))
+
+    def merge_upstream_master(self, repository, job, commit_message, session_username):
+        """
+        """
+        self.publish('github-operation:new', msgpack.packb({
+            'garuda_uuid': self.core_controller.garuda_uuid,
+            'session_username': session_username,
+            'action': 'merge_upstream_master',
+            'repository': repository.to_dict(),
+            'job': job.to_dict(),
+            'commit_message': commit_message}))
