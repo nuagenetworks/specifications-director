@@ -86,7 +86,7 @@
     [viewWorking setBackgroundColor:NUSkinColorGreyLight];
     [viewMissingToken setBackgroundColor:NUSkinColorGreyLight];
 
-    [buttonPull setThemeState:CPThemeStateDefault];
+    [buttonMerge setThemeState:CPThemeStateDefault];
 
     [tokenAssociator setDisassociationButtonHidden:YES];
 }

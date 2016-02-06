@@ -417,7 +417,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <subviews>
                                 <button toolTip="Pulls the latest version of the specification from the branch" verticalHuggingPriority="750" id="FM4-Wf-kG9">
-                                    <rect key="frame" x="393" y="-1" width="123" height="32"/>
+                                    <rect key="frame" x="275" y="-1" width="123" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="Pull" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1Hp-LN-Kpp">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -428,20 +428,6 @@ If you need to work on multiple version of a Specification, you can just add mul
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="pull:" target="-2" id="Mom-oc-327"/>
-                                    </connections>
-                                </button>
-                                <button toolTip="Attempt to merge back the official master upstream branch back into your fork current branch." verticalHuggingPriority="750" id="pxF-nf-6ai">
-                                    <rect key="frame" x="275" y="-1" width="123" height="32"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="push" title="Synchronize" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xa4-mY-AcZ">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="save"/>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="merge:" target="-2" id="GR0-Zt-MTf"/>
                                     </connections>
                                 </button>
                                 <button toolTip="Download an archive of the current version of the specifications" verticalHuggingPriority="750" id="PPC-1J-RrR">
@@ -470,6 +456,20 @@ If you need to work on multiple version of a Specification, you can just add mul
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="openInGithub:" target="-2" id="C1n-dz-iCe"/>
+                                    </connections>
+                                </button>
+                                <button toolTip="Attempt to merge back the official master upstream branch back into your fork current branch." verticalHuggingPriority="750" id="pxF-nf-6ai">
+                                    <rect key="frame" x="393" y="-1" width="123" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="push" title="Synchronize" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xa4-mY-AcZ">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="save"/>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="merge:" target="-2" id="GR0-Zt-MTf"/>
                                     </connections>
                                 </button>
                             </subviews>
