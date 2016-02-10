@@ -45,6 +45,8 @@
 NURESTUserRoleCSPRoot = @"NURESTUserRoleCSPRoot";
 NURESTUserRoleOrgAdmin = @"NURESTUserRoleOrgAdmin"
 
+SDApplicationShowServerLoginField = NO;
+
 @global open
 
 @implementation AppController : CPObject
@@ -64,6 +66,9 @@ NURESTUserRoleOrgAdmin = @"NURESTUserRoleOrgAdmin"
     [CPMenu setMenuBarVisible:NO];
     //[[CPUserDefaults standardUserDefaults] setObject:@"https://127.0.0.1:2000" forKey:@"NUAPIURL"];
 
+    if ([[NUKit kit] valueForApplicationArgument:@"serverfield"])
+        SDApplicationShowServerLoginField = YES;
+
     [dataViewsLoader load];
 
     // configure NUKit
@@ -75,6 +80,8 @@ NURESTUserRoleOrgAdmin = @"NURESTUserRoleOrgAdmin"
     [[NUKit kit] setAPIPrefix:@"api/"];
 
     [[[NUKit kit] loginWindowController] setShowsEnterpriseField:NO];
+    [[[NUKit kit] loginWindowController] setShowsServerField:SDApplicationShowServerLoginField];
+
     [[NUKit kit] parseStandardApplicationArguments];
     [[NUKit kit] loadFrameworkDataViews];
     [[NUKit kit] setDelegate:self];
