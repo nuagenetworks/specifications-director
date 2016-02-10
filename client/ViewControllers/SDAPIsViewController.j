@@ -89,7 +89,11 @@
         [checkBoxAllowsBulkUpdate setHidden:NO];
         [checkBoxAllowsBulkCreate setHidden:NO];
         [checkBoxAllowsBulkDelete setHidden:NO];
+
+        [editedObject setAllowsGet:YES];
+        [editedObject setAllowsCreate:YES];
         [editedObject setAllowsUpdate:NO];
+
         [editedObject setRelationship:SDAPIRelationshipRoot];
         return;
     }
@@ -102,11 +106,14 @@
             [labelRelationship setHidden:NO];
             [checkBoxAllowsUpdate setHidden:YES];
             [checkBoxAllowsCreate setHidden:NO];
-            [editedObject setAllowsUpdate:NO];
             [checkBoxAllowsBulkUpdate setHidden:NO];
             [checkBoxAllowsBulkCreate setHidden:NO];
             [checkBoxAllowsBulkDelete setHidden:NO];
+
+            [editedObject setAllowsGet:YES];
+            [editedObject setAllowsCreate:YES];
             [editedObject setAllowsUpdate:NO];
+
             break;
 
         case SDAPIRelationshipMember:
@@ -118,7 +125,15 @@
             [checkBoxAllowsBulkUpdate setHidden:YES];
             [checkBoxAllowsBulkCreate setHidden:YES];
             [checkBoxAllowsBulkDelete setHidden:YES];
+
+            [editedObject setAllowsGet:YES];
             [editedObject setAllowsCreate:NO];
+            [editedObject setAllowsUpdate:YES];
+
+            [editedObject setAllowsBulkCreate:NO];
+            [editedObject setAllowsBulkUpdate:NO];
+            [editedObject setAllowsBulkDelete:NO];
+
             break;
     }
 }
