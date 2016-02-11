@@ -19,8 +19,8 @@
             "type": "boolean"
         },
         "relationship": {
-            "allowed_choices": ["child", "member", "root"],
-            "description": "Defines if the api is deprecated",
+            "allowed_choices": ["child", "member", "root", "alias"],
+            "description": "Defines the kind of relation ship",
             "type": "enum"
         },
         "allowsGet": {

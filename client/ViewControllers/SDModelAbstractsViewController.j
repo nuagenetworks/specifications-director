@@ -37,13 +37,11 @@
         permittedActionsSet            = [CPSet new];
 
     if (conditionCanAdd)
-        [permittedActionsSet addObject:NUModuleActionAdd];
+        [permittedActionsSet addObject:NUModuleAssignationActionAssign];
 
     if (conditionCanEdit)
-    {
-        [permittedActionsSet addObject:NUModuleActionEdit];
-        [permittedActionsSet addObject:NUModuleActionDelete];
-    }
+        [permittedActionsSet addObject:NUModuleAssignationActionUnassign];
+
     return permittedActionsSet;
 }
 

@@ -2,6 +2,8 @@
 
 @global SDAPIRelationshipChild
 @global SDAPIRelationshipMember
+@global SDAPIRelationshipAlias
+@global SDAPIRelationshipRoot
 
 
 @implementation SDRelationshipToColorTransformer: CPValueTransformer
@@ -25,6 +27,9 @@
 
         case SDAPIRelationshipMember:
             return [CPColor colorWithHexString:@"659aff"];
+
+        case SDAPIRelationshipAlias:
+            return [CPColor colorWithHexString:@"fecd3e"];
 
         case SDAPIRelationshipRoot:
             return [CPColor colorWithHexString:@"659aff"];

@@ -101,6 +101,7 @@
     switch ([editedObject relationship])
     {
         case SDAPIRelationshipChild:
+        case SDAPIRelationshipAlias:
             [popover setContentSize:CGSizeMake(320, 368)];
             [buttonRelationship setHidden:NO];
             [labelRelationship setHidden:NO];

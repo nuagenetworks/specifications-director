@@ -4,9 +4,10 @@
 @class SDModelsFetcher
 @class SDAttributesFetcher
 
-SDAPIRelationshipChild = @"child"
+SDAPIRelationshipChild  = @"child"
 SDAPIRelationshipMember = @"member"
-SDAPIRelationshipRoot = @"root"
+SDAPIRelationshipRoot   = @"root"
+SDAPIRelationshipAlias  = @"alias"
 
 
 @implementation SDChildAPI : SDRESTObject
