@@ -100,7 +100,6 @@ SDAttributeFormatDate = @"date";
         _type = SDAttributeTypeString
         _format = SDAttributeFormatFree;
 
-
         _allowedChoices = [[CPArrayController alloc] initWithContent:[]];
         // _availability = [[CPArrayController alloc] initWithContent:[]];
     }
