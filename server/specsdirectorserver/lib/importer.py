@@ -199,7 +199,7 @@ class SDSpecificationImporter():
         if len(extensions):
             self._storage_controller.assign(user_identifier=session_username, resource_name=self._sdk.SDAbstract.rest_name, resources=extensions, parent=specification)
 
-        return extensions
+        return sorted(extensions)
 
     def _import_attributes(self, mono_specification, specification, session_username):
         """

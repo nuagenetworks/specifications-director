@@ -35,7 +35,7 @@ class SDSpecificationExporter():
             response = self._storage_controller.get_all(user_identifier=session_username, parent=specification, resource_name=self._sdk.SDAbstract.rest_name)
 
             if response.count:
-                mono_spec.extends = [abstract.name.replace(".spec", "") for abstract in response.data]
+                mono_spec.extends = sorted([abstract.name.replace(".spec", "") for abstract in response.data])
 
             mono_spec.is_root       = specification.root
             mono_spec.entity_name   = specification.entity_name
