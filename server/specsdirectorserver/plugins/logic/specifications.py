@@ -91,6 +91,13 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
                                                                         specification=current_root_specification,
                                                                         commit_message="Updated specification %s" % current_root_specification.name,
                                                                         session_username=context.session.root_object.id)
+                response = self._storage_controller.get_all(user_identifier=context.session.root_object.id, resource_name=self._sdk.SDChildAPI.rest_name, parent=specification)
+
+                for api in response.data:
+                    api.relationship = 'root'
+                    api.path = '/%s' % api.path.split('/')[3]
+                    self._storage_controller.update(user_identifier=context.session.root_object.id, resource=api)
+                    context.add_event(GAPushEvent(action=GARequest.ACTION_UPDATE, entity=api))
 
             if apiinfo and apiinfo.root != specification.object_rest_name:
                 apiinfo.root = specification.object_rest_name
@@ -100,14 +107,6 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
                                                                    apiinfo=apiinfo,
                                                                    commit_message="Updated api.info",
                                                                    session_username=context.session.root_object.id)
-
-            response = self._storage_controller.get_all(user_identifier=context.session.root_object.id, resource_name=self._sdk.SDChildAPI.rest_name, parent=specification)
-
-            for api in response.data:
-                api.relationship = 'root'
-                api.path = '/%s' % api.path.split('/')[3]
-                self._storage_controller.update(user_identifier=context.session.root_object.id, resource=api)
-                context.add_event(GAPushEvent(action=GARequest.ACTION_UPDATE, entity=api))
 
         return context
 
