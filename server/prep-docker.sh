@@ -6,10 +6,10 @@ mkdir libs
 
 cd ..
 ../monolithe/commands/monogen-sdk -f specs -c specs/monoconf/config.ini -b master
-cd codegen
+cd codegen/python
 python setup.py sdist
 cd $CURRENT_PATH
-cp ../codegen/dist/specdk*.tar.gz libs
+cp ../codegen/python/dist/specdk*.tar.gz libs
 
 
 cat << EOF > libs/nuage.pem
