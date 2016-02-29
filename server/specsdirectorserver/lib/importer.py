@@ -151,7 +151,7 @@ class SDSpecificationImporter():
             mono_specification = spec_info['mono_specification']
             specification = spec_info['specification']
 
-            for mono_api in mono_specification.child_apis:
+            for mono_api in sorted(mono_specification.child_apis, lambda x, y: cmp(x.rest_name, y.rest_name)):
 
                 api = self._sdk.SDChildAPI()
 
@@ -200,7 +200,7 @@ class SDSpecificationImporter():
         ret = []
         specification.issues = []
 
-        for mono_attribute in mono_specification.attributes:
+        for mono_attribute in sorted(mono_specification.attributes, lambda x, y: cmp(x.name, y.name)):
 
             attr = self._sdk.SDAttribute()
 
@@ -242,5 +242,3 @@ class SDSpecificationImporter():
             self._storage_controller.create(user_identifier=session_username, resource=attr, parent=specification)
 
             ret.append(attr)
-
-        return ret

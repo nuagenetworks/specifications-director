@@ -104,7 +104,7 @@ class SDSpecificationExporter():
 
             ret.append(mono_child_api)
 
-        return ret
+        return sorted(ret, lambda x, y: cmp(x.rest_name, y.rest_name))
 
     def _export_attributes(self, specification, session_username):
         """
@@ -143,4 +143,4 @@ class SDSpecificationExporter():
 
             ret.append(mono_attr)
 
-        return ret
+        return sorted(ret, lambda x, y: cmp(x.name, y.name))
