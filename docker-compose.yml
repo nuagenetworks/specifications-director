@@ -31,6 +31,8 @@ services:
      - VIRTUAL_HOST=https://*:443/api/*
      - VIRTUAL_HOST_WEIGHT=1
      - HTTP_CHECK=OPTIONS /api/v1_0/events
+    ports:
+     - "2000:2000"
     links:
      - redis
      - mongo
