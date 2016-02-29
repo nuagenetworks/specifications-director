@@ -1,31 +1,34 @@
 {
-    "model": {
-        "rest_name": "auth",
-        "resource_name": "auth",
-        "entity_name": "Auth",
-        "description": "Authentication API",
-        "extends": ["@parsable"],
-        "package": "github",
-        "root": true
-    },
-
-    "children": {
-        "repository": {
-            "membership": "root",
+    "attributes": [
+        {
+            "description": "the username of the current user",
+            "name": "userName",
+            "type": "string"
+        }
+    ],
+    "children": [
+        {
+            "create": true,
             "get": true,
-            "create": true
+            "membership": "root",
+            "rest_name": "token"
         },
-        "token": {
-            "membership": "root",
+        {
+            "create": true,
             "get": true,
-            "create": true
+            "membership": "root",
+            "rest_name": "repository"
         }
-    },
-
-    "attributes": {
-        "userName": {
-            "type": "string",
-            "description": "the username of the current user"
-        }
+    ],
+    "model": {
+        "description": "Authentication API",
+        "entity_name": "Auth",
+        "extends": [
+            "@parsable"
+        ],
+        "package": "github",
+        "resource_name": "auth",
+        "rest_name": "auth",
+        "root": true
     }
 }

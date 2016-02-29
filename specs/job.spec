@@ -1,26 +1,33 @@
 {
-    "model": {
-        "rest_name": "job",
-        "resource_name": "jobs",
-        "description": "Represent a job",
-        "entity_name": "Job",
-        "package": "specifications",
-        "extends": []
-    },
-
-    "attributes": {
-        "command": {
+    "attributes": [
+        {
+            "description": "The status",
+            "name": "status",
+            "type": "string"
+        },
+        {
+            "allowed_choices": [
+                "pull",
+                "commit",
+                "checkout",
+                "merge_master"
+            ],
             "description": "The command",
-            "allowed_choices": ["pull", "commit", "checkout", "merge_master"],
+            "name": "command",
             "type": "enum"
         },
-        "status": {
-            "description": "The status",
-            "type": "string"
-        },
-        "result": {
+        {
             "description": "the result",
+            "name": "result",
             "type": "string"
         }
+    ],
+    "model": {
+        "description": "Represent a job",
+        "entity_name": "Job",
+        "extends": [],
+        "package": "specifications",
+        "resource_name": "jobs",
+        "rest_name": "job"
     }
 }

@@ -1,96 +1,116 @@
 {
-    "model": {
-        "rest_name": "monolitheconfig",
-        "resource_name": "monolitheconfigs",
-        "description": "Represents the monolithe configuratoon",
-        "entity_name": "MonolitheConfig",
-        "package": "specifications"
-    },
-
-    "attributes": {
-        "productName": {
-            "description": "the product name",
+    "attributes": [
+        {
+            "description": "",
+            "name": "SDKName",
             "type": "string"
         },
-        "productAccronym": {
-            "description": "the product accronym",
+        {
+            "description": "",
+            "name": "SDKDescription",
             "type": "string"
         },
-        "copyright": {
+        {
+            "description": "",
+            "name": "SDKBambouVersion",
+            "type": "string"
+        },
+        {
             "description": "The copyright string",
+            "name": "copyright",
             "type": "string"
         },
-        "SDKOutput": {
+        {
             "description": "",
+            "name": "SDKEmail",
             "type": "string"
         },
-        "SDKUserVanilla": {
+        {
             "description": "",
+            "name": "SDKOutput",
             "type": "string"
         },
-        "SDKName": {
+        {
             "description": "",
+            "name": "SDKCLIName",
             "type": "string"
         },
-        "SDKClassPrefix": {
+        {
             "description": "",
+            "name": "SDKUserVanilla",
             "type": "string"
         },
-        "SDKBambouVersion": {
+        {
             "description": "",
+            "name": "SDKVersion",
             "type": "string"
         },
-        "SDKVersion": {
-            "description": "",
+        {
+            "description": "the product name",
+            "name": "productName",
             "type": "string"
         },
-        "SDKRevisionNumber": {
+        {
             "description": "",
+            "name": "APIDocUserVanilla",
             "type": "string"
         },
-        "SDKURL": {
+        {
             "description": "",
+            "name": "APIDocOutput",
             "type": "string"
         },
-        "SDKAuthor": {
+        {
             "description": "",
+            "name": "SDKDocTMPPath",
             "type": "string"
         },
-        "SDKEmail": {
+        {
             "description": "",
+            "name": "SDKClassPrefix",
             "type": "string"
         },
-        "SDKDescription": {
+        {
             "description": "",
+            "name": "SDKDocUserVanilla",
             "type": "string"
         },
-        "SDKLicenseName": {
-            "description": "",
+        {
+            "description": "the product accronym",
+            "name": "productAccronym",
             "type": "string"
         },
-        "SDKCLIName": {
+        {
             "description": "",
+            "name": "SDKURL",
             "type": "string"
         },
-        "APIDocOutput": {
+        {
             "description": "",
+            "name": "SDKLicenseName",
             "type": "string"
         },
-        "APIDocUserVanilla": {
+        {
             "description": "",
+            "name": "SDKAuthor",
             "type": "string"
         },
-        "SDKDocOutput": {
+        {
             "description": "",
+            "name": "SDKRevisionNumber",
             "type": "string"
         },
-        "SDKDocUserVanilla": {
+        {
             "description": "",
-            "type": "string"
-        },
-        "SDKDocTMPPath": {
-            "description": "",
+            "name": "SDKDocOutput",
             "type": "string"
         }
+    ],
+    "model": {
+        "description": "Represents the monolithe configuratoon",
+        "entity_name": "MonolitheConfig",
+        "package": "specifications",
+        "resource_name": "monolitheconfigs",
+        "rest_name": "monolitheconfig"
     }
 }

@@ -1,21 +1,22 @@
 {
-    "model": {
-        "rest_name": "token",
-        "resource_name": "tokens",
-        "description": "Represent a github token",
-        "entity_name": "Token",
-        "package": "github",
-        "extends": []
-    },
-
-    "attributes": {
-        "name": {
+    "attributes": [
+        {
             "description": "the name of the token",
+            "name": "name",
             "type": "string"
         },
-        "value": {
+        {
             "description": "The token",
+            "name": "value",
             "type": "string"
         }
+    ],
+    "model": {
+        "description": "Represent a github token",
+        "entity_name": "Token",
+        "extends": [],
+        "package": "github",
+        "resource_name": "tokens",
+        "rest_name": "token"
     }
 }

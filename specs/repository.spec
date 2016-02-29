@@ -1,79 +1,99 @@
 {
-    "model": {
-        "rest_name": "repository",
-        "resource_name": "repositories",
-        "entity_name": "Repository",
-        "description": "Represents a github repository.",
-        "extends": [],
-        "package": "github"
-    },
-
-    "children": {
-        "specification": {
-            "get": true,
-            "create": true
+    "attributes": [
+        {
+            "allowed_choices": [
+                "READY",
+                "PULLING",
+                "NEEDS_PULL",
+                "ERROR",
+                "QUEUED",
+                "MERGING"
+            ],
+            "default_value": "NEEDS_PULL",
+            "description": "Defines if everything is fine with the information.",
+            "name": "status",
+            "type": "enum"
         },
-        "abstract": {
-            "get": true,
-            "create": true
-        },
-        "apiinfo": {
-            "get": true,
-            "create": true
-        },
-        "job": {
-            "get": true,
-            "create": true
-        },
-        "monolitheconfig": {
-            "get": true,
-            "create": true
-        }
-    },
-
-    "attributes": {
-        "name": {
+        {
             "description": "The name of the organization",
+            "name": "name",
             "type": "string",
             "unique": true
         },
-        "url": {
-            "description": "The Github API Url",
-            "type": "string"
-        },
-        "password": {
-            "description": "The password.",
-            "type": "string"
-        },
-        "organization": {
-            "description": "The organization.",
-            "type": "string"
-        },
-        "repository": {
+        {
             "description": "The repository.",
+            "name": "repository",
             "type": "string"
         },
-        "branch": {
-            "description": "The branch.",
+        {
+            "description": "The token to use.",
+            "name": "associatedTokenID",
             "type": "string"
         },
-        "path": {
-            "description": "The relative path inside the repository.",
+        {
+            "description": "The Github API Url",
+            "name": "url",
             "type": "string"
         },
-        "status": {
-            "allowed_choices": ["READY", "PULLING", "NEEDS_PULL", "ERROR", "QUEUED", "MERGING"],
-            "default_value": "NEEDS_PULL",
-            "description": "Defines if everything is fine with the information.",
-            "type": "enum"
-        },
-        "pushPermission": {
+        {
             "description": "Defines if the current user can push on the repository.",
+            "name": "pushPermission",
             "type": "boolean"
         },
-        "associatedTokenID": {
-            "description": "The token to use.",
+        {
+            "description": "The branch.",
+            "name": "branch",
+            "type": "string"
+        },
+        {
+            "description": "The relative path inside the repository.",
+            "name": "path",
+            "type": "string"
+        },
+        {
+            "description": "The organization.",
+            "name": "organization",
+            "type": "string"
+        },
+        {
+            "description": "The password.",
+            "name": "password",
             "type": "string"
         }
+    ],
+    "children": [
+        {
+            "create": true,
+            "get": true,
+            "rest_name": "job"
+        },
+        {
+            "create": true,
+            "get": true,
+            "rest_name": "specification"
+        },
+        {
+            "create": true,
+            "get": true,
+            "rest_name": "apiinfo"
+        },
+        {
+            "create": true,
+            "get": true,
+            "rest_name": "monolitheconfig"
+        },
+        {
+            "create": true,
+            "get": true,
+            "rest_name": "abstract"
+        }
+    ],
+    "model": {
+        "description": "Represents a github repository.",
+        "entity_name": "Repository",
+        "extends": [],
+        "package": "github",
+        "resource_name": "repositories",
+        "rest_name": "repository"
     }
 }
