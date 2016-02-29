@@ -1,4 +1,3 @@
-import logging
 import msgpack
 from garuda.core.models import GAController
 

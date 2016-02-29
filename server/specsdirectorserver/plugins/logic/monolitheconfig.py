@@ -1,10 +1,7 @@
-import logging
-
 from garuda.core.models import GAError, GAPluginManifest, GARequest
 from garuda.core.plugins import GALogicPlugin
 from garuda.core.lib import GASDKLibrary
 
-logger = logging.getLogger('specsdirector.plugins.logic.monolitheconfigs')
 
 class SDMonolitheConfigLogicPlugin(GALogicPlugin):
     """
@@ -70,7 +67,7 @@ class SDMonolitheConfigLogicPlugin(GALogicPlugin):
         """
         """
         monolitheconfig = context.object
-        repository      = context.parent_object
+        repository = context.parent_object
         session_username = context.session.root_object.id
 
         self._github_operations_controller.commit_monolitheconfig(repository=repository, monolitheconfig=monolitheconfig, commit_message="Updated Monolithe.ini", session_username=session_username)

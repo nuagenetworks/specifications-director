@@ -6,6 +6,7 @@ from garuda.core.lib import GASDKLibrary
 
 logger = logging.getLogger('specsdirector.plugins.logic.specifications')
 
+
 class SDAPIInfoLogicPlugin(GALogicPlugin):
     """
 
@@ -56,7 +57,7 @@ class SDAPIInfoLogicPlugin(GALogicPlugin):
     def did_perform_update(self, context):
         """
         """
-        apiinfo    = context.object
+        apiinfo = context.object
         repository = context.parent_object
         session_username = context.session.root_object.id
 

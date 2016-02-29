@@ -33,8 +33,8 @@ class SDAttributeLogicPlugin(GALogicPlugin):
         if context.request.action in (GARequest.ACTION_DELETE):
             return context
 
-        specification  = context.parent_object
-        attribute      = context.object
+        specification = context.parent_object
+        attribute = context.object
 
         response = self.core_controller.storage_controller.get_all(user_identifier=context.session.root_object.id, parent=specification, resource_name=self._sdk.SDAttribute.rest_name, filter='name == "%s"' % attribute.name)
 
@@ -68,13 +68,13 @@ class SDAttributeLogicPlugin(GALogicPlugin):
         self._commit_specification_change(context)
         return context
 
-    ## Processing
+    # Processing
 
     def _commit_specification_change(self, context):
         """
         """
-        action        = context.request.action
-        attribute     = context.object
+        action = context.request.action
+        attribute = context.object
         specification = context.parent_object
         session_username = context.session.root_object.id
 

@@ -1,0 +1,4 @@
+export SPEC_USERNAME=amercada
+export SPEC_API_URL=http://127.0.0.1:2000
+export SPEC_API_VERSION=1.0
+export SPEC_ENTERPRISE=none

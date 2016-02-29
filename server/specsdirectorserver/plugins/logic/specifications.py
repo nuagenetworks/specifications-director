@@ -1,10 +1,7 @@
-import logging
-
 from garuda.core.models import GAError, GAPluginManifest, GARequest, GAPushEvent
 from garuda.core.plugins import GALogicPlugin
 from garuda.core.lib import GASDKLibrary
 
-logger = logging.getLogger('specsdirector.plugins.logic.specifications')
 
 class SDSpecificationLogicPlugin(GALogicPlugin):
     """
@@ -23,7 +20,7 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
     def did_register(self):
         """
         """
-        self._old_names = {};
+        self._old_names = {}
         self._sdk = GASDKLibrary().get_sdk('default')
         self._storage_controller = self.core_controller.storage_controller
         self._github_operations_controller = self.core_controller.additional_controller(identifier='sd.controller.githuboperations.client')
@@ -35,9 +32,9 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         if context.request.action in (GARequest.ACTION_DELETE):
             return context
 
-        repository     = context.parent_object
-        specification  = context.object
-        action         = context.request.action
+        repository = context.parent_object
+        specification = context.object
+        action = context.request.action
 
         specification.name = '%s.spec' % specification.object_rest_name
 
@@ -104,18 +101,18 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
                 self._storage_controller.update(user_identifier=context.session.root_object.id, resource=apiinfo)
                 context.add_event(GAPushEvent(action=GARequest.ACTION_UPDATE, entity=apiinfo))
                 self._github_operations_controller.commit_apiinfo(repository=repository,
-                                                                   apiinfo=apiinfo,
-                                                                   commit_message="Updated api.info",
-                                                                   session_username=context.session.root_object.id)
+                                                                  apiinfo=apiinfo,
+                                                                  commit_message="Updated api.info",
+                                                                  session_username=context.session.root_object.id)
 
         return context
 
     def did_perform_write(self, context):
         """
         """
-        action        = context.request.action
+        action = context.request.action
         specification = context.object
-        repository    = context.parent_object
+        repository = context.parent_object
         session_username = context.session.root_object.id
 
         if action == GARequest.ACTION_CREATE:
@@ -157,7 +154,6 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
                                                                         commit_message="Updated specification %s" % specification.name,
                                                                         session_username=session_username)
 
-
         elif action == GARequest.ACTION_DELETE:
 
             self._github_operations_controller.delete_specification(repository=repository,
@@ -176,7 +172,6 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
                                                                         specification=spec,
                                                                         commit_message="Removed api %s" % specification.object_resource_name,
                                                                         session_username=session_username)
-
 
         return context
 

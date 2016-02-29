@@ -1,10 +1,7 @@
-import logging
-
 from garuda.core.models import GAError, GAPluginManifest, GARequest
 from garuda.core.plugins import GALogicPlugin
 from garuda.core.lib import GASDKLibrary
 
-logger = logging.getLogger('specsdirector.plugins.logic.repositories')
 
 class SDRepositoryLogicPlugin(GALogicPlugin):
     """

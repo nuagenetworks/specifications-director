@@ -1,6 +1,11 @@
 {
     "attributes": [
         {
+            "description": "The RESTName of the remote specification.",
+            "name": "remoteRESTName",
+            "type": "string"
+        },
+        {
             "description": "Defines if the member objects can be assigned",
             "name": "allowsUpdate",
             "type": "bool"

@@ -1,10 +1,11 @@
 import logging
 
-from garuda.core.models import GAError, GAPluginManifest, GARequest, GAPushEvent
+from garuda.core.models import GAError, GAPluginManifest, GARequest
 from garuda.core.plugins import GALogicPlugin
 from garuda.core.lib import GASDKLibrary
 
 logger = logging.getLogger('specsdirector.plugins.logic.apis')
+
 
 class SDAPILogicPlugin(GALogicPlugin):
     """
@@ -17,11 +18,11 @@ class SDAPILogicPlugin(GALogicPlugin):
         """
         return GAPluginManifest(name='apis logic', version=1.0, identifier="specsdirector.plugins.logic.apis",
                                 subscriptions={
-                                    "childapi": [   GARequest.ACTION_READALL,
-                                                    GARequest.ACTION_READ,
-                                                    GARequest.ACTION_UPDATE,
-                                                    GARequest.ACTION_CREATE,
-                                                    GARequest.ACTION_DELETE]
+                                    "childapi": [GARequest.ACTION_READALL,
+                                                 GARequest.ACTION_READ,
+                                                 GARequest.ACTION_UPDATE,
+                                                 GARequest.ACTION_CREATE,
+                                                 GARequest.ACTION_DELETE]
                                 })
 
     def did_register(self):
@@ -51,13 +52,12 @@ class SDAPILogicPlugin(GALogicPlugin):
         self._commit_specification_change(context)
         return context
 
-    ## processing
+    # processing
 
     def _commit_specification_change(self, context):
         """
         """
-        action        = context.request.action
-        api           = context.object
+        action = context.request.action
         specification = context.parent_object
         session_username = context.session.root_object.id
 
@@ -75,7 +75,6 @@ class SDAPILogicPlugin(GALogicPlugin):
     def _update_path(self, specification, api, session_username):
         """
         """
-        sdk = GASDKLibrary().get_sdk('default')
 
         response = self.core_controller.storage_controller.get(user_identifier=session_username, resource_name=self._sdk.SDSpecification.rest_name, identifier=api.associated_specification_id)
 
@@ -93,5 +92,3 @@ class SDAPILogicPlugin(GALogicPlugin):
             api.path = '/%s' % associated_resource_name
         else:
             api.path = '/%s/id/%s' % (local_resource_name, associated_resource_name)
-
-

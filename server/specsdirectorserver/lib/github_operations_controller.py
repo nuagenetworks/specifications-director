@@ -1,9 +1,8 @@
-import logging
 import msgpack
 
-from monolithe.specifications import Specification, RepositoryManager, SpecificationAttribute, SpecificationAPI, RepositoryManager
+from monolithe.specifications import RepositoryManager
 from garuda.core.models import GAController, GAPushEvent, GARequest
-from garuda.core.lib import GAThreadManager, GASDKLibrary
+from garuda.core.lib import GASDKLibrary
 
 from exporter import SDSpecificationExporter
 from importer import SDSpecificationImporter
@@ -16,9 +15,9 @@ class SDGitHubOperationsController(GAController):
         """
         super(SDGitHubOperationsController, self).__init__(core_controller=core_controller)
 
-        self._storage_controller  = None
-        self._push_controller     = None
-        self._sdk                 = None
+        self._storage_controller = None
+        self._push_controller = None
+        self._sdk = None
 
     @classmethod
     def identifier(cls):
@@ -29,11 +28,11 @@ class SDGitHubOperationsController(GAController):
     def ready(self):
         """
         """
-        self._sdk                       = GASDKLibrary().get_sdk('default')
-        self._storage_controller        = self.core_controller.storage_controller
-        self._push_controller           = self.core_controller.push_controller
-        self._specification_exporter    = SDSpecificationExporter(storage_controller=self._storage_controller, push_controller=self._push_controller, sdk=self._sdk)
-        self._specification_importer    = SDSpecificationImporter(storage_controller=self._storage_controller, push_controller=self._push_controller, sdk=self._sdk)
+        self._sdk = GASDKLibrary().get_sdk('default')
+        self._storage_controller = self.core_controller.storage_controller
+        self._push_controller = self.core_controller.push_controller
+        self._specification_exporter = SDSpecificationExporter(storage_controller=self._storage_controller, push_controller=self._push_controller, sdk=self._sdk)
+        self._specification_importer = SDSpecificationImporter(storage_controller=self._storage_controller, push_controller=self._push_controller, sdk=self._sdk)
 
         self.subscribe(channel='github-operation:new', handler=self._on_github_operation)
 
@@ -47,7 +46,7 @@ class SDGitHubOperationsController(GAController):
         """
         self.stop_listening_to_events()
 
-    ## PRIVATES
+    # PRIVATES
 
     def _on_github_operation(self, data):
         """
@@ -135,7 +134,6 @@ class SDGitHubOperationsController(GAController):
 
         except Exception as ex:
             print "Exception while executing git operation: %s" % ex
-
 
     def _peform_checkout_repository(self, repository, job, session_username):
         """
@@ -242,20 +240,20 @@ class SDGitHubOperationsController(GAController):
         """
         manager = self._get_repository_manager_for_repository(repository=repository, session_username=session_username)
 
-        manager.save_apiinfo(   version=apiinfo.version,
-                                root_api=apiinfo.root,
-                                prefix=apiinfo.prefix,
-                                message=commit_message,
-                                branch=repository.branch)
+        manager.save_apiinfo(version=apiinfo.version,
+                             root_api=apiinfo.root,
+                             prefix=apiinfo.prefix,
+                             message=commit_message,
+                             branch=repository.branch)
 
     def _perform_commit_monolitheconfig(self, repository, monolitheconfig, commit_message, session_username):
         """
         """
         manager = self._get_repository_manager_for_repository(repository=repository, session_username=session_username)
         parser = self._specification_exporter.export_monolithe_config(monolitheconfig=monolitheconfig)
-        manager.save_monolithe_config(  monolithe_config_parser=parser,
-                                        message=commit_message,
-                                        branch=repository.branch)
+        manager.save_monolithe_config(monolithe_config_parser=parser,
+                                      message=commit_message,
+                                      branch=repository.branch)
 
     def _set_specification_syncing(self, specification, syncing, session_username):
         """
@@ -267,16 +265,14 @@ class SDGitHubOperationsController(GAController):
     def _get_repository_manager_for_repository(self, repository, session_username):
         """
         """
-        key = repository.id
-
         response = self._storage_controller.get(user_identifier=session_username, resource_name=self._sdk.SDToken.rest_name, identifier=repository.associated_token_id)
         github_token = response.data.value
 
-        repo_manager = RepositoryManager( monolithe_config=None,
-                                          api_url=repository.url,
-                                          login_or_token=github_token,
-                                          password=None,
-                                          organization=repository.organization,
-                                          repository=repository.repository,
-                                          repository_path=repository.path)
+        repo_manager = RepositoryManager(monolithe_config=None,
+                                         api_url=repository.url,
+                                         login_or_token=github_token,
+                                         password=None,
+                                         organization=repository.organization,
+                                         repository=repository.repository,
+                                         repository_path=repository.path)
         return repo_manager

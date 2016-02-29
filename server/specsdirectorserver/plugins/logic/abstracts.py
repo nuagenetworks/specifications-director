@@ -6,6 +6,7 @@ from garuda.core.lib import GASDKLibrary
 
 logger = logging.getLogger('specsdirector.plugins.logic.abstracts')
 
+
 class SDAbstractLogicPlugin(GALogicPlugin):
     """
 
@@ -23,11 +24,10 @@ class SDAbstractLogicPlugin(GALogicPlugin):
     def did_register(self):
         """
         """
-        self._old_names = {};
+        self._old_names = {}
         self._sdk = GASDKLibrary().get_sdk('default')
         self._storage_controller = self.core_controller.storage_controller
         self._github_operations_controller = self.core_controller.additional_controller(identifier='sd.controller.githuboperations.client')
-
 
     def _check_valid_name(self, repository, abstract, context):
         """
@@ -54,7 +54,7 @@ class SDAbstractLogicPlugin(GALogicPlugin):
         """
         """
         repository = context.parent_object
-        abstract   = context.object
+        abstract = context.object
 
         self._check_valid_name(repository=repository, abstract=abstract, context=context)
 
@@ -64,14 +64,14 @@ class SDAbstractLogicPlugin(GALogicPlugin):
         """
         """
         repository = context.parent_object
-        abstract   = context.object
+        abstract = context.object
 
         if not self._check_valid_name(repository=repository, abstract=abstract, context=context):
             return context
 
         response = self._storage_controller.get(user_identifier=context.session.root_object.id, resource_name=self._sdk.SDAbstract.rest_name, identifier=abstract.id)
 
-        if response.data and response.data.name !=  abstract.name:
+        if response.data and response.data.name != abstract.name:
             self._old_names[context.request.uuid] = response.data.name
 
         return context
@@ -79,8 +79,7 @@ class SDAbstractLogicPlugin(GALogicPlugin):
     def did_perform_create(self, context):
         """
         """
-        action     = context.request.action
-        abstract   = context.object
+        abstract = context.object
         repository = context.parent_object
         session_username = context.session.root_object.id
 
@@ -88,13 +87,12 @@ class SDAbstractLogicPlugin(GALogicPlugin):
                                                                 specification=abstract,
                                                                 commit_message="Added abstract %s" % abstract.name,
                                                                 session_username=session_username)
-
         return context
 
     def did_perform_update(self, context):
         """
         """
-        abstract   = context.object
+        abstract = context.object
         repository = context.parent_object
         session_username = context.session.root_object.id
 
@@ -105,7 +103,7 @@ class SDAbstractLogicPlugin(GALogicPlugin):
             self._github_operations_controller.rename_specification(repository=repository,
                                                                     specification=abstract,
                                                                     old_name=old_name,
-                                                                    commit_message="Renamed abstract from %s to %s" % (old_name,  abstract.name),
+                                                                    commit_message="Renamed abstract from %s to %s" % (old_name, abstract.name),
                                                                     session_username=session_username)
         else:
             self._github_operations_controller.commit_specification(repository=repository,
@@ -117,7 +115,7 @@ class SDAbstractLogicPlugin(GALogicPlugin):
     def did_perform_delete(self, context):
         """
         """
-        abstract   = context.object
+        abstract = context.object
         repository = context.parent_object
         session_username = context.session.root_object.id
 
@@ -139,5 +137,4 @@ class SDAbstractLogicPlugin(GALogicPlugin):
                                                                 specification=specification,
                                                                 commit_message="Updated extensions for specification %s" % specification.name,
                                                                 session_username=session_username)
-
         return context

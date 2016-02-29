@@ -1,10 +1,7 @@
-import logging
-
 from garuda.core.models import GAError, GAPluginManifest, GARequest, GAPushEvent
 from garuda.core.plugins import GALogicPlugin
 from garuda.core.lib import GASDKLibrary
 
-logger = logging.getLogger('specsdirector.plugins.logic.tokens')
 
 class SDTokenLogicPlugin(GALogicPlugin):
     """
@@ -30,9 +27,8 @@ class SDTokenLogicPlugin(GALogicPlugin):
     def will_perform_delete(self, context):
         """
         """
-        token            = context.object
+        token = context.object
         session_username = context.session.root_object.id
-        events           = []
 
         response = self._storage_controller.get_all(user_identifier=session_username,
                                                     resource_name=self._sdk.SDRepository.rest_name,
@@ -47,9 +43,9 @@ class SDTokenLogicPlugin(GALogicPlugin):
     def did_perform_update(self, context):
         """
         """
-        token            = context.object
+        token = context.object
         session_username = context.session.root_object.id
-        events           = []
+        events = []
 
         response = self._storage_controller.get_all(user_identifier=session_username,
                                                     resource_name=self._sdk.SDRepository.rest_name,
@@ -58,7 +54,7 @@ class SDTokenLogicPlugin(GALogicPlugin):
 
         for repository in response.data:
             repository.status = 'NEEDS_PULL'
-            self._storage_controller.update(user_identifier=session_username, resource=repository);
+            self._storage_controller.update(user_identifier=session_username, resource=repository)
             events.append(GAPushEvent(action=GARequest.ACTION_UPDATE, entity=repository))
 
         if len(events):
