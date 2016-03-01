@@ -1,0 +1,26 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+            "folder_exclude_patterns":
+            [
+                "client/Build",
+                "apidocgen",
+                "codegen",
+                "sdkdocgen",
+                ".cappenvs",
+                "*.XcodeSupport",
+                "*Build",
+                "*Frameworks",
+                "*features",
+                "*ModulesSources",
+                "*Tests",
+                "*webapp",
+                "**.xcodeproj",
+                "*Modules",
+                "Libraries"
+            ],
+		},
+	]
+}

@@ -7,3 +7,4 @@
 *webapp
 /server/libs
 *.gz
+*.sublime-workspace
