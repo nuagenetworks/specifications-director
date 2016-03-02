@@ -21,6 +21,10 @@
                 "*Modules",
                 "Libraries"
             ],
+            "file_exclude_patterns":
+            [
+                "dump.rdb"
+            ]
 		},
 	]
 }
