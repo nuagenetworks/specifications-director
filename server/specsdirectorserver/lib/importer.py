@@ -211,6 +211,7 @@ class SDSpecificationImporter():
             attr.channel = mono_attribute.channel
             attr.creation_only = mono_attribute.creation_only
             attr.default_order = mono_attribute.default_order
+            attr.default_value = mono_attribute.default_value
             attr.deprecated = mono_attribute.deprecated
             attr.description = mono_attribute.description
             attr.exposed = mono_attribute.exposed
