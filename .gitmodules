@@ -4,3 +4,9 @@
 [submodule "client/Libraries/TNKit"]
 	path = client/Libraries/TNKit
 	url = https://gitlab.com/garuda/TNKit.git
+[submodule "client/Libraries/NUKit"]
+	path = client/Libraries/NUKit
+	url = https://github.com/nuagenetworks/nukit.git
+[submodule "client/Libraries/Bambou"]
+	path = client/Libraries/Bambou
+	url = https://github.com/nuagenetworks/objj-bambou.git
