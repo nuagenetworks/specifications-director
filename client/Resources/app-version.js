@@ -1,2 +1,2 @@
-APP_GITVERSION = 'master-b22e1b7'
+APP_GITVERSION = 'master-db02732'
 APP_BUILDVERSION='None'
