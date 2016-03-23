@@ -1,4 +1,0 @@
-export SPEC_USERNAME=amercada
-export SPEC_API_URL=https://specificationsdirector.mv.nuagenetworks.net
-export SPEC_API_VERSION=1.0
-export SPEC_ENTERPRISE=none

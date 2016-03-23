@@ -1,15 +1,6 @@
 [submodule "client/Libraries/Cappuccino"]
 	path = client/Libraries/Cappuccino
 	url = https://github.com/Cappuccino/Cappuccino.git
-[submodule "client/Libraries/NUAristo"]
-	path = client/Libraries/NUAristo
-	url = https://gitlab.com/garuda/NUAristo.git
-[submodule "client/Libraries/NUKit"]
-	path = client/Libraries/NUKit
-	url = https://gitlab.com/garuda/NUKit.git
 [submodule "client/Libraries/TNKit"]
 	path = client/Libraries/TNKit
 	url = https://gitlab.com/garuda/TNKit.git
-[submodule "client/Libraries/RESTCappuccino"]
-	path = client/Libraries/RESTCappuccino
-	url = https://gitlab.com/garuda/RESTCappuccino.git
