@@ -1,6 +1,6 @@
 @import <Foundation/Foundation.j>
 @import <NUKit/NUAbstractDataView.j>
-@import <RESTCappuccino/NURESTJobsController.j>
+@import <Bambou/NURESTJobsController.j>
 
 @global SDRepositoryStatusToImageTransformerName
 

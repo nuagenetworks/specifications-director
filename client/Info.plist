@@ -9,9 +9,6 @@
     <key>CPBundleName</key>
     <string>SpecDirector</string>
 
-    <key>CPDefaultTheme</key>
-    <string>NUAristo</string>
-
     <key>NUAPIURL</key>
     <string>auto</string>
 

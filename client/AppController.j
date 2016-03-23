@@ -30,7 +30,7 @@
 @import <NUKit/NUTransformers.j>
 @import <NUKit/NUUtils.j>
 @import <NUKit/NUWindowControllers.j>
-@import <RESTCappuccino/RESTCappuccino.j>
+@import <Bambou/Bambou.j>
 
 // first import basic things
 @import "Resources/Branding/branding.js"
@@ -41,9 +41,6 @@
 @import "ViewControllers/SDViewControllers.j"
 @import "Transformers/SDTransformers.j"
 @import "Associators/SDAssociators.j"
-
-NURESTUserRoleCSPRoot = @"NURESTUserRoleCSPRoot";
-NURESTUserRoleOrgAdmin = @"NURESTUserRoleOrgAdmin"
 
 SDApplicationShowServerLoginField = NO;
 
@@ -78,6 +75,7 @@ SDApplicationShowServerLoginField = NO;
     [[NUKit kit] setApplicationLogo:CPImageInBundle("Branding/logo-application.png")];
     [[NUKit kit] setCopyright:[self _copyrightString]];
     [[NUKit kit] setAPIPrefix:@"api/"];
+    [[NUKit kit] setRootAPI:[SDAuth defaultUser]];
 
     [[[NUKit kit] loginWindowController] setShowsEnterpriseField:NO];
     [[[NUKit kit] loginWindowController] setShowsServerField:SDApplicationShowServerLoginField];
@@ -85,8 +83,6 @@ SDApplicationShowServerLoginField = NO;
     [[NUKit kit] parseStandardApplicationArguments];
     [[NUKit kit] loadFrameworkDataViews];
     [[NUKit kit] setDelegate:self];
-
-    [[NUKit kit] setRESTUser:[SDAuth defaultUser]];
 
     [[NUKit kit] setToolbarBackgroundColor:NUSkinColorBlack];
     [[NUKit kit] setToolbarForegroundColor:[CPColor colorWithHexString:@"fff"]];
@@ -98,7 +94,7 @@ SDApplicationShowServerLoginField = NO;
                                 altImage:CPImageInBundle(@"toolbar-preferences-pressed.png", 32.0, 32.0)
                                  toolTip:@"Open Preferences"
                               identifier:@"button-toolbar-tokens"
-                       availableToRoles:[NURESTUserRoleCSPRoot]];
+                       availableToRoles:nil];
 
 
     [[NUKit kit] startListenNotification];
@@ -130,4 +126,13 @@ SDApplicationShowServerLoginField = NO;
         return [CPString stringWithFormat:@"Copyright \u00A9 %@ %@ - %@ (%@)", new Date().getFullYear(), copyright, APP_BUILDVERSION, APP_GITVERSION];
 }
 
+@end
+
+@implementation CPTextField (noinvalid)
+- (void)setInvalid:(BOOL)isInvalid reason:(CPString)aReason
+{
+}
+- (void)setRequired:(BOOL)isRequired
+{
+}
 @end

@@ -1,4 +1,4 @@
-@import <RESTCappuccino/NURESTModelController.j>
+@import <Bambou/NURESTModelController.j>
 @import "RESTFetchers/SDRESTFetchers.j"
 @import "Jobs/SDJobs.j"
 

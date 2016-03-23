@@ -4,7 +4,6 @@
 @class SDAttributesFetcher
 @class SDChildAPIsFetcher
 
-@global _pluralize_rest_name
 
 @implementation SDAbstractSpecification : SDRESTObject
 {

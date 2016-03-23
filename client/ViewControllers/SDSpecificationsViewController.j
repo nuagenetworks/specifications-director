@@ -24,6 +24,9 @@
 @class SDAttributesViewController
 @class SDAPIsViewController
 
+@global NURESTObjectPluralize
+
+
 @implementation SDSpecificationsViewController : NUModule
 {
     @outlet SDModelViewController       modelController;
@@ -117,7 +120,7 @@
 
     if ([anObject objectRESTName])
     {
-        [anObject setObjectResourceName:_pluralize_rest_name([anObject objectRESTName])];
+        [anObject setObjectResourceName:NURESTObjectPluralize([anObject objectRESTName])];
         [anObject setEntityName:[[anObject objectRESTName] capitalizedString]];
     }
 }

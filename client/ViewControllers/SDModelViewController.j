@@ -4,6 +4,9 @@
 
 @class SDModelAbstractsViewController
 
+@global NURESTObjectPluralize
+
+
 @implementation SDModelViewController : NUModuleSelfParent
 {
     @outlet CPView                          editionViewDocumentation;
@@ -144,7 +147,7 @@
 
     if ([anObject objectRESTName])
     {
-        [anObject setObjectResourceName:_pluralize_rest_name([anObject objectRESTName])];
+        [anObject setObjectResourceName:NURESTObjectPluralize([anObject objectRESTName])];
         [anObject setEntityName:[[anObject objectRESTName] capitalizedString]];
     }
 }

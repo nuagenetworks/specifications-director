@@ -1,5 +1,5 @@
 @import <Foundation/Foundation.j>
-@import <RESTCappuccino/NURESTFetcher.j>
+@import <Bambou/NURESTFetcher.j>
 
 @class SDAPIInfo
 

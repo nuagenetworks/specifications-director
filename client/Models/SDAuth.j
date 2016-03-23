@@ -1,5 +1,5 @@
 @import <Foundation/Foundation.j>
-@import <RESTCappuccino/NURESTAbstractUser.j>
+@import <Bambou/NURESTAbstractUser.j>
 
 @class SDRepositoriesFetcher
 @class SDTokensFetcher
@@ -24,7 +24,6 @@
 {
     if (self = [super init])
     {
-        _role = @"NURESTUserRoleCSPRoot";
         _repositories = [SDRepositoriesFetcher fetcherWithParentObject:self];
         _tokens = [SDTokensFetcher fetcherWithParentObject:self];
     }
@@ -35,11 +34,6 @@
 - (void)setRole:(CPString)aRole
 {
     _role = @"NURESTUserRoleCSPRoot";
-}
-
-- (CPString)role
-{
-    return @"NURESTUserRoleCSPRoot";
 }
 
 - (void)displayDescription

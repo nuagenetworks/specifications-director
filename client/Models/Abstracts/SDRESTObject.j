@@ -16,10 +16,11 @@
 */
 
 @import <Foundation/Foundation.j>
-@import <NUKit/NUKitObject.j>
 @import <NUKit/NUUtilities.j>
+@import <Bambou/NURESTObject.j>
 
-@implementation SDRESTObject : NUKitObject
+
+@implementation SDRESTObject : NURESTObject
 {
     CPArray _issues   @accessors(property=issues)
 }

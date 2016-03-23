@@ -1,5 +1,5 @@
 @import <Foundation/Foundation.j>
-@import <RESTCappuccino/NURESTJob.j>
+@import <Bambou/NURESTJob.j>
 
 
 @implementation SDCommitJob : NURESTJob
