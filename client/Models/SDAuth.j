@@ -4,6 +4,8 @@
 @class SDRepositoriesFetcher
 @class SDTokensFetcher
 
+@global NUPermissionLevelAdmin
+
 
 @implementation SDAuth : NURESTAbstractUser
 {
@@ -33,7 +35,7 @@
 
 - (void)setRole:(CPString)aRole
 {
-    _role = @"NURESTUserRoleCSPRoot";
+    _role = NUPermissionLevelAdmin;
 }
 
 - (void)displayDescription

@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 import logging
 import simpleldap
-import argparse
 import os
 import specdk.v1_0 as specdk
 
@@ -31,8 +30,9 @@ def auth_function(request, session, root_object_class, storage_controller):
     auth = root_object_class()
 
     if 'NO_AUTHENTICATION' not in os.environ:
-        base_dn = 'uid=%s,cn=users,cn=accounts,dc=us,dc=alcatel-lucent,dc=com' % request.username
-        ldap_connection = simpleldap.Connection('nuageldap1.us.alcatel-lucent.com')
+
+        base_dn = os.environ['LDAP_BASE_DN_TEMPLATE'] % request.username  # 'uid=%s,cn=users,cn=accounts,dc=us,dc=alcatel-lucent,dc=com' % request.username
+        ldap_connection = simpleldap.Connection(os.environ['LDAP_ADDRESS'])  # 'nuageldap1.us.alcatel-lucent.com'
 
         if not ldap_connection.authenticate(base_dn, request.token):
             return None
@@ -52,7 +52,7 @@ def db_init(db, root_object_class):
     db[specdk.SDSpecification.rest_name].create_index([('name', pymongo.TEXT)])
 
 
-def start(mongo_host, mongo_port, mongo_db, redis_host, redis_port, redis_db):
+def start(falcon_port, mongo_host, mongo_port, mongo_db, redis_host, redis_port, redis_db):
     """
     """
     # redis
@@ -61,8 +61,11 @@ def start(mongo_host, mongo_port, mongo_db, redis_host, redis_port, redis_db):
     # mongo
     mongo_uri = 'mongodb://%s:%d' % (mongo_host, mongo_port)
 
-    # channel = GAFalconChannel(ssl_certificate='ssl/server.crt', ssl_key='ssl/server.key')
-    channel = GAFalconChannel()
+    if os.path.exists("/certificates"):
+        channel = GAFalconChannel(port=falcon_port, ssl_certificate='/certificates/server.crt', ssl_key='/certificates/server.key')
+    else:
+        channel = GAFalconChannel(port=falcon_port)
+
     storage_plugin = GAMongoStoragePlugin(db_name=mongo_db, mongo_uri=mongo_uri, db_initialization_function=db_init)
     authentication_plugin = GASimpleAuthenticationPlugin(auth_function=auth_function)
     permissions_plugin = GAOwnerPermissionsPlugin()
@@ -94,49 +97,18 @@ def start(mongo_host, mongo_port, mongo_db, redis_host, redis_port, redis_db):
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(description="Bladerunner")
+    garuda_port = int(os.environ['GARUDA_PORT']) if 'GARUDA_PORT' in os.environ else 1984
+    garuda_mongo_host = os.environ['GARUDA_MONGO_HOST'] if 'GARUDA_MONGO_HOST' in os.environ else '127.0.0.1'
+    garuda_mongo_port = int(os.environ['GARUDA_MONGO_PORT']) if 'GARUDA_MONGO_PORT' in os.environ else 27017
+    garuda_mongo_db = os.environ['GARUDA_MONGO_DB'] if 'GARUDA_MONGO_DB' in os.environ else 'specsdirector'
+    garuda_redis_host = os.environ['GARUDA_REDIS_HOST'] if 'GARUDA_REDIS_HOST' in os.environ else '127.0.0.1'
+    garuda_redis_port = int(os.environ['GARUDA_REDIS_PORT']) if 'GARUDA_REDIS_PORT' in os.environ else 6379
+    garuda_redis_db = int(os.environ['GARUDA_REDIS_DB']) if 'GARUDA_REDIS_DB' in os.environ else 6
 
-    parser.add_argument('--mongo-host',
-                        dest='mongo_host',
-                        help='the hostname of the mongodb',
-                        default='127.0.0.1',
-                        type=str)
-
-    parser.add_argument('--mongo-port',
-                        dest='mongo_port',
-                        help='the port name for mongodb',
-                        default=27017,
-                        type=int)
-
-    parser.add_argument('--mongo-db',
-                        dest='mongo_db',
-                        help='the db name for mongodb',
-                        default='specsdirector',
-                        type=str)
-
-    parser.add_argument('--redis-host',
-                        dest='redis_host',
-                        help='the hostname of the redis',
-                        default='127.0.0.1',
-                        type=str)
-
-    parser.add_argument('--redis-port',
-                        dest='redis_port',
-                        help='the port name for redis',
-                        default=6379,
-                        type=int)
-
-    parser.add_argument('--redis-db',
-                        dest='redis_db',
-                        help='the db number for redis',
-                        default=0,
-                        type=int)
-
-    args = parser.parse_args()
-
-    start(mongo_host=args.mongo_host,
-          mongo_port=args.mongo_port,
-          mongo_db=args.mongo_db,
-          redis_host=args.redis_host,
-          redis_port=args.redis_port,
-          redis_db=args.redis_db)
+    start(falcon_port=garuda_port,
+          mongo_host=garuda_mongo_host,
+          mongo_port=garuda_mongo_port,
+          mongo_db=garuda_mongo_db,
+          redis_host=garuda_redis_host,
+          redis_port=garuda_redis_port,
+          redis_db=garuda_redis_db)

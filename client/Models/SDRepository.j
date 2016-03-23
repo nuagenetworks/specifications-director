@@ -71,8 +71,7 @@ SDRepositoryStatusMERGING = @"MERGING";
         [self exposeLocalKeyPathToREST:@"username"];
 
         _organization = [[SDAuth defaultUser] userName];
-        _url          = @"https://github.mv.usa.alcatel.com/api/v3";
-        _repository   = @"api-specifications";
+        _url          = @"https://api.github.com/";
         _status       = SDRepositoryStatusNEEDS_PULL;
         _branch       = @"master";
         _path         = @"/";

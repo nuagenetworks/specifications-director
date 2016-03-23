@@ -9,26 +9,6 @@ Never touch a json specification again!
 
 ## Installation
 
-### Using Docker
+### Build the Client
 
-> For now, you must have access to the internal Nuage Networks DockerHub for now.
-
-The easiest way to get everything up and running to use the `docker-compose.yml` file provided in the repository.
-
-    mkdir specsdirector
-    cd specsdirector
-    curl [url-of-the-docker-compose.yml] > docker-compose.yml
-    docker-compose up
-
-Once everything is started, you can simply point your browser to:
-
-    http://your-ip-or-docker-machine-ip
-
-The UI will ask you for a API URL, simply enter:
-
-    https://your-ip-or-docker-machine-ip
-
-
-### Manually
-
-Too complex for now my friend :)
+> You need to have Cappuccino installed.

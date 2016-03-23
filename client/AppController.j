@@ -32,19 +32,20 @@
 @import <NUKit/NUWindowControllers.j>
 @import <Bambou/Bambou.j>
 
-// first import basic things
-@import "Resources/Branding/branding.js"
-@import "Resources/app-version.js"
-
 @import "DataViews/SDDataViewsLoader.j"
 @import "Models/SDModels.j"
 @import "ViewControllers/SDViewControllers.j"
 @import "Transformers/SDTransformers.j"
 @import "Associators/SDAssociators.j"
 
-SDApplicationShowServerLoginField = NO;
+SDApplicationShowServerLoginField = YES;
 
 @global open
+@global BRANDING_INFORMATION
+@global SERVER_AUTO_URL
+@global APP_BUILDVERSION
+@global APP_GITVERSION
+
 
 @implementation AppController : CPObject
 {
@@ -61,7 +62,6 @@ SDApplicationShowServerLoginField = NO;
 - (void)applicationDidFinishLaunching:(CPNotification)aNotification
 {
     [CPMenu setMenuBarVisible:NO];
-    //[[CPUserDefaults standardUserDefaults] setObject:@"https://127.0.0.1:2000" forKey:@"NUAPIURL"];
 
     if ([[NUKit kit] valueForApplicationArgument:@"serverfield"])
         SDApplicationShowServerLoginField = YES;
@@ -73,7 +73,8 @@ SDApplicationShowServerLoginField = NO;
     [[NUKit kit] setCompanyLogo:CPImageInBundle("Branding/logo-company.png")];
     [[NUKit kit] setApplicationName:BRANDING_INFORMATION["label-application-name"]];
     [[NUKit kit] setApplicationLogo:CPImageInBundle("Branding/logo-application.png")];
-    [[NUKit kit] setCopyright:[self _copyrightString]];
+    [[NUKit kit] setCopyright:[CPString stringWithFormat:@"Copyright \u00A9 %@ nuage networks - %@ (%@)", new Date().getFullYear(), APP_BUILDVERSION, APP_GITVERSION]];
+    [[NUKit kit] setAutoServerBaseURL:SERVER_AUTO_URL];
     [[NUKit kit] setAPIPrefix:@"api/"];
     [[NUKit kit] setRootAPI:[SDAuth defaultUser]];
 
@@ -110,20 +111,6 @@ SDApplicationShowServerLoginField = NO;
 - (IBAction)openInspector:(id)aSender
 {
     [[NUKit kit] openInspectorForSelectedObject];
-}
-
-
-#pragma mark -
-#pragma mark Copyright
-
-- (CPString)_copyrightString
-{
-    var copyright = BRANDING_INFORMATION["label-company-name"];
-
-    if (!copyright || !copyright.length)
-        return [CPString stringWithFormat:@"Version %@ (%@)", APP_BUILDVERSION, APP_GITVERSION];
-    else
-        return [CPString stringWithFormat:@"Copyright \u00A9 %@ %@ - %@ (%@)", new Date().getFullYear(), copyright, APP_BUILDVERSION, APP_GITVERSION];
 }
 
 @end

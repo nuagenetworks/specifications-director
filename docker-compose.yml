@@ -1,0 +1,29 @@
+version: "2"
+
+services:
+    mongo:
+      container_name: mongo
+      image: mongo
+
+    redis:
+       container_name: redis
+       image: redis
+
+    specsdirector-server:
+      image: monolithe/specsdirector-server
+      environment:
+       - GARUDA_MONGO_HOST=mongo
+       - GARUDA_REDIS_HOST=redis
+       - NO_AUTHENTICATION=1
+      depends_on:
+       - redis
+       - mongo
+      ports:
+       - 1984:1984
+
+    specsdirector-client:
+      image: monolithe/specsdirector-client
+      depends_on:
+          - specsdirector-server
+      ports:
+       - 80:80

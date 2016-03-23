@@ -7,7 +7,7 @@
     <string>MainMenu.cib</string>
 
     <key>CPBundleName</key>
-    <string>SpecDirector</string>
+    <string>SpecificationsDirector</string>
 
     <key>NUAPIURL</key>
     <string>auto</string>

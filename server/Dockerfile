@@ -1,21 +1,18 @@
-FROM garuda:latest
+FROM monolithe/garuda
 
 MAINTAINER Antoine Mercadal <antoine@nuagenetworks.net>
 
 ADD . /app
 
 RUN apt-get update && apt-get install -y --force-yes libsasl2-dev libldap2-dev && \
-    cd /app/libs && \
-    cp nuage.pem /etc/ssl/certs && \
-    ln -s /etc/ssl/certs/nuage.pem /etc/ssl/certs/`cat nuage.pem | openssl x509 -hash -noout`.0 && \
-    pip install specdk*.tar.gz && \
     cd /app && \
     pip install -r requirements.txt && \
-    rm -rf /app/libs && \
+    monogen -f specs -L python && \
+    cd codegen/python && python setup.py sdist && pip install dist/specdk-1.0.tar.gz && cd - && \
+    rm -rf codegen specs&& \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-EXPOSE 2000
+EXPOSE 1984
 WORKDIR /app/specsdirectorserver
-CMD ./server.py --redis-host=redis --mongo-host=mongo
-
+CMD ./server.py
