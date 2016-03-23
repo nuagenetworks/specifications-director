@@ -88,7 +88,7 @@ def start(falcon_port, mongo_host, mongo_port, mongo_db, redis_host, redis_port,
     mongo_uri = 'mongodb://%s:%d' % (mongo_host, mongo_port)
 
     if os.path.exists("/certificates"):
-        channel = GAFalconChannel(port=falcon_port, ssl_certificate='/certi¬ficates/server.pem', ssl_key='/certificates/server.key')
+        channel = GAFalconChannel(port=falcon_port, ssl_certificate='/certificates/server.pem', ssl_key='/certificates/server.key')
     else:
         channel = GAFalconChannel(port=falcon_port)
 
