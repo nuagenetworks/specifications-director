@@ -26,4 +26,4 @@ services:
       depends_on:
           - specsdirector-server
       ports:
-       - 80:80
+       - 443:443
