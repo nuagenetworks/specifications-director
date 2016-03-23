@@ -78,7 +78,7 @@
     [self setSubModules:[itemizedSpecificationsController]];
     [self setCurrentParent:nil];
 
-    [viewSubtitleContainer setBackgroundColor:[CPColor colorWithHexString:@"e21b2d"]];
+    [viewSubtitleContainer setBackgroundColor:[CPColor colorWithHexString:@"6b94ec"]];
     [self _showControlButtons:NO];
 
     [viewError setBackgroundColor:NUSkinColorGreyLight];

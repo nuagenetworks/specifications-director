@@ -12,7 +12,7 @@ rm -rf ./Docker/narwhal
 # ./buildApp -c --cappinstalldir="$CAPP_INSTALL_DIR"
 # export PATH="$CAPP_INSTALL_DIR/bin:$PATH"
 
-# ./buildApp -Ld --cappinstalldir="$CAPP_INSTALL_DIR"
+./buildApp -Ld --cappinstalldir="$CAPP_INSTALL_DIR" --nomanifest
 
 # cp -a ./Build/Deployment/SpecificationsDirector.ready ./Docker/app
 cp -a ./Build/Deployment/SpecificationsDirector.pressed ./Docker/app
