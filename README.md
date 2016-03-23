@@ -11,4 +11,6 @@ Never touch a json specification again!
 
 ### Build the Client
 
-> You need to have Cappuccino installed.
+> You need to have Cappuccino installed for as we have some difficulties to run narwhal/rhino in a container. Help welcome
+
+Make sure you have the provided Cappuccino version (in client/Libraries/installed,
