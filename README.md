@@ -17,7 +17,7 @@ You need Docker and Compose. Then simply run in your terminal:
 
     $ curl http://bit.ly/25npKrI > docker-compose.yml && docker-compose up
 
-> The configuration is basic in that docker compose, and there will be no authentication. Plus it will use pregenerated certificates, that you **must** for any real production scenario. More informations on DockerHub for the [server](https://hub.docker.com/r/monolithe/specsdirector-sever/) and for the [client](https://hub.docker.com/r/monolithe/specsdirector-client/).
+> The configuration is basic in that docker compose, and there will be no authentication. Plus it will use pregenerated certificates, that you **must** for any real production scenario. More informations on DockerHub for the [server](https://hub.docker.com/r/monolithe/specsdirector-server/) and for the [client](https://hub.docker.com/r/monolithe/specsdirector-client/).
 
 ## Accessing the Application
 
@@ -28,6 +28,6 @@ If you are using the default Docker Machine, get the IP by doing:
 
 Then point your browser to `https://192.168.99.100`, and make it connect to the `Server` address in the login window to `https://192.168.99.100:1984` You can enter any login, and any password to access the application. It you use the same login later, your data will be retrieved.
 
-More informations about how to secure everything on [DockerHub](https://hub.docker.com/r/monolithe/specsdirector-sever/).
+More informations about how to secure everything on [DockerHub](https://hub.docker.com/r/monolithe/specsdirector-server/).
 
 Peace!
