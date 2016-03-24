@@ -383,6 +383,13 @@
     [[NURESTJobsController defaultController] postJob:[SDPullJob new] toEntity:repository andCallSelector:@selector(_didPull:) ofObject:self];
 }
 
+- (CPString)gitHubURLString
+{
+    var url = [[_currentSelectedObjects firstObject] url].replace(@"api/v3", @"") + @"/"
+
+    return url.replace(@"https://api.github.com/", @"https://github.com/");
+}
+
 
 #pragma mark -
 #pragma mark Actions
@@ -434,7 +441,7 @@
 - (@action)download:(id)aSender
 {
     var repository = [_currentSelectedObjects firstObject],
-        url = [repository url].replace(@"api/v3", @"") + [repository organization] + @"/" + [repository repository] + @"/zipball/" + [repository branch];
+        url = [self gitHubURLString] + [repository organization] + @"/" + [repository repository] + @"/zipball/" + [repository branch];
 
     window.location.assign(url);
 }
@@ -442,7 +449,7 @@
 - (@action)openInGithub:(id)aSender
 {
     var repository = [_currentSelectedObjects firstObject],
-        url = [repository url].replace(@"api/v3", @"") + [repository organization] + @"/" + [repository repository] + @"/tree/" + [repository branch];
+        url = [self gitHubURLString] + [repository organization] + @"/" + [repository repository] + @"/tree/" + [repository branch];
 
     window.open(url, @"_new");
 }
