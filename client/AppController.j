@@ -73,9 +73,13 @@ SDApplicationShowServerLoginField = NO;
 {
     [CPMenu setMenuBarVisible:NO];
 
+    var config = [[NUKit kit] moduleColorConfiguration];
+    [config setObject:NUSkinColorBlack forKey:@"toolbar-background"];
+    [config setObject:NUSkinColorWhite forKey:@"toolbar-foreground"];
+    [[NUKit kit] setModuleColorConfiguration:config];
+
     if ([[NUKit kit] valueForApplicationArgument:@"serverfield"] || !SERVER_AUTO_URL || SERVER_AUTO_URL == @"")
         SDApplicationShowServerLoginField = YES;
-
 
     [dataViewsLoader load];
 
@@ -95,9 +99,6 @@ SDApplicationShowServerLoginField = NO;
     [[NUKit kit] parseStandardApplicationArguments];
     [[NUKit kit] loadFrameworkDataViews];
     [[NUKit kit] setDelegate:self];
-
-    [[NUKit kit] setToolbarBackgroundColor:NUSkinColorBlack];
-    [[NUKit kit] setToolbarForegroundColor:[CPColor colorWithHexString:@"fff"]];
 
     [[NUKit kit] registerCoreModule:repositoriesController];
 
