@@ -48,7 +48,7 @@
 @import "Transformers/SDTransformers.j"
 @import "Associators/SDAssociators.j"
 
-SDApplicationShowServerLoginField = YES;
+SDApplicationShowServerLoginField = NO;
 
 @global open
 @global BRANDING_INFORMATION
@@ -73,8 +73,9 @@ SDApplicationShowServerLoginField = YES;
 {
     [CPMenu setMenuBarVisible:NO];
 
-    if ([[NUKit kit] valueForApplicationArgument:@"serverfield"])
+    if ([[NUKit kit] valueForApplicationArgument:@"serverfield"] || !SERVER_AUTO_URL || SERVER_AUTO_URL == @"")
         SDApplicationShowServerLoginField = YES;
+
 
     [dataViewsLoader load];
 
