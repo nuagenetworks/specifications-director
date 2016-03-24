@@ -12,9 +12,9 @@ rm -rf ./Docker/narwhal
 # ./buildApp -c --cappinstalldir="$CAPP_INSTALL_DIR"
 # export PATH="$CAPP_INSTALL_DIR/bin:$PATH"
 
-./buildApp -Ld --cappinstalldir="$CAPP_INSTALL_DIR" --nomanifest
+./buildApp -Ld --cappinstalldir="$CAPP_INSTALL_DIR" --setversion="1.0"
 
-# cp -a ./Build/Deployment/SpecificationsDirector.ready ./Docker/app
+# cp -a ./Build/Deployment/SpecificationsDirector.ready ./Docker/app # we should use this, but it crashes.. I'll fix it later
 cp -a ./Build/Deployment/SpecificationsDirector.pressed ./Docker/app
 
 cd Docker
