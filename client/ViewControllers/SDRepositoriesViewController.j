@@ -43,20 +43,19 @@
 {
     @outlet CPButton                    buttonDownload;
     @outlet CPButton                    buttonOpen;
-    @outlet CPButton                    buttonPull;
-    @outlet CPButton                    buttonMerge;
+    @outlet CPButton                    buttonSynchronize;
     @outlet CPTextField                 labelError;
     @outlet CPTextField                 labelPulling;
     @outlet CPView                      viewError;
     @outlet CPView                      viewLoadingContainer;
     @outlet CPView                      viewMissingToken;
-    @outlet CPView                      viewPull;
     @outlet CPView                      viewRepositories;
     @outlet CPView                      viewWorking;
     @outlet NUHoverView                 hoverView;
     @outlet SDTokenAssociator           tokenAssociator;
-
     @outlet SDItemizedSpecifications    itemizedSpecificationsController;
+
+    CPSet _currentlySynchronizing;
 }
 
 #pragma mark -
@@ -81,6 +80,9 @@
 {
     [super viewDidLoad];
 
+    _currentlySynchronizing = [CPSet new];
+
+    [[self view] setBorderBottomColor:[CPColor colorWithHexString:@"a5a5a5"]];
     [self registerDataViewWithName:@"repositoryDataView" forClass:SDRepository];
 
     var size = [hoverView contentSize];
@@ -109,22 +111,22 @@
     [self _showControlButtons:NO];
 
     [viewError setBackgroundColor:NUSkinColorGreyLight];
-    [viewPull setBackgroundColor:NUSkinColorGreyLight];
     [viewWorking setBackgroundColor:NUSkinColorGreyLight];
     [viewMissingToken setBackgroundColor:NUSkinColorGreyLight];
 
-    [buttonMerge setThemeState:CPThemeStateDefault];
+    [buttonSynchronize setThemeState:CPThemeStateDefault];
 
     [tokenAssociator setDisassociationButtonHidden:YES];
 }
 
 - (void)configureContexts
 {
-    var context = [[NUModuleContext alloc] initWithName:@"Repository" identifier:[SDRepository RESTName]];
+    var context = [[NUModuleContext alloc] initWithName:@"GitHub Repository" identifier:[SDRepository RESTName]];
     [context setPopover:popover];
     [context setFetcherKeyPath:@"repositories"];
     [self registerContext:context forClass:SDRepository];
 }
+
 
 #pragma mark -
 #pragma mark NUModule API
@@ -171,7 +173,10 @@
         [self _showControlButtons:YES];
     }
 
-    [self _updateCurrentStateView];
+    if ([[_currentSelectedObjects firstObject] status] == SDRepositoryStatusNEEDS_PULL)
+        [self synchronize:self];
+    else
+        [self _updateCurrentStateView];
 }
 
 - (BOOL)shouldProcessJSONObject:(id)aJSONObject ofType:(CPString)aType eventType:(CPString)anEventType
@@ -182,7 +187,11 @@
 - (void)performPostPushOperation
 {
     [super performPostPushOperation];
-    [self _updateCurrentStateView];
+
+    if ([[_currentSelectedObjects firstObject] status] == SDRepositoryStatusNEEDS_PULL)
+        [self synchronize:self];
+    else
+        [self _updateCurrentStateView];
 }
 
 
@@ -193,7 +202,6 @@
 {
     if (![_currentSelectedObjects count])
     {
-        [self showPullView:NO];
         [self showWorkingView:NO];
         [self showErrorView:NO];
         return;
@@ -210,31 +218,32 @@
     switch ([currentRepository status])
     {
         case SDRepositoryStatusNEEDS_PULL:
+
+            if ([_currentlySynchronizing containsObject:[currentRepository ID]])
+                break;
+
             [self showMissingTokenView:NO];
-            [self showPullView:YES];
             [self showWorkingView:NO];
             [self showErrorView:NO];
+
             break;
 
         case SDRepositoryStatusPULLING:
         case SDRepositoryStatusQUEUED:
         case SDRepositoryStatusMERGING:
             [self showMissingTokenView:NO];
-            [self showPullView:NO];
             [self showWorkingView:YES];
             [self showErrorView:NO];
             break;
 
         case SDRepositoryStatusERROR:
             [self showMissingTokenView:NO];
-            [self showPullView:NO];
             [self showWorkingView:NO];
             [self showErrorView:YES];
             break;
 
         case SDRepositoryStatusREADY:
             [self showMissingTokenView:NO];
-            [self showPullView:NO];
             [self showWorkingView:NO];
             [self showErrorView:NO];
             break;
@@ -245,7 +254,7 @@
 {
     if (!shouldShow)
     {
-        [buttonPull setHidden:YES];
+        [buttonSynchronize setHidden:YES];
         [buttonDownload setHidden:YES];
         [buttonOpen setHidden:YES];
     }
@@ -254,7 +263,7 @@
         var currentRepository = [_currentSelectedObjects firstObject];
 
         [buttonDownload setHidden:[currentRepository status] != SDRepositoryStatusREADY];
-        [buttonPull setHidden:[currentRepository status] != SDRepositoryStatusREADY];
+        [buttonSynchronize setHidden:[currentRepository status] != SDRepositoryStatusREADY];
         [buttonOpen setHidden:[currentRepository status] != SDRepositoryStatusREADY];
     }
 }
@@ -277,10 +286,10 @@
         if ([repo status] == SDRepositoryStatusQUEUED)
             [labelPulling setStringValue:@"Operation Enqueued. Waiting for next available pulling slot..."];
 
+        [self _showControlButtons:NO];
+
         if ([viewWorking superview])
             return;
-
-        [self _showControlButtons:NO];
 
         [viewWorking setFrame:[viewEditObject bounds]];
         [viewEditObject addSubview:viewWorking positioned:CPWindowAbove relativeTo:viewEditObject];
@@ -288,13 +297,13 @@
     }
     else
     {
+        [self _showControlButtons:YES];
+
         if (![viewWorking superview])
             return;
 
         [[NUDataTransferController defaultDataTransferController] hideFetchingViewFromView:viewLoadingContainer];
         [viewWorking removeFromSuperview];
-
-        [self _showControlButtons:YES];
     }
 }
 
@@ -336,67 +345,88 @@
     }
 }
 
-- (void)showPullView:(BOOL)shouldShow
+- (void)_manuallyReloadCurrentSubModule
 {
-    if (shouldShow)
-    {
-        if ([viewPull superview])
-            return;
+    var visibleModule = [[self visibleSubModule] visibleSubModule];
 
-        [viewPull setFrame:[viewEditObject bounds]];
-        [viewEditObject addSubview:viewPull positioned:CPWindowAbove relativeTo:viewEditObject];
+    if ([visibleModule isKindOfClass:NUModuleSelfParent])
+    {
+        [visibleModule willHide];
+        [visibleModule setCurrentParent:nil];
+        [visibleModule setCurrentParent:[_currentSelectedObjects firstObject]];
     }
     else
-    {
-        if (![viewPull superview])
-            return;
+        [visibleModule reload];
+}
 
-        [viewPull removeFromSuperview];
-    }
+- (void)merge
+{
+    var repository = [_currentSelectedObjects firstObject];
+
+    if ([_currentlySynchronizing containsObject:[repository ID]])
+        return;
+
+    [_currentlySynchronizing addObject:[repository ID]];
+    [labelPulling setStringValue:@"Sending a Merge Job..."];
+    [[NURESTJobsController defaultController] postJob:[SDMergeJob new] toEntity:repository andCallSelector:@selector(_didMerge:) ofObject:self];
+}
+
+- (void)pull
+{
+    var repository = [_currentSelectedObjects firstObject];
+
+    if ([_currentlySynchronizing containsObject:[repository ID]])
+        return;
+
+    [_currentlySynchronizing addObject:[repository ID]];
+    [labelPulling setStringValue:@"Sending Pull Job..."];
+    [[NURESTJobsController defaultController] postJob:[SDPullJob new] toEntity:repository andCallSelector:@selector(_didPull:) ofObject:self];
 }
 
 
 #pragma mark -
 #pragma mark Actions
 
-- (@action)pull:(id)aSender
+- (@action)synchronize:(id)aSender
 {
-    [labelPulling setStringValue:@"Sending Pull Job..."];
-    [[NURESTJobsController defaultController] postJob:[SDPullJob new] toEntity:[_currentSelectedObjects firstObject] andCallSelector:@selector(_didPull:) ofObject:self];
-    [self showWorkingView:YES];
-}
+    if ([[_currentSelectedObjects firstObject] pushPermission])
+        [self merge];
+    else
+        [self pull];
 
-- (void)_didPull:(NURESTJob)aJob
-{
-    if ([aJob parentID] != [[_currentSelectedObjects firstObject] ID])
-        return;
-
-    [[[self visibleSubModule] visibleSubModule] reload];
-
-    if ([aJob status] == NURESTJobStatusFAILED)
-        [labelError setStringValue:[aJob result]];
-
-    [self _updateCurrentStateView];
-}
-
-- (@action)merge:(id)aSender
-{
-    [labelPulling setStringValue:@"Sending a Merge Job..."];
-    [[NURESTJobsController defaultController] postJob:[SDMergeJob new] toEntity:[_currentSelectedObjects firstObject] andCallSelector:@selector(_didMerge:) ofObject:self];
     [self showWorkingView:YES];
 }
 
 - (void)_didMerge:(NURESTJob)aJob
 {
-    if ([aJob parentID] != [[_currentSelectedObjects firstObject] ID])
+    var repository = [_currentSelectedObjects firstObject];
+
+    if ([aJob parentID] != [repository ID])
         return;
 
-    [[[self visibleSubModule] visibleSubModule] reload];
+    [_currentlySynchronizing removeObject:[repository ID]];
+
+    [self _manuallyReloadCurrentSubModule];
 
     if ([aJob status] == NURESTJobStatusFAILED)
         [labelError setStringValue:[aJob result]];
     else
-        [self pull:self];
+        [self pull];
+}
+
+- (void)_didPull:(NURESTJob)aJob
+{
+    var repository = [_currentSelectedObjects firstObject];
+
+    if ([aJob parentID] != [repository ID])
+        return;
+
+    [_currentlySynchronizing removeObject:[repository ID]];
+
+    [self _manuallyReloadCurrentSubModule];
+
+    if ([aJob status] == NURESTJobStatusFAILED)
+        [labelError setStringValue:[aJob result]];
 
     [self _updateCurrentStateView];
 }
@@ -417,12 +447,12 @@
     window.open(url, @"_new");
 }
 
-- (@action)closeErrorView:(id)aSender
+- (@action)retry:(id)aSender
 {
     [[_currentSelectedObjects firstObject] setStatus:SDRepositoryStatusNEEDS_PULL];
     [[_currentSelectedObjects firstObject] saveAndCallSelector:nil ofObject:nil];
 
-    [self showPullView:YES];
+    [self synchronize:self];
     [self showErrorView:NO];
 }
 

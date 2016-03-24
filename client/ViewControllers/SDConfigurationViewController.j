@@ -45,7 +45,7 @@
 
 + (CPString)moduleName
 {
-    return @"Preferences";
+    return @"Configuration";
 }
 
 + (CPImage)moduleIcon
@@ -65,7 +65,7 @@
 
     [self setSubModules:[tokensController]];
 
-    [viewTitleContainer setBackgroundColor:NUSkinColorRed];
+    [viewTitleContainer setBackgroundColor:NUSkinColorBlue];
     [viewTitleContainer setBorderBottomColor:nil];
 }
 

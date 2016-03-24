@@ -49,7 +49,7 @@
 
 + (CPString)moduleName
 {
-    return @"APIs";
+    return @"Children APIs";
 }
 
 - (void)viewDidLoad
@@ -108,14 +108,14 @@
 
     if ([_currentParent root])
     {
-        [popover setContentSize:CGSizeMake(320, 313)];
+        [popover setContentSize:CGSizeMake(320, 326)];
         [buttonRelationship setHidden:YES];
         [labelRelationship setHidden:YES];
         [checkBoxAllowsUpdate setHidden:YES];
         [checkBoxAllowsCreate setHidden:NO];
-        [checkBoxAllowsBulkUpdate setHidden:NO];
-        [checkBoxAllowsBulkCreate setHidden:NO];
-        [checkBoxAllowsBulkDelete setHidden:NO];
+        [checkBoxAllowsBulkUpdate setEnabled:YES];
+        [checkBoxAllowsBulkCreate setEnabled:YES];
+        [checkBoxAllowsBulkDelete setEnabled:YES];
 
         [editedObject setAllowsGet:YES];
         [editedObject setAllowsCreate:YES];
@@ -129,14 +129,14 @@
     {
         case SDAPIRelationshipChild:
         case SDAPIRelationshipAlias:
-            [popover setContentSize:CGSizeMake(320, 368)];
+            [popover setContentSize:CGSizeMake(320, 381)];
             [buttonRelationship setHidden:NO];
             [labelRelationship setHidden:NO];
             [checkBoxAllowsUpdate setHidden:YES];
             [checkBoxAllowsCreate setHidden:NO];
-            [checkBoxAllowsBulkUpdate setHidden:NO];
-            [checkBoxAllowsBulkCreate setHidden:NO];
-            [checkBoxAllowsBulkDelete setHidden:NO];
+            [checkBoxAllowsBulkUpdate setEnabled:YES];
+            [checkBoxAllowsBulkCreate setEnabled:YES];
+            [checkBoxAllowsBulkDelete setEnabled:YES];
 
             [editedObject setAllowsGet:YES];
             [editedObject setAllowsCreate:YES];
@@ -145,14 +145,14 @@
             break;
 
         case SDAPIRelationshipMember:
-            [popover setContentSize:CGSizeMake(320, 368)];
+            [popover setContentSize:CGSizeMake(320, 381)];
             [buttonRelationship setHidden:NO];
             [labelRelationship setHidden:NO];
             [checkBoxAllowsUpdate setHidden:NO];
             [checkBoxAllowsCreate setHidden:YES];
-            [checkBoxAllowsBulkUpdate setHidden:YES];
-            [checkBoxAllowsBulkCreate setHidden:YES];
-            [checkBoxAllowsBulkDelete setHidden:YES];
+            [checkBoxAllowsBulkUpdate setEnabled:NO];
+            [checkBoxAllowsBulkCreate setEnabled:NO];
+            [checkBoxAllowsBulkDelete setEnabled:NO];
 
             [editedObject setAllowsGet:YES];
             [editedObject setAllowsCreate:NO];

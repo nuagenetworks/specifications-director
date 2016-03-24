@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15E39d" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDAPIsViewController">
@@ -37,7 +37,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
                         <searchField wantsLayer="YES" verticalHuggingPriority="750" id="14">
-                            <rect key="frame" x="440" y="5" width="158" height="22"/>
+                            <rect key="frame" x="440" y="6" width="158" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="17">
                                 <font key="font" metaFont="system"/>
@@ -48,7 +48,7 @@
                         <textField verticalHuggingPriority="750" id="15">
                             <rect key="frame" x="7" y="7" width="339" height="19"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="APIs" id="16">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Children APIs" id="16">
                                 <font key="font" metaFont="system" size="15"/>
                                 <color key="textColor" red="0.34552848339999997" green="0.34552848339999997" blue="0.34552848339999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -130,29 +130,11 @@
             </connections>
         </viewController>
         <customView id="Ujz-2c-wzs" userLabel="Popover">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="366"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="381"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button toolTip="Save network" verticalHuggingPriority="750" id="yRj-rk-0Of">
-                    <rect key="frame" x="225" y="12" width="81" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <buttonCell key="cell" type="push" title="Create" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="K0q-9E-BBX">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="save"/>
-                    </userDefinedRuntimeAttributes>
-                </button>
-                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="TBf-Nf-P9A">
-                    <rect key="frame" x="0.0" y="58" width="320" height="5"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <font key="titleFont" metaFont="system"/>
-                </box>
                 <textField verticalHuggingPriority="750" id="ySq-gS-dhP">
-                    <rect key="frame" x="18" y="312" width="285" height="34"/>
+                    <rect key="frame" x="18" y="327" width="285" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="New API" id="jAH-tw-abZ">
                         <font key="font" metaFont="system" size="19"/>
@@ -163,27 +145,8 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="title"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" id="akH-bY-rIJ">
-                    <rect key="frame" x="18" y="46" width="284" height="13"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="right" title="Server ERROR" id="G7q-gs-tJX">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_serverError"/>
-                    </userDefinedRuntimeAttributes>
-                </textField>
-                <customView id="iYn-g4-k48" customClass="CPButton">
-                    <rect key="frame" x="207" y="22" width="16" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="button-help"/>
-                    </userDefinedRuntimeAttributes>
-                </customView>
                 <button id="D8k-Cc-F9o" customClass="CPCheckBox">
-                    <rect key="frame" x="23" y="144" width="111" height="18"/>
+                    <rect key="frame" x="23" y="147" width="111" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="check" title="Allow Retrieval" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Id3-FQ-k7m">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -194,7 +157,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button id="j2U-UI-hfS" customClass="CPCheckBox">
-                    <rect key="frame" x="23" y="124" width="110" height="18"/>
+                    <rect key="frame" x="23" y="127" width="110" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="check" title="Allow Creation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XcW-kc-jW0">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -205,7 +168,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <popUpButton verticalHuggingPriority="750" id="jBI-Zd-e51">
-                    <rect key="frame" x="18" y="255" width="286" height="26"/>
+                    <rect key="frame" x="18" y="270" width="286" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="Parent/Child Relationship" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="klS-kB-ciQ" id="son-tz-Ugb">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -238,25 +201,25 @@
                     </connections>
                 </popUpButton>
                 <textField verticalHuggingPriority="750" id="ufN-HQ-hNA">
-                    <rect key="frame" x="18" y="168" width="71" height="17"/>
+                    <rect key="frame" x="18" y="171" width="83" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Operations" id="dbY-wq-5Nu">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="jiu-AU-6AU">
-                    <rect key="frame" x="18" y="287" width="112" height="17"/>
+                    <rect key="frame" x="18" y="302" width="120" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Relationship Type" id="DWd-n9-Llq">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <button id="fr4-pR-yCH" customClass="CPCheckBox">
-                    <rect key="frame" x="23" y="124" width="129" height="18"/>
+                    <rect key="frame" x="23" y="127" width="129" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="check" title="Allow Assignation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="23L-p6-baX">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -267,20 +230,20 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <textField verticalHuggingPriority="750" id="iRt-7L-1kf">
-                    <rect key="frame" x="18" y="234" width="83" height="17"/>
+                    <rect key="frame" x="18" y="242" width="90" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Specification" id="gUr-dQ-Iqy">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <customView id="28A-GV-O2v">
-                    <rect key="frame" x="20" y="195" width="281" height="31"/>
+                    <rect key="frame" x="20" y="203" width="281" height="31"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                 </customView>
                 <textField verticalHuggingPriority="750" id="efD-wP-qoW">
-                    <rect key="frame" x="105" y="228" width="198" height="13"/>
+                    <rect key="frame" x="105" y="236" width="198" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="right" title="Server ERROR" id="b5O-Pd-vJV">
                         <font key="font" metaFont="miniSystem"/>
@@ -292,7 +255,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <button id="Ine-fH-yun" customClass="CPCheckBox">
-                    <rect key="frame" x="23" y="104" width="140" height="18"/>
+                    <rect key="frame" x="23" y="107" width="140" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="check" title="Allow Bulk Creation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Upq-PO-tdv">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -303,7 +266,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button id="B5E-GF-KSd" customClass="CPCheckBox">
-                    <rect key="frame" x="23" y="65" width="138" height="18"/>
+                    <rect key="frame" x="23" y="68" width="138" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="check" title="Allow Bulk Deletion" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Rcq-rV-d1c">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -314,7 +277,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button id="7Lg-3p-GqP" customClass="CPCheckBox">
-                    <rect key="frame" x="23" y="85" width="163" height="18"/>
+                    <rect key="frame" x="23" y="88" width="163" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="check" title="Allow Bulk Modification" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gCH-Gb-ywg">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -324,8 +287,45 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="allowsBulkUpdate"/>
                     </userDefinedRuntimeAttributes>
                 </button>
+                <button toolTip="Save network" verticalHuggingPriority="750" id="yRj-rk-0Of">
+                    <rect key="frame" x="225" y="13" width="81" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="push" title="Create" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="K0q-9E-BBX">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="save"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="TBf-Nf-P9A">
+                    <rect key="frame" x="0.0" y="59" width="320" height="5"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <textField verticalHuggingPriority="750" id="akH-bY-rIJ">
+                    <rect key="frame" x="18" y="47" width="284" height="13"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="right" title="Server ERROR" id="G7q-gs-tJX">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_serverError"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <customView id="iYn-g4-k48" customClass="CPButton">
+                    <rect key="frame" x="207" y="23" width="16" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="button-help"/>
+                    </userDefinedRuntimeAttributes>
+                </customView>
             </subviews>
-            <point key="canvasLocation" x="138" y="231"/>
+            <point key="canvasLocation" x="138" y="238.5"/>
         </customView>
         <viewController id="2XV-vL-Cl3" customClass="SDSpecificationAssociator">
             <connections>
@@ -343,7 +343,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="7A6-Yu-Y0l">
                             <rect key="frame" x="18" y="268" width="404" height="23"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="APIs" id="h5x-dT-hcM">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Chilren APIs" id="h5x-dT-hcM">
                                 <font key="font" metaFont="system" size="19"/>
                                 <color key="textColor" red="0.34509804840000002" green="0.63529413940000001" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -357,7 +357,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="D36-MU-cnb">
                                 <font key="font" metaFont="system"/>
-                                <string key="title">An API defines how to access the object represented by a particular Specification File from the overall model hierarchy.
+                                <string key="title">An Children API defines how to access the object represented by a particular Specification File from the overall model hierarchy.
 
 It also defines what kind of actions can be done on the objects.
 

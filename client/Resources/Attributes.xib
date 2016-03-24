@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15E33e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDAttributesViewController">
@@ -40,7 +40,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <subviews>
                                         <searchField wantsLayer="YES" verticalHuggingPriority="750" id="14">
-                                            <rect key="frame" x="265" y="5" width="158" height="22"/>
+                                            <rect key="frame" x="265" y="6" width="158" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="17">
                                                 <font key="font" metaFont="system"/>
@@ -208,7 +208,7 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
             <point key="canvasLocation" x="639" y="160"/>
         </customView>
         <customView id="abu-G6-tzC" userLabel="Popover">
-            <rect key="frame" x="0.0" y="0.0" width="321" height="283"/>
+            <rect key="frame" x="0.0" y="0.0" width="321" height="289"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button toolTip="Save network" verticalHuggingPriority="750" id="Zge-yn-aWN">
@@ -230,7 +230,7 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <textField verticalHuggingPriority="750" id="U5J-f5-ZrX">
-                    <rect key="frame" x="18" y="229" width="285" height="34"/>
+                    <rect key="frame" x="18" y="235" width="285" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="New Attribute" id="CP5-pH-h35">
                         <font key="font" metaFont="system" size="19"/>
@@ -242,7 +242,7 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField toolTip="Name of the network" verticalHuggingPriority="750" id="Y2n-Xx-4fG">
-                    <rect key="frame" x="20" y="177" width="281" height="22"/>
+                    <rect key="frame" x="20" y="183" width="281" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="myAttribute" drawsBackground="YES" id="Fc3-Sc-SZw">
                         <font key="font" metaFont="system"/>
@@ -255,16 +255,16 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="mi2-f8-oXw">
-                    <rect key="frame" x="18" y="207" width="41" height="17"/>
+                    <rect key="frame" x="18" y="213" width="42" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Name" id="tE9-th-dPB">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="lUY-6d-efD">
-                    <rect key="frame" x="62" y="202" width="241" height="13"/>
+                    <rect key="frame" x="62" y="208" width="241" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="32a-SW-j3S">
                         <font key="font" metaFont="miniSystem"/>
@@ -295,7 +295,7 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                     </userDefinedRuntimeAttributes>
                 </customView>
                 <textField toolTip="Name of the network" verticalHuggingPriority="750" id="TVQ-b0-DV4">
-                    <rect key="frame" x="20" y="72" width="281" height="72"/>
+                    <rect key="frame" x="20" y="73" width="281" height="72"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="This is a nicely done attribute." drawsBackground="YES" id="Avy-8m-8vU">
                         <font key="font" metaFont="system"/>
@@ -307,16 +307,16 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="we2-Vv-Spu">
-                    <rect key="frame" x="18" y="152" width="74" height="17"/>
+                    <rect key="frame" x="18" y="153" width="85" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Description" id="8Ej-Iz-ohO">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="ezN-Lk-XJB">
-                    <rect key="frame" x="96" y="147" width="207" height="13"/>
+                    <rect key="frame" x="96" y="148" width="207" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="JFF-H8-RES">
                         <font key="font" metaFont="miniSystem"/>
@@ -328,7 +328,7 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                     </userDefinedRuntimeAttributes>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="489.5" y="125.5"/>
+            <point key="canvasLocation" x="489.5" y="128.5"/>
         </customView>
         <viewController id="eYl-FL-099" customClass="NUEditorsViewController">
             <connections>

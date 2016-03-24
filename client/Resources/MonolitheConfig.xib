@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15C27e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDMonolitheConfigsViewController">
@@ -28,7 +28,6 @@
                         <customView id="nFv-3U-Y02" customClass="NSScrollView">
                             <rect key="frame" x="0.0" y="42" width="500" height="459"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
-                            <animations/>
                         </customView>
                         <customView id="5DG-0e-hCH">
                             <rect key="frame" x="0.0" y="0.0" width="500" height="41"/>
@@ -37,7 +36,6 @@
                                 <customView id="WYe-gH-56P" customClass="NSButton">
                                     <rect key="frame" x="393" y="12" width="16" height="16"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                    <animations/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="button-help"/>
                                     </userDefinedRuntimeAttributes>
@@ -45,7 +43,6 @@
                                 <button toolTip="Save changes" verticalHuggingPriority="750" id="j9h-om-vAO">
                                     <rect key="frame" x="411" y="3" width="85" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                    <animations/>
                                     <buttonCell key="cell" type="push" title="Update" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pGU-wN-c5W">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -57,7 +54,6 @@
                                 <textField verticalHuggingPriority="750" id="cJS-3V-OWd">
                                     <rect key="frame" x="18" y="14" width="369" height="13"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                    <animations/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="Sqc-4Q-xbK">
                                         <font key="font" metaFont="miniSystem"/>
                                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
@@ -68,12 +64,10 @@
                                     </userDefinedRuntimeAttributes>
                                 </textField>
                             </subviews>
-                            <animations/>
                         </customView>
                         <textField verticalHuggingPriority="750" id="Olp-fB-8dE">
                             <rect key="frame" x="18" y="514" width="464" height="20"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <animations/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Monolithe Configuration" id="cXp-oP-vEW">
                                 <font key="font" metaFont="system" size="15"/>
                                 <color key="textColor" red="0.41960787770000002" green="0.58039218189999997" blue="0.92549026010000002" alpha="1" colorSpace="deviceRGB"/>
@@ -81,20 +75,17 @@
                             </textFieldCell>
                         </textField>
                     </subviews>
-                    <animations/>
                 </customView>
             </subviews>
-            <animations/>
             <point key="canvasLocation" x="365" y="410.5"/>
         </customView>
         <customView id="ePO-8D-WzU">
-            <rect key="frame" x="0.0" y="0.0" width="399" height="1840"/>
+            <rect key="frame" x="0.0" y="0.0" width="399" height="1412"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="Iqj-0b-dml">
-                    <rect key="frame" x="18" y="1813" width="363" height="17"/>
+                    <rect key="frame" x="18" y="1385" width="363" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Product Information" id="G3q-lk-iDv">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -102,9 +93,8 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="34">
-                    <rect key="frame" x="18" y="1788" width="91" height="17"/>
+                    <rect key="frame" x="18" y="1360" width="91" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Product Name" id="35">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -112,9 +102,8 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="227">
-                    <rect key="frame" x="113" y="1783" width="268" height="13"/>
+                    <rect key="frame" x="113" y="1355" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="228">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
@@ -125,9 +114,8 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="5">
-                    <rect key="frame" x="20" y="1758" width="359" height="22"/>
+                    <rect key="frame" x="20" y="1330" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="My Product" drawsBackground="YES" id="6">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -142,9 +130,8 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="U13-sM-HdF">
-                    <rect key="frame" x="18" y="1708" width="116" height="17"/>
+                    <rect key="frame" x="18" y="1280" width="116" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Product Accronym" id="K8r-QR-n9h">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -152,9 +139,8 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="p5X-7R-2W7">
-                    <rect key="frame" x="132" y="1703" width="249" height="13"/>
+                    <rect key="frame" x="132" y="1275" width="249" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="5jD-j4-UyZ">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
@@ -165,9 +151,8 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="4Us-j2-HI0">
-                    <rect key="frame" x="20" y="1678" width="359" height="22"/>
+                    <rect key="frame" x="20" y="1250" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="PRD" drawsBackground="YES" id="US4-Uo-H21">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -182,9 +167,8 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="e7F-Bv-PAU">
-                    <rect key="frame" x="18" y="1622" width="64" height="17"/>
+                    <rect key="frame" x="18" y="1194" width="64" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Copyright" id="QaL-bH-oO0">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -192,9 +176,8 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="ztL-Rg-ael">
-                    <rect key="frame" x="86" y="1617" width="295" height="13"/>
+                    <rect key="frame" x="86" y="1189" width="295" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="szS-X6-1dA">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
@@ -205,9 +188,8 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="e5k-hS-Q2t">
-                    <rect key="frame" x="20" y="1592" width="359" height="22"/>
+                    <rect key="frame" x="20" y="1164" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Copyright (c) 2042 Monolithe Corp" drawsBackground="YES" id="hSs-Gk-Vbp">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -222,9 +204,8 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="MXc-bd-ERS">
-                    <rect key="frame" x="18" y="1540" width="363" height="17"/>
+                    <rect key="frame" x="18" y="1112" width="363" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="SDK Information" id="kdY-Ba-A1R">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -232,9 +213,8 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="6d0-Hc-Rug">
-                    <rect key="frame" x="18" y="1515" width="40" height="17"/>
+                    <rect key="frame" x="18" y="1087" width="40" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Name" id="VV7-r8-XM1">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -242,29 +222,27 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="HcH-kI-CBE">
-                    <rect key="frame" x="113" y="1510" width="268" height="13"/>
+                    <rect key="frame" x="113" y="1082" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="dOg-dj-pbq">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKName"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_name"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="pqq-zF-YWX">
-                    <rect key="frame" x="20" y="1485" width="359" height="22"/>
+                    <rect key="frame" x="20" y="1057" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="prddk" drawsBackground="YES" id="Zbv-HM-yqt">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKName"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="name"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -272,9 +250,8 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="jhT-w0-E9f">
-                    <rect key="frame" x="18" y="1443" width="74" height="17"/>
+                    <rect key="frame" x="18" y="1015" width="74" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Description" id="B02-Dp-eS7">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -282,29 +259,27 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="Qzf-1h-nny">
-                    <rect key="frame" x="132" y="1438" width="249" height="13"/>
+                    <rect key="frame" x="132" y="1010" width="249" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="AH1-jM-HEh">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKDescription"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_description"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="7Em-v4-cLm">
-                    <rect key="frame" x="20" y="1413" width="359" height="22"/>
+                    <rect key="frame" x="20" y="985" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="This SDK is very nice" drawsBackground="YES" id="Umq-GY-HBq">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKDescription"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="description"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -312,9 +287,8 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="KM9-Qm-mUE">
-                    <rect key="frame" x="18" y="1371" width="50" height="17"/>
+                    <rect key="frame" x="18" y="943" width="50" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version" id="fa4-Af-2rn">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -322,29 +296,27 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="IVW-lD-4ld">
-                    <rect key="frame" x="113" y="1366" width="268" height="13"/>
+                    <rect key="frame" x="113" y="938" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="VJs-LY-rFQ">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKVersion"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_version"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="Pyy-37-TaC">
-                    <rect key="frame" x="20" y="1341" width="359" height="22"/>
+                    <rect key="frame" x="20" y="913" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="1.0" drawsBackground="YES" id="uag-ME-Cxf">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKVersion"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="version"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -352,9 +324,8 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="N0o-Gu-dlB">
-                    <rect key="frame" x="18" y="1299" width="107" height="17"/>
+                    <rect key="frame" x="18" y="871" width="107" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Revision Number" id="Uhm-BI-hZg">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -362,29 +333,27 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="P6s-yS-Beo">
-                    <rect key="frame" x="155" y="1294" width="226" height="13"/>
+                    <rect key="frame" x="155" y="866" width="226" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="cvO-tD-mbO">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKRevisionNumber"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_revisionNumber"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="8h9-iR-F60">
-                    <rect key="frame" x="20" y="1269" width="359" height="22"/>
+                    <rect key="frame" x="20" y="841" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="1" drawsBackground="YES" id="Wqc-PU-22h">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKRevisionNumber"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="revisionNumber"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -392,9 +361,8 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="pHm-vJ-Ne1">
-                    <rect key="frame" x="18" y="1127" width="45" height="17"/>
+                    <rect key="frame" x="18" y="699" width="45" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Author" id="0Ei-zK-ume">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -402,29 +370,27 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="VEk-Zd-qw7">
-                    <rect key="frame" x="113" y="1122" width="268" height="13"/>
+                    <rect key="frame" x="113" y="694" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="h1p-2l-Ljs">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKAuthor"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_author"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="nK0-jn-Ax0">
-                    <rect key="frame" x="20" y="1097" width="359" height="22"/>
+                    <rect key="frame" x="20" y="669" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="primalmotion" drawsBackground="YES" id="iwe-lb-pPv">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKAuthor"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="author"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -432,9 +398,8 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="7Fx-Sy-igc">
-                    <rect key="frame" x="18" y="1055" width="81" height="17"/>
+                    <rect key="frame" x="18" y="627" width="81" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Author Email" id="s1j-UV-N83">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -442,29 +407,27 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="ID9-0A-2Wm">
-                    <rect key="frame" x="113" y="1050" width="268" height="13"/>
+                    <rect key="frame" x="113" y="622" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="h0c-nx-fIE">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKEmail"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_email"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="Cet-Rz-1QK">
-                    <rect key="frame" x="20" y="1025" width="359" height="22"/>
+                    <rect key="frame" x="20" y="597" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="primalmotion@monolithe.io" drawsBackground="YES" id="FVL-cu-Xuj">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKEmail"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="email"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="NO"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -472,9 +435,8 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="gc9-H3-NTe">
-                    <rect key="frame" x="18" y="983" width="76" height="17"/>
+                    <rect key="frame" x="18" y="555" width="76" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Project URL" id="7o0-mV-6je">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -482,29 +444,27 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="G49-2S-u8A">
-                    <rect key="frame" x="113" y="978" width="268" height="13"/>
+                    <rect key="frame" x="113" y="550" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="Tpq-Z1-Tql">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKURL"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_URL"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="bw3-DD-QpQ">
-                    <rect key="frame" x="20" y="953" width="359" height="22"/>
+                    <rect key="frame" x="20" y="525" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="monolithe.io" drawsBackground="YES" id="CIH-ML-3JK">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKURL"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="URL"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="NO"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -512,9 +472,8 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="owX-Yi-Yjo">
-                    <rect key="frame" x="18" y="911" width="63" height="17"/>
+                    <rect key="frame" x="18" y="483" width="63" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CLI Name" id="zRV-lE-Ufc">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -522,29 +481,27 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="aRb-Yw-FJp">
-                    <rect key="frame" x="113" y="906" width="268" height="13"/>
+                    <rect key="frame" x="113" y="478" width="268" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="zYq-NW-jDE">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKCLIName"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_CLIName"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="peZ-av-Icw">
-                    <rect key="frame" x="20" y="881" width="359" height="22"/>
+                    <rect key="frame" x="20" y="453" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="prdcli" drawsBackground="YES" id="fIe-pP-EX3">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKCLIName"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="CLIName"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -552,9 +509,8 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="Pd1-QJ-ZLa">
-                    <rect key="frame" x="18" y="825" width="161" height="17"/>
+                    <rect key="frame" x="18" y="397" width="161" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Required Bambou Version" id="5F8-hs-pV2">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -562,29 +518,27 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="rpO-Dh-WTy">
-                    <rect key="frame" x="183" y="820" width="198" height="13"/>
+                    <rect key="frame" x="183" y="392" width="198" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="VIv-FE-eNa">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKBambouVersion"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_bambouVersion"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="iH2-o9-GfH">
-                    <rect key="frame" x="20" y="795" width="359" height="22"/>
+                    <rect key="frame" x="20" y="367" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="2.0.0" drawsBackground="YES" id="nWT-tg-7Uw">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKBambouVersion"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="bambouVersion"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -592,9 +546,8 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="6O0-hN-W2k">
-                    <rect key="frame" x="18" y="739" width="127" height="17"/>
+                    <rect key="frame" x="18" y="311" width="127" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="License Short Name" id="gHH-vc-yql">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -602,29 +555,27 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="Kms-ms-RSC">
-                    <rect key="frame" x="155" y="734" width="226" height="13"/>
+                    <rect key="frame" x="155" y="306" width="226" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="NLF-bF-NxF">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKLicenseName"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_licenseName"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="eCe-lR-VBf">
-                    <rect key="frame" x="20" y="709" width="359" height="22"/>
+                    <rect key="frame" x="20" y="281" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="LGPL" drawsBackground="YES" id="8uW-MU-do3">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKLicenseName"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="licenseName"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -632,9 +583,8 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="EHh-sV-gDe">
-                    <rect key="frame" x="18" y="653" width="78" height="17"/>
+                    <rect key="frame" x="18" y="225" width="78" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Output Path" id="Sbm-6L-fVW">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -642,29 +592,27 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="dyW-jy-ckT">
-                    <rect key="frame" x="155" y="648" width="226" height="13"/>
+                    <rect key="frame" x="155" y="220" width="226" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="7Nq-cO-caB">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKOutput"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_output"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="1Oj-ug-UHi">
-                    <rect key="frame" x="20" y="623" width="359" height="22"/>
+                    <rect key="frame" x="20" y="195" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="./codegen" drawsBackground="YES" id="amZ-5h-bgw">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKOutput"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="output"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -672,9 +620,8 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="9Yo-Qt-Xmb">
-                    <rect key="frame" x="18" y="1227" width="76" height="17"/>
+                    <rect key="frame" x="18" y="799" width="76" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Class Prefix" id="c0s-uT-dLV">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -682,29 +629,27 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="gU1-Sg-GPN">
-                    <rect key="frame" x="120" y="1222" width="261" height="13"/>
+                    <rect key="frame" x="120" y="794" width="261" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="eoI-ep-viz">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKClassPrefix"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_classPrefix"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="7L0-d3-jIU">
-                    <rect key="frame" x="20" y="1197" width="359" height="22"/>
+                    <rect key="frame" x="20" y="769" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="GA" drawsBackground="YES" id="s12-K7-bne">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKClassPrefix"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="classPrefix"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
@@ -712,9 +657,8 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="cel-Jy-Bo1">
-                    <rect key="frame" x="18" y="581" width="107" height="17"/>
+                    <rect key="frame" x="18" y="153" width="107" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="User Vanilla Path" id="baV-Gx-lFr">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -722,259 +666,36 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="FbJ-t7-YCA">
-                    <rect key="frame" x="155" y="576" width="226" height="13"/>
+                    <rect key="frame" x="155" y="148" width="226" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="vuw-vs-3IS">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKUserVanilla"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_userVanilla"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="gck-PO-3jT">
-                    <rect key="frame" x="20" y="551" width="359" height="22"/>
+                    <rect key="frame" x="20" y="123" width="359" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="./vanilla/sdk" drawsBackground="YES" id="2nj-GR-Eqj">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKUserVanilla"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="userVanilla"/>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="NO"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="nextKeyView" destination="Afw-Nb-PUN" id="cuQ-qV-ukb"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" id="xqr-d6-cDN">
-                    <rect key="frame" x="18" y="485" width="363" height="17"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="API Documentation Information" id="NGZ-qc-scl">
-                        <font key="font" metaFont="systemBold"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" id="YdC-5L-af6">
-                    <rect key="frame" x="18" y="460" width="78" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Output Path" id="W5E-Tl-4vb">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" id="WMf-OG-ajI">
-                    <rect key="frame" x="113" y="455" width="268" height="13"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="mdr-hB-7u8">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_APIDocOutput"/>
-                    </userDefinedRuntimeAttributes>
-                </textField>
-                <textField verticalHuggingPriority="750" id="Afw-Nb-PUN">
-                    <rect key="frame" x="20" y="430" width="359" height="22"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="./apidocgen" drawsBackground="YES" id="Kii-DT-Qgt">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="APIDocOutput"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <outlet property="nextKeyView" destination="uk9-oP-ZIn" id="WMn-76-CL3"/>
-                    </connections>
-                </textField>
-                <textField verticalHuggingPriority="750" id="3Py-ar-UbK">
-                    <rect key="frame" x="18" y="374" width="75" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vanilla Path" id="urL-T7-GyD">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" id="Kzb-AG-qTE">
-                    <rect key="frame" x="113" y="369" width="268" height="13"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="Uhr-d1-2Ve">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_APIDocUserVanilla"/>
-                    </userDefinedRuntimeAttributes>
-                </textField>
-                <textField verticalHuggingPriority="750" id="uk9-oP-ZIn">
-                    <rect key="frame" x="20" y="344" width="359" height="22"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="./vanilla/apidoc" drawsBackground="YES" id="CTG-BR-7Dd">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="APIDocUserVanilla"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="NO"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <outlet property="nextKeyView" destination="HMu-X3-Cpr" id="JGz-Jn-3LJ"/>
-                    </connections>
-                </textField>
-                <textField verticalHuggingPriority="750" id="RJy-nu-DNq">
-                    <rect key="frame" x="18" y="278" width="363" height="17"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="SDK Documentation Information" id="pSP-Kj-eeQ">
-                        <font key="font" metaFont="systemBold"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" id="DTG-aI-fHu">
-                    <rect key="frame" x="18" y="253" width="78" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Output Path" id="MoL-ph-fBR">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" id="dGB-OM-RyI">
-                    <rect key="frame" x="113" y="248" width="268" height="13"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="dcj-Gj-TZ7">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKDocOutput"/>
-                    </userDefinedRuntimeAttributes>
-                </textField>
-                <textField verticalHuggingPriority="750" id="HMu-X3-Cpr">
-                    <rect key="frame" x="20" y="223" width="359" height="22"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="./sdkdocgen" drawsBackground="YES" id="yvX-C9-QqU">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKDocOutput"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <outlet property="nextKeyView" destination="jcQ-Nb-eJx" id="cie-mn-gtq"/>
-                    </connections>
-                </textField>
-                <textField verticalHuggingPriority="750" id="2Y4-2x-5Jy">
-                    <rect key="frame" x="18" y="167" width="75" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vanilla Path" id="lHq-UO-x9E">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" id="dfa-yy-R7q">
-                    <rect key="frame" x="113" y="162" width="268" height="13"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="9aI-o0-zNJ">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKDocUserVanilla"/>
-                    </userDefinedRuntimeAttributes>
-                </textField>
-                <textField verticalHuggingPriority="750" id="jcQ-Nb-eJx">
-                    <rect key="frame" x="20" y="137" width="359" height="22"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="./vanilla/sdkdoc" drawsBackground="YES" id="7Po-TX-HRn">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKDocUserVanilla"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="NO"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <outlet property="nextKeyView" destination="37Q-fj-wtF" id="esh-vr-pk6"/>
-                    </connections>
-                </textField>
-                <textField verticalHuggingPriority="750" id="IfU-Sa-ctB">
-                    <rect key="frame" x="18" y="81" width="69" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Temp Path" id="nHk-Vh-0BY">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" id="ia5-Cg-hJk">
-                    <rect key="frame" x="113" y="76" width="268" height="13"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="jJY-WK-TtK">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_SDKDocTMPPath"/>
-                    </userDefinedRuntimeAttributes>
-                </textField>
-                <textField verticalHuggingPriority="750" id="37Q-fj-wtF">
-                    <rect key="frame" x="20" y="51" width="359" height="22"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="/tmp" drawsBackground="YES" id="CkM-wC-Pfk">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="SDKDocTMPPath"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="NO"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <outlet property="nextKeyView" destination="5" id="vrb-WA-WdU"/>
-                    </connections>
-                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="QvU-m8-lId">
-                    <rect key="frame" x="18" y="1733" width="363" height="22"/>
+                    <rect key="frame" x="18" y="1305" width="363" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The name of your product. It will be used in various places" id="Obi-7e-3fo">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
@@ -982,9 +703,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="OfU-Q0-qVF">
-                    <rect key="frame" x="18" y="1647" width="363" height="28"/>
+                    <rect key="frame" x="18" y="1219" width="363" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The accronym of your product. This will be used to generate certain objects of the SDK, like the session object class name." id="ujK-Vw-eFC">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
@@ -992,9 +712,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="1OY-KO-tzX">
-                    <rect key="frame" x="18" y="1575" width="363" height="14"/>
+                    <rect key="frame" x="18" y="1147" width="363" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="This copyright will be used in the setup.py file of your SDK." id="Hym-26-0gs">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
@@ -1002,9 +721,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="UKP-9n-ML3">
-                    <rect key="frame" x="18" y="1468" width="363" height="14"/>
+                    <rect key="frame" x="18" y="1040" width="363" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The name of your SDK. For instance VSDK" id="LWM-K6-rIN">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
@@ -1012,9 +730,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="9dc-aJ-dKM">
-                    <rect key="frame" x="18" y="1396" width="363" height="14"/>
+                    <rect key="frame" x="18" y="968" width="363" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The description of your SDK. Will be used in setup.py." id="bhP-aw-4ki">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
@@ -1022,9 +739,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="W3C-FB-Mu0">
-                    <rect key="frame" x="18" y="1324" width="363" height="14"/>
+                    <rect key="frame" x="18" y="896" width="363" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The version of your SDK. It should follow the python convention." id="rMT-FE-Voq">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
@@ -1032,9 +748,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="PFp-dO-KgS">
-                    <rect key="frame" x="18" y="1252" width="363" height="14"/>
+                    <rect key="frame" x="18" y="824" width="363" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Not used for now. You should just put 1." id="U9T-dK-GdM">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
@@ -1042,9 +757,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="l94-j9-U3t">
-                    <rect key="frame" x="18" y="1152" width="363" height="42"/>
+                    <rect key="frame" x="18" y="724" width="363" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" id="f8T-D6-uAH">
                         <font key="font" metaFont="smallSystem"/>
                         <string key="title">Will be used to prefix all the classes of your SDK. This is a good practice in order to know right away from where your classes are coming from in your code.</string>
@@ -1053,9 +767,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="1kL-Y6-uxc">
-                    <rect key="frame" x="18" y="1080" width="363" height="14"/>
+                    <rect key="frame" x="18" y="652" width="363" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The author of your SDK. Will be used in the setup.py." id="Kjm-5g-9la">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
@@ -1063,9 +776,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="GUm-dY-Rcp">
-                    <rect key="frame" x="18" y="1008" width="363" height="14"/>
+                    <rect key="frame" x="18" y="580" width="363" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The email of the author of your SDK. Will be used in the setup.py." id="seE-ps-pUB">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
@@ -1073,9 +785,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="83D-m2-Nx7">
-                    <rect key="frame" x="18" y="936" width="363" height="14"/>
+                    <rect key="frame" x="18" y="508" width="363" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The URL of your product. Will be used in the setup.py." id="UeE-78-VGe">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
@@ -1083,9 +794,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="huQ-ig-u7t">
-                    <rect key="frame" x="18" y="850" width="363" height="28"/>
+                    <rect key="frame" x="18" y="422" width="363" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The command line interface name that will be generated alongside your SDK." id="gcX-4b-AM0">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
@@ -1093,9 +803,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="Bu3-c5-JSv">
-                    <rect key="frame" x="18" y="764" width="363" height="28"/>
+                    <rect key="frame" x="18" y="336" width="363" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" id="qLV-N8-gOC">
                         <font key="font" metaFont="smallSystem"/>
                         <string key="title">The required Bambou version or your SDK. Will be used in setup.py. Please note that this version number will be enforced strictly.</string>
@@ -1104,9 +813,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="WAa-hd-Vza">
-                    <rect key="frame" x="18" y="678" width="363" height="28"/>
+                    <rect key="frame" x="18" y="250" width="363" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The short name of the license of your SDK. Will be used in the setup.py." id="HKS-0s-Er0">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
@@ -1114,9 +822,8 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="nui-SM-xY0">
-                    <rect key="frame" x="18" y="606" width="363" height="14"/>
+                    <rect key="frame" x="18" y="178" width="363" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The path of the generated SDK when running monogen-sdk." id="1gE-nw-PC3">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
@@ -1124,70 +831,59 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="LGu-6M-Muf">
-                    <rect key="frame" x="18" y="520" width="363" height="28"/>
+                    <rect key="frame" x="18" y="92" width="363" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The path of the user vanilla files for your SDK. You can leave this field blank if you don't use any special files." id="r0W-ua-1Aj">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField verticalHuggingPriority="750" id="YdC-5L-af6">
+                    <rect key="frame" x="18" y="67" width="129" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="API Doc Output Path" id="W5E-Tl-4vb">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" id="WMf-OG-ajI">
+                    <rect key="frame" x="151" y="62" width="230" height="13"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="mdr-hB-7u8">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_docOutput"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField verticalHuggingPriority="750" id="Afw-Nb-PUN">
+                    <rect key="frame" x="20" y="37" width="359" height="22"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="./apidocgen" drawsBackground="YES" id="Kii-DT-Qgt">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="docOutput"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="tSZ-DN-tuS">
-                    <rect key="frame" x="18" y="399" width="363" height="28"/>
+                    <rect key="frame" x="18" y="20" width="363" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The path of the generated API Documentation when running monogen-apidoc." id="ius-rs-WNd">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="FWC-pF-itA">
-                    <rect key="frame" x="18" y="313" width="363" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" id="PoL-UY-4OW">
-                        <font key="font" metaFont="smallSystem"/>
-                        <string key="title">The path of the user vanilla files for your API Documentation. You can leave this field blank if you don't use any special files.</string>
-                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="l6x-xZ-Mlk">
-                    <rect key="frame" x="18" y="192" width="363" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The path of the generated SDK Documentation when running monogen-sdkdoc." id="Sdz-We-gxF">
-                        <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="Zcz-e9-btv">
-                    <rect key="frame" x="18" y="106" width="363" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" id="8uz-bG-fG2">
-                        <font key="font" metaFont="smallSystem"/>
-                        <string key="title">The path of the user vanilla files for your SDK Documentation. You can leave this field blank if you don't use any special files.</string>
-                        <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="Rhd-Zh-UZo">
-                    <rect key="frame" x="18" y="20" width="363" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <animations/>
-                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Work folder for intermediate files used for the construction of the SDK Documentation. Most of the time, /tmp is good enough." id="mkh-Sn-iUO">
+                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="The path of the generated API Documentation." id="ius-rs-WNd">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" red="0.4156863093" green="0.4156863093" blue="0.4156863093" alpha="1" colorSpace="deviceRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
             </subviews>
-            <animations/>
-            <point key="canvasLocation" x="154.5" y="869"/>
+            <point key="canvasLocation" x="314.5" y="891"/>
         </customView>
     </objects>
 </document>

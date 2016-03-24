@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15E33e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDEditorAttributesViewController">
             <connections>
-                <outlet property="buttonHelp" destination="d3Y-eY-efC" id="a6H-zK-msn"/>
                 <outlet property="selfAttributeController" destination="21U-at-kMr" id="0Wk-ai-I3p"/>
                 <outlet property="tabViewContent" destination="LXd-Sj-O9a" id="P6p-qR-a3X"/>
                 <outlet property="view" destination="fWP-D8-hd1" id="6N4-Cd-ba6"/>
@@ -26,26 +25,19 @@
             <point key="canvasLocation" x="572" y="477.5"/>
         </customView>
         <customView id="Upq-sK-5sY" userLabel="Editor Self">
-            <rect key="frame" x="0.0" y="0.0" width="216" height="404"/>
+            <rect key="frame" x="0.0" y="0.0" width="216" height="412"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <customView id="QYZ-X8-JFI" customClass="NSScrollView">
-                    <rect key="frame" x="0.0" y="28" width="216" height="376"/>
+                    <rect key="frame" x="0.0" y="36" width="216" height="376"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </customView>
                 <customView id="WW1-Qt-D1i">
-                    <rect key="frame" x="0.0" y="0.0" width="216" height="28"/>
+                    <rect key="frame" x="0.0" y="0.0" width="216" height="36"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <customView id="d3Y-eY-efC" customClass="NSButton">
-                            <rect key="frame" x="114" y="6" width="16" height="16"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="tag" value="button-help"/>
-                            </userDefinedRuntimeAttributes>
-                        </customView>
                         <button toolTip="Save changes" verticalHuggingPriority="750" id="AZh-hN-59e">
-                            <rect key="frame" x="132" y="-3" width="85" height="32"/>
+                            <rect key="frame" x="132" y="3" width="85" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="push" title="Update" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nj2-1t-0Uu">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -58,7 +50,7 @@
                     </subviews>
                 </customView>
             </subviews>
-            <point key="canvasLocation" x="544" y="421"/>
+            <point key="canvasLocation" x="544" y="425"/>
         </customView>
         <viewController id="21U-at-kMr" customClass="SDEditorAttributeSelfViewController">
             <connections>

@@ -83,7 +83,7 @@ SDApplicationShowServerLoginField = YES;
     [[NUKit kit] setApplicationLogo:CPImageInBundle("Branding/logo-application.png")];
     [[NUKit kit] setCompanyName:BRANDING_INFORMATION["label-company-name"]];
     [[NUKit kit] setApplicationName:BRANDING_INFORMATION["label-application-name"]];
-    [[NUKit kit] setCopyright:[CPString stringWithFormat:@"Copyright \u00A9 %@ nuage networks - %@ (%@)", new Date().getFullYear(), APP_BUILDVERSION, APP_GITVERSION]];
+    [[NUKit kit] setCopyright:[CPString stringWithFormat:@"Copyright \u00A9 %@ Nuage Networks - %@ (%@)", new Date().getFullYear(), APP_BUILDVERSION, APP_GITVERSION]];
     [[NUKit kit] setAutoServerBaseURL:SERVER_AUTO_URL];
     [[NUKit kit] setAPIPrefix:@"api/"];
     [[NUKit kit] setRootAPI:[SDAuth defaultUser]];

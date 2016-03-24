@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15E33e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDTokensViewController">
@@ -31,7 +31,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
                         <searchField wantsLayer="YES" verticalHuggingPriority="750" id="14">
-                            <rect key="frame" x="440" y="5" width="158" height="22"/>
+                            <rect key="frame" x="440" y="6" width="158" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="17">
                                 <font key="font" metaFont="system"/>
@@ -42,7 +42,7 @@
                         <textField verticalHuggingPriority="750" id="15">
                             <rect key="frame" x="7" y="7" width="339" height="19"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Tokens" id="16">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="GitHub Tokens" id="16">
                                 <font key="font" metaFont="system" size="15"/>
                                 <color key="textColor" red="0.34552848339999997" green="0.34552848339999997" blue="0.34552848339999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -124,7 +124,7 @@
             </connections>
         </viewController>
         <customView id="Ujz-2c-wzs" userLabel="Popover">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="243"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button toolTip="Save network" verticalHuggingPriority="750" id="yRj-rk-0Of">
@@ -146,7 +146,7 @@
                     <font key="titleFont" metaFont="system"/>
                 </box>
                 <textField verticalHuggingPriority="750" id="ySq-gS-dhP">
-                    <rect key="frame" x="18" y="186" width="285" height="34"/>
+                    <rect key="frame" x="18" y="189" width="285" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="New Token" id="jAH-tw-abZ">
                         <font key="font" metaFont="system" size="19"/>
@@ -177,16 +177,16 @@
                     </userDefinedRuntimeAttributes>
                 </customView>
                 <textField verticalHuggingPriority="750" id="jiu-AU-6AU">
-                    <rect key="frame" x="18" y="161" width="40" height="17"/>
+                    <rect key="frame" x="18" y="164" width="42" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Name" id="DWd-n9-Llq">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="3QO-La-WHJ">
-                    <rect key="frame" x="20" y="131" width="280" height="22"/>
+                    <rect key="frame" x="20" y="134" width="280" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Token" drawsBackground="YES" id="f4z-EW-94E">
                         <font key="font" metaFont="system"/>
@@ -198,16 +198,16 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="f6S-zv-7sg">
-                    <rect key="frame" x="19" y="106" width="38" height="17"/>
+                    <rect key="frame" x="19" y="104" width="41" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Value" id="Q6X-Pk-9v4">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <secureTextField verticalHuggingPriority="750" id="dpO-tc-Bhw">
-                    <rect key="frame" x="21" y="76" width="279" height="22"/>
+                    <rect key="frame" x="21" y="74" width="279" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Secret" drawsBackground="YES" usesSingleLineMode="YES" id="BaS-N4-giI">
                         <font key="font" metaFont="system"/>
@@ -222,7 +222,7 @@
                     </userDefinedRuntimeAttributes>
                 </secureTextField>
             </subviews>
-            <point key="canvasLocation" x="138" y="168"/>
+            <point key="canvasLocation" x="-60" y="39.5"/>
         </customView>
         <viewController id="2XV-vL-Cl3" customClass="SDSpecificationAssociator"/>
         <customView id="XVp-ZT-WYX" userLabel="Getting Started View">

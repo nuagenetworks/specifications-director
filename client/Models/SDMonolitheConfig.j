@@ -30,27 +30,23 @@
 
 @implementation SDMonolitheConfig : SDRESTObject
 {
-    CPString     _APIDocOutput          @accessors(property=APIDocOutput);
-    CPString     _APIDocUserVanilla     @accessors(property=APIDocUserVanilla);
-    CPString     _copyright             @accessors(property=copyright);
-    CPString     _productAccronym       @accessors(property=productAccronym);
-    CPString     _productName           @accessors(property=productName);
-    CPString     _SDKAuthor             @accessors(property=SDKAuthor);
-    CPString     _SDKBambouVersion      @accessors(property=SDKBambouVersion);
-    CPString     _SDKClassPrefix        @accessors(property=SDKClassPrefix);
-    CPString     _SDKCLIName            @accessors(property=SDKCLIName);
-    CPString     _SDKDescription        @accessors(property=SDKDescription);
-    CPString     _SDKDocOutput          @accessors(property=SDKDocOutput);
-    CPString     _SDKDocTMPPath         @accessors(property=SDKDocTMPPath);
-    CPString     _SDKDocUserVanilla     @accessors(property=SDKDocUserVanilla)
-    CPString     _SDKEmail              @accessors(property=SDKEmail);
-    CPString     _SDKLicenseName        @accessors(property=SDKLicenseName);
-    CPString     _SDKName               @accessors(property=SDKName);
-    CPString     _SDKOutput             @accessors(property=SDKOutput)
-    CPString     _SDKRevisionNumber     @accessors(property=SDKRevisionNumber);
-    CPString     _SDKURL                @accessors(property=SDKURL);
-    CPString     _SDKUserVanilla        @accessors(property=SDKUserVanilla);
-    CPString     _SDKVersion            @accessors(property=SDKVersion);
+    CPString     _author             @accessors(property=author);
+    CPString     _bambouVersion      @accessors(property=bambouVersion);
+    CPString     _classPrefix        @accessors(property=classPrefix);
+    CPString     _CLIName            @accessors(property=CLIName);
+    CPString     _copyright          @accessors(property=copyright);
+    CPString     _description        @accessors(property=description);
+    CPString     _docOutput          @accessors(property=docOutput);
+    CPString     _email              @accessors(property=email);
+    CPString     _licenseName        @accessors(property=licenseName);
+    CPString     _name               @accessors(property=name);
+    CPString     _output             @accessors(property=output)
+    CPString     _productAccronym    @accessors(property=productAccronym);
+    CPString     _productName        @accessors(property=productName);
+    CPString     _revisionNumber     @accessors(property=revisionNumber);
+    CPString     _URL                @accessors(property=URL);
+    CPString     _userVanilla        @accessors(property=userVanilla);
+    CPString     _version            @accessors(property=version);
 }
 
 #pragma mark -
@@ -65,27 +61,23 @@
 {
     if (self = [super init])
     {
-        [self exposeLocalKeyPathToREST:@"APIDocOutput"];
-        [self exposeLocalKeyPathToREST:@"APIDocUserVanilla"];
+        [self exposeLocalKeyPathToREST:@"author"];
+        [self exposeLocalKeyPathToREST:@"bambouVersion"];
+        [self exposeLocalKeyPathToREST:@"classPrefix"];
+        [self exposeLocalKeyPathToREST:@"CLIName"];
         [self exposeLocalKeyPathToREST:@"copyright"];
+        [self exposeLocalKeyPathToREST:@"description"];
+        [self exposeLocalKeyPathToREST:@"docOutput"];
+        [self exposeLocalKeyPathToREST:@"email"];
+        [self exposeLocalKeyPathToREST:@"licenseName"];
+        [self exposeLocalKeyPathToREST:@"name"];
+        [self exposeLocalKeyPathToREST:@"output"];
         [self exposeLocalKeyPathToREST:@"productAccronym"];
         [self exposeLocalKeyPathToREST:@"productName"];
-        [self exposeLocalKeyPathToREST:@"SDKAuthor"];
-        [self exposeLocalKeyPathToREST:@"SDKBambouVersion"];
-        [self exposeLocalKeyPathToREST:@"SDKClassPrefix"];
-        [self exposeLocalKeyPathToREST:@"SDKCLIName"];
-        [self exposeLocalKeyPathToREST:@"SDKDescription"];
-        [self exposeLocalKeyPathToREST:@"SDKDocOutput"];
-        [self exposeLocalKeyPathToREST:@"SDKDocTMPPath"];
-        [self exposeLocalKeyPathToREST:@"SDKDocUserVanilla"];
-        [self exposeLocalKeyPathToREST:@"SDKEmail"];
-        [self exposeLocalKeyPathToREST:@"SDKLicenseName"];
-        [self exposeLocalKeyPathToREST:@"SDKName"];
-        [self exposeLocalKeyPathToREST:@"SDKOutput"];
-        [self exposeLocalKeyPathToREST:@"SDKRevisionNumber"];
-        [self exposeLocalKeyPathToREST:@"SDKURL"];
-        [self exposeLocalKeyPathToREST:@"SDKUserVanilla"];
-        [self exposeLocalKeyPathToREST:@"SDKVersion"];
+        [self exposeLocalKeyPathToREST:@"revisionNumber"];
+        [self exposeLocalKeyPathToREST:@"URL"];
+        [self exposeLocalKeyPathToREST:@"userVanilla"];
+        [self exposeLocalKeyPathToREST:@"version"];
     }
 
     return self;

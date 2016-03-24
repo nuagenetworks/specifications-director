@@ -37,7 +37,7 @@
 
 + (CPString)moduleName
 {
-    return @"Tokens";
+    return @"GitHub Tokens";
 }
 
 + (CPImage)moduleIcon
@@ -54,7 +54,7 @@
 
 - (void)configureContexts
 {
-    var context = [[NUModuleContext alloc] initWithName:@"Token" identifier:[SDToken RESTName]];
+    var context = [[NUModuleContext alloc] initWithName:@"GitHub Token" identifier:[SDToken RESTName]];
     [context setPopover:popover];
     [context setFetcherKeyPath:@"tokens"];
     [self registerContext:context forClass:SDToken];
