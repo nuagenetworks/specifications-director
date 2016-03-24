@@ -109,7 +109,6 @@ SDApplicationShowServerLoginField = NO;
                               identifier:@"button-toolbar-tokens"
                        availableToRoles:nil];
 
-
     [[NUKit kit] startListenNotification];
     [[NUKit kit] manageLoginWindow];
 
