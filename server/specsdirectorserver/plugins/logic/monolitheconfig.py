@@ -61,32 +61,26 @@ class SDMonolitheConfigLogicPlugin(GALogicPlugin):
         if not monolithe_config.product_accronym or not len(monolithe_config.product_accronym):
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute productAccronym is mandatory.', property_name='productAccronym'))
 
-        if not monolithe_config.sdk_output or not len(monolithe_config.sdk_output):
-            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute SDKOutput is mandatory.', property_name='SDKOutput'))
+        if not monolithe_config.output or not len(monolithe_config.output):
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute output is mandatory.', property_name='output'))
 
-        if not monolithe_config.sdk_name or not len(monolithe_config.sdk_name):
-            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute SDKName is mandatory.', property_name='SDKName'))
+        if not monolithe_config.name or not len(monolithe_config.name):
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute name is mandatory.', property_name='name'))
 
-        if not monolithe_config.sdk_class_prefix or not len(monolithe_config.sdk_class_prefix):
-            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute SDKClassPrefix is mandatory.', property_name='SDKClassPrefix'))
+        if not monolithe_config.class_prefix or not len(monolithe_config.class_prefix):
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute classPrefix is mandatory.', property_name='classPrefix'))
 
-        if not monolithe_config.sdk_bambou_version or not len(monolithe_config.sdk_bambou_version):
-            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute SDKBambouVersion is mandatory.', property_name='SDKBambouVersion'))
+        if not monolithe_config.bambou_version or not len(monolithe_config.bambou_version):
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute bambouVersion is mandatory.', property_name='bambouVersion'))
 
-        if not monolithe_config.sdk_version or not len(monolithe_config.sdk_version):
-            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute SDKVersion is mandatory.', property_name='SDKVersion'))
+        if not monolithe_config.version or not len(monolithe_config.version):
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute version is mandatory.', property_name='version'))
 
-        if not monolithe_config.sdk_revision_number or not len(monolithe_config.sdk_revision_number):
-            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute SDKRevisionNumber is mandatory.', property_name='SDKRevisionNumber'))
+        if not monolithe_config.revision_number or not len(monolithe_config.revision_number):
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute revisionNumber is mandatory.', property_name='revisionNumber'))
 
-        if not monolithe_config.sdkcli_name or not len(monolithe_config.sdkcli_name):
-            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute SDKCLIName is mandatory.', property_name='SDKCLIName'))
-
-        if not monolithe_config.api_doc_output or not len(monolithe_config.api_doc_output):
-            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute APIDocOutput is mandatory.', property_name='APIDocOutput'))
-
-        if not monolithe_config.sdk_doc_output or not len(monolithe_config.sdk_doc_output):
-            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute SDKDocOutput is mandatory.', property_name='SDKDocOutput'))
+        if not monolithe_config.cli_name or not len(monolithe_config.cli_name):
+            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute CLIName is mandatory.', property_name='CLIName'))
 
         return context
 

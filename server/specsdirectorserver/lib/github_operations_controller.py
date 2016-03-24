@@ -26,6 +26,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import msgpack
+import logging
 
 from monolithe.specifications import RepositoryManager
 from garuda.core.models import GAController, GAPushEvent, GARequest
@@ -33,6 +34,8 @@ from garuda.core.lib import GASDKLibrary
 
 from exporter import SDSpecificationExporter
 from importer import SDSpecificationImporter
+
+logger = logging.getLogger('specsdirector.github_operations_controller')
 
 
 class SDGitHubOperationsController(GAController):
@@ -160,7 +163,7 @@ class SDGitHubOperationsController(GAController):
                                                     session_username=session_username)
 
         except Exception as ex:
-            print "Exception while executing git operation: %s" % ex
+            logger.error("Exception while executing git operation: %s" % ex)
 
     def _peform_checkout_repository(self, repository, job, session_username):
         """
@@ -185,7 +188,7 @@ class SDGitHubOperationsController(GAController):
             repository.status = 'READY'
 
         except Exception as ex:
-
+            logger.error("Unable to checkout repository: %s" % ex)
             job.progress = 1.0
             job.status = 'FAILED'
             job.result = 'Unable to pull repository.\n\nReason:\n%s' % ex
@@ -220,6 +223,7 @@ class SDGitHubOperationsController(GAController):
 
         except Exception as ex:
 
+            logger.error('Unable to merge repository from upstream: %s' % ex)
             job.progress = 1.0
             job.status = 'FAILED'
             job.result = 'Unable to merge repository.\n\nReason:\n%s' % ex

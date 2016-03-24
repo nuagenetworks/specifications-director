@@ -2,17 +2,17 @@
     "attributes": [
         {
             "description": "",
-            "name": "SDKName",
+            "name": "name",
             "type": "string"
         },
         {
             "description": "",
-            "name": "SDKDescription",
+            "name": "description",
             "type": "string"
         },
         {
             "description": "",
-            "name": "SDKBambouVersion",
+            "name": "bambouVersion",
             "type": "string"
         },
         {
@@ -22,27 +22,27 @@
         },
         {
             "description": "",
-            "name": "SDKEmail",
+            "name": "email",
             "type": "string"
         },
         {
             "description": "",
-            "name": "SDKOutput",
+            "name": "output",
             "type": "string"
         },
         {
             "description": "",
-            "name": "SDKCLIName",
+            "name": "CLIName",
             "type": "string"
         },
         {
             "description": "",
-            "name": "SDKUserVanilla",
+            "name": "userVanilla",
             "type": "string"
         },
         {
             "description": "",
-            "name": "SDKVersion",
+            "name": "version",
             "type": "string"
         },
         {
@@ -52,27 +52,7 @@
         },
         {
             "description": "",
-            "name": "APIDocUserVanilla",
-            "type": "string"
-        },
-        {
-            "description": "",
-            "name": "APIDocOutput",
-            "type": "string"
-        },
-        {
-            "description": "",
-            "name": "SDKDocTMPPath",
-            "type": "string"
-        },
-        {
-            "description": "",
-            "name": "SDKClassPrefix",
-            "type": "string"
-        },
-        {
-            "description": "",
-            "name": "SDKDocUserVanilla",
+            "name": "classPrefix",
             "type": "string"
         },
         {
@@ -82,27 +62,27 @@
         },
         {
             "description": "",
-            "name": "SDKURL",
+            "name": "URL",
             "type": "string"
         },
         {
             "description": "",
-            "name": "SDKLicenseName",
+            "name": "licenseName",
             "type": "string"
         },
         {
             "description": "",
-            "name": "SDKAuthor",
+            "name": "author",
             "type": "string"
         },
         {
             "description": "",
-            "name": "SDKRevisionNumber",
+            "name": "revisionNumber",
             "type": "string"
         },
         {
             "description": "",
-            "name": "SDKDocOutput",
+            "name": "docOutput",
             "type": "string"
         }
     ],

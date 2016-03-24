@@ -25,7 +25,11 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+import logging
+
 from monolithe.specifications.repositorymanager import MODE_RAW_SPECS, MODE_RAW_ABSTRACTS
+
+logger = logging.getLogger('specsdirector.specification_importer')
 
 
 class SDSpecificationImporter():
@@ -70,37 +74,32 @@ class SDSpecificationImporter():
             monolithe_config.product_accronym = parser.get('monolithe', 'product_accronym')
             monolithe_config.copyright = parser.get('monolithe', 'copyright')
 
-            monolithe_config.sdk_output = parser.get('sdk', 'sdk_output')
-            monolithe_config.sdkuser_vanilla = parser.get('sdk', 'sdk_user_vanilla')
-            monolithe_config.sdk_name = parser.get('sdk', 'sdk_name')
-            monolithe_config.sdk_class_prefix = parser.get('sdk', 'sdk_class_prefix')
-            monolithe_config.sdk_bambou_version = parser.get('sdk', 'sdk_bambou_version')
-            monolithe_config.sdk_version = parser.get('sdk', 'sdk_version')
-            monolithe_config.sdk_revision_number = parser.get('sdk', 'sdk_revision_number')
-            monolithe_config.sdkurl = parser.get('sdk', 'sdk_url')
-            monolithe_config.sdk_author = parser.get('sdk', 'sdk_author')
-            monolithe_config.sdk_email = parser.get('sdk', 'sdk_email')
-            monolithe_config.sdk_description = parser.get('sdk', 'sdk_description')
-            monolithe_config.sdk_license_name = parser.get('sdk', 'sdk_license_name')
-            monolithe_config.sdkcli_name = parser.get('sdk', 'sdk_cli_name')
+            monolithe_config.output = parser.get('transformer', 'output')
+            monolithe_config.user_vanilla = parser.get('transformer', 'user_vanilla')
+            monolithe_config.name = parser.get('transformer', 'name')
+            monolithe_config.class_prefix = parser.get('transformer', 'class_prefix')
+            monolithe_config.bambou_version = parser.get('transformer', 'bambou_version')
+            monolithe_config.version = parser.get('transformer', 'version')
+            monolithe_config.revision_number = parser.get('transformer', 'revision_number')
+            monolithe_config.url = parser.get('transformer', 'url')
+            monolithe_config.author = parser.get('transformer', 'author')
+            monolithe_config.email = parser.get('transformer', 'email')
+            monolithe_config.description = parser.get('transformer', 'description')
+            monolithe_config.license_name = parser.get('transformer', 'license_name')
+            monolithe_config.cli_name = parser.get('transformer', 'cli_name')
+            monolithe_config.doc_output = parser.get('transformer', 'doc_output')
 
-            monolithe_config.api_doc_output = parser.get('apidoc', 'apidoc_output')
-            monolithe_config.api_doc_user_vanilla = parser.get('apidoc', 'apidoc_user_vanilla')
-
-            monolithe_config.sdk_doc_output = parser.get('sdkdoc', 'sdkdoc_output')
-            monolithe_config.sdk_doc_user_vanilla = parser.get('sdkdoc', 'sdkdoc_user_vanilla')
-            monolithe_config.sdk_doc_tmp_path = parser.get('sdkdoc', 'sdkdoc_tmp_path')
-
-        except:
-            monolithe_config.sdk_output = './codegen'
-            monolithe_config.sdk_class_prefix = 'GA'
-            monolithe_config.sdk_bambou_version = '2.0.0'
-            monolithe_config.sdk_version = '1.0'
-            monolithe_config.sdk_revision_number = '1'
-            monolithe_config.api_doc_output = './apidocgen'
-            monolithe_config.sdk_doc_output = './sdkdocgen'
+        except Exception as ex:
+            logger.warning('Unable to parse monolithe.ini: %s. Using default value' % ex)
+            monolithe_config.output = './codegen'
+            monolithe_config.class_prefix = 'GA'
+            monolithe_config.bambou_version = '2.0.0'
+            monolithe_config.version = '1.0'
+            monolithe_config.revision_number = '1'
+            monolithe_config.doc_output = './sdkdocgen'
 
         self._storage_controller.create(user_identifier=session_username, resource=monolithe_config, parent=repository)
+
 
     def import_specifications(self, repository, manager, session_username):
         """

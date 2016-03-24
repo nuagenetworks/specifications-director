@@ -49,6 +49,8 @@ from plugins.logic.tokens import SDTokenLogicPlugin
 
 from lib import SDGitHubOperationsController, SDGitHubOperationsClient
 
+logger = logging.getLogger('specsdirector')
+
 
 def auth_function(request, session, root_object_class, storage_controller):
     """
@@ -118,6 +120,7 @@ def start(falcon_port, mongo_host, mongo_port, mongo_db, redis_host, redis_port,
                     plugins=plugins,
                     log_level=logging.DEBUG)
 
+    logger.info('starting specification director')
     garuda.start()
 
 
