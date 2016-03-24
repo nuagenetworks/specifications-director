@@ -1,15 +1,14 @@
 version: "2"
 
 services:
+
     mongo:
-        container_name: mongo
         image: mongo
 
     redis:
-        container_name: redis
         image: redis
 
-    specsdirector-server:
+    backend:
         image: monolithe/specsdirector-server
         environment:
             - GARUDA_MONGO_HOST=mongo
@@ -21,10 +20,10 @@ services:
         ports:
             - 1984:1984
 
-    specsdirector-client:
+    frontend:
         image: monolithe/specsdirector-client
         depends_on:
-            - specsdirector-server
+            - backend
         # environment:
         #     - API_AUTO_ENDPOINT=https://192.168.99.100:1984
         ports:
