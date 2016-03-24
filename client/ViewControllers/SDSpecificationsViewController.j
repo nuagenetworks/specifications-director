@@ -67,6 +67,7 @@
     [self registerDataViewWithName:@"specificationDataView" forClass:SDSpecification];
     [self setModuleTitle:@"Specifications"];
 
+    [[self view] setBorderLeftColor:NUSkinColorGreyLight];
     [self setSubModules:[modelController, attributesController, APIsController]];
 }
 

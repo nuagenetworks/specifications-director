@@ -125,12 +125,3 @@ SDApplicationShowServerLoginField = NO;
 }
 
 @end
-
-@implementation CPTextField (noinvalid)
-- (void)setInvalid:(BOOL)isInvalid reason:(CPString)aReason
-{
-}
-- (void)setRequired:(BOOL)isRequired
-{
-}
-@end

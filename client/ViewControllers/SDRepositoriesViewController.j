@@ -106,13 +106,15 @@
     [self setSubModules:[itemizedSpecificationsController]];
     [self setCurrentParent:nil];
 
-    [viewSubtitleContainer setBackgroundColor:[CPColor colorWithHexString:@"6b94ec"]];
+    [viewSubtitleContainer setBackgroundColor:[CPColor colorWithHexString:@"799eee"]];
     [self _showControlButtons:NO];
 
     [viewError setBackgroundColor:NUSkinColorGreyLight];
     [viewWorking setBackgroundColor:NUSkinColorGreyLight];
     [viewMissingToken setBackgroundColor:NUSkinColorGreyLight];
 
+    [buttonOpen setThemeState:CPThemeStateDefault];
+    [buttonDownload setThemeState:CPThemeStateDefault];
     [buttonSynchronize setThemeState:CPThemeStateDefault];
 
     [tokenAssociator setDisassociationButtonHidden:YES];

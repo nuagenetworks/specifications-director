@@ -408,7 +408,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" id="pxF-nf-6ai">
-                                    <rect key="frame" x="393" y="-1" width="123" height="32"/>
+                                    <rect key="frame" x="401" y="-1" width="115" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                     <string key="toolTip">Synchronize the repository. If you have write access, it will also attempt to merge back the official upstream's master branch back into your fork current branch.</string>
                                     <buttonCell key="cell" type="push" title="Synchronize" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xa4-mY-AcZ">
@@ -423,7 +423,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                                     </connections>
                                 </button>
                                 <button toolTip="Download an archive of the current version of the specifications" verticalHuggingPriority="750" id="PPC-1J-RrR">
-                                    <rect key="frame" x="275" y="-1" width="123" height="32"/>
+                                    <rect key="frame" x="291" y="-1" width="115" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="Download" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cta-Dt-nlJ">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -437,9 +437,9 @@ If you need to work on multiple version of a Specification, you can just add mul
                                     </connections>
                                 </button>
                                 <button toolTip="Open your fork branch in Github" verticalHuggingPriority="750" id="12u-Gm-YGx">
-                                    <rect key="frame" x="157" y="-1" width="123" height="32"/>
+                                    <rect key="frame" x="181" y="-1" width="115" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="push" title="Open In Github" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LRT-JW-Vjc">
+                                    <buttonCell key="cell" type="push" title="GitHub" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LRT-JW-Vjc">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>

@@ -18,8 +18,5 @@
     <key>NUAPIVersion</key>
     <string>1.0</string>
 
-    <key>NUAPIDocumentationURL</key>
-    <string>web/docs/api/</string>
-
 </dict>
 </plist>
