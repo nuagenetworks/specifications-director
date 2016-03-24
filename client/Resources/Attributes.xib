@@ -39,17 +39,17 @@
                                     <rect key="frame" x="0.0" y="387" width="433" height="32"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <subviews>
-                                        <searchField wantsLayer="YES" verticalHuggingPriority="750" id="14">
-                                            <rect key="frame" x="265" y="6" width="158" height="22"/>
+                                        <searchField wantsLayer="YES" verticalHuggingPriority="750" id="14" customClass="NUExpandableSearchField">
+                                            <rect key="frame" x="265" y="5" width="158" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="17">
+                                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" id="17">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </searchFieldCell>
                                         </searchField>
                                         <textField verticalHuggingPriority="750" id="15">
-                                            <rect key="frame" x="7" y="7" width="164" height="19"/>
+                                            <rect key="frame" x="8" y="7" width="164" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Attributes" id="16">
                                                 <font key="font" metaFont="system" size="15"/>
@@ -67,7 +67,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" autosaveColumns="NO" id="98">
-                                                <rect key="frame" x="0.0" y="0.0" width="434" height="328"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="433.5" height="19"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
                                                 <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -287,13 +287,6 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_serverError"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <customView id="K3K-pg-fnw" customClass="CPButton">
-                    <rect key="frame" x="208" y="22" width="16" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="button-help"/>
-                    </userDefinedRuntimeAttributes>
-                </customView>
                 <textField toolTip="Name of the network" verticalHuggingPriority="750" id="TVQ-b0-DV4">
                     <rect key="frame" x="20" y="73" width="281" height="72"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>

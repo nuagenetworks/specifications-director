@@ -26,17 +26,17 @@
                     <rect key="frame" x="0.0" y="383" width="243" height="32"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <searchField wantsLayer="YES" verticalHuggingPriority="750" id="283">
-                            <rect key="frame" x="74" y="7" width="158" height="22"/>
+                        <searchField wantsLayer="YES" verticalHuggingPriority="750" id="283" customClass="NUExpandableSearchField">
+                            <rect key="frame" x="75" y="5" width="158" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="286">
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" id="286">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </searchFieldCell>
                         </searchField>
                         <textField verticalHuggingPriority="750" id="284">
-                            <rect key="frame" x="7" y="7" width="120" height="19"/>
+                            <rect key="frame" x="8" y="7" width="120" height="19"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Abstracts" id="285">
                                 <font key="font" metaFont="system" size="15"/>

@@ -5,4 +5,8 @@ sys.path.append('Libraries/NUKit/Tools')
 import nukit
 
 if __name__ == "__main__":
-    nukit.perform_build(additional_libraries=[], war_name="specsdirector")
+
+    additional_themes = [{"name": "NUFlat",
+                          "short_arg": "n"}]
+
+    nukit.perform_build(additional_libraries=[], additional_themes=additional_themes)

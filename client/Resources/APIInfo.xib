@@ -6,7 +6,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDAPIInfoViewController">
             <connections>
-                <outlet property="buttonHelp" destination="WYe-gH-56P" id="fem-a9-9xT"/>
                 <outlet property="buttonSave" destination="j9h-om-vAO" id="JsS-U6-IlH"/>
                 <outlet property="editionViewGeneral" destination="ePO-8D-WzU" id="HEW-86-osM"/>
                 <outlet property="scrollViewMain" destination="nFv-3U-Y02" id="teH-WK-bxD"/>
@@ -33,13 +32,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="500" height="41"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <customView id="WYe-gH-56P" customClass="NSButton">
-                                    <rect key="frame" x="393" y="12" width="16" height="16"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="button-help"/>
-                                    </userDefinedRuntimeAttributes>
-                                </customView>
                                 <button toolTip="Save changes" verticalHuggingPriority="750" id="j9h-om-vAO">
                                     <rect key="frame" x="411" y="3" width="85" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
@@ -52,7 +44,7 @@
                                     </connections>
                                 </button>
                                 <textField verticalHuggingPriority="750" id="cJS-3V-OWd">
-                                    <rect key="frame" x="18" y="14" width="369" height="13"/>
+                                    <rect key="frame" x="18" y="14" width="393" height="13"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="Sqc-4Q-xbK">
                                         <font key="font" metaFont="miniSystem"/>

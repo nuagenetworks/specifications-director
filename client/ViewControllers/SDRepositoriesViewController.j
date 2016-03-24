@@ -82,7 +82,6 @@
 
     _currentlySynchronizing = [CPSet new];
 
-    [[self view] setBorderBottomColor:[CPColor colorWithHexString:@"a5a5a5"]];
     [self registerDataViewWithName:@"repositoryDataView" forClass:SDRepository];
 
     var size = [hoverView contentSize];

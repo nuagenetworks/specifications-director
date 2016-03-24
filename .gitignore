@@ -8,3 +8,4 @@
 /server/libs
 *.gz
 *.sublime-workspace
+*.blend

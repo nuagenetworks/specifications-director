@@ -12,6 +12,9 @@
     <key>NUAPIURL</key>
     <string>auto</string>
 
+    <key>CPDefaultTheme</key>
+    <string>NUFlat</string>
+
     <key>NUAPIVersion</key>
     <string>1.0</string>
 

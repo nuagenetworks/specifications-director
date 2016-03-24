@@ -30,17 +30,17 @@
                     <rect key="frame" x="0.0" y="387" width="608" height="32"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <searchField wantsLayer="YES" verticalHuggingPriority="750" id="14">
+                        <searchField wantsLayer="YES" verticalHuggingPriority="750" id="14" customClass="NUExpandableSearchField">
                             <rect key="frame" x="440" y="6" width="158" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="17">
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" id="17">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </searchFieldCell>
                         </searchField>
                         <textField verticalHuggingPriority="750" id="15">
-                            <rect key="frame" x="7" y="7" width="339" height="19"/>
+                            <rect key="frame" x="8" y="7" width="339" height="19"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="GitHub Tokens" id="16">
                                 <font key="font" metaFont="system" size="15"/>
@@ -111,7 +111,7 @@
                     </scroller>
                 </scrollView>
             </subviews>
-            <point key="canvasLocation" x="194" y="140.5"/>
+            <point key="canvasLocation" x="44" y="140.5"/>
         </customView>
         <popover behavior="t" id="2">
             <connections>
@@ -169,13 +169,6 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_serverError"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <customView id="iYn-g4-k48" customClass="CPButton">
-                    <rect key="frame" x="207" y="22" width="16" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="button-help"/>
-                    </userDefinedRuntimeAttributes>
-                </customView>
                 <textField verticalHuggingPriority="750" id="jiu-AU-6AU">
                     <rect key="frame" x="18" y="164" width="42" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -248,7 +241,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="m8l-98-sGy">
                             <rect key="frame" x="18" y="55" width="404" height="205"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="D36-MU-cnb">
+                            <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" alignment="left" id="D36-MU-cnb">
                                 <font key="font" metaFont="system"/>
                                 <string key="title">GitHub Tokens are application keys that will allow the Specifications Director to interact with your GitHub accounts, and will allow push and pull operations on your Specifications Repositories.
 
@@ -290,7 +283,7 @@ If you are using an Enterprise GitHub, you will need to use your instance base U
                     </userDefinedRuntimeAttributes>
                 </customView>
             </subviews>
-            <point key="canvasLocation" x="187" y="392.5"/>
+            <point key="canvasLocation" x="93" y="380.5"/>
         </customView>
     </objects>
 </document>

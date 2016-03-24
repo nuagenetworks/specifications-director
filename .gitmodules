@@ -10,3 +10,6 @@
 [submodule "client/Libraries/Bambou"]
 	path = client/Libraries/Bambou
 	url = https://github.com/nuagenetworks/objj-bambou.git
+[submodule "client/Libraries/NUFlat"]
+	path = client/Libraries/NUFlat
+	url = https://github.com/nuagenetworks/nukit-theme.git
