@@ -100,7 +100,6 @@ class SDSpecificationImporter():
 
         self._storage_controller.create(user_identifier=session_username, resource=monolithe_config, parent=repository)
 
-
     def import_specifications(self, repository, manager, session_username):
         """
         """
