@@ -14,6 +14,9 @@ services:
             - GARUDA_MONGO_HOST=mongo
             - GARUDA_REDIS_HOST=redis
             - NO_AUTHENTICATION=1
+        links:
+            - redis
+            - mongo
         depends_on:
             - redis
             - mongo
