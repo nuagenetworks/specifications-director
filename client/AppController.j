@@ -91,7 +91,7 @@ SDApplicationShowServerLoginField = NO;
     [[NUKit kit] setCopyright:[CPString stringWithFormat:@"Copyright \u00A9 %@ Nuage Networks - %@ (%@)", new Date().getFullYear(), APP_BUILDVERSION, APP_GITVERSION]];
     [[NUKit kit] setAutoServerBaseURL:SERVER_AUTO_URL];
     [[NUKit kit] setAPIPrefix:@"api/"];
-    [[NUKit kit] setRootAPI:[SDAuth defaultUser]];
+    [[NUKit kit] setRootAPI:[SDAuth current]];
 
     [[[NUKit kit] loginWindowController] setShowsEnterpriseField:NO];
     [[[NUKit kit] loginWindowController] setShowsServerField:SDApplicationShowServerLoginField];

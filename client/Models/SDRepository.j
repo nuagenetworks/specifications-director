@@ -97,7 +97,7 @@ SDRepositoryStatusMERGING = @"MERGING";
         [self exposeLocalKeyPathToREST:@"url"];
         [self exposeLocalKeyPathToREST:@"username"];
 
-        _organization = [[SDAuth defaultUser] userName];
+        _organization = [[SDAuth current] userName];
         _url          = @"https://api.github.com";
         _status       = SDRepositoryStatusNEEDS_PULL;
         _branch       = @"master";

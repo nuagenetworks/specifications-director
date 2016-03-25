@@ -62,7 +62,7 @@
 
 - (NUVSDObject)parentOfAssociatedObjects
 {
-    return [SDAuth defaultUser];
+    return [SDAuth current];
 }
 
 @end

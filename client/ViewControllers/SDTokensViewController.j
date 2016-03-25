@@ -62,7 +62,7 @@
 
 - (BOOL)shouldProcessJSONObject:(id)aJSONObject ofType:(CPString)aType eventType:(CPString)anEventType
 {
-    return aJSONObject.owner == [[SDAuth defaultUser] userName];
+    return aJSONObject.owner == [[SDAuth current] userName];
 }
 
 @end
