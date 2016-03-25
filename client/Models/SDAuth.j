@@ -26,7 +26,7 @@
 */
 
 @import <Foundation/Foundation.j>
-@import <Bambou/ NURESTAbstractRoot.j>
+@import <Bambou/NURESTAbstractRoot.j>
 
 @class SDRepositoriesFetcher
 @class SDTokensFetcher
@@ -34,7 +34,7 @@
 @global NUPermissionLevelAdmin
 
 
-@implementation SDAuth :  NURESTAbstractRoot
+@implementation SDAuth : NURESTAbstractRoot
 {
     SDRepositoriesFetcher   _repositories   @accessors(property=repositories);
     SDTokensFetcher         _tokens         @accessors(property=tokens);
