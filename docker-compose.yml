@@ -2,31 +2,31 @@ version: "2"
 
 services:
 
-    mongo:
+    specsdir-mongo:
         image: mongo
 
-    redis:
+    specsdir-redis:
         image: redis
 
     backend:
         image: monolithe/specsdirector-server
         environment:
-            - GARUDA_MONGO_HOST=mongo
-            - GARUDA_REDIS_HOST=redis
+            - GARUDA_MONGO_HOST=specsdir-mongo
+            - GARUDA_REDIS_HOST=specsdir-redis
             - NO_AUTHENTICATION=1
         links:
-            - redis
-            - mongo
+            - specsdir-redis
+            - specsdir-mongo
         depends_on:
-            - redis
-            - mongo
+            - specsdir-redis
+            - specsdir-mongo
         ports:
             - 1984:1984
 
     frontend:
         image: monolithe/specsdirector-client
         depends_on:
-            - backend
+            - specsdir-backend
         # environment:
         #     - API_AUTO_ENDPOINT=https://192.168.99.100:1984
         ports:
