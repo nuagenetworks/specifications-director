@@ -8,7 +8,7 @@ services:
     specsdir-redis:
         image: redis
 
-    backend:
+    specsdir-backend:
         image: monolithe/specsdirector-server
         environment:
             - GARUDA_MONGO_HOST=specsdir-mongo
@@ -23,7 +23,7 @@ services:
         ports:
             - 1984:1984
 
-    frontend:
+    specsdir-frontend:
         image: monolithe/specsdirector-client
         depends_on:
             - specsdir-backend
