@@ -27,10 +27,12 @@
 
 import logging
 
-from monolithe.specifications.repositorymanager import MODE_RAW_SPECS, MODE_RAW_ABSTRACTS
 
 logger = logging.getLogger('specsdirector.specification_importer')
 
+MODE_NORMAL = 1		
+MODE_RAW_SPECS = 2
+MODE_RAW_ABSTRACTS = 3
 
 class SDSpecificationImporter():
     """
