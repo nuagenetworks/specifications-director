@@ -1,4 +1,4 @@
-garuda
+git+https://github.com/nuagenetworks/garuda.git
 simpleldap
 git+https://github.com/nuagenetworks/bambou.git
 git+https://github.com/nuagenetworks/monolithe.git
