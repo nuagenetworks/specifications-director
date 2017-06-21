@@ -158,6 +158,11 @@
             "description": "The sub type of the attribute. Not used by monolithe.",
             "name": "subtype",
             "type": "string"
+        },
+        {
+            "description": "Preferred label for this attribute on the UI.",
+            "name": "userlabel",
+            "type": "string"
         }
     ],
     "model": {

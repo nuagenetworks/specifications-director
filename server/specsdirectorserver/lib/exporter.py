@@ -159,6 +159,7 @@ class SDSpecificationExporter():
             mono_attr.type = attribute.type
             mono_attr.unique = attribute.unique
             mono_attr.unique_scope = attribute.unique_scope
+            mono_attr.userlabel = attribute.userlabel
 
             ret.append(mono_attr)
 

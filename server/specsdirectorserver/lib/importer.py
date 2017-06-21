@@ -255,6 +255,7 @@ class SDSpecificationImporter():
             attr.type = mono_attribute.type
             attr.unique = mono_attribute.unique
             attr.unique_scope = mono_attribute.unique_scope
+            attr.userlabel = mono_attribute.userlabel
 
             if not attr.validate():
 
