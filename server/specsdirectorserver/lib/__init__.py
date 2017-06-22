@@ -25,8 +25,9 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-__all__ = ['SDGitHubOperationsController', 'SDGitHubOperationsClient', 'SDSpecificationImporter', 'SDSpecificationExporter']
+__all__ = ['SDGitHubOperationsController', 'SDGitHubOperationsClient', 'SDSpecificationImporter', 'SDSpecificationExporter', 'RepositoryManager']
 
+from .specsrepositorymanager import RepositoryManager
 from .github_operations_controller import SDGitHubOperationsController
 from .github_operations_client import SDGitHubOperationsClient
 from .importer import SDSpecificationImporter
