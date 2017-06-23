@@ -29,6 +29,7 @@
 @import <NUKit/NUModuleSelfParent.j>
 @import "../../Models/SDModels.j"
 
+@global SDAttributeTypeBoolean
 
 @implementation SDEditorAttributeSelfViewController : NUModuleSelfParent
 {
@@ -120,6 +121,11 @@
 
 - (IBAction)changeType:(id)aSender
 {
+    var editedObject = [_currentContext editedObject];
+    if (editedObject._type == SDAttributeTypeBoolean && !editedObject._defaultValue)
+    {
+        editedObject._defaultValue = "false";
+    }
     [self reloadStackView];
 }
 
