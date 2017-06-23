@@ -27,6 +27,8 @@
 
 import logging
 
+from specsrepositorymanager import MODE_RAW_SPECS, MODE_RAW_ABSTRACTS
+
 
 logger = logging.getLogger('specsdirector.specification_importer')
 
