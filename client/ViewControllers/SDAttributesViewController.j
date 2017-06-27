@@ -29,6 +29,9 @@
 @import <NUKit/NUModule.j>
 @import "../Models/SDModels.j"
 
+@global SDAttributeTypeBoolean
+@global SDAttributeDefaultBoolean
+
 @class SDEditorAttributesViewController
 
 @implementation SDAttributesViewController : NUModule
@@ -86,5 +89,16 @@
     }
     return permittedActionsSet;
 }
+
+
+#pragma mark -
+#pragma mark NUModuleContext Delegates
+
+- (void)moduleContext:(NUModuleContext)aContext willSaveObject:(NUVSDObject)anObject
+{
+    if ([anObject type] == SDAttributeTypeBoolean)
+        [anObject setDefaultValue:SDAttributeDefaultBoolean];
+}
+
 
 @end

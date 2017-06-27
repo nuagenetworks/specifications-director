@@ -30,6 +30,7 @@
 @import "../../Models/SDModels.j"
 
 @global SDAttributeTypeBoolean
+@global SDAttributeDefaultBoolean
 
 @implementation SDEditorAttributeSelfViewController : NUModuleSelfParent
 {
@@ -122,10 +123,10 @@
 - (IBAction)changeType:(id)aSender
 {
     var editedObject = [_currentContext editedObject];
-    if (editedObject._type == SDAttributeTypeBoolean && !editedObject._defaultValue)
-    {
-        editedObject._defaultValue = "false";
-    }
+    
+    if ([editedObject type] == SDAttributeTypeBoolean && ![editedObject defaultValue])
+        [editedObject setDefaultValue:SDAttributeDefaultBoolean];
+
     [self reloadStackView];
 }
 

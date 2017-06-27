@@ -37,6 +37,8 @@ SDAttributeTypeObject  = @"object"
 SDAttributeTypeString  = @"string"
 SDAttributeTypeTime    = @"time"
 
+SDAttributeDefaultBoolean = @"false"
+
 SDAttributeFormatFree = @"free";
 SDAttributeFormatEmail = @"email";
 SDAttributeFormatPhoneNumber = @"phoneNumber";

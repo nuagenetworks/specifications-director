@@ -211,7 +211,7 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
             <rect key="frame" x="0.0" y="0.0" width="321" height="346"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button toolTip="Save network" verticalHuggingPriority="750" id="Zge-yn-aWN">
+                <button toolTip="Save attribute" verticalHuggingPriority="750" id="Zge-yn-aWN">
                     <rect key="frame" x="226" y="12" width="81" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="push" title="Create" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nFK-Vd-hIP">
