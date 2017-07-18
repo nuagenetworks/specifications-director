@@ -101,8 +101,8 @@
         
     if (![anObject ID] && ![anObject userlabel]) 
     {
-        var defaultLabel = [anObject name].replace( /([A-Z])/g, " $1" );
-        
+        var defaultLabel = [anObject name].replace(/([A-Z]+)/g, " $1").replace(/([A-Z][a-z])/g, " $1")
+
         defaultLabel = (defaultLabel.charAt(0).toUpperCase() + defaultLabel.slice(1)).substring(0, 25);;
         
         [anObject setUserlabel:defaultLabel];
