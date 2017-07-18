@@ -26,6 +26,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import ConfigParser
+import re
 
 from monolithe.specifications import Specification, SpecificationAttribute, SpecificationAPI
 
@@ -160,6 +161,9 @@ class SDSpecificationExporter():
             mono_attr.type = attribute.type
             mono_attr.unique = attribute.unique
             mono_attr.unique_scope = attribute.unique_scope
+            if attribute.userlabel is None:
+                defaultUserlabel = re.sub(r'((?<=[a-z])[A-Z]|(?<!\A)[A-Z](?=[a-z]))', r' \1', attribute.name)
+                attribute.userlabel = defaultUserlabel[0].upper() + defaultUserlabel[1:]
             mono_attr.userlabel = attribute.userlabel
 
             ret.append(mono_attr)
