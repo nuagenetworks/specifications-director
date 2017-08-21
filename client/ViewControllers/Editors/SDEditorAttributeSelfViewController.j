@@ -29,6 +29,8 @@
 @import <NUKit/NUModuleSelfParent.j>
 @import "../../Models/SDModels.j"
 
+@global SDAttributeTypeBoolean
+@global SDAttributeDefaultBoolean
 
 @implementation SDEditorAttributeSelfViewController : NUModuleSelfParent
 {
@@ -120,7 +122,22 @@
 
 - (IBAction)changeType:(id)aSender
 {
+    var editedObject = [_currentContext editedObject];
+    
+    if ([editedObject type] == SDAttributeTypeBoolean && ![editedObject defaultValue])
+        [editedObject setDefaultValue:SDAttributeDefaultBoolean];
+
     [self reloadStackView];
 }
+
+
+#pragma mark -
+#pragma mark Delegates
+
+- (void)moduleContext:(NUModuleContext)aContext validateObject:(NUVSDObject)anObject attribute:(CPString)anAttribute validation:(NUValidation)aValidation
+{
+    _validate(aValidation, anAttribute, anObject, @"userlabel", [[_maxLength, 25]]);
+}
+
 
 @end

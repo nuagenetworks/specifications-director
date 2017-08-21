@@ -26,6 +26,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import ConfigParser
+import re
 
 from monolithe.specifications import Specification, SpecificationAttribute, SpecificationAPI
 
@@ -152,13 +153,18 @@ class SDSpecificationExporter():
             mono_attr.min_value = attribute.min_value
             mono_attr.name = attribute.name
             mono_attr.orderable = attribute.orderable
-            mono_attr.readonly = attribute.read_only
+            mono_attr.read_only = attribute.read_only
             mono_attr.required = attribute.required
             mono_attr.rest_name = attribute.name
             mono_attr.subtype = attribute.subtype
+            mono_attr.transient = attribute.transient
             mono_attr.type = attribute.type
             mono_attr.unique = attribute.unique
             mono_attr.unique_scope = attribute.unique_scope
+            if attribute.userlabel is None:
+                defaultUserlabel = re.sub(r'((?<=[a-z])[A-Z]|(?<!\A)[A-Z](?=[a-z]))', r' \1', attribute.name)[0:25]
+                attribute.userlabel = defaultUserlabel[0].upper() + defaultUserlabel[1:]
+            mono_attr.userlabel = attribute.userlabel
 
             ret.append(mono_attr)
 

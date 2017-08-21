@@ -26,8 +26,10 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import logging
+import ssl
 
-from monolithe.specifications.repositorymanager import MODE_RAW_SPECS, MODE_RAW_ABSTRACTS
+from specsrepositorymanager import MODE_RAW_SPECS, MODE_RAW_ABSTRACTS
+
 
 logger = logging.getLogger('specsdirector.specification_importer')
 
@@ -42,6 +44,12 @@ class SDSpecificationImporter():
         self._sdk = sdk
         self._storage_controller = storage_controller
         self._push_controller = push_controller
+        try:
+            _create_unverified_https_context = ssl._create_unverified_context
+        except AttributeError:
+            pass
+        else:
+            ssl._create_default_https_context = _create_unverified_https_context
 
     def import_repository_info(self, repository, manager, session_username):
         """
@@ -255,6 +263,7 @@ class SDSpecificationImporter():
             attr.type = mono_attribute.type
             attr.unique = mono_attribute.unique
             attr.unique_scope = mono_attribute.unique_scope
+            attr.userlabel = mono_attribute.userlabel
 
             if not attr.validate():
 

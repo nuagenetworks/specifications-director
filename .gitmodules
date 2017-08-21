@@ -3,7 +3,7 @@
 	url = https://github.com/Cappuccino/Cappuccino.git
 [submodule "client/Libraries/TNKit"]
 	path = client/Libraries/TNKit
-	url = https://gitlab.com/garuda/TNKit.git
+	url = git@github.mv.usa.alcatel.com:Architect/TNKit.git
 [submodule "client/Libraries/NUKit"]
 	path = client/Libraries/NUKit
 	url = https://github.com/nuagenetworks/nukit.git

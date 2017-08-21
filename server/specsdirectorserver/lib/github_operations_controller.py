@@ -28,12 +28,14 @@
 import msgpack
 import logging
 
-from monolithe.specifications import RepositoryManager
 from garuda.core.models import GAController, GAPushEvent, GARequest
 from garuda.core.lib import GASDKLibrary
 
 from exporter import SDSpecificationExporter
 from importer import SDSpecificationImporter
+
+from specsrepositorymanager import RepositoryManager
+
 
 logger = logging.getLogger('specsdirector.github_operations_controller')
 
