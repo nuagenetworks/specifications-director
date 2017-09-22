@@ -162,7 +162,7 @@ class SDSpecificationExporter():
             mono_attr.unique = attribute.unique
             mono_attr.unique_scope = attribute.unique_scope
             if attribute.userlabel is None:
-                defaultUserlabel = re.sub(r'((?<=[a-z])[A-Z]|(?<!\A)[A-Z](?=[a-z]))', r' \1', attribute.name)[0:25]
+                defaultUserlabel = re.sub(r'((?<=[a-z])[A-Z]|(?<!\A)[A-Z](?=[a-z]))', r' \1', attribute.name)[0:50]
                 attribute.userlabel = defaultUserlabel[0].upper() + defaultUserlabel[1:]
             mono_attr.userlabel = attribute.userlabel
 

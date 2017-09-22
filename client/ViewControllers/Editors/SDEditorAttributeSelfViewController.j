@@ -136,7 +136,7 @@
 
 - (void)moduleContext:(NUModuleContext)aContext validateObject:(NUVSDObject)anObject attribute:(CPString)anAttribute validation:(NUValidation)aValidation
 {
-    _validate(aValidation, anAttribute, anObject, @"userlabel", [[_maxLength, 25]]);
+    _validate(aValidation, anAttribute, anObject, @"userlabel", [[_maxLength, 50]]);
 }
 
 
