@@ -126,14 +126,17 @@
 
 - (void)moduleContext:(NUModuleContext)aContext validateObject:(id)anObject attribute:(CPString)anAttribute validation:(NUValidation)validation
 {
-    if (anAttribute != @"objectRESTName")
-        return
-
-    if ([anObject objectRESTName])
+    if (anAttribute == @"objectRESTName" && [anObject objectRESTName])
     {
         [anObject setObjectResourceName:NURESTObjectPluralize([anObject objectRESTName])];
         [anObject setEntityName:[[anObject objectRESTName] capitalizedString]];
     }
+
+    _validate(validation, anAttribute, anObject, @"description", [[_stringNotEmpty]]);    
+    _validate(validation, anAttribute, anObject, @"entityName", [[_stringNotEmpty]]);    
+    _validate(validation, anAttribute, anObject, @"objectResourceName", [[_stringNotEmpty]]);    
+    _validate(validation, anAttribute, anObject, @"objectRESTName", [[_stringNotEmpty]]);    
+    _validate(validation, anAttribute, anObject, @"userlabel", [[_stringNotEmpty],[_maxLength, 50]]);
 }
 
 @end

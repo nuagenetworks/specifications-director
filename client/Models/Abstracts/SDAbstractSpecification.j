@@ -46,7 +46,7 @@
     CPString            _objectResourceName     @accessors(property=objectResourceName);
     CPString            _objectRESTName         @accessors(property=objectRESTName)
     CPString            _package                @accessors(property=package);
-
+    CPString            _userlabel              @accessors(property=userlabel);
 
     SDAttributesFetcher _attributes             @accessors(property=attributes);
     SDChildAPIsFetcher  _childAPIs              @accessors(property=childAPIs);
@@ -68,6 +68,7 @@
         [self exposeLocalKeyPathToREST:@"objectRESTName"];
         [self exposeLocalKeyPathToREST:@"package"];
         [self exposeLocalKeyPathToREST:@"root"];
+        [self exposeLocalKeyPathToREST:@"userlabel"];
 
         _allowsDelete = YES;
         _allowsGet    = YES;

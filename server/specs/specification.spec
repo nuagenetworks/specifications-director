@@ -19,6 +19,11 @@
             "description": "The entity name of the object. example 'Unicorn'.",
             "name": "entityName",
             "type": "string"
+        },
+        {
+            "description": "Preferred label for this entity on the UI.",
+            "name": "userlabel",
+            "type": "string"
         }
     ],
     "model": {

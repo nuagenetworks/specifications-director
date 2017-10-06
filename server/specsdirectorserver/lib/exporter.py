@@ -65,6 +65,7 @@ class SDSpecificationExporter():
             mono_spec.entity_name = specification.entity_name
             mono_spec.rest_name = specification.object_rest_name
             mono_spec.resource_name = specification.object_resource_name
+            mono_spec.userlabel = specification.userlabel
 
         mono_spec.child_apis = self._export_child_apis(specification=specification, session_username=session_username)
         mono_spec.attributes = self._export_attributes(specification=specification, session_username=session_username)
