@@ -29,16 +29,23 @@
 @import <NUKit/NUModuleSelfParent.j>
 @import "../../Models/SDModels.j"
 
-@global SDAttributeTypeBoolean
 @global SDAttributeDefaultBoolean
+@global SDAttributeSubtypeLong
+@global SDAttributeTypeBoolean
+@global SDAttributeTypeFloat
+@global SDAttributeTypeInteger
+@global SDAttributeTypeList
+@global SDAttributeTypeObject
 
 @implementation SDEditorAttributeSelfViewController : NUModuleSelfParent
 {
-    @outlet CPTableView tableViewEnumarationValues;
-    @outlet CPView      viewEditorEnumConfig;
-    @outlet CPView      viewEditorEnumFlags;
-    @outlet CPView      viewEditorNumberConfig;
-    @outlet CPView      viewEditorStringConfig;
+    @outlet CPPopUpButton   buttonSubtype;
+    @outlet CPTableView     tableViewEnumarationValues;
+    @outlet CPView          viewEditorEnumConfig;
+    @outlet CPView          viewEditorEnumFlags;
+    @outlet CPView          viewEditorNumberConfig;
+    @outlet CPView          viewEditorStringConfig;
+    @outlet CPView          viewEditorSubtype;
 }
 
 
@@ -71,7 +78,7 @@
     [context setButtonSave:buttonSave];
     [context setEditionView:[self view]];
     [context setSearchForTagsRecursively:YES];
-    [context setAdditionalEditionViews:[viewEditionMain, viewEditorStringConfig, viewEditorNumberConfig, viewEditorEnumConfig, viewEditorEnumFlags]];
+    [context setAdditionalEditionViews:[viewEditionMain, viewEditorStringConfig, viewEditorNumberConfig, viewEditorEnumConfig, viewEditorEnumFlags, viewEditorSubtype]];
     [self registerContext:context forClass:SDAttribute];
 }
 
@@ -83,8 +90,9 @@
 {
     var conditionRepoHasPushPermission = [[SDRepository currentRepository] pushPermission],
         conditionCanEdit               = conditionRepoHasPushPermission;
-
+        
     [_currentContext setBoundControlsEnabled:conditionCanEdit];
+    [self _updateSubtypeAllowedValues];
 }
 
 
@@ -93,27 +101,31 @@
 
 - (CPArray)moduleCurrentVisibleEditionViews
 {
-    var editionViews = [viewEditionMain],
-        editedObject = [_currentContext editedObject];
+    var editionViews                = [viewEditionMain],
+        editedObject                = [_currentContext editedObject],
+        type                        = [editedObject type],
+        conditionSubtypeApplicable  = type == SDAttributeTypeList || type == SDAttributeTypeInteger || type == SDAttributeTypeFloat;
 
+    if (conditionSubtypeApplicable)
+        [editionViews addObject:viewEditorSubtype];
+        
     switch ([editedObject type])
     {
         case SDAttributeTypeInteger:
         case SDAttributeTypeFloat:
-            [editionViews addObject:viewEditorNumberConfig]
+            [editionViews addObject:viewEditorNumberConfig];
             break;
 
         case SDAttributeTypeString:
             [editionViews addObject:viewEditorStringConfig];
             break;
-
-        case SDAttributeTypeEnum:
-            [editionViews addObject:viewEditorEnumConfig];
-            break;
     }
 
-    [editionViews addObject:viewEditorEnumFlags];
+    if ([editedObject type] == SDAttributeTypeEnum || [editedObject subtype] == SDAttributeTypeEnum)
+        [editionViews addObject:viewEditorEnumConfig];
 
+    [editionViews addObject:viewEditorEnumFlags];
+        
     return editionViews;
 }
 
@@ -127,9 +139,15 @@
     if ([editedObject type] == SDAttributeTypeBoolean && ![editedObject defaultValue])
         [editedObject setDefaultValue:SDAttributeDefaultBoolean];
 
+    [editedObject setSubtype:nil];
+    [self _updateSubtypeAllowedValues];
     [self reloadStackView];
 }
 
+- (IBAction)changeSubtype:(id)aSender
+{
+    [self reloadStackView];
+}
 
 #pragma mark -
 #pragma mark Delegates
@@ -139,5 +157,37 @@
     _validate(aValidation, anAttribute, anObject, @"userlabel", [[_maxLength, 50]]);
 }
 
+
+#pragma mark -
+#pragma mark Utilities
+
+- (void)_updateSubtypeAllowedValues
+{
+    var editedObject    = [_currentContext editedObject],
+        type            = [editedObject type],
+        allowedSubTypes = [[CPArrayController alloc] init];
+
+    if (type == SDAttributeTypeInteger)
+        [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeLong, "label": "Long"} atArrangedObjectIndex:0];
+    else if (type == SDAttributeTypeFloat)
+        [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeDouble, "label": "Double"} atArrangedObjectIndex:0];
+    else if (type == SDAttributeTypeList)
+    {
+        [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeDouble, "label": "Double"} atArrangedObjectIndex:0];
+        [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeEntity, "label": "Entity"} atArrangedObjectIndex:1];
+        [allowedSubTypes insertObject:@{"value":  SDAttributeTypeEnum, "label": "Enum"} atArrangedObjectIndex:2];
+        [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeLong, "label": "Long"} atArrangedObjectIndex:3];
+        [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeObject, "label": "Object"} atArrangedObjectIndex:4];
+        [allowedSubTypes insertObject:@{"value":  SDAttributeTypeString, "label": "String"} atArrangedObjectIndex:5];
+    }
+
+    [buttonSubtype unbind:CPContentBinding];
+    [buttonSubtype unbind:CPContentValuesBinding];
+    [buttonSubtype unbind:CPSelectedObjectBinding];
+    [buttonSubtype removeAllItems];
+    [buttonSubtype bind:CPContentBinding toObject:allowedSubTypes withKeyPath:@"arrangedObjects.value" options:nil];
+    [buttonSubtype bind:CPContentValuesBinding toObject:allowedSubTypes withKeyPath:@"arrangedObjects.label" options:nil];
+    [buttonSubtype bind:CPSelectedObjectBinding toObject:editedObject withKeyPath:@"subtype" options:nil];
+}
 
 @end

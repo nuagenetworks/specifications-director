@@ -28,6 +28,11 @@
 @import <Foundation/Foundation.j>
 @import "Abstracts/SDRESTObject.j"
 
+SDAttributeSubtypeLong   = @"long"
+SDAttributeSubtypeDouble = @"double"
+SDAttributeSubtypeEntity = @"entity"
+SDAttributeSubtypeObject = @"object"
+
 SDAttributeTypeBoolean = @"boolean"
 SDAttributeTypeEnum    = @"enum"
 SDAttributeTypeFloat   = @"float"

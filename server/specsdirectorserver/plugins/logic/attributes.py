@@ -74,7 +74,7 @@ class SDAttributeLogicPlugin(GALogicPlugin):
         if not attribute.type or not len(attribute.type):
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute type is mandatory.', property_name='type'))
 
-        if attribute.type != 'enum':
+        if attribute.type != 'enum' and not (attribute.type == 'list' and attribute.subtype == 'enum'):
             attribute.allowed_choices = None
 
         if attribute.type != 'string':
