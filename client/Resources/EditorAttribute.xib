@@ -407,13 +407,13 @@
                                 <menuItem title="IPv4" id="csl-qB-sCh">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="IPv4"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="ipv4"/>
                                     </userDefinedRuntimeAttributes>
                                 </menuItem>
                                 <menuItem title="IPv6" id="0Nh-9d-Ygz">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="IPv6"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="ipv6"/>
                                     </userDefinedRuntimeAttributes>
                                 </menuItem>
                                 <menuItem title="CIDR" id="UIj-4Q-MVM">
