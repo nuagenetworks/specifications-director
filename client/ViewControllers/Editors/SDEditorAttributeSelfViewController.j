@@ -167,12 +167,13 @@
         type            = [editedObject type],
         allowedSubTypes = [[CPArrayController alloc] init];
 
-    if (type == SDAttributeTypeInteger)
-        [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeLong, "label": "Long"} atArrangedObjectIndex:0];
+    if (type == SDAttributeTypeInteger) {
+        [allowedSubTypes insertObject:@{"value":  SDAttributeTypeInteger, "label": "Integer"} atArrangedObjectIndex:0];
+        [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeLong, "label": "Long"} atArrangedObjectIndex:1];
+    }
     else if (type == SDAttributeTypeFloat)
         [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeDouble, "label": "Double"} atArrangedObjectIndex:0];
-    else if (type == SDAttributeTypeList)
-    {
+    else if (type == SDAttributeTypeList) {
         [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeDouble, "label": "Double"} atArrangedObjectIndex:0];
         [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeEntity, "label": "Entity"} atArrangedObjectIndex:1];
         [allowedSubTypes insertObject:@{"value":  SDAttributeTypeEnum, "label": "Enum"} atArrangedObjectIndex:2];
