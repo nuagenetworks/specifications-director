@@ -24,6 +24,11 @@
             "description": "Preferred label for this entity on the UI.",
             "name": "userlabel",
             "type": "string"
+        },
+        {
+            "description": "true if the corresponding entity serves as a template",
+            "name": "template",
+            "type": "boolean"
         }
     ],
     "model": {

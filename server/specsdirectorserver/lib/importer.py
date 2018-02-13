@@ -167,6 +167,7 @@ class SDSpecificationImporter():
                 specification.entity_name = mono_specification.entity_name
                 specification.root = mono_specification.is_root
                 specification.userlabel = mono_specification.userlabel
+                specification.template = mono_specification.template
 
             self._storage_controller.create(user_identifier=session_username, resource=specification, parent=repository)
 

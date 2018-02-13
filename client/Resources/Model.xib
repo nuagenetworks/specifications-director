@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -230,15 +230,15 @@
                     </connections>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="351.5" y="237"/>
+            <point key="canvasLocation" x="495" y="-165"/>
         </customView>
         <viewController nibName="ModelAbstracts" id="qbA-Uh-tgT" customClass="SDModelAbstractsViewController"/>
-        <customView id="tKt-qr-NJk">
-            <rect key="frame" x="0.0" y="0.0" width="405" height="222"/>
+        <customView misplaced="YES" id="tKt-qr-NJk">
+            <rect key="frame" x="0.0" y="0.0" width="405" height="209"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="U13-sM-HdF">
-                    <rect key="frame" x="18" y="170" width="76" height="17"/>
+                    <rect key="frame" x="18" y="157" width="76" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="REST Name" id="K8r-QR-n9h">
                         <font key="font" metaFont="system"/>
@@ -247,7 +247,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="p5X-7R-2W7">
-                    <rect key="frame" x="95" y="165" width="292" height="13"/>
+                    <rect key="frame" x="95" y="152" width="292" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="5jD-j4-UyZ">
                         <font key="font" metaFont="miniSystem"/>
@@ -259,7 +259,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField toolTip="The ReST Name is a singular word representing the object. For example 'unicorn'" verticalHuggingPriority="750" id="4Us-j2-HI0">
-                    <rect key="frame" x="20" y="140" width="365" height="22"/>
+                    <rect key="frame" x="20" y="127" width="365" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="unicorn" drawsBackground="YES" id="US4-Uo-H21">
                         <font key="font" metaFont="system"/>
@@ -275,7 +275,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="e7F-Bv-PAU">
-                    <rect key="frame" x="18" y="110" width="100" height="17"/>
+                    <rect key="frame" x="18" y="97" width="100" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Resource Name" id="QaL-bH-oO0">
                         <font key="font" metaFont="system"/>
@@ -284,7 +284,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="ztL-Rg-ael">
-                    <rect key="frame" x="142" y="105" width="245" height="13"/>
+                    <rect key="frame" x="142" y="92" width="245" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="szS-X6-1dA">
                         <font key="font" metaFont="miniSystem"/>
@@ -296,7 +296,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField toolTip="The resource name represents a collection of objects. It is basically the ReST name, but in the plural form." verticalHuggingPriority="750" id="e5k-hS-Q2t">
-                    <rect key="frame" x="20" y="80" width="365" height="22"/>
+                    <rect key="frame" x="20" y="67" width="365" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="unicorns" drawsBackground="YES" id="hSs-Gk-Vbp">
                         <font key="font" metaFont="system"/>
@@ -312,7 +312,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="ju6-6i-t8f">
-                    <rect key="frame" x="18" y="195" width="369" height="17"/>
+                    <rect key="frame" x="18" y="182" width="369" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ReST Configuration" id="YYk-RV-GKF">
                         <font key="font" metaFont="systemBold"/>
@@ -321,7 +321,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="dQQ-gT-A7V">
-                    <rect key="frame" x="18" y="50" width="78" height="17"/>
+                    <rect key="frame" x="18" y="37" width="78" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Entity Name" id="YZr-JE-hka">
                         <font key="font" metaFont="system"/>
@@ -330,7 +330,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="EQS-py-ie4">
-                    <rect key="frame" x="142" y="45" width="245" height="13"/>
+                    <rect key="frame" x="142" y="32" width="245" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="cjR-fV-ncb">
                         <font key="font" metaFont="miniSystem"/>
@@ -342,7 +342,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="WAv-JT-ePB">
-                    <rect key="frame" x="20" y="20" width="365" height="22"/>
+                    <rect key="frame" x="20" y="7" width="365" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <string key="toolTip">The Entity Name will be used to generate classes when generating a SDK using Monolithe. This should be camel cased. For instance, 'Unicorn'</string>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Unicorn" drawsBackground="YES" id="r8H-KK-t6b">
@@ -359,13 +359,13 @@
                     </connections>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="494.5" y="174"/>
+            <point key="canvasLocation" x="494.5" y="167.5"/>
         </customView>
-        <customView id="Wbv-wx-pBt">
-            <rect key="frame" x="0.0" y="0.0" width="405" height="123"/>
+        <customView misplaced="YES" id="Wbv-wx-pBt">
+            <rect key="frame" x="0.0" y="0.0" width="405" height="164"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button id="bDs-IN-af6">
+                <button misplaced="YES" id="bDs-IN-af6">
                     <rect key="frame" x="18" y="62" width="111" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Allow Retrieval" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="W4P-qe-Bbp">
@@ -376,7 +376,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="allowsGet"/>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <button id="aGv-zV-iTl">
+                <button misplaced="YES" id="aGv-zV-iTl">
                     <rect key="frame" x="18" y="40" width="133" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Allow Modification" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="h4K-Qc-g2l">
@@ -387,7 +387,7 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="allowsUpdate"/>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <textField verticalHuggingPriority="750" id="sXX-L2-Emn">
+                <textField verticalHuggingPriority="750" misplaced="YES" id="sXX-L2-Emn">
                     <rect key="frame" x="18" y="86" width="369" height="17"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Operations" id="UgX-f9-OCv">
@@ -396,7 +396,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="nyr-ce-eiU">
+                <button misplaced="YES" id="nyr-ce-eiU">
                     <rect key="frame" x="18" y="18" width="109" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Allow Deletion" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g42-H4-FXP">
@@ -407,8 +407,28 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="allowsDelete"/>
                     </userDefinedRuntimeAttributes>
                 </button>
+                <button toolTip="Indicates if this entity is used as a template" misplaced="YES" id="nt8-Ft-hIK">
+                    <rect key="frame" x="18" y="116" width="78" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Template" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4zt-7x-7Yd">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="template"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="gbX-MR-peG">
+                    <rect key="frame" x="18" y="140" width="369" height="17"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Configuration" id="0D2-9A-Kkt">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="659.5" y="379.5"/>
+            <point key="canvasLocation" x="494.5" y="413"/>
         </customView>
     </objects>
 </document>

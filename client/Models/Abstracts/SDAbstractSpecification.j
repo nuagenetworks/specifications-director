@@ -40,6 +40,7 @@
     BOOL                _allowsUpdate           @accessors(property=allowsUpdate);
     BOOL                _syncing                @accessors(property=syncing);
     BOOL                _root                   @accessors(property=root);
+    BOOL                _template               @accessors(property=template);
     CPString            _description            @accessors(property=description);
     CPString            _entityName             @accessors(property=entityName);
     CPString            _name                   @accessors(property=name);
@@ -68,6 +69,7 @@
         [self exposeLocalKeyPathToREST:@"objectRESTName"];
         [self exposeLocalKeyPathToREST:@"package"];
         [self exposeLocalKeyPathToREST:@"root"];
+        [self exposeLocalKeyPathToREST:@"template"];
         [self exposeLocalKeyPathToREST:@"userlabel"];
 
         _allowsDelete = YES;

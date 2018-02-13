@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -178,11 +178,11 @@
             </connections>
         </viewController>
         <customView misplaced="YES" id="8" userLabel="Popover View">
-            <rect key="frame" x="0.0" y="0.0" width="365" height="547"/>
+            <rect key="frame" x="0.0" y="0.0" width="365" height="579"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" id="16">
-                    <rect key="frame" x="18" y="500" width="329" height="34"/>
+                    <rect key="frame" x="18" y="532" width="329" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="New Specification" id="19">
                         <font key="font" metaFont="system" size="19"/>
@@ -221,7 +221,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="ZGS-Fz-3WQ">
-                    <rect key="frame" x="20" y="445" width="325" height="22"/>
+                    <rect key="frame" x="20" y="477" width="325" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="domaintemplate" drawsBackground="YES" id="x71-TX-cPu">
                         <font key="font" metaFont="system"/>
@@ -237,7 +237,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="aLC-sz-ZhN">
-                    <rect key="frame" x="18" y="475" width="80" height="17"/>
+                    <rect key="frame" x="18" y="507" width="80" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="ReST Name" id="vtN-i2-m4k">
                         <font key="font" metaFont="systemBold"/>
@@ -246,7 +246,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="bW1-fE-pGG">
-                    <rect key="frame" x="102" y="474" width="245" height="13"/>
+                    <rect key="frame" x="102" y="506" width="245" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="yHS-GR-AfL">
                         <font key="font" metaFont="miniSystem"/>
@@ -258,7 +258,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="7xS-FP-tlE">
-                    <rect key="frame" x="20" y="385" width="325" height="22"/>
+                    <rect key="frame" x="20" y="417" width="325" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="domaintemplates" drawsBackground="YES" id="jER-ZT-Qys">
                         <font key="font" metaFont="system"/>
@@ -274,7 +274,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="HTO-aq-jK6">
-                    <rect key="frame" x="18" y="415" width="106" height="17"/>
+                    <rect key="frame" x="18" y="447" width="106" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Resource Name" id="G2t-pZ-rqa">
                         <font key="font" metaFont="systemBold"/>
@@ -283,7 +283,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="pSS-nT-Bm6">
-                    <rect key="frame" x="116" y="410" width="231" height="13"/>
+                    <rect key="frame" x="116" y="442" width="231" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="dgn-XC-Tyb">
                         <font key="font" metaFont="miniSystem"/>
@@ -295,7 +295,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" id="ebz-ru-ubX">
-                    <rect key="frame" x="20" y="325" width="325" height="22"/>
+                    <rect key="frame" x="20" y="357" width="325" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="DomainTemplate" drawsBackground="YES" id="ODD-Hq-dIM">
                         <font key="font" metaFont="system"/>
@@ -311,7 +311,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" id="tLc-OC-cQg">
-                    <rect key="frame" x="18" y="355" width="83" height="17"/>
+                    <rect key="frame" x="18" y="387" width="83" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Entity Name" id="lkz-g4-5OZ">
                         <font key="font" metaFont="systemBold"/>
@@ -320,7 +320,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" id="vsr-Fw-kPY">
-                    <rect key="frame" x="116" y="350" width="231" height="13"/>
+                    <rect key="frame" x="116" y="382" width="231" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="GEc-Kd-awm">
                         <font key="font" metaFont="miniSystem"/>
@@ -332,7 +332,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <button misplaced="YES" id="tfe-Sj-dR5" customClass="CPCheckBox">
-                    <rect key="frame" x="18" y="117" width="155" height="18"/>
+                    <rect key="frame" x="18" y="123" width="155" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Root API specification" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="z97-Dg-PTR">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -342,8 +342,19 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="root"/>
                     </userDefinedRuntimeAttributes>
                 </button>
+                <button misplaced="YES" id="J4I-dI-QRs" customClass="CPCheckBox">
+                    <rect key="frame" x="18" y="152" width="78" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Template" bezelStyle="regularSquare" imagePosition="left" inset="2" id="rA9-jb-VjO">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="template"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" id="wGs-4i-V6S">
-                    <rect key="frame" x="18" y="69" width="329" height="42"/>
+                    <rect key="frame" x="18" y="75" width="329" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="You can only have one root specification. To change the current root specification, enable it in a different specification." id="196-gO-Fho">
                         <font key="font" metaFont="smallSystem"/>
@@ -352,7 +363,7 @@
                     </textFieldCell>
                 </textField>
                 <textField toolTip="Userlabel for the object represented by the specification" verticalHuggingPriority="750" misplaced="YES" id="n58-At-Oze">
-                    <rect key="frame" x="20" y="265" width="325" height="22"/>
+                    <rect key="frame" x="20" y="297" width="325" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Domain Template" drawsBackground="YES" id="5O1-Oc-y8y">
                         <font key="font" metaFont="system"/>
@@ -368,7 +379,7 @@
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="xtA-nK-aOc">
-                    <rect key="frame" x="18" y="295" width="66" height="17"/>
+                    <rect key="frame" x="18" y="327" width="66" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Userlabel" id="6sx-so-d04">
                         <font key="font" metaFont="systemBold"/>
@@ -377,7 +388,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="Goj-r2-Ju7">
-                    <rect key="frame" x="116" y="290" width="231" height="13"/>
+                    <rect key="frame" x="116" y="322" width="231" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="YIE-CP-dzn">
                         <font key="font" metaFont="miniSystem"/>
@@ -389,7 +400,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="Jew-qv-XWq">
-                    <rect key="frame" x="18" y="235" width="79" height="17"/>
+                    <rect key="frame" x="18" y="267" width="79" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Description" id="0eG-Tt-hv1">
                         <font key="font" metaFont="systemBold"/>
@@ -398,7 +409,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="FsZ-nf-S1a">
-                    <rect key="frame" x="116" y="230" width="231" height="13"/>
+                    <rect key="frame" x="116" y="262" width="231" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="pAd-fR-gIY">
                         <font key="font" metaFont="miniSystem"/>
@@ -410,7 +421,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" id="j1f-Lh-ibU">
-                    <rect key="frame" x="20" y="147" width="325" height="80"/>
+                    <rect key="frame" x="20" y="179" width="325" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <string key="toolTip">The description of the object represented by the specification. This will be used when generating the API documentation using Monolithe.</string>
                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Domains are instantiated from domain templates. This object provides the definition of the Domain Template." drawsBackground="YES" id="fV7-z1-f3C">
@@ -424,7 +435,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="622.5" y="-129.5"/>
+            <point key="canvasLocation" x="622.5" y="-113.5"/>
         </customView>
         <customView id="nkZ-8x-iet" userLabel="Getting Started View">
             <rect key="frame" x="0.0" y="0.0" width="291" height="501"/>
