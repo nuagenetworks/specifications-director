@@ -10,10 +10,12 @@
                 <outlet property="abstractsController" destination="qbA-Uh-tgT" id="4Hz-pT-eU3"/>
                 <outlet property="buttonSave" destination="j9h-om-vAO" id="JsS-U6-IlH"/>
                 <outlet property="editionViewDocumentation" destination="ePO-8D-WzU" id="HoO-hX-1x3"/>
+                <outlet property="editionViewJobs" destination="0no-I5-BWF" id="HGC-ac-BqQ"/>
                 <outlet property="editionViewOperations" destination="Wbv-wx-pBt" id="3F3-7H-0nS"/>
                 <outlet property="editionViewREST" destination="tKt-qr-NJk" id="fDS-Vx-ygr"/>
                 <outlet property="scrollViewMain" destination="nFv-3U-Y02" id="teH-WK-bxD"/>
                 <outlet property="splitViewEditor" destination="CF7-94-sye" id="QVb-ns-Qzm"/>
+                <outlet property="tableViewJobValues" destination="MTc-dm-FBh" id="Huj-rh-Eh3"/>
                 <outlet property="view" destination="1" id="g9j-fa-jAg"/>
                 <outlet property="viewAbstractsContainer" destination="Jdr-8q-qLb" id="49g-oS-ECi"/>
                 <outlet property="viewBottom" destination="5DG-0e-hCH" id="kjg-bW-rfk"/>
@@ -102,7 +104,7 @@
                     </holdingPriorities>
                 </splitView>
             </subviews>
-            <point key="canvasLocation" x="529" y="690"/>
+            <point key="canvasLocation" x="616" y="1236"/>
         </customView>
         <customView misplaced="YES" id="ePO-8D-WzU">
             <rect key="frame" x="0.0" y="0.0" width="405" height="274"/>
@@ -430,5 +432,89 @@
             </subviews>
             <point key="canvasLocation" x="494.5" y="413"/>
         </customView>
+        <customView misplaced="YES" id="0no-I5-BWF">
+            <rect key="frame" x="0.0" y="0.0" width="405" height="113"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button id="U70-Ul-hXz">
+                    <rect key="frame" x="21" y="5" width="8" height="8"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="icon-repository" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="5nI-4g-vMP">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="miniSystem"/>
+                    </buttonCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="allowedJobs_add:"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button id="aaq-LE-T1d">
+                    <rect key="frame" x="35" y="5" width="8" height="8"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="icon-repository" imagePosition="only" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="CFo-kM-4UE">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="miniSystem"/>
+                    </buttonCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="allowedJobs_remove:"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <scrollView borderType="line" autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="B27-zW-715">
+                    <rect key="frame" x="20" y="15" width="365" height="68"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <clipView key="contentView" id="Msn-YE-JKe">
+                        <rect key="frame" x="1" y="1" width="363" height="66"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="14" id="MTc-dm-FBh">
+                                <rect key="frame" x="0.0" y="0.0" width="363" height="66"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <size key="intercellSpacing" width="3" height="3"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <tableColumns>
+                                    <tableColumn identifier="" width="360" minWidth="40" maxWidth="1000" id="FzQ-04-vUN">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="BbC-tM-qoX">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                    </tableColumn>
+                                </tableColumns>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="tag" value="allowedJobs"/>
+                                </userDefinedRuntimeAttributes>
+                            </tableView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="YZd-QB-Fd8">
+                        <rect key="frame" x="1" y="51" width="363" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="ICb-Fr-V5j">
+                        <rect key="frame" x="224" y="17" width="15" height="102"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="T48-nx-c0f">
+                    <rect key="frame" x="18" y="91" width="369" height="17"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Allowed Jobs" id="Ix7-kr-AcS">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="494.5" y="653.5"/>
+        </customView>
     </objects>
+    <resources>
+        <image name="icon-repository" width="64" height="64"/>
+    </resources>
 </document>

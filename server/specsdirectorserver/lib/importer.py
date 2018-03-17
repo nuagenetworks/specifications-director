@@ -168,6 +168,7 @@ class SDSpecificationImporter():
                 specification.root = mono_specification.is_root
                 specification.userlabel = mono_specification.userlabel
                 specification.template = mono_specification.template
+                specification.allowed_jobs = sorted(mono_specification.allowed_jobs) if mono_specification.allowed_jobs else None
 
             self._storage_controller.create(user_identifier=session_username, resource=specification, parent=repository)
 

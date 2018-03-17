@@ -48,6 +48,7 @@
     CPString            _objectRESTName         @accessors(property=objectRESTName)
     CPString            _package                @accessors(property=package);
     CPString            _userlabel              @accessors(property=userlabel);
+    CPArrayController   _allowedJobs            @accessors(property=allowedJobs);
 
     SDAttributesFetcher _attributes             @accessors(property=attributes);
     SDChildAPIsFetcher  _childAPIs              @accessors(property=childAPIs);
@@ -57,6 +58,7 @@
 {
     if (self = [super init])
     {
+        [self exposeLocalKeyPathToREST:@"allowedJobs"];
         [self exposeLocalKeyPathToREST:@"allowsCreate"];
         [self exposeLocalKeyPathToREST:@"allowsDelete"];
         [self exposeLocalKeyPathToREST:@"allowsGet"];
@@ -72,6 +74,7 @@
         [self exposeLocalKeyPathToREST:@"template"];
         [self exposeLocalKeyPathToREST:@"userlabel"];
 
+        _allowedJobs  = [[CPArrayController alloc] initWithContent:[]];
         _allowsDelete = YES;
         _allowsGet    = YES;
         _allowsUpdate = YES;

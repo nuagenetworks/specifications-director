@@ -29,6 +29,11 @@
             "description": "true if the corresponding entity serves as a template",
             "name": "template",
             "type": "boolean"
+        },
+        {
+            "description": "Applicable jobs for this entity",
+            "name": "allowedJobs",
+            "type": "list"
         }
     ],
     "model": {

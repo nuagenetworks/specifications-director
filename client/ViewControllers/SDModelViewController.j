@@ -37,10 +37,13 @@
 @implementation SDModelViewController : NUModuleSelfParent
 {
     @outlet CPView                          editionViewDocumentation;
+    @outlet CPView                          editionViewJobs;
     @outlet CPView                          editionViewREST;
     @outlet CPView                          editionViewOperations;
     @outlet CPView                          viewAbstractsContainer;
     @outlet CPView                          viewContainer;
+    @outlet CPTableView                     tableViewJobValues;
+
 
     @outlet SDModelAbstractsViewController  abstractsController;
 }
@@ -60,7 +63,7 @@
 }
 
 - (void)viewDidLoad
-{
+{    
     [super viewDidLoad];
 
     [[self view] setBackgroundColor:NUSkinColorGrey];
@@ -84,6 +87,11 @@
     [viewAbstractsContainer setFrame:[view bounds]];
     [viewAbstractsContainer addSubview:[abstractsController view]];
     [abstractsController setParentModule:self];
+    
+    var textField = [[tableViewJobValues tableColumns][0] dataView];
+    [textField setPlaceholderString:@"Double click to enter a value"];
+    [[tableViewJobValues tableColumns][0] setDataView:nil];
+    [[tableViewJobValues tableColumns][0] setDataView:textField];
 }
 
 
@@ -121,7 +129,8 @@
     var contextSpecification = [[NUModuleContext alloc] initWithName:@"Model" identifier:[SDSpecification RESTName]];
     [contextSpecification setButtonSave:buttonSave];
     [contextSpecification setEditionView:[self view]];
-    [contextSpecification setAdditionalEditionViews:[editionViewREST, editionViewDocumentation, editionViewOperations]];
+    [contextSpecification setSearchForTagsRecursively:YES];
+    [contextSpecification setAdditionalEditionViews:[editionViewREST, editionViewDocumentation, editionViewOperations, editionViewJobs]];
     [self registerContext:contextSpecification forClass:SDSpecification];
 
     var contextAbstract = [[NUModuleContext alloc] initWithName:@"Model" identifier:[SDAbstract RESTName]];
@@ -138,7 +147,7 @@
         if ([_currentParent root])
             return [editionViewREST, editionViewDocumentation];
         else
-            return [editionViewREST, editionViewOperations, editionViewDocumentation];
+            return [editionViewREST, editionViewOperations, editionViewJobs, editionViewDocumentation];
     }
     else
         return [editionViewOperations, editionViewDocumentation];
