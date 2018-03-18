@@ -32,7 +32,7 @@
         },
         {
             "description": "Applicable jobs for this entity",
-            "name": "allowedJobs",
+            "name": "allowedJobCommands",
             "type": "list"
         }
     ],

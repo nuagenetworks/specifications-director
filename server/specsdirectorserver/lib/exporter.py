@@ -67,7 +67,7 @@ class SDSpecificationExporter():
             mono_spec.resource_name = specification.object_resource_name
             mono_spec.userlabel = specification.userlabel
             mono_spec.template = specification.template
-            mono_spec.allowed_jobs = sorted(specification.allowed_jobs) if specification.allowed_jobs else None
+            mono_spec.allowed_job_commands = sorted(specification.allowed_job_commands) if specification.allowed_job_commands else None
 
         mono_spec.child_apis = self._export_child_apis(specification=specification, session_username=session_username)
         mono_spec.attributes = self._export_attributes(specification=specification, session_username=session_username)
