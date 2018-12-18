@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -547,7 +547,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" id="Oey-ry-Gd8">
                         <rect key="frame" x="1" y="1" width="195" height="66"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="14" id="1oM-eM-Us5">
                                 <rect key="frame" x="0.0" y="0.0" width="195" height="66"/>
@@ -556,7 +556,7 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="192" minWidth="40" maxWidth="1000" id="REY-BH-JcQ">
+                                    <tableColumn identifier="" width="192" minWidth="40" maxWidth="1000" id="REY-BH-JcQ">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -726,11 +726,11 @@
             <point key="canvasLocation" x="336.5" y="543.5"/>
         </customView>
         <customView misplaced="YES" id="W7B-c7-dQ9">
-            <rect key="frame" x="0.0" y="0.0" width="237" height="35"/>
+            <rect key="frame" x="0.0" y="0.0" width="237" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="JNh-GA-z9s">
-                    <rect key="frame" x="18" y="21" width="201" height="14"/>
+                    <rect key="frame" x="18" y="46" width="201" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Subtype" id="aQh-k6-BmM">
                         <font key="font" metaFont="smallSystem"/>
@@ -738,8 +738,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton toolTip="Select how the domain should handle DHCP requests" verticalHuggingPriority="750" misplaced="YES" id="hNA-JE-Qbi">
-                    <rect key="frame" x="17" y="-3" width="203" height="22"/>
+                <popUpButton verticalHuggingPriority="750" misplaced="YES" id="hNA-JE-Qbi">
+                    <rect key="frame" x="17" y="17" width="203" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="Double" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="oJy-ih-p2N" id="RBB-cj-OOI">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -790,7 +790,7 @@
                     </connections>
                 </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="336.5" y="-141.5"/>
+            <point key="canvasLocation" x="336.5" y="-129"/>
         </customView>
     </objects>
     <resources>

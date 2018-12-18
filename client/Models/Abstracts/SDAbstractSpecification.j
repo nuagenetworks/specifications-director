@@ -78,6 +78,7 @@
         _allowsDelete = YES;
         _allowsGet    = YES;
         _allowsUpdate = YES;
+        _allowsCreate = NO;
 
         _attributes   = [SDAttributesFetcher fetcherWithParentObject:self];
         _childAPIs    = [SDChildAPIsFetcher fetcherWithParentObject:self];

@@ -44,10 +44,12 @@
 {
     [super bindDataView];
 
-    var negateBoolTransformer = @{CPValueTransformerNameBindingOption: CPNegateBooleanTransformerName};
-
-    [fieldName bind:CPValueBinding toObject:_objectValue withKeyPath:@"objectRESTName" options:nil];
-
+    var negateBoolTransformer = @{CPValueTransformerNameBindingOption: CPNegateBooleanTransformerName},
+        entityRESTName        = [_objectValue objectRESTName],
+        specificationName     = entityRESTName ? entityRESTName : @"resource - " + [_objectValue objectResourceName];
+        
+    [fieldName setStringValue:specificationName];
+                
     [imageViewWarning setHidden:!!![_objectValue issues]];
     [imageViewEdited bind:CPHiddenBinding toObject:_objectValue withKeyPath:@"syncing" options:negateBoolTransformer];
 

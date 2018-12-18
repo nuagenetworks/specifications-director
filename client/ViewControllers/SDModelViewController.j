@@ -187,7 +187,6 @@
     _validate(validation, anAttribute, anObject, @"description", [[_stringNotEmpty]]);    
     _validate(validation, anAttribute, anObject, @"entityName", [[_stringNotEmpty]]);    
     _validate(validation, anAttribute, anObject, @"objectResourceName", [[_stringNotEmpty]]);    
-    _validate(validation, anAttribute, anObject, @"objectRESTName", [[_stringNotEmpty]]);    
     _validate(validation, anAttribute, anObject, @"userlabel", [[_stringNotEmpty],[_maxLength, 50]]);
 }
 

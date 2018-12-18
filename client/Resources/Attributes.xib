@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SDAttributesViewController">
             <connections>
                 <outlet property="buttonBarMain" destination="7" id="49"/>
+                <outlet property="buttonSubtype" destination="SU2-Vv-Dzr" id="II1-vR-VqD"/>
                 <outlet property="editorAttributesController" destination="M9I-yK-ngY" id="VNa-hE-uG1"/>
                 <outlet property="editorController" destination="eYl-FL-099" id="Pa3-LY-ZdV"/>
                 <outlet property="fieldModuleTitle" destination="15" id="qsy-6A-lnQ"/>
@@ -19,6 +20,7 @@
                 <outlet property="view" destination="5" id="54"/>
                 <outlet property="viewGettingStarted" destination="rva-uo-uWO" id="F9U-8t-47L"/>
                 <outlet property="viewMainTableViewContainer" destination="5" id="55"/>
+                <outlet property="viewSubtype" destination="7Se-oH-rLQ" id="YBi-ZR-8Q6"/>
                 <outlet property="viewTitleContainer" destination="6" id="w4P-Qt-vnB"/>
             </connections>
         </customObject>
@@ -40,7 +42,7 @@
                                     <rect key="frame" x="0.0" y="387" width="433" height="32"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <subviews>
-                                        <searchField wantsLayer="YES" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="14" customClass="NUExpandableSearchField">
+                                        <searchField wantsLayer="YES" verticalHuggingPriority="750" id="14" customClass="NUExpandableSearchField">
                                             <rect key="frame" x="265" y="5" width="158" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" id="17">
@@ -49,7 +51,7 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </searchFieldCell>
                                         </searchField>
-                                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="15">
+                                        <textField verticalHuggingPriority="750" id="15">
                                             <rect key="frame" x="8" y="7" width="164" height="19"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Attributes" id="16">
@@ -104,7 +106,7 @@
                                     <rect key="frame" x="0.0" y="368" width="433" height="19"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <subviews>
-                                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="108">
+                                        <textField verticalHuggingPriority="750" id="108">
                                             <rect key="frame" x="7" y="2" width="222" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="255" id="109">
@@ -152,7 +154,7 @@
                     <rect key="frame" x="0.0" y="20" width="438" height="244"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="NM3-6F-ixC">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="NM3-6F-ixC">
                             <rect key="frame" x="18" y="201" width="402" height="23"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Attributes" id="oe2-gD-6rD">
@@ -164,7 +166,7 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="tag" value="title"/>
                             </userDefinedRuntimeAttributes>
                         </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="fvL-Dy-YQe">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="fvL-Dy-YQe">
                             <rect key="frame" x="18" y="60" width="402" height="133"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="o1o-AH-PmB">
@@ -208,7 +210,7 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
             <point key="canvasLocation" x="639" y="160"/>
         </customView>
         <customView misplaced="YES" id="abu-G6-tzC" userLabel="Popover">
-            <rect key="frame" x="0.0" y="0.0" width="321" height="346"/>
+            <rect key="frame" x="0.0" y="0.0" width="321" height="406"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button toolTip="Save attribute" verticalHuggingPriority="750" id="Zge-yn-aWN">
@@ -226,8 +228,8 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                     <rect key="frame" x="0.0" y="58" width="321" height="5"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                 </box>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="U5J-f5-ZrX">
-                    <rect key="frame" x="18" y="292" width="285" height="34"/>
+                <textField verticalHuggingPriority="750" id="U5J-f5-ZrX">
+                    <rect key="frame" x="18" y="352" width="285" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="New Attribute" id="CP5-pH-h35">
                         <font key="font" metaFont="system" size="19"/>
@@ -238,8 +240,8 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="title"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField toolTip="Name of the attribute" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="Y2n-Xx-4fG">
-                    <rect key="frame" x="20" y="241" width="281" height="22"/>
+                <textField toolTip="Name of the attribute" verticalHuggingPriority="750" misplaced="YES" id="Y2n-Xx-4fG">
+                    <rect key="frame" x="20" y="301" width="281" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="myAttribute" drawsBackground="YES" id="Fc3-Sc-SZw">
                         <font key="font" metaFont="system"/>
@@ -251,8 +253,8 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="mi2-f8-oXw">
-                    <rect key="frame" x="18" y="271" width="42" height="17"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="mi2-f8-oXw">
+                    <rect key="frame" x="18" y="331" width="42" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Name" id="tE9-th-dPB">
                         <font key="font" metaFont="systemBold"/>
@@ -260,8 +262,8 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="lUY-6d-efD">
-                    <rect key="frame" x="62" y="266" width="241" height="13"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="lUY-6d-efD">
+                    <rect key="frame" x="62" y="326" width="241" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="32a-SW-j3S">
                         <font key="font" metaFont="miniSystem"/>
@@ -272,8 +274,8 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_name"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="TV2-ip-Nog">
-                    <rect key="frame" x="18" y="211" width="36" height="17"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="TV2-ip-Nog">
+                    <rect key="frame" x="18" y="271" width="36" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Type" id="aSB-ky-lDZ">
                         <font key="font" metaFont="systemBold"/>
@@ -281,8 +283,8 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="JzF-ry-2wk">
-                    <rect key="frame" x="62" y="206" width="241" height="13"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="JzF-ry-2wk">
+                    <rect key="frame" x="62" y="266" width="241" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="dWr-bH-lFQ">
                         <font key="font" metaFont="miniSystem"/>
@@ -293,7 +295,7 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_type"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="7xy-HW-xhv">
+                <textField verticalHuggingPriority="750" id="7xy-HW-xhv">
                     <rect key="frame" x="17" y="46" width="286" height="13"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="right" title="Server ERROR" id="diR-FH-040">
@@ -305,9 +307,9 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_serverError"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField toolTip="Description of the attribute" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="TVQ-b0-DV4">
-                    <rect key="frame" x="20" y="71" width="281" height="72"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                <textField toolTip="Description of the attribute" verticalHuggingPriority="750" misplaced="YES" id="TVQ-b0-DV4">
+                    <rect key="frame" x="20" y="74" width="281" height="72"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="This is a nicely done attribute." drawsBackground="YES" id="Avy-8m-8vU">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -317,18 +319,18 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="description"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="we2-Vv-Spu">
-                    <rect key="frame" x="18" y="151" width="85" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="we2-Vv-Spu">
+                    <rect key="frame" x="18" y="154" width="85" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Description" id="8Ej-Iz-ohO">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="ezN-Lk-XJB">
-                    <rect key="frame" x="96" y="146" width="207" height="13"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="ezN-Lk-XJB">
+                    <rect key="frame" x="96" y="149" width="207" height="13"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="JFF-H8-RES">
                         <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
@@ -339,7 +341,7 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" misplaced="YES" id="nin-qT-U0e">
-                    <rect key="frame" x="18" y="179" width="285" height="26"/>
+                    <rect key="frame" x="18" y="239" width="285" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="String" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hzo-ea-cam" id="uei-QT-ikQ">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -400,9 +402,102 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="type"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="handleType:" target="-2" id="6fh-ia-e1f"/>
+                    </connections>
                 </popUpButton>
+                <customView misplaced="YES" id="7Se-oH-rLQ">
+                    <rect key="frame" x="18" y="180" width="282" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <textField verticalHuggingPriority="750" id="w0M-4I-uwO">
+                            <rect key="frame" x="0.0" y="29" width="59" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Subtype" id="QDZ-RA-fy3">
+                                <font key="font" metaFont="systemBold"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField verticalHuggingPriority="750" id="LP3-ii-7Om">
+                            <rect key="frame" x="63" y="24" width="221" height="13"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="4we-25-DJ4">
+                                <font key="font" metaFont="miniSystem"/>
+                                <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_subtype"/>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <popUpButton verticalHuggingPriority="750" id="SU2-Vv-Dzr">
+                            <rect key="frame" x="0.0" y="-3" width="285" height="26"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <popUpButtonCell key="cell" type="push" title="String" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="0xy-Lb-kzt" id="Xvo-Og-OIC">
+                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="JBI-Fg-BBc">
+                                    <items>
+                                        <menuItem title="String" state="on" id="0xy-Lb-kzt">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="tag" value="string"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </menuItem>
+                                        <menuItem title="Integer" id="rFp-3w-17k">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="tag" value="integer"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </menuItem>
+                                        <menuItem title="Float" id="2r5-0B-nKW">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="tag" value="float"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </menuItem>
+                                        <menuItem title="Boolean" id="nmf-SD-WMA">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="tag" value="boolean"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </menuItem>
+                                        <menuItem title="Enumeration" id="PRK-t8-9Dw">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="tag" value="enum"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </menuItem>
+                                        <menuItem title="List" id="rce-eS-aWh">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="tag" value="list"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </menuItem>
+                                        <menuItem title="Object" id="Vnx-ne-pjm">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="tag" value="object"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </menuItem>
+                                        <menuItem title="Time" id="WDy-7P-a4g">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="tag" value="time"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="tag" value="type"/>
+                            </userDefinedRuntimeAttributes>
+                        </popUpButton>
+                    </subviews>
+                </customView>
             </subviews>
-            <point key="canvasLocation" x="489.5" y="105"/>
+            <point key="canvasLocation" x="485.5" y="30"/>
         </customView>
         <viewController id="eYl-FL-099" customClass="NUEditorsViewController">
             <connections>
@@ -415,7 +510,7 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
             <rect key="frame" x="0.0" y="0.0" width="163" height="234"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="j1z-uZ-DDT">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="j1z-uZ-DDT">
                     <rect key="frame" x="28" y="108" width="106" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No Selection" id="L42-kP-7FO">
@@ -430,7 +525,7 @@ Each attribute has a bunch of parameters, that will allows you to defines certai
             <rect key="frame" x="0.0" y="0.0" width="163" height="234"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="Mua-Jv-e7Y">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Mua-Jv-e7Y">
                     <rect key="frame" x="15" y="108" width="133" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Multiple Selection" id="7Sa-bX-TdI">

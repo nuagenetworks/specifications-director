@@ -104,7 +104,7 @@
     var editionViews                = [viewEditionMain],
         editedObject                = [_currentContext editedObject],
         type                        = [editedObject type],
-        conditionSubtypeApplicable  = type == SDAttributeTypeList || type == SDAttributeTypeInteger || type == SDAttributeTypeFloat;
+        conditionSubtypeApplicable  = type == SDAttributeTypeList || type == SDAttributeTypeInteger || type == SDAttributeTypeFloat || type == SDAttributeTypeObject;
 
     if (conditionSubtypeApplicable)
         [editionViews addObject:viewEditorSubtype];
@@ -165,7 +165,8 @@
 {
     var editedObject    = [_currentContext editedObject],
         type            = [editedObject type],
-        allowedSubTypes = [[CPArrayController alloc] init];
+        allowedSubTypes = [[CPArrayController alloc] init],
+        conditionObject = type == SDAttributeTypeObject;
 
     if (type == SDAttributeTypeInteger) {
         [allowedSubTypes insertObject:@{"value":  SDAttributeTypeInteger, "label": "Integer"} atArrangedObjectIndex:0];
@@ -181,7 +182,12 @@
         [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeObject, "label": "Object"} atArrangedObjectIndex:4];
         [allowedSubTypes insertObject:@{"value":  SDAttributeTypeString, "label": "String"} atArrangedObjectIndex:5];
     }
-
+    else if (type == SDAttributeTypeObject) {
+        var apiFetcher = [[[editedObject parentObject] parentObject] specifications];
+        [apiFetcher fetchAndCallSelector:@selector(_fetcher:ofObject:didFetchAPIs:) ofObject:self];
+        return;
+    }
+    
     [buttonSubtype unbind:CPContentBinding];
     [buttonSubtype unbind:CPContentValuesBinding];
     [buttonSubtype unbind:CPSelectedObjectBinding];
@@ -189,6 +195,23 @@
     [buttonSubtype bind:CPContentBinding toObject:allowedSubTypes withKeyPath:@"arrangedObjects.value" options:nil];
     [buttonSubtype bind:CPContentValuesBinding toObject:allowedSubTypes withKeyPath:@"arrangedObjects.label" options:nil];
     [buttonSubtype bind:CPSelectedObjectBinding toObject:editedObject withKeyPath:@"subtype" options:nil];
+}
+
+- (void)_fetcher:(NURESTFetcher)aFetcher ofObject:(SDRESTObject)anObject didFetchAPIs:(CPArray)someAPIs
+{
+    if ([someAPIs count])
+    {
+        var apis         = [[CPArrayController alloc] initWithContent:someAPIs],
+            editedObject = [_currentContext editedObject];
+        
+        [buttonSubtype unbind:CPContentBinding];
+        [buttonSubtype unbind:CPContentValuesBinding];
+        [buttonSubtype unbind:CPSelectedObjectBinding];
+        [buttonSubtype removeAllItems];
+        [buttonSubtype bind:CPContentBinding toObject:apis withKeyPath:@"arrangedObjects.entityName" options:nil];
+        [buttonSubtype bind:CPContentValuesBinding toObject:apis withKeyPath:@"arrangedObjects.entityName" options:nil];
+        [buttonSubtype bind:CPSelectedObjectBinding toObject:editedObject withKeyPath:@"subtype" options:nil];
+    }
 }
 
 @end
