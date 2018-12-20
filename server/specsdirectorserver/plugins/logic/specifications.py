@@ -63,15 +63,12 @@ class SDSpecificationLogicPlugin(GALogicPlugin):
         specification = context.object
         action = context.request.action
 
-        specification.name = '%s.spec' % (specification.object_rest_name.strip() if specification.object_rest_name and specification.object_rest_name.strip() else specification.object_resource_name.strip())
+        specification.name = '%s.spec' % (specification.object_rest_name.strip() if specification.object_rest_name and specification.object_rest_name.strip() else specification.entity_name.strip().lower())
 
         response = self._storage_controller.get_all(user_identifier=context.session.root_object.id, parent=repository, resource_name=self._sdk.SDSpecification.rest_name, filter='name == "%s"' % specification.name)
 
         if response.count and response.data[0].id != specification.id:
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Duplicate Name', description='Another specification exists with the name %s' % specification.name, property_name='name'))
-
-        if not specification.object_resource_name or not len(specification.object_resource_name):
-            context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute objectResourceName is mandatory.', property_name='objectResourceName'))
 
         if not specification.entity_name or not len(specification.entity_name):
             context.add_error(GAError(type=GAError.TYPE_CONFLICT, title='Missing attribute', description='Attribute entityName is mandatory.', property_name='entityName'))

@@ -43,7 +43,12 @@
     @outlet SDAttributesViewController  attributesController;
     @outlet SDAPIsViewController        APIsController;
 
+    @outlet CPCheckBox                  checkBoxEmbedded;
     @outlet CPCheckBox                  checkBoxRootAPI;
+    @outlet CPView                      viewREST;
+    
+    CGSize                              _originalPopoverSize;
+    CGSize                              _noRESTPopoverSize;
 }
 
 
@@ -77,6 +82,11 @@
     [context setPopover:popover];
     [context setFetcherKeyPath:@"specifications"];
     [self registerContext:context forClass:SDSpecification];
+    [context setAdditionalEditionViews:[viewREST]];
+    
+    _originalPopoverSize = [popover contentSize];
+    _noRESTPopoverSize = CGSizeMakeCopy(_originalPopoverSize);
+    _noRESTPopoverSize.height = _noRESTPopoverSize.height - [viewREST frameSize].height - 10;
 }
 
 - (void)performPostPushOperation
@@ -134,8 +144,26 @@
 
     _validate(validation, anAttribute, anObject, @"description", [[_stringNotEmpty]]);    
     _validate(validation, anAttribute, anObject, @"entityName", [[_stringNotEmpty]]);    
-    _validate(validation, anAttribute, anObject, @"objectResourceName", [[_stringNotEmpty]]);    
     _validate(validation, anAttribute, anObject, @"userlabel", [[_stringNotEmpty],[_maxLength, 50]]);
 }
 
+
+#pragma mark -
+#pragma mark Actions
+
+- (@action)handleEmbedded:(id)aSender
+{
+    var editedObject       = [_currentContext editedObject],
+        conditionEmbedded  = [editedObject embedded];
+    
+    [viewREST setHidden: conditionEmbedded];
+    [popover setContentSize:conditionEmbedded ? _noRESTPopoverSize : _originalPopoverSize];
+    
+    if (conditionEmbedded) {
+        [editedObject setObjectRESTName: null];
+        [editedObject setObjectResourceName: null];
+    }
+    [editedObject setAllowsDelete:!conditionEmbedded];
+}
+    
 @end

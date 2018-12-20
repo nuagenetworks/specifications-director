@@ -46,7 +46,7 @@
 
     var negateBoolTransformer = @{CPValueTransformerNameBindingOption: CPNegateBooleanTransformerName},
         entityRESTName        = [_objectValue objectRESTName],
-        specificationName     = entityRESTName ? entityRESTName : @"resource - " + [_objectValue objectResourceName];
+        specificationName     = entityRESTName ? entityRESTName : @"resource - " + [_objectValue entityName];
         
     [fieldName setStringValue:specificationName];
                 

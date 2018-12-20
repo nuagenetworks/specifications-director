@@ -38,6 +38,7 @@
     BOOL                _allowsDelete           @accessors(property=allowsDelete);
     BOOL                _allowsGet              @accessors(property=allowsGet);
     BOOL                _allowsUpdate           @accessors(property=allowsUpdate);
+    BOOL                _embedded               @accessors(property=embedded);
     BOOL                _syncing                @accessors(property=syncing);
     BOOL                _root                   @accessors(property=root);
     BOOL                _template               @accessors(property=template);
@@ -58,6 +59,7 @@
 {
     if (self = [super init])
     {
+        [self exposeBindableAttribute:@"embedded"];
         [self exposeLocalKeyPathToREST:@"allowedJobCommands"];
         [self exposeLocalKeyPathToREST:@"allowsCreate"];
         [self exposeLocalKeyPathToREST:@"allowsDelete"];
@@ -79,6 +81,7 @@
         _allowsGet    = YES;
         _allowsUpdate = YES;
         _allowsCreate = NO;
+        _embedded = NO;
 
         _attributes   = [SDAttributesFetcher fetcherWithParentObject:self];
         _childAPIs    = [SDChildAPIsFetcher fetcherWithParentObject:self];
