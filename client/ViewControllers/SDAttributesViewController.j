@@ -152,29 +152,9 @@
     [popover setContentSize:conditionSubtypeApplicable ? _originalPopoverSize : _noSubtypePopoverSize];
     if (conditionSubtypeApplicable)
     {
-        if (type == SDAttributeTypeList) {
-            var allowedSubTypes = [[CPArrayController alloc] init];
-            [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeDouble, "label": "Double"} atArrangedObjectIndex:0];
-            [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeEntity, "label": "Entity"} atArrangedObjectIndex:1];
-            [allowedSubTypes insertObject:@{"value":  SDAttributeTypeEnum, "label": "Enum"} atArrangedObjectIndex:2];
-            [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeLong, "label": "Long"} atArrangedObjectIndex:3];
-            [allowedSubTypes insertObject:@{"value":  SDAttributeSubtypeObject, "label": "Object"} atArrangedObjectIndex:4];
-            [allowedSubTypes insertObject:@{"value":  SDAttributeTypeString, "label": "String"} atArrangedObjectIndex:5];
-            
-            [buttonSubtype unbind:CPContentBinding];
-            [buttonSubtype unbind:CPContentValuesBinding];
-            [buttonSubtype unbind:CPSelectedObjectBinding];
-            [buttonSubtype removeAllItems];
-            [buttonSubtype bind:CPContentBinding toObject:allowedSubTypes withKeyPath:@"arrangedObjects.value" options:nil];
-            [buttonSubtype bind:CPContentValuesBinding toObject:allowedSubTypes withKeyPath:@"arrangedObjects.label" options:nil];
-            [buttonSubtype bind:CPSelectedObjectBinding toObject:editedObject withKeyPath:@"subtype" options:nil];
-        }
-        else if (type == SDAttributeTypeObject) {
-            var apiFetcher = [[[_currentContext parentObject] parentObject] specifications];
-            
-            [apiFetcher fetchAndCallSelector:@selector(_fetcher:ofObject:didFetchAPIs:) ofObject:self];
-            return;
-        }
+        var apiFetcher = [[[_currentContext parentObject] parentObject] specifications];
+        
+        [apiFetcher fetchAndCallSelector:@selector(_fetcher:ofObject:didFetchAPIs:) ofObject:self];
     } else {
         [editedObject setSubtype: null];
     }
@@ -186,17 +166,29 @@
 
 - (void)_fetcher:(NURESTFetcher)aFetcher ofObject:(SDRESTObject)anObject didFetchAPIs:(CPArray)someAPIs
 {
-    if ([someAPIs count])
+    var editedObject    = [_currentContext editedObject],
+        conditionList   = [editedObject type] == SDAttributeTypeList,
+        allowedSubtypes = [[CPArrayController alloc] init];
+    
+    if (conditionList) 
     {
-        var apis         = [[CPArrayController alloc] initWithContent:someAPIs],
-            editedObject = [_currentContext editedObject];
+        [allowedSubtypes insertObject:@{"entityName": SDAttributeSubtypeDouble} atArrangedObjectIndex:0];
+        [allowedSubtypes insertObject:@{"entityName": SDAttributeTypeEnum} atArrangedObjectIndex:1];
+        [allowedSubtypes insertObject:@{"entityName": SDAttributeSubtypeLong} atArrangedObjectIndex:2];
+        [allowedSubtypes insertObject:@{"entityName": SDAttributeTypeString} atArrangedObjectIndex:3];
+    }
+    
+    if ([someAPIs count])
+        [allowedSubtypes addObjects: someAPIs];    
         
+    if ([[allowedSubtypes arrangedObjects] count])
+    {           
         [buttonSubtype unbind:CPContentBinding];
         [buttonSubtype unbind:CPContentValuesBinding];
         [buttonSubtype unbind:CPSelectedObjectBinding];
         [buttonSubtype removeAllItems];
-        [buttonSubtype bind:CPContentBinding toObject:apis withKeyPath:@"arrangedObjects.entityName" options:nil];
-        [buttonSubtype bind:CPContentValuesBinding toObject:apis withKeyPath:@"arrangedObjects.entityName" options:nil];
+        [buttonSubtype bind:CPContentBinding toObject:allowedSubtypes withKeyPath:@"arrangedObjects.entityName" options:nil];
+        [buttonSubtype bind:CPContentValuesBinding toObject:allowedSubtypes withKeyPath:@"arrangedObjects.entityName" options:nil];
         [buttonSubtype bind:CPSelectedObjectBinding toObject:editedObject withKeyPath:@"subtype" options:nil];
     }
 }
