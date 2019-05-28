@@ -130,11 +130,31 @@
     if ([anObject type] == SDAttributeTypeBoolean)
         [anObject setDefaultValue:SDAttributeDefaultBoolean];
         
-    if (![anObject ID] && ![anObject userlabel]) 
+    if (![anObject ID])
     {
-        var defaultLabel = [anObject name].replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); });
+        if (![anObject userlabel])
+        {
+            var defaultLabel = [anObject name].replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); });
         
-        [anObject setUserlabel:defaultLabel.trim().substring(0, 50)];
+            [anObject setUserlabel:defaultLabel.trim().substring(0, 50)];
+        }
+
+        if ([anObject type] == SDAttributeTypeString)
+        {
+            if (![anObject minLength])
+                [anObject setMinLength:0];
+
+            if (![anObject maxLength])
+                [anObject setMaxLength:255];
+        }
+        else if ([anObject type] == SDAttributeTypeInteger)
+        {
+            if (![anObject minValue])
+                [anObject setMinValue:0];
+
+            if (![anObject maxValue])
+                [anObject setMaxValue:2147483647];
+        }
     }
 }
 
