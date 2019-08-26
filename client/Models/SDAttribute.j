@@ -32,6 +32,7 @@ SDAttributeSubtypeLong   = @"long"
 SDAttributeSubtypeDouble = @"double"
 SDAttributeSubtypeEntity = @"entity"
 SDAttributeSubtypeObject = @"object"
+SDAttributeSubtypeJSON   = @"JSON"
 
 SDAttributeTypeBoolean = @"boolean"
 SDAttributeTypeEnum    = @"enum"

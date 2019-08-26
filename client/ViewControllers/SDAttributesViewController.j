@@ -33,6 +33,7 @@
 @global SDAttributeDefaultBoolean
 @global SDAttributeTypeObject
 @global SDAttributeTypeList
+@global SDAttributeSubtypeJSON
 
 @class SDEditorAttributesViewController
 
@@ -190,12 +191,14 @@
         conditionList   = [editedObject type] == SDAttributeTypeList,
         allowedSubtypes = [[CPArrayController alloc] init];
     
+    [allowedSubtypes insertObject:@{"entityName": SDAttributeSubtypeJSON} atArrangedObjectIndex:0];
+    
     if (conditionList) 
     {
-        [allowedSubtypes insertObject:@{"entityName": SDAttributeSubtypeDouble} atArrangedObjectIndex:0];
-        [allowedSubtypes insertObject:@{"entityName": SDAttributeTypeEnum} atArrangedObjectIndex:1];
-        [allowedSubtypes insertObject:@{"entityName": SDAttributeSubtypeLong} atArrangedObjectIndex:2];
-        [allowedSubtypes insertObject:@{"entityName": SDAttributeTypeString} atArrangedObjectIndex:3];
+        [allowedSubtypes insertObject:@{"entityName": SDAttributeSubtypeDouble} atArrangedObjectIndex:1];
+        [allowedSubtypes insertObject:@{"entityName": SDAttributeTypeEnum} atArrangedObjectIndex:2];
+        [allowedSubtypes insertObject:@{"entityName": SDAttributeSubtypeLong} atArrangedObjectIndex:3];
+        [allowedSubtypes insertObject:@{"entityName": SDAttributeTypeString} atArrangedObjectIndex:4];
     }
     
     if ([someAPIs count])
