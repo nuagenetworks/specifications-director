@@ -59,6 +59,11 @@
             "description": "The password.",
             "name": "password",
             "type": "string"
+        },
+        {
+            "description": "Parent branch in upstream repository",
+            "name": "parentBranch",
+            "type": "string"
         }
     ],
     "children": [

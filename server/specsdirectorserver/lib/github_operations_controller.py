@@ -216,7 +216,7 @@ class SDGitHubOperationsController(GAController):
 
             manager = self._get_repository_manager_for_repository(repository=repository, session_username=session_username)
             manager.merge_upstream_master(local_branch=repository.branch,
-                                          upstream_branch="master",
+                                          upstream_branch="master" if repository.parent_branch is None else repository.parent_branch,
                                           commit_message="Merged upstream master branch")
             job.progress = 1.0
             job.status = 'SUCCESS'

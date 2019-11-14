@@ -50,7 +50,8 @@ SDRepositoryStatusMERGING = @"MERGING";
     CPString                    _branch             @accessors(property=branch);
     CPString                    _name               @accessors(property=name);
     CPString                    _organization       @accessors(property=organization);
-    CPString                    _password           @accessors(property=password)
+    CPString                    _parentBranch       @accessors(property=parentBranch);
+    CPString                    _password           @accessors(property=password);
     CPString                    _path               @accessors(property=path);
     CPString                    _repository         @accessors(property=repository);
     CPString                    _status             @accessors(property=status);
@@ -89,6 +90,7 @@ SDRepositoryStatusMERGING = @"MERGING";
         [self exposeLocalKeyPathToREST:@"branch"];
         [self exposeLocalKeyPathToREST:@"name"];
         [self exposeLocalKeyPathToREST:@"organization"];
+        [self exposeLocalKeyPathToREST:@"parentBranch"];
         [self exposeLocalKeyPathToREST:@"password"];
         [self exposeLocalKeyPathToREST:@"path"];
         [self exposeLocalKeyPathToREST:@"pushPermission"];
@@ -103,6 +105,7 @@ SDRepositoryStatusMERGING = @"MERGING";
         _branch       = @"master";
         _path         = @"/";
         _repository   = @"api-specifications";
+        _parentBranch = @"master";
 
         _APIInfos         = [SDAPIInfosFetcher fetcherWithParentObject:self];
         _specifications   = [SDSpecificationsFetcher fetcherWithParentObject:self];

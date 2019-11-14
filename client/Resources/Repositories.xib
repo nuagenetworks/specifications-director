@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -44,7 +44,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="230" height="435"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="NIV-sE-56I" userLabel="Title">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="NIV-sE-56I" userLabel="Title">
                             <rect key="frame" x="18" y="392" width="194" height="23"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Repositories" id="4wF-eA-xhB">
@@ -56,7 +56,7 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="tag" value="title"/>
                             </userDefinedRuntimeAttributes>
                         </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="sHh-kf-gc8" userLabel="write something useful">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="sHh-kf-gc8" userLabel="write something useful">
                             <rect key="frame" x="18" y="60" width="194" height="324"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="VKh-zM-1tY">
@@ -104,11 +104,11 @@ If you need to work on multiple version of a Specification, you can just add mul
             <point key="canvasLocation" x="535" y="-44.5"/>
         </customView>
         <customView misplaced="YES" id="Vhy-KX-2L5" userLabel="Popover View">
-            <rect key="frame" x="0.0" y="0.0" width="439" height="552"/>
+            <rect key="frame" x="0.0" y="0.0" width="439" height="622"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="fCd-3k-h13">
-                    <rect key="frame" x="18" y="507" width="403" height="32"/>
+                <textField verticalHuggingPriority="750" id="fCd-3k-h13">
+                    <rect key="frame" x="18" y="577" width="403" height="32"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="New Repository" id="2Qh-59-yCH">
                         <font key="font" metaFont="system" size="19"/>
@@ -119,8 +119,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="title"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="lFE-SE-Wmq">
-                    <rect key="frame" x="20" y="452" width="398" height="22"/>
+                <textField verticalHuggingPriority="750" id="lFE-SE-Wmq">
+                    <rect key="frame" x="20" y="522" width="398" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="My Repo" drawsBackground="YES" id="2Dt-a8-avQ">
                         <font key="font" metaFont="system"/>
@@ -135,8 +135,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <outlet property="nextKeyView" destination="mHa-nq-00X" id="pQc-oy-CpX"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="mNs-Vt-Ktf">
-                    <rect key="frame" x="18" y="482" width="89" height="17"/>
+                <textField verticalHuggingPriority="750" id="mNs-Vt-Ktf">
+                    <rect key="frame" x="18" y="552" width="89" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Name" id="xQt-Fi-Yy9">
                         <font key="font" metaFont="systemBold"/>
@@ -144,8 +144,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="UBQ-jA-F8o">
-                    <rect key="frame" x="163" y="482" width="258" height="13"/>
+                <textField verticalHuggingPriority="750" id="UBQ-jA-F8o">
+                    <rect key="frame" x="163" y="552" width="258" height="13"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="6Zb-NT-Ipf">
                         <font key="font" metaFont="miniSystem"/>
@@ -156,8 +156,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_name"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="mHa-nq-00X">
-                    <rect key="frame" x="20" y="392" width="398" height="22"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="mHa-nq-00X">
+                    <rect key="frame" x="20" y="462" width="398" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="https://github.mv.usa.alcatel.com/api/v3" drawsBackground="YES" id="gDg-7t-fa2">
                         <font key="font" metaFont="system"/>
@@ -172,8 +172,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <outlet property="nextKeyView" destination="1UF-CU-oNe" id="EvZ-5x-gsp"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="kcY-TW-NwW">
-                    <rect key="frame" x="18" y="422" width="105" height="17"/>
+                <textField verticalHuggingPriority="750" id="kcY-TW-NwW">
+                    <rect key="frame" x="18" y="492" width="105" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="GitHub API URL" id="r7a-Q0-gyK">
                         <font key="font" metaFont="systemBold"/>
@@ -196,7 +196,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                     <rect key="frame" x="0.0" y="64" width="437" height="5"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                 </box>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="mvw-oL-o3v">
+                <textField verticalHuggingPriority="750" id="mvw-oL-o3v">
                     <rect key="frame" x="18" y="45" width="401" height="11"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" alignment="right" title="Server ERROR" id="qXK-er-gRS">
@@ -208,8 +208,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_serverError"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="EEg-sq-oe4">
-                    <rect key="frame" x="174" y="422" width="247" height="11"/>
+                <textField verticalHuggingPriority="750" id="EEg-sq-oe4">
+                    <rect key="frame" x="174" y="492" width="247" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="1zV-zD-3Zh">
                         <font key="font" metaFont="miniSystem"/>
@@ -220,8 +220,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_url"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="1UF-CU-oNe">
-                    <rect key="frame" x="20" y="332" width="398" height="22"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="1UF-CU-oNe">
+                    <rect key="frame" x="20" y="402" width="398" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="csl" drawsBackground="YES" id="IWX-tK-8ov">
                         <font key="font" metaFont="system"/>
@@ -236,8 +236,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <outlet property="nextKeyView" destination="t6x-eZ-Wth" id="K9n-h1-L53"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="OyG-aC-Y35">
-                    <rect key="frame" x="18" y="362" width="222" height="17"/>
+                <textField verticalHuggingPriority="750" id="OyG-aC-Y35">
+                    <rect key="frame" x="18" y="432" width="222" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="GitHub Organization or Username" id="JA2-sU-dqq">
                         <font key="font" metaFont="systemBold"/>
@@ -245,8 +245,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="UEK-il-gXm">
-                    <rect key="frame" x="189" y="362" width="231" height="11"/>
+                <textField verticalHuggingPriority="750" id="UEK-il-gXm">
+                    <rect key="frame" x="189" y="432" width="231" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="mO7-uP-TmB">
                         <font key="font" metaFont="miniSystem"/>
@@ -257,8 +257,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_organization"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="t6x-eZ-Wth">
-                    <rect key="frame" x="20" y="272" width="398" height="22"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="t6x-eZ-Wth">
+                    <rect key="frame" x="20" y="342" width="398" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="api-specifications" drawsBackground="YES" id="BRq-mW-jSd">
                         <font key="font" metaFont="system"/>
@@ -273,8 +273,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <outlet property="nextKeyView" destination="eu0-hH-j8P" id="5Jq-dJ-Cmh"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="eu0-hH-j8P">
-                    <rect key="frame" x="20" y="212" width="398" height="22"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="eu0-hH-j8P">
+                    <rect key="frame" x="20" y="282" width="398" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="master" drawsBackground="YES" id="YDQ-ix-gwH">
                         <font key="font" metaFont="system"/>
@@ -286,11 +286,11 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="nextKeyView" destination="qa5-io-XWp" id="Szn-LA-dD4"/>
+                        <outlet property="nextKeyView" destination="lgi-HH-nHD" id="r7U-9J-5GD"/>
                     </connections>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="ZoF-7e-MiI">
-                    <rect key="frame" x="186" y="305" width="234" height="11"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="ZoF-7e-MiI">
+                    <rect key="frame" x="186" y="375" width="234" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="QW9-Af-5Zm">
                         <font key="font" metaFont="miniSystem"/>
@@ -301,8 +301,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_repository"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="Lc4-5X-ImG">
-                    <rect key="frame" x="166" y="242" width="253" height="11"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="Lc4-5X-ImG">
+                    <rect key="frame" x="166" y="312" width="253" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="hcA-UB-aMD">
                         <font key="font" metaFont="miniSystem"/>
@@ -313,8 +313,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_branch"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="vqf-TW-xxU">
-                    <rect key="frame" x="18" y="182" width="146" height="17"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="vqf-TW-xxU">
+                    <rect key="frame" x="18" y="192" width="146" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Path to Specifications" id="wj7-k1-KT2">
                         <font key="font" metaFont="systemBold"/>
@@ -322,8 +322,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="pVH-Qe-8gR">
-                    <rect key="frame" x="162" y="182" width="259" height="11"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="pVH-Qe-8gR">
+                    <rect key="frame" x="162" y="192" width="259" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="6sR-yt-Uht">
                         <font key="font" metaFont="miniSystem"/>
@@ -334,8 +334,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_path"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="ZGg-F9-XUP">
-                    <rect key="frame" x="21" y="122" width="92" height="17"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="ZGg-F9-XUP">
+                    <rect key="frame" x="21" y="132" width="92" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="GitHub Token" id="Mt6-hV-46a">
                         <font key="font" metaFont="systemBold"/>
@@ -343,8 +343,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="XbE-IH-v1q">
-                    <rect key="frame" x="165" y="127" width="256" height="11"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="XbE-IH-v1q">
+                    <rect key="frame" x="165" y="137" width="256" height="11"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="oGH-5k-22X">
                         <font key="font" metaFont="miniSystem"/>
@@ -355,8 +355,8 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_associatedTokenID"/>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="qa5-io-XWp">
-                    <rect key="frame" x="20" y="152" width="398" height="22"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="qa5-io-XWp">
+                    <rect key="frame" x="20" y="162" width="398" height="22"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="/" drawsBackground="YES" id="bu8-or-Lvd">
                         <font key="font" metaFont="system"/>
@@ -369,11 +369,11 @@ If you need to work on multiple version of a Specification, you can just add mul
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <customView misplaced="YES" id="hKI-Cw-xrE">
-                    <rect key="frame" x="20" y="76" width="398" height="38"/>
+                    <rect key="frame" x="20" y="86" width="398" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="Zkm-6I-7OE">
-                    <rect key="frame" x="18" y="302" width="123" height="17"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="Zkm-6I-7OE">
+                    <rect key="frame" x="18" y="372" width="123" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="GitHub Repository" id="0BV-dB-iis">
                         <font key="font" metaFont="systemBold"/>
@@ -381,17 +381,54 @@ If you need to work on multiple version of a Specification, you can just add mul
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="gVc-0Y-1Z1">
-                    <rect key="frame" x="18" y="242" width="99" height="17"/>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="gVc-0Y-1Z1">
+                    <rect key="frame" x="18" y="312" width="83" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="GitHub Branch" id="AgK-yO-PL0">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Your Branch" id="AgK-yO-PL0">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField toolTip="r6.0, if your branch is to be merged into r6.0" verticalHuggingPriority="750" misplaced="YES" id="lgi-HH-nHD">
+                    <rect key="frame" x="20" y="222" width="398" height="22"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="master" drawsBackground="YES" id="X1q-Se-oKj">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="parentBranch"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="required" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="nextKeyView" destination="qa5-io-XWp" id="4uU-3l-UqI"/>
+                    </connections>
+                </textField>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="Sh6-kI-OMV">
+                    <rect key="frame" x="166" y="252" width="253" height="11"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="validation error" id="g79-1T-nuT">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" red="0.98431378599999997" green="0.38823533059999998" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="tag" value="validation_parentBranch"/>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="OW8-nm-Oc5">
+                    <rect key="frame" x="18" y="252" width="170" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Parent Repository Branch" id="15o-1f-6FW">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="598.5" y="-269"/>
+            <point key="canvasLocation" x="913.5" y="-196"/>
         </customView>
         <customView id="awq-QO-v1Y" userLabel="Main View">
             <rect key="frame" x="0.0" y="0.0" width="530" height="332"/>
@@ -463,7 +500,7 @@ If you need to work on multiple version of a Specification, you can just add mul
             <rect key="frame" x="0.0" y="0.0" width="163" height="234"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="SPh-Qe-zwx">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="SPh-Qe-zwx">
                     <rect key="frame" x="33" y="108" width="99" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="No Selection" id="D17-zL-e5B">
@@ -491,7 +528,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                                 <userDefinedRuntimeAttribute type="string" keyPath="cucappIdentifier" value="loading_complete"/>
                             </userDefinedRuntimeAttributes>
                         </imageView>
-                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="XHJ-CC-3Ia">
+                        <textField verticalHuggingPriority="750" id="XHJ-CC-3Ia">
                             <rect key="frame" x="136" y="55" width="214" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Select or add a GitHub Repository" id="JrR-7e-rBj">
@@ -500,7 +537,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="fAc-J8-Sjw">
+                        <textField verticalHuggingPriority="750" id="fAc-J8-Sjw">
                             <rect key="frame" x="18" y="76" width="451" height="28"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Monolithe Specifications Director" id="zgT-te-Dr1">
@@ -578,7 +615,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                     <rect key="frame" x="0.0" y="419" width="230" height="19"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="hIs-yB-U5l">
+                        <textField verticalHuggingPriority="750" id="hIs-yB-U5l">
                             <rect key="frame" x="7" y="2" width="189" height="14"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="255" id="AxR-mr-phq">
@@ -611,7 +648,7 @@ If you need to work on multiple version of a Specification, you can just add mul
                     <rect key="frame" x="20" y="20" width="550" height="220"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="giZ-Mq-ztJ">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="giZ-Mq-ztJ">
                             <rect key="frame" x="18" y="49" width="514" height="124"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="zqm-xp-GHt">
@@ -623,7 +660,7 @@ Please try again.</string>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="E7F-2L-trW">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="E7F-2L-trW">
                             <rect key="frame" x="18" y="181" width="514" height="19"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Error While Pulling" id="Q35-Dw-slR">
@@ -656,7 +693,7 @@ Please try again.</string>
                     <rect key="frame" x="20" y="20" width="550" height="220"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="c7q-oy-Pya">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="c7q-oy-Pya">
                             <rect key="frame" x="18" y="61" width="514" height="112"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="..." id="LG7-QR-6BL">
@@ -665,7 +702,7 @@ Please try again.</string>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="tuE-ZQ-zp6">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tuE-ZQ-zp6">
                             <rect key="frame" x="18" y="181" width="514" height="19"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Synchronizing..." id="Azv-Xl-jhk">
@@ -691,7 +728,7 @@ Please try again.</string>
                     <rect key="frame" x="20" y="20" width="550" height="220"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="n4h-FK-ClY">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="n4h-FK-ClY">
                             <rect key="frame" x="18" y="174" width="514" height="26"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Missing GitHub Token" id="9fD-tp-b7U">
@@ -700,7 +737,7 @@ Please try again.</string>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="nZ8-o9-V23">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="nZ8-o9-V23">
                             <rect key="frame" x="18" y="98" width="514" height="68"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="taW-K7-ifZ">
